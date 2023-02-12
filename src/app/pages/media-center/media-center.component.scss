@@ -1,0 +1,37 @@
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+section{
+  padding: 70px 0;
+}
+.breadcrumbs {
+  padding: 50px 0;
+  text-align: center;
+  background: url(../../../assets/img/media-center.svg);
+  min-height: 40px;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.breadcrumbs h2 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+@media (max-width: 992px) {
+
+}
+
+.nav{
+  background: linear-gradient(158.79deg, #BB1043 0%, #8C0931 46.08%, #610B25 99.42%);
+border-radius: 4px;
+}
+.nav li{
+  margin-bottom: 5px;
+}
+.nav li a{
+  color: #fff;
+}
+li a.active , a:hover{
+  background: rgba(66, 11, 28, 1);
+}

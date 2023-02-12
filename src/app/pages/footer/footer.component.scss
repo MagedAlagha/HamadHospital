@@ -1,0 +1,118 @@
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: #8a1538;
+  padding: 0 0 20px 0;
+  color: #eee;
+  font-size: 14px;
+}
+#footer .counter{
+padding-top:60px;
+}
+#footer .counter p{
+color: #fff;
+font-size: 45px;
+font-weight: 600;
+position: relative;
+}
+#footer .counter p::after{
+  content: '+';
+  position: absolute;
+  color: #fff;
+  right: 24%;
+  top: 0;
+  font-size: 26px;
+}
+#footer .counter span{
+color: #fff;
+font-size: 18px;
+}
+#footer .footer-top .container{
+  border-top: 1px solid #fffffff5;
+  padding-top: 50px;
+}
+
+#footer .footer-top {
+  background: #8a1538;
+  padding: 60px 0 30px 0;
+}
+#footer .footer-top .footer-info {
+  margin-bottom: 30px;
+}
+#footer .footer-top .footer-info h3 {
+  font-size: 34px;
+  margin: 0 0 20px 0;
+  padding: 2px 0 2px 10px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 3px;
+  border-left: 4px solid rgb(228,174,107);
+}
+#footer .footer-top .footer-info p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  color: #eee;
+}
+#footer .footer-top .social-links a {
+  display: inline-block;
+  margin-right: 4px;
+  width: 30px;
+  height: 30px;
+  transition: 0.3s;
+}
+#footer .footer-top .social-links a:hover{
+  transform: translateY(-3px);
+}
+#footer .footer-top h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 12px;
+}
+.footer-contacts span{
+  color: var(--mainColor);
+}
+.footer-contacts a {
+  color: #ffff;
+  padding-inline-start: 10px;
+}
+.footer-contacts p {
+  display: flex;
+  align-items: flex-start;
+}
+
+#footer .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-top .footer-links ul a:hover {
+ transform: translateX(-5px);
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 30px;
+}
+#footer .credits {
+  text-align: center;
+  font-size: 13px;
+  color: #ddd;
+}
+
