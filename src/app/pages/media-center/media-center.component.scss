@@ -7,7 +7,7 @@ section{
 .breadcrumbs {
   padding: 50px 0;
   text-align: center;
-  background: url(../../../assets/img/media-center.svg);
+  background: url(../../../assets/img/media-center.webp);
   min-height: 40px;
   color: #fff;
   background-repeat: no-repeat;
@@ -27,11 +27,32 @@ section{
 border-radius: 4px;
 }
 .nav li{
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 .nav li a{
   color: #fff;
+  padding: 12px 15px;
 }
-li a.active , a:hover{
+li a.active , a:hover , .active{
   background: rgba(66, 11, 28, 1);
+}
+
+#submenu li a{
+  font-size: 14px;
+  border-right: 2px solid #ffffff3c;
+ margin-right: 12px;
+ padding: 5px 12px;
+
+}
+#submenu li a:hover{
+  border-right: 2px solid #ffffff;
+}
+#submenu{
+  background: rgba(66, 11, 28, 1);
+}
+.rotate{
+  transform: rotate(270deg);
+}
+.remove-rotate{
+  /* transform: rotate(0); */
 }

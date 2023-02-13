@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-media-center',
   templateUrl: './media-center.component.html',
-  styleUrls: ['./media-center.component.scss']
+  styleUrls: ['./media-center.component.scss'],
 })
 export class MediaCenterComponent implements OnInit {
-
-  constructor() { }
+  /* isActive = false; */
+  active: any = 1;
+  constructor(public router: Router) {}
 
   ngOnInit(): void {
+    /*  const url = this.router.url;
+    if (url.includes('news')) {
+      this.isActive = true;
+      console.log('majed');
+    } else {
+      this.isActive = false;
+      console.log('nooooooo');
+    } */
   }
-
 }
+
+/* ||
+      url.includes('news-main') ||
+      url.includes('video-main') ||
+      url.includes('medical-articles-main') */

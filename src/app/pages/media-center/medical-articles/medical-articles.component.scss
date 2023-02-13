@@ -1,0 +1,61 @@
+ .post-box {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  transition: 0.3s;
+  height: 100%;
+  overflow: hidden;
+  padding: 25px 20px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+ .post-box .post-img {
+  overflow: hidden;
+  margin: -30px -30px 15px -30px;
+  position: relative;
+}
+ .post-box .post-img img {
+  transition: 0.5s;
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+ .post-box .post-date {
+  font-size: 14px;
+  color: #7d7d7d99;
+  margin-bottom: 10px;
+} .post-box .categories{
+  font-size: 14px;
+  background: rgba(237, 156, 51, 0.123);
+  color: rgba(237, 155, 51, 1);
+  padding: 5px;
+  border-radius: 4px;
+}
+ .post-box .post-title {
+  font-size: 17px;
+  color: #111111;
+  font-weight: 800;
+  margin-bottom: 10px;
+  position: relative;
+  transition: 0.3s;
+}
+ .post-box p {
+  font-size: 14px;
+  color: rgba(94, 94, 95, 1);
+}
+ .post-box .readmore {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  line-height: 1;
+  transition: 0.3s;
+  color: #8a1538;
+} .post-box .readmore i {
+  line-height: 0;
+  font-size: 12px;
+} .post-box:hover .post-title {
+  color:#ED9B33;
+} .post-box:hover .post-img img {
+  transform: rotate(6deg) scale(1.2);
+}

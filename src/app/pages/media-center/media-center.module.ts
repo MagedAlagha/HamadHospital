@@ -9,8 +9,6 @@ import { BrowserModule } from '@angular/platform-browser';
   declarations: [MediaCenterComponent],
   imports: [
     CommonModule,
-    BrowserModule,
-    AppRoutingModule,
     RouterModule.forChild([
       {
         path: '',
@@ -22,6 +20,41 @@ import { BrowserModule } from '@angular/platform-browser';
               import('../media-center/news/news.module').then(
                 (m) => m.NewsModule
               ),
+          },
+          {
+            path: 'photo',
+            loadChildren: () =>
+              import('../media-center/photo-gallery/photo-gallery.module').then(
+                (m) => m.PhotoGalleryModule
+              ),
+          },
+          {
+            path: 'video',
+            loadChildren: () =>
+              import('../media-center/video-gallery/video-gallery.module').then(
+                (m) => m.VideoGalleryModule
+              ),
+          },
+          {
+            path: 'medical-articles',
+            loadChildren: () =>
+              import(
+                '../media-center/medical-articles/medical-articles.module'
+              ).then((m) => m.MedicalArticlesModule),
+          },
+          {
+            path: 'success-stories/visual-stories',
+            loadChildren: () =>
+              import(
+                '../media-center/visual-stories/visual-stories.module'
+              ).then((m) => m.VisualStoriesModule),
+          },
+          {
+            path: 'success-stories/written-stories',
+            loadChildren: () =>
+              import(
+                '../media-center/written-stories/written-stories.module'
+              ).then((m) => m.WrittenStoriesModule),
           },
         ],
       },
