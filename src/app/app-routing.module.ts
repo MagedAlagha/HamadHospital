@@ -28,6 +28,41 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'photo-details',
+    loadChildren: () =>
+      import('./pages/photo-details/photo-details.module').then(
+        (m) => m.PhotoDetailsModule
+      ),
+  },
+  {
+    path: 'video-details',
+    loadChildren: () =>
+      import('./pages/video-details/video-details.module').then(
+        (m) => m.VideoDetailsModule
+      ),
+  },
+  {
+    path: 'medical-article-details',
+    loadChildren: () =>
+      import(
+        './pages/medical-article-details/medical-article-details.module'
+      ).then((m) => m.MedicalArticleDetailsModule),
+  },
+  {
+    path: 'visual-stories-details',
+    loadChildren: () =>
+      import(
+        './pages/visual-stories-details/visual-stories-details.module'
+      ).then((m) => m.VisualStoriesDetailsModule),
+  },
+  {
+    path: 'written-stories-details',
+    loadChildren: () =>
+      import(
+        './pages/written-stories-details/written-stories-details.module'
+      ).then((m) => m.WrittenStoriesDetailsModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

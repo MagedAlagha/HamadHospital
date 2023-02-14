@@ -1,0 +1,132 @@
+section{
+  padding: 60px 0 70px 0;
+
+
+.section-title{
+  span{
+    color: #5e5e5f;
+  }
+  h1{
+    font-weight: 800;
+   font-size: 22px;
+   border-right: 5px solid #8a1538;
+   padding-right: 8px;
+   line-height: 32px;
+   margin: 6px 0 35px 0;
+  }
+}
+.entry-meta{
+  border-right: 5px solid #ed9b33;
+  padding-right: 8px;
+
+  span{
+    color: #5e5e5f;
+    font-size: 14px;
+  }
+  p{
+    font-weight: 600;
+    margin-bottom: 5px;
+
+  }
+}
+
+.share-post{
+  span i{
+   color: #949597;
+   cursor: pointer;
+   font-size: 18px;
+ }
+ }
+
+ .post-p{
+  font-size: 17px;
+ }
+
+.last-news{
+  h2{
+    font-size: 22px;
+    font-weight: 700;
+  }
+    .line{
+      width: 13px;
+      height: 6px;
+      background: #8a1538;
+      color: #8a1538;
+    }
+  .last-news-title{
+  h3{
+font-size: 20px;
+font-weight: 700;
+line-height: 30px;
+  }
+  p{
+   color: rgba(94, 94, 95, 1);
+   margin-top: 10px;
+  }
+  }
+}
+
+}
+
+
+.post-box {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  transition: 0.3s;
+  height: 100%;
+  overflow: hidden;
+  padding: 25px 20px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+ .post-box .post-img {
+  overflow: hidden;
+  margin: -30px -30px 15px -30px;
+  position: relative;
+}
+ .post-box .post-img img {
+  transition: 0.5s;
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+ .post-box .post-date {
+  font-size: 14px;
+  color: #7d7d7d99;
+  margin-bottom: 10px;
+} .post-box .categories{
+  font-size: 14px;
+  background: rgba(237, 156, 51, 0.123);
+  color: rgba(237, 155, 51, 1);
+  padding: 5px;
+  border-radius: 4px;
+}
+ .post-box .post-title {
+  font-size: 17px;
+  color: #111111;
+  font-weight: 800;
+  margin-bottom: 10px;
+  position: relative;
+  transition: 0.3s;
+}
+ .post-box p {
+  font-size: 14px;
+  color: rgba(94, 94, 95, 1);
+}
+ .post-box .readmore {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  line-height: 1;
+  transition: 0.3s;
+  color: #8a1538;
+} .post-box .readmore i {
+  line-height: 0;
+  font-size: 12px;
+} .post-box:hover .post-title {
+  color:#ED9B33;
+} .post-box:hover .post-img img {
+  transform: rotate(6deg) scale(1.2);
+}

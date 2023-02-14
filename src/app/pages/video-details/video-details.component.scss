@@ -1,0 +1,50 @@
+section{
+  padding: 50px 0 70px 0;
+}
+.section-title{
+  span{
+    color: #5e5e5f;
+  }
+  h1{
+    font-weight: 800;
+   font-size: 22px;
+   border-right: 5px solid #8a1538;
+   padding-right: 8px;
+   line-height: 32px;
+   margin: 6px 0 35px 0;
+  }
+}
+.main-img{
+  position: relative;
+  z-index: -2;
+}
+.img{
+  cursor: pointer;
+ box-shadow: 4px -41px 40px 6px rgba(0,0,0,0.56) inset;
+ border-radius: 3px;
+}
+.img-title p {
+font-size: 18px;
+}
+.img-title{
+  margin-top: -42px;
+  padding: 0 10px;
+}
+.img-title :is(span , p) {
+  color: #fff;
+}
+
+.section-2{
+
+  h2{
+    font-size: 22px;
+    font-weight: 700;
+  }
+    .line{
+      width: 13px;
+      height: 6px;
+      background: #8a1538;
+      color: #8a1538;
+    }
+
+}
