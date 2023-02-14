@@ -21,6 +21,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'services',
+    loadChildren: () =>
+      import('./pages/services-hospital/services-hospital.module').then(
+        (m) => m.ServicesHospitalModule
+      ),
+  },
+  {
     path: 'news-details',
     loadChildren: () =>
       import('./pages/news-details/news-details.module').then(
@@ -62,6 +69,7 @@ const routes: Routes = [
         './pages/written-stories-details/written-stories-details.module'
       ).then((m) => m.WrittenStoriesDetailsModule),
   },
+
   {
     path: '**',
     component: PageNotFoundComponent,
