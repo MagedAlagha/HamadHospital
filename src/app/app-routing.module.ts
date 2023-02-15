@@ -21,10 +21,17 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'services',
+    path: 'services-form',
     loadChildren: () =>
       import('./pages/services-hospital/services-hospital.module').then(
         (m) => m.ServicesHospitalModule
+      ),
+  },
+  {
+    path: 'services',
+    loadChildren: () =>
+      import('./pages/services-page/services-page.module').then(
+        (m) => m.ServicesPageModule
       ),
   },
   {

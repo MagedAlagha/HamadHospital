@@ -3,8 +3,10 @@
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
  */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
-body{
+body , .p-component{
   font-family: 'Cairo', sans-serif !important;
+}
+body {
   overflow-x: hidden;
 }
 p{
@@ -15,4 +17,63 @@ a{
   text-decoration: none !important;
   transition: .3s all;
   display: inline-block;
+}
+.p-tabview .p-tabview-nav , .p-tabview .p-tabview-nav li .p-tabview-nav-link , .p-tabview .p-tabview-panels{
+  background: transparent !important;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link{
+/*   border: transparent !important; */
+}
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+  color: #8a1538 !important;
+  border-color:#8a1538 !important;
+}
+.p-tabview .p-tabview-nav .p-tabview-ink-bar{
+  background:#8a1538 !important;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus{
+  box-shadow:unset !important
+}
+.p-dropdown , .p-calendar{
+  display: flex !important;
+  height: 40px !important;
+  align-items: center;
+}
+.p-calendar .p-inputtext{
+  height: 40px !important;
+}
+.p-button-label{
+  font-weight: 500 !important;
+}
+.p-button:focus{
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #8a153851, 0 1px 2px 0 black !important;
+}
+.p-inputtext{
+  width: 100%;
+}
+.p-inputtext:enabled:focus , .p-dropdown:focus ,  .p-dropdown:active{
+  box-shadow: 0 0 0 0.2rem #8a153851 !important;
+  border-color:#8a1538 !important
+}
+.p-inputtext:enabled:hover , .p-dropdown:hover{
+  border-color:#8a1538 !important;
+}
+.p-rating .p-rating-icon.pi-star-fill{
+  color: #ED9B33 !important;
+}
+.p-rating .p-rating-icon:focus{
+  box-shadow: unset !important;
+}
+ .p-rating .p-rating-icon{
+  font-size: 1.543rem !important;
+  color: #DEE0E2 !important;
+}
+.p-rating{
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-tabview .p-tabview-nav-container{
+  background: #ffff;
+ /*  padding-bottom: 5px; */
 }

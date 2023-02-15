@@ -1,9 +1,8 @@
 <section class="">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 pe-md-0 d-flex align-items-stretch ">
         <div class="contact-box p-5">
-
           <img src="../../../assets/img/patern.png" class="img-fluid patern" alt="">
           <div class="contacts">
             <img src="../../../assets/img/mail.svg" alt="">
@@ -34,11 +33,20 @@
                 المتحف مقابل مسجد الخالدي.</a>
             </div>
           </div>
-
+          <div class="social-links text-center">
+            <h6>مواقع التواصل الاجتماعي :</h6>
+            <p>@gazahamad</p>
+            <a href=""><img src="../../../assets/img/brand-facebook.svg" alt=""></a>
+            <a href="" class="mx-2"><img src="../../../assets/img/brand-youtube.svg" alt=""></a>
+            <a href="" class="me-2"><img src="../../../assets/img/brand-instagram.svg" alt=""></a>
+            <a href=""><img src="../../../assets/img/brand-twitter.svg" alt=""></a>
+          </div>
         </div>
       </div>
-      <div class="col-md-8 py-4 px-3">
-        <router-outlet></router-outlet>
+      <div class="col-md-8 ps-md-0 d-flex align-items-stretch">
+        <div class="form-box p-4">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
   </div>
