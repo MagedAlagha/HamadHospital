@@ -2,28 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServicesPageComponent } from './services-page.component';
 import { RouterModule } from '@angular/router';
-import { TabViewModule } from 'primeng/tabview';
 import { MedicalRehabilitationComponent } from './medical-rehabilitation/medical-rehabilitation.component';
+import { ProstheticsComponent } from './prosthetics/prosthetics.component';
+import { HearingBalanceComponent } from './hearing-balance/hearing-balance.component';
+import { OutpatientClinicsComponent } from './outpatient-clinics/outpatient-clinics.component';
 
 @NgModule({
-  declarations: [ServicesPageComponent, MedicalRehabilitationComponent],
+  declarations: [ServicesPageComponent, ProstheticsComponent, HearingBalanceComponent, OutpatientClinicsComponent],
   imports: [
     CommonModule,
-    TabViewModule,
     RouterModule.forChild([
       {
         path: '',
         component: ServicesPageComponent,
-        /* children: [
+        children: [
           {
-            path: 'beneficiaries-service',
-            loadChildren: () =>
-              import(
-                '../services-hospital/beneficiaries-service/beneficiaries-service.module'
-              ).then((m) => m.BeneficiariesServiceModule),
+            path: 'medical-rehabilitation',
+            component: MedicalRehabilitationComponent,
           },
-
-        ], */
+          {
+            path: 'prosthetics',
+            component: ProstheticsComponent,
+          },
+        ],
       },
     ]),
   ],

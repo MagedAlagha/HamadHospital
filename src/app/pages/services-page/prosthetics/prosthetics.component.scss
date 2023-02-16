@@ -1,0 +1,49 @@
+/*--------------------------------------------------------------
+# section
+--------------------------------------------------------------*/
+section{
+  padding: 70px 0;
+  }
+   .section-header h3{
+    color: #8a1538;
+    position: relative;
+    font-weight: 700;
+   }
+
+  .line{
+    height: 3px;
+    width: 100%;
+    background: #ED9B33;
+    display: inline-block;
+  }
+
+  p{
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    line-height: 28px;
+  }
+.header-tabel{
+  background: #8a1538;
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 0;
+  h5{
+    font-weight: 700;
+  }
+}
+.body-title{
+  color: #8a1538;
+  font-weight: 600;
+}
+.body-box {
+  padding: 7px ;
+  border: 1px solid #8a153824;
+  border-radius: 8px;
+  margin-top: 15px;
+  color: #1C1C1C;
+  transition: .3s all;
+}
+.body-box:hover{
+  border: 1px solid #8a1538;
+}
