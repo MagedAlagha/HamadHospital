@@ -7,16 +7,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  inActive = false;
+  isActive = false;
   active: any = 1;
+
   constructor(public router: Router) {}
 
   ngOnInit(): void {
-    const url = this.router.url;
+    const url = window.location.href;
+    console.log('url', url);
     if (url.includes('home')) {
-      this.inActive = true;
+      this.isActive = true;
     } else {
-      this.inActive = false;
+      this.isActive = false;
     }
+
+    /*  if (window.scrollY > 100) {
+      selectHeader.classList.add('header-scrolled')
+    } else {
+      selectHeader.classList.remove('header-scrolled')
+    } */
   }
 }

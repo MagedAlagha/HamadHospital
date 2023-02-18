@@ -14,14 +14,18 @@ export class HomeComponent implements OnInit {
   customOptions: OwlOptions = {
     loop: true,
     rtl: true,
-    mouseDrag: false,
-    touchDrag: false,
+    mouseDrag: true,
+    touchDrag: true,
     pullDrag: false,
     autoplay: true,
     nav: true,
-    dots: false,
+    dots: true,
     navSpeed: 400,
-    navText: ['', ''],
+    navText: [
+      '<i class="fa-solid fa-chevron-left"></i>',
+      '<i class="fa-solid fa-chevron-right"></i>',
+    ],
+
     responsive: {
       0: {
         items: 1,

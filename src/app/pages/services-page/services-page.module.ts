@@ -15,6 +15,7 @@ import { StoriesHomeComponent } from '../stories-home/stories-home.component';
     ProstheticsComponent,
     HearingBalanceComponent,
     OutpatientClinicsComponent,
+    MedicalRehabilitationComponent,
   ],
   imports: [
     CommonModule,
