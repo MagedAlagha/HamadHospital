@@ -1,0 +1,65 @@
+/*--------------------------------------------------------------
+# section
+--------------------------------------------------------------*/
+section{
+  padding: 70px 0;
+  }
+   .section-header h3{
+    color: #8a1538;
+    position: relative;
+    font-weight: 700;
+   }
+
+  .line{
+    height: 4px;
+    width: 100%;
+    background: #ED9B33;
+    display: inline-block;
+  }
+
+  p{
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    line-height: 28px;
+  }
+
+img{
+  width: 100%;
+}
+
+.section-2{
+ border-top: 3px solid #ED9B33;
+ border-bottom: 3px solid #ED9B33;
+
+}
+.section-2 h2{
+  font-size: 18px;
+  font-weight: 700;
+  color: #8a1538;
+}
+
+
+.section-2  .line-2{
+      width: 16px;
+      height: 4px;
+      background: #8a1538;
+      color: #8a1538;
+    }
+
+.content p {
+    position: relative;
+    text-align: start;
+}
+
+.content p::after {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #8a1538;
+    border-radius: 50%;
+    right: -16px;
+    top: 10px;
+
+}

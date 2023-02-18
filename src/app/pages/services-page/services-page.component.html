@@ -12,8 +12,10 @@
               التأهيل الطبي</li>
             <li routerLink="/services/prosthetics" [ngClass]="{'active':active==2}" (click)="active=2">الأطراف الصناعية
             </li>
-            <li [ngClass]="{'active':active==3}" (click)="active=3">السمع والتوازن</li>
-            <li [ngClass]="{'active':active==4}" (click)="active=4">العيادات الخارجية</li>
+            <li routerLink="/services/hearing-balance" [ngClass]="{'active':active==3}" (click)="active=3">السمع
+              والتوازن</li>
+            <li routerLink="/services/outpatient-clinics" [ngClass]="{'active':active==4}" (click)="active=4">العيادات
+              الخارجية</li>
           </ul>
         </div>
 

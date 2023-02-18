@@ -1,0 +1,65 @@
+<h3>خدمة مؤسسات</h3>
+
+
+
+<p-tabView styleClass="tabview-custom">
+  <p-tabPanel header="طلب تغطية صحفية" [selected]="true">
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label>الاسم كامل</label>
+        <input type="text" pInputText>
+      </div>
+      <div class="col-md-6">
+        <label>البريد الالكتروني </label>
+        <input type="email" pInputText>
+      </div>
+      <div class="col-md-6">
+        <label>رقم الهاتف </label>
+        <input type="number" pInputText>
+      </div>
+      <div class="col-md-6">
+        <label>العنوان بالكامل</label>
+        <input type="text" id="inputAddress" pInputText>
+      </div>
+
+      <div class="col-12">
+        <label>نص الرسالة </label>
+        <textarea [rows]="4" pInputTextarea></textarea>
+      </div>
+      <div class="col-12">
+        <button pButton type="button" class="" label="إرسال"></button>
+      </div>
+    </form>
+
+  </p-tabPanel>
+  <p-tabPanel header="طلب زيارة">
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label>الاسم كامل</label>
+        <input type="text" pInputText>
+      </div>
+      <div class="col-md-6">
+        <label>البريد الالكتروني </label>
+        <input type="email" pInputText>
+      </div>
+      <div class="col-md-6">
+        <label>رقم الهاتف </label>
+        <input type="number" pInputText>
+      </div>
+      <div class="col-md-6">
+        <label>العنوان بالكامل</label>
+        <input type="text" id="inputAddress" pInputText>
+      </div>
+
+      <div class="col-12">
+        <label>نص الرسالة </label>
+        <textarea [rows]="4" pInputTextarea></textarea>
+      </div>
+      <div class="col-12">
+        <button pButton type="button" class="" label="إرسال"></button>
+      </div>
+    </form>
+
+  </p-tabPanel>
+
+</p-tabView>

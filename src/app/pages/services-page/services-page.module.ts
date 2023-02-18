@@ -6,11 +6,20 @@ import { MedicalRehabilitationComponent } from './medical-rehabilitation/medical
 import { ProstheticsComponent } from './prosthetics/prosthetics.component';
 import { HearingBalanceComponent } from './hearing-balance/hearing-balance.component';
 import { OutpatientClinicsComponent } from './outpatient-clinics/outpatient-clinics.component';
+import { AccordionModule } from 'primeng/accordion';
+import { StoriesHomeComponent } from '../stories-home/stories-home.component';
 
 @NgModule({
-  declarations: [ServicesPageComponent, ProstheticsComponent, HearingBalanceComponent, OutpatientClinicsComponent],
+  declarations: [
+    ServicesPageComponent,
+    ProstheticsComponent,
+    HearingBalanceComponent,
+    OutpatientClinicsComponent,
+  ],
   imports: [
     CommonModule,
+    AccordionModule,
+    StoriesHomeComponent,
     RouterModule.forChild([
       {
         path: '',
@@ -23,6 +32,14 @@ import { OutpatientClinicsComponent } from './outpatient-clinics/outpatient-clin
           {
             path: 'prosthetics',
             component: ProstheticsComponent,
+          },
+          {
+            path: 'hearing-balance',
+            component: HearingBalanceComponent,
+          },
+          {
+            path: 'outpatient-clinics',
+            component: OutpatientClinicsComponent,
           },
         ],
       },

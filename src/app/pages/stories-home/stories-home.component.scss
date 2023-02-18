@@ -1,0 +1,52 @@
+/*--------------------------------------------------------------
+# stores
+--------------------------------------------------------------*/
+section{
+  padding: 70px 0;
+}
+.stores{
+  background: #8a1538;
+ }
+ .stores .section-header{
+  color: #fff;
+ }
+ .stores .section-header img{
+  width: 40px;
+  margin-bottom: 20px;
+  user-select: none;
+ }
+
+ .stores .section-title {
+ color: #fff;
+ }
+ .stores .section-title :is(p , h3 , a){
+  color: #fff;
+ }
+ .stores .section-title h4{
+  border: 3px solid #ED9B33;
+  display: inline-block;
+  padding: 5px 8px;
+  border-radius: 2px;
+  background: #8a1538;
+  position: relative;
+  z-index: 9;
+ }
+ .stores .section-title p {
+  font-weight: 600;
+ }
+ .stores .section-title .line {
+  width: 100%;
+  height: 3px;
+  background: #ED9B33;
+  transform: translateY(-31px);
+ }
+ .stores  figure img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+ }
+ .stores  figure figcaption {
+  font-size: 14px;
+  color: #fff;
+ }

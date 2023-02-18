@@ -1,0 +1,58 @@
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+section{
+  padding: 70px 0;
+}
+.breadcrumbs {
+  padding: 50px 0;
+  text-align: center;
+  background: url(../../../assets/img/media-center.webp);
+  min-height: 40px;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.breadcrumbs h2 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+@media (max-width: 992px) {
+
+}
+
+.nav{
+  background: linear-gradient(158.79deg, #BB1043 0%, #8C0931 46.08%, #610B25 99.42%);
+border-radius: 4px;
+}
+.nav li{
+  margin-bottom: 7px;
+}
+.nav li a{
+  color: #fff;
+  padding: 12px 15px;
+}
+li a.active , a:hover , .active{
+  background: rgba(66, 11, 28, 1);
+}
+
+#submenu li a{
+  font-size: 14px;
+  border-right: 2px solid #ffffff3c;
+ margin-right: 12px;
+ padding: 5px 12px;
+
+}
+#submenu li a:hover{
+  border-right: 2px solid #ffffff;
+}
+#submenu{
+  background: rgba(66, 11, 28, 1);
+}
+.rotate{
+  transform: rotate(270deg);
+}
+.remove-rotate{
+  /* transform: rotate(0); */
+}

@@ -76,6 +76,13 @@ const routes: Routes = [
         './pages/written-stories-details/written-stories-details.module'
       ).then((m) => m.WrittenStoriesDetailsModule),
   },
+  {
+    path: 'about-us',
+    loadChildren: () =>
+      import('./pages/about-hospital/about-hospital.module').then(
+        (m) => m.AboutHospitalModule
+      ),
+  },
 
   {
     path: '**',

@@ -17,7 +17,7 @@
   transition: .3s all;
   color: #000;
 }
-.nav-link::before{
+/* .nav-link::before{
 position: absolute;
   content: '';
   width: 80%;
@@ -38,3 +38,116 @@ position: absolute;
 .nav-link:hover{
   color: #8a1538;
 }
+ */
+
+.navbar-nav ul > li {
+  position: relative;
+  white-space: nowrap;
+  padding: 10px 0 10px 28px;
+}
+
+.navbar-nav ul li a {
+  display: block;
+  position: relative;
+  color: #222222;
+  transition: 0.3s;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0 3px;
+}
+
+  .navbar-nav ul > li > a:before {
+  content: "";
+  position: absolute;
+  width: 100% ;
+  height: 2px;
+  bottom: -5px;
+  right: 0;
+  background-color: #8a1538;
+  visibility: hidden;
+  width: 0px;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar-nav ul > li > a:hover:before, li a:hover > a:before,  a:before {
+  visibility: visible;
+  width: 100%;
+}
+
+ .navbar-nav a:hover,  a.active ,  li:hover > a {
+  color: #8a1538 !important;
+}
+
+
+.drop-down {
+  padding: 10px 17px;
+  background: #8a1538;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
+  cursor: pointer;
+}
+.arrow1 , .arrow2{
+  transition: .5s all ;
+}
+.arrow2 {
+  display: none;
+}
+.drop-down:hover .arrow2 {
+  display:inline-block
+}
+.drop-down:hover .arrow1 {
+  display:none
+}
+.drop-down a:hover{
+  color: #fff;
+}
+ .drop-down ul {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 30px);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  padding: 10px 0;
+  background: #8a1538;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: 0.3s;
+  list-style-type: none;
+  color: #fff;
+  border-radius: 4px;
+}
+
+ .drop-down:hover > ul {
+  opacity: 1;
+  top: 106%;
+  visibility: visible;
+}
+
+ .drop-down li {
+  min-width: 180px;
+  position: relative;
+}
+
+ .drop-down ul a {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  color: #ededed;
+}
+
+ .drop-down ul a:hover,  .drop-down ul .active > a,  .drop-down ul li:hover > a {
+  color: #ffffff !important;
+}
+
+
+ .drop-down .drop-down > a:after {
+  content: "\eaa0";
+  font-family: IcoFont;
+  position: absolute;
+  right: 15px;
+}
+
+
