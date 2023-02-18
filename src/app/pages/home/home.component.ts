@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
 
 @Component({
   selector: 'app-home',
@@ -10,28 +11,30 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  /*   customOptions: OwlOptions = {
+  customOptions: OwlOptions = {
     loop: true,
+    rtl: true,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
+    autoplay: true,
+    nav: true,
     dots: false,
-    navSpeed: 700,
+    navSpeed: 400,
     navText: ['', ''],
     responsive: {
       0: {
         items: 1,
       },
       400: {
-        items: 2,
+        items: 1,
       },
       740: {
-        items: 3,
+        items: 1,
       },
-      940: {
-        items: 4,
+      1400: {
+        items: 1,
       },
     },
-    nav: true,
-  }; */
+  };
 }

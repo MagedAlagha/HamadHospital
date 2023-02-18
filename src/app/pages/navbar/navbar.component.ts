@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     const url = this.router.url;
-    if (url.includes('contact-us') || url.includes('home')) {
+    if (url.includes('home')) {
       this.inActive = true;
     } else {
       this.inActive = false;

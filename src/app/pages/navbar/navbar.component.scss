@@ -74,7 +74,7 @@ position: absolute;
   width: 100%;
 }
 
- .navbar-nav a:hover,  a.active ,  li:hover > a {
+ .navbar-nav li a:hover,  a.active ,  li:hover > a {
   color: #8a1538 !important;
 }
 
@@ -142,12 +142,15 @@ position: absolute;
   color: #ffffff !important;
 }
 
-
  .drop-down .drop-down > a:after {
   content: "\eaa0";
   font-family: IcoFont;
   position: absolute;
   right: 15px;
 }
-
-
+.custom-background{
+  background: #ffffff34 !important;
+}
+.ss{
+  background: #fff;
+}

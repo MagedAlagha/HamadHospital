@@ -5,7 +5,7 @@ section{
 }
 .section-title{
   span{
-    color: #5e5e5f;
+    color: #ffffff;
   }
   h1{
     font-weight: 800;
@@ -14,11 +14,13 @@ section{
    padding-right: 8px;
    line-height: 32px;
    margin: 6px 0 35px 0;
+   color: #fff;
   }
 }
 .main-img{
-  position: relative;
-  z-index: -2;
+  position: absolute;
+ left: 20px;
+ bottom: 20px;
 }
 .img{
   cursor: pointer;

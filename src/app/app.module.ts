@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoriesHomeComponent } from './pages/stories-home/stories-home.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DropdownModule } from 'primeng/dropdown';
     BrowserAnimationsModule,
     StoriesHomeComponent,
     DropdownModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

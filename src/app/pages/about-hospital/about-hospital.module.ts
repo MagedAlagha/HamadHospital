@@ -17,6 +17,10 @@ import { GoalsComponent } from './goals/goals.component';
         component: AboutHospitalComponent,
         children: [
           {
+            path: '',
+            component: BeginningComponent,
+          },
+          {
             path: 'beginning',
             component: BeginningComponent,
           },

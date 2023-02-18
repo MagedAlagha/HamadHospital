@@ -26,6 +26,10 @@ import { StoriesHomeComponent } from '../stories-home/stories-home.component';
         component: ServicesPageComponent,
         children: [
           {
+            path: '',
+            component: MedicalRehabilitationComponent,
+          },
+          {
             path: 'medical-rehabilitation',
             component: MedicalRehabilitationComponent,
           },
