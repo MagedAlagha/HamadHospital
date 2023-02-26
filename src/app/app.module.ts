@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoriesHomeComponent } from './pages/stories-home/stories-home.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     StoriesHomeComponent,
     DropdownModule,
     CarouselModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
+import { Observable } from 'rxjs';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,18 @@ import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  sliderData$!:Observable<any>;
+  constructor( private _homeService:HomeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+      this._homeService.getSliderData();
+      this.sliderData$ = this._homeService.Selector$('sliderData');
+  }
+
+/*   .pipe(map(value=>{
+    console.log("value" , value)
+  }))
+ */
 
   customOptions: OwlOptions = {
     loop: true,
