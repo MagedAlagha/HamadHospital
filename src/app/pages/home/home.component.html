@@ -1,55 +1,70 @@
 <div class="hero">
-  <div class="social-links d-md-block d-none ">
-    <a href=""><img src="../../../assets/img/brand-facebook.svg" alt=""></a>
-    <a href="" class="mt-1"><img src="../../../assets/img/brand-youtube.svg" alt=""></a>
-    <a href="" class="mt-1"><img src="../../../assets/img/brand-instagram.svg" alt=""></a>
-    <a href="" class="mt-1"><img src="../../../assets/img/brand-twitter.svg" alt=""></a>
+  <div class="social-links d-md-block d-none">
+    <a href=""><img src="../../../assets/img/brand-facebook.svg" alt="" /></a>
+    <a href="" class="mt-1"
+      ><img src="../../../assets/img/brand-youtube.svg" alt=""
+    /></a>
+    <a href="" class="mt-1"
+      ><img src="../../../assets/img/brand-instagram.svg" alt=""
+    /></a>
+    <a href="" class="mt-1"
+      ><img src="../../../assets/img/brand-twitter.svg" alt=""
+    /></a>
   </div>
   <owl-carousel-o [options]="customOptions">
-    <ng-container *ngIf="sliderData$ |async as data">
-    <ng-template carouselSlide *ngFor="let item of data" >
-      <div class="img" style="  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(http://hamad_api.accessline.ps{{item.ImagePath}});">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-7 col-10">
-              <div class="content">
-                <p>{{item.TitleAr}}</p>
+    <ng-container *ngIf="sliderData$ | async as data">
+      <ng-template carouselSlide *ngFor="let item of data">
+        <div
+          class="img"
+          style="  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(http://hamad_api.accessline.ps{{
+            item.ImagePath
+          }});"
+        >
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-7 col-10">
+                <div class="content">
+                  <p>{{ item.TitleAr }}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </ng-template>
-  </ng-container>
+      </ng-template>
+    </ng-container>
 
-    <ng-template carouselSlide>
-
-      <div class="img">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-7 col-10">
-              <div class="content">
-                <p>لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-template>
     <ng-template carouselSlide>
       <div class="img">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-md-7 col-10">
               <div class="content">
-                <p>لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل</p>
+                <p>
+                  لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على
+                  العميل
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </ng-template>
-
+    <ng-template carouselSlide>
+      <div class="img">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-7 col-10">
+              <div class="content">
+                <p>
+                  لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على
+                  العميل
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </owl-carousel-o>
 </div>
 <section class="about">
@@ -67,44 +82,84 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0">
+    <div class="row" *ngIf="Services$ | async as Services">
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+      >
         <div class="icon-box">
-          <div class="icon"><img src="../../../assets/img/04.svg" alt=""></div>
-          <h4>التأهيل الطبي</h4>
+          <div class="icon">
+            <img [src]="avatar + Services?.HearingIconPath" alt="" />
+          </div>
+          <h4>
+            {{ isEn ? Services?.HearingDescEn : Services?.HearingDescAr }}
+          </h4>
           <p>
-            لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-            تصاميم مطبوعه
+            {{ isEn ? Services?.HearingSectionEn : Services?.HearingSectionAr }}
           </p>
         </div>
       </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0 ">
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+      >
         <div class="icon-box">
-          <div class="icon"><img src="../../../assets/img/03.svg" alt=""></div>
-          <h4>الأطراف الصناعية </h4>
+          <div class="icon">
+            <img [src]="avatar + Services?.MedicalRehabilitationIconPath" alt="" />
+          </div>
+          <h4>
+            {{ isEn ? Services?.HearingSectionEn : Services?.HearingSectionAr }}
+          </h4>
           <p>
-            لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-            تصاميم مطبوعه
+            {{
+              isEn
+                ? Services?.MedicalRehabilitationIconDescEn
+                : Services?.MedicalRehabilitationIconDescAr
+            }}
           </p>
         </div>
       </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch  mt-4 mt-lg-0 ">
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+      >
         <div class="icon-box">
-          <div class="icon"><img src="../../../assets/img/02.svg" alt=""></div>
-          <h4>السمع والتوازن </h4>
+          <div class="icon">
+            <img [src]="avatar + Services?.OutpatientClinicsIconPath" alt="" />
+          </div>
+          <h4>
+            {{
+              isEn
+                ? Services?.OutpatientClinicsSectionEn
+                : Services?.OutpatientClinicsSectionAr
+            }}
+          </h4>
           <p>
-            لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-            تصاميم مطبوعه
+            {{
+              isEn
+                ? Services?.OutpatientClinicsDescEn
+                : Services?.OutpatientClinicsDescAr
+            }}
           </p>
         </div>
       </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch  mt-4 mt-lg-0">
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+      >
         <div class="icon-box">
-          <div class="icon"><img src="../../../assets/img/01.svg" alt=""></div>
-          <h4>العيادات الخارجية</h4>
+          <div class="icon">
+            <img [src]="avatar + Services?.HearingIconPath" alt="" />
+          </div>
+          <h4>
+            {{
+              isEn
+                ? Services?.OutpatientClinicsSectionEn
+                : Services?.OutpatientClinicsSectionAr
+            }}
+          </h4>
           <p>
-            لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-            تصاميم مطبوعه
+            {{
+              isEn
+                ? Services?.ProstheticsDescEn
+                : Services?.ProstheticsDescAr
+            }}
           </p>
         </div>
       </div>
@@ -121,60 +176,90 @@
     <div class="section-title mb-2">
       <div class="row">
         <div class="col-6">
-          <h4>الاخبار </h4>
+          <h4>الاخبار</h4>
         </div>
         <div class="col-6 text-end">
-          <a href="#"> عرض الكل <i class="fa-solid fa-arrow-left-long ps-1"></i></a>
+          <a href="#">
+            عرض الكل <i class="fa-solid fa-arrow-left-long ps-1"></i
+          ></a>
         </div>
       </div>
-
     </div>
     <div class="row gy-4">
       <div class="col-md-8 d-flex align-items-stretch box">
         <div class="row">
           <div class="col-md-6">
             <div class="post-box" routerLink="/news-details">
-              <div class="post-img"><img src="../../../assets/img/Bg.png" class="img-fluid" alt=""></div>
-              <div class="d-flex justify-content-between align-items-baseline mb-1 ">
+              <div class="post-img">
+                <img
+                  src="../../../assets/img/Bg.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div
+                class="d-flex justify-content-between align-items-baseline mb-1"
+              >
                 <span class="categories">التأهيل الطبي</span>
                 <span class="post-date">12/12/2022</span>
               </div>
-              <h3 class="post-title">عنوان المقال نموذج افتراضي يوضع </h3>
-              <p>لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-                كانت تصاميم مطبوعه ... بروشور او فلاير على سبيل المثال ... </p>
-              <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-                  المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
+              <h3 class="post-title">عنوان المقال نموذج افتراضي يوضع</h3>
+              <p>
+                لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
+                ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه ...
+                بروشور او فلاير على سبيل المثال ...
+              </p>
+              <a href="#" class="readmore mt-auto d-flex align-items-baseline"
+                ><span>إقراء المزيد</span
+                ><i class="fa-solid fa-arrow-left-long ps-1"></i>
               </a>
             </div>
           </div>
           <div class="col-md-6 mt-md-0 mt-3">
             <div class="titlis-box">
               <p><strong>إقراء المزيد</strong></p>
-              <a routerLink="/news-details" class="title">عنوان المقال نموذج افتراضي يوضع <i
-                  class="fa-solid fa-arrow-left-long ps-1"></i></a>
-              <a routerLink="/news-details" class="title">عنوان المقال نموذج افتراضي يوضع <i
-                  class="fa-solid fa-arrow-left-long ps-1"></i></a>
-              <a routerLink="/news-details" class="title">عنوان المقال نموذج افتراضي يوضع <i
-                  class="fa-solid fa-arrow-left-long ps-1"></i></a>
-              <a routerLink="/news-details" class="title">عنوان المقال نموذج افتراضي يوضع <i
-                  class="fa-solid fa-arrow-left-long ps-1"></i></a>
-              <a routerLink="/news-details" class="title">عنوان المقال نموذج افتراضي يوضع <i
-                  class="fa-solid fa-arrow-left-long ps-1"></i></a>
-              <a routerLink="/news-details" class="title">عنوان المقال نموذج افتراضي يوضع <i
-                  class="fa-solid fa-arrow-left-long ps-1"></i></a>
-              <a routerLink="/news-details" class="title">عنوان المقال نموذج افتراضي يوضع <i
-                  class="fa-solid fa-arrow-left-long ps-1"></i></a>
+              <a routerLink="/news-details" class="title"
+                >عنوان المقال نموذج افتراضي يوضع
+                <i class="fa-solid fa-arrow-left-long ps-1"></i
+              ></a>
+              <a routerLink="/news-details" class="title"
+                >عنوان المقال نموذج افتراضي يوضع
+                <i class="fa-solid fa-arrow-left-long ps-1"></i
+              ></a>
+              <a routerLink="/news-details" class="title"
+                >عنوان المقال نموذج افتراضي يوضع
+                <i class="fa-solid fa-arrow-left-long ps-1"></i
+              ></a>
+              <a routerLink="/news-details" class="title"
+                >عنوان المقال نموذج افتراضي يوضع
+                <i class="fa-solid fa-arrow-left-long ps-1"></i
+              ></a>
+              <a routerLink="/news-details" class="title"
+                >عنوان المقال نموذج افتراضي يوضع
+                <i class="fa-solid fa-arrow-left-long ps-1"></i
+              ></a>
+              <a routerLink="/news-details" class="title"
+                >عنوان المقال نموذج افتراضي يوضع
+                <i class="fa-solid fa-arrow-left-long ps-1"></i
+              ></a>
+              <a routerLink="/news-details" class="title"
+                >عنوان المقال نموذج افتراضي يوضع
+                <i class="fa-solid fa-arrow-left-long ps-1"></i
+              ></a>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-4 d-flex align-items-stretch">
-        <div class="news-box2  " routerLink="/news-details">
-          <img src="../../../assets/img/Bg2.png" class="img-fluid " alt="">
+        <div class="news-box2" routerLink="/news-details">
+          <img src="../../../assets/img/Bg2.png" class="img-fluid" alt="" />
           <div class="news-box2-xontent">
-            <h3 class="post-title">وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض </h3>
-            <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-                المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
+            <h3 class="post-title">
+              وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض
+            </h3>
+            <a href="#" class="readmore mt-auto d-flex align-items-baseline"
+              ><span>إقراء المزيد</span
+              ><i class="fa-solid fa-arrow-left-long ps-1"></i>
             </a>
           </div>
         </div>
@@ -183,16 +268,17 @@
   </div>
 </section>
 
-
 <!-- employment-Ad -->
 <div class="employment-ad">
   <div class="container">
-    <div class="row d-flex justify-content-center align-items-center ">
+    <div class="row d-flex justify-content-center align-items-center">
       <div class="col-md-8">
-        <p>إعلان توظيف لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل </p>
+        <p>
+          إعلان توظيف لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على
+          العميل
+        </p>
         <a href="">قدم الان <i class="fa-solid fa-arrow-left-long ps-1"></i></a>
       </div>
     </div>
-
   </div>
 </div>

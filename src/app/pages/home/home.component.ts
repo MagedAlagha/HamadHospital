@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { HomeService } from './home.service';
 
 @Component({
@@ -9,15 +10,21 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  sliderData$!:Observable<any>;
-  constructor( private _homeService:HomeService) {}
+  sliderData$!: Observable<any>;
+  Services$!: Observable<any>;
+  isEn = document.dir == 'ltr' ? true : false;
+  avatar = environment?.avatar;
+  constructor(private _homeService: HomeService) {}
 
   ngOnInit(): void {
-      this._homeService.getSliderData();
-      this.sliderData$ = this._homeService.Selector$('sliderData');
+    this._homeService.getSliderData();
+    this._homeService.getServicesInHome();
+    this.sliderData$ = this._homeService.Selector$('sliderData');
+    this.Services$ = this._homeService.Selector$('Services');
+
   }
 
-/*   .pipe(map(value=>{
+  /*   .pipe(map(value=>{
     console.log("value" , value)
   }))
  */

@@ -6,16 +6,15 @@ import { getFormApiGonfig } from 'src/app/shared/services/models';
 @Injectable({
   providedIn: 'root',
 })
-export class HomeService {
+export class MedicalRehabilitationService {
   constructor(
     private http: HttpService,
     private _getFormApiService: GetFormApiService
   ) {}
 
   private store = new BehaviorSubject<StoreInterface>({
-    sliderData: { data: [], loading: false },
-    Services: undefined,
     MedicalRehabilitationFeatures: undefined,
+    ProstheticsSearch: undefined,
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -36,17 +35,14 @@ export class HomeService {
     );
   }
 
-  getSliderData() {
-    this.getFormApi('HeaderSlider/HeaderSliderSearch', 'sliderData');
-  }
-  getServicesInHome() {
-    this.getFormApi('Services/ServicesSearch', 'Services');
-  }
   getMedicalRehabilitationFeaturesInHome() {
     this.getFormApi(
       'MedicalRehabilitationFeatures/MedicalRehabilitationFeaturesSearch',
       'MedicalRehabilitationFeatures'
     );
+  }
+  getProstheticsSearch() {
+    this.getFormApi('Prosthetics/ProstheticsSearch', 'ProstheticsSearch');
   }
   getFormApi(
     api: string,
@@ -65,8 +61,7 @@ export class HomeService {
 }
 
 export interface StoreInterface {
-  sliderData: { data: any; loading: boolean };
-  Services: any;
   MedicalRehabilitationFeatures: any;
+  ProstheticsSearch: any;
 }
 export type selectorsType = keyof StoreInterface;
