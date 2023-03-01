@@ -9,6 +9,7 @@ display: flex;
 align-items: end;
 justify-content: center;
 position: relative;
+background-repeat: no-repeat;
 }
 section{
   padding: 80px 0;
@@ -86,6 +87,7 @@ section{
   transition: all ease-in-out 0.3s;
   border-radius:10px ;
   border: 2px solid #70707017;
+  width: 100%;
 }
 
 .about .icon-box  img {

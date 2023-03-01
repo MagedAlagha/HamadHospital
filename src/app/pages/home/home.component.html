@@ -89,12 +89,14 @@
         <div class="icon-box">
           <div class="icon">
             <img [src]="avatar + Services?.HearingIconPath" alt="" />
+            <img src="../../../assets/img/04.svg" alt="" />
+
           </div>
           <h4>
-            {{ isEn ? Services?.HearingDescEn : Services?.HearingDescAr }}
+            التأهيل الطبي
           </h4>
           <p>
-            {{ isEn ? Services?.HearingSectionEn : Services?.HearingSectionAr }}
+            {{ isEn ? Services?.MedicalRehabilitationIconDescEn : Services?.MedicalRehabilitationIconDescAr }}
           </p>
         </div>
       </div>
@@ -104,15 +106,16 @@
         <div class="icon-box">
           <div class="icon">
             <img [src]="avatar + Services?.MedicalRehabilitationIconPath" alt="" />
+            <img src="../../../assets/img/03.svg" alt="" />
           </div>
           <h4>
-            {{ isEn ? Services?.HearingSectionEn : Services?.HearingSectionAr }}
+            الاطراف الصناعية
           </h4>
           <p>
             {{
               isEn
-                ? Services?.MedicalRehabilitationIconDescEn
-                : Services?.MedicalRehabilitationIconDescAr
+                ? Services?.ProstheticsDescEn
+                : Services?.ProstheticsDescAr
             }}
           </p>
         </div>
@@ -123,19 +126,17 @@
         <div class="icon-box">
           <div class="icon">
             <img [src]="avatar + Services?.OutpatientClinicsIconPath" alt="" />
+            <img src="../../../assets/img/02.svg" alt="" />
+
           </div>
           <h4>
-            {{
-              isEn
-                ? Services?.OutpatientClinicsSectionEn
-                : Services?.OutpatientClinicsSectionAr
-            }}
+            السمع والتوازن
           </h4>
           <p>
             {{
               isEn
-                ? Services?.OutpatientClinicsDescEn
-                : Services?.OutpatientClinicsDescAr
+                ? Services?.HearingDescEn
+                : Services?.HearingDescAr
             }}
           </p>
         </div>
@@ -146,19 +147,16 @@
         <div class="icon-box">
           <div class="icon">
             <img [src]="avatar + Services?.HearingIconPath" alt="" />
+            <img src="../../../assets/img/01.svg" alt="" />
           </div>
           <h4>
-            {{
-              isEn
-                ? Services?.OutpatientClinicsSectionEn
-                : Services?.OutpatientClinicsSectionAr
-            }}
+            العيادة الخارجية
           </h4>
           <p>
             {{
               isEn
-                ? Services?.ProstheticsDescEn
-                : Services?.ProstheticsDescAr
+                ? Services?.OutpatientClinicsDescEn
+                : Services?.OutpatientClinicsDescAr
             }}
           </p>
         </div>
