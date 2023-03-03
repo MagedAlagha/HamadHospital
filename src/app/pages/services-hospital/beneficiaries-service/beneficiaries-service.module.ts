@@ -9,6 +9,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RatingModule } from 'primeng/rating';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BeneficiariesServiceComponent],
@@ -21,6 +22,7 @@ import { RatingModule } from 'primeng/rating';
     ButtonModule,
     InputTextareaModule,
     RatingModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {
         path: '',

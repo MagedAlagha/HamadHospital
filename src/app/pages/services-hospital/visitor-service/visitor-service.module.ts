@@ -9,6 +9,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RatingModule } from 'primeng/rating';
 import { TabViewModule } from 'primeng/tabview';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [VisitorServiceComponent],
@@ -22,6 +23,7 @@ import { TabViewModule } from 'primeng/tabview';
     ButtonModule,
     InputTextareaModule,
     RatingModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {
         path: '',

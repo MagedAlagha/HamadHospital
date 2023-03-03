@@ -1,94 +1,94 @@
 <h3>خدمة مستفيدين</h3>
 <p-tabView styleClass="tabview-custom">
   <p-tabPanel header="حجز موعد" [selected]="true">
-    <form class="row g-3">
+    <form class="row g-3"[formGroup]="Form_AppointmentBooking" >
       <div class="col-md-6">
         <label>الاسم كامل</label>
-        <input type="text" pInputText>
+        <input formControlName="FullName" type="text" pInputText>
       </div>
       <div class="col-md-6">
         <label>البريد الالكتروني </label>
-        <input type="email" pInputText>
+        <input formControlName="Email" type="email" pInputText>
       </div>
       <div class="col-md-6">
         <label>رقم الهاتف </label>
-        <input type="number" pInputText>
+        <input formControlName="PhoneNumber" type="number" pInputText>
       </div>
       <div class="col-md-6">
         <label>العنوان بالكامل</label>
-        <input type="text" id="inputAddress" pInputText>
+        <input formControlName="Address" type="text" id="inputAddress" pInputText>
       </div>
       <div class="col-md-6">
         <label>التاريخ / الوقت المفضل للموعد</label>
-        <p-calendar dateFormat="dd.mm.yy"></p-calendar>
+        <p-calendar formControlName="Appointment" dateFormat="dd.mm.yy"></p-calendar>
       </div>
       <div class="col-md-6">
         <label>القسم</label>
-        <p-dropdown [options]="cities" optionLabel="name"></p-dropdown>
+        <p-dropdown formControlName="DepartmentID" [options]="cities" optionLabel="name"></p-dropdown>
       </div>
       <div class="col-12">
         <label>نص الرسالة </label>
-        <textarea [rows]="4" pInputTextarea></textarea>
+        <textarea formControlName="TextMessage" [rows]="4" pInputTextarea></textarea>
       </div>
       <div class="col-12">
-        <button pButton type="button" class="" label="إرسال"></button>
+        <button formControlName="" pButton type="button" class="" (click)="saveAppointmentBooking()" label="إرسال"></button>
       </div>
     </form>
 
   </p-tabPanel>
   <p-tabPanel header="اقتراح / شكوى">
-    <form class="row g-3">
+    <form class="row g-3" [formGroup]="Form_Suggestion">
       <div class="col-md-6">
         <label>الاسم كامل</label>
-        <input type="text" pInputText>
+        <input formControlName="FullName"  type="text" pInputText>
       </div>
       <div class="col-md-6">
         <label>البريد الالكتروني </label>
-        <input type="email" pInputText>
+        <input formControlName="Email" type="email" pInputText>
       </div>
       <div class="col-md-6">
         <label>رقم الهاتف </label>
-        <input type="number" pInputText>
+        <input  formControlName="PhoneNumber" type="number" pInputText>
       </div>
       <div class="col-md-6">
         <label>العنوان بالكامل</label>
-        <input type="text" id="inputAddress" pInputText>
+        <input  formControlName="Address" type="text" id="inputAddress" pInputText>
       </div>
       <div class="col-12">
         <label>نص الرسالة </label>
-        <textarea [rows]="6" pInputTextarea></textarea>
+        <textarea formControlName="TextMessage" [rows]="6" pInputTextarea></textarea>
       </div>
       <div class="col-12">
-        <button pButton type="button" class="" label="إرسال"></button>
+        <button pButton type="button" class=""  (click)="saveSuggestion()" label="إرسال"></button>
       </div>
     </form>
   </p-tabPanel>
   <p-tabPanel header="تقييم أداء">
-    <form class="row g-3">
+    <form class="row g-3" [formGroup]="Form_Rating">
       <div class="col-md-6">
         <label>الاسم كامل</label>
-        <input type="text" pInputText>
+        <input formControlName="FullName" type="text" pInputText>
       </div>
       <div class="col-md-6">
         <label>البريد الالكتروني </label>
-        <input type="email" pInputText>
+        <input formControlName="Email" type="email" pInputText>
       </div>
       <div class="col-md-6">
         <label>رقم الهاتف </label>
-        <input type="number" pInputText>
+        <input  formControlName="PhoneNumber" type="number" pInputText>
       </div>
       <div class="col-md-6">
         <label>العنوان بالكامل</label>
-        <input type="text" id="inputAddress" pInputText>
+        <input  formControlName="Address" type="text" id="inputAddress" pInputText>
       </div>
       <div class="col-6">
         <label>تقييم أداء المستشفى </label>
         <div class="rate-box">
-          <p-rating [cancel]="false"></p-rating>
+          <p-rating  formControlName="hospitalRating" [cancel]="false"></p-rating>
         </div>
       </div>
       <div class="col-12">
-        <button pButton type="button" class="" label="إرسال"></button>
+        <button pButton type="button" class=""  (click)="saveRating()" label="إرسال"></button>
       </div>
     </form>
   </p-tabPanel>

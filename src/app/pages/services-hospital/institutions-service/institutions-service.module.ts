@@ -8,6 +8,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [InstitutionsServiceComponent],
@@ -19,6 +20,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     CalendarModule,
     ButtonModule,
     InputTextareaModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {
         path: '',

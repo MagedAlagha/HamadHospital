@@ -1,31 +1,31 @@
 <h3>خدمة زائرين</h3>
-<form class="row g-3">
+<form class="row g-3" [formGroup]="Form_Visitors"  >
   <div class="col-md-6">
     <label>الاسم كامل</label>
-    <input type="text" pInputText>
+    <input formControlName="FullName" type="text" pInputText>
   </div>
   <div class="col-md-6">
     <label>البريد الالكتروني </label>
-    <input type="email" pInputText>
+    <input formControlName="Email" type="email" pInputText>
   </div>
   <div class="col-md-6">
     <label>رقم الهاتف </label>
-    <input type="number" pInputText>
+    <input  formControlName="PhoneNumber" type="number" pInputText>
   </div>
   <div class="col-md-6">
     <label>العنوان بالكامل</label>
-    <input type="text" id="inputAddress" pInputText>
+    <input  formControlName="Address" type="text" id="inputAddress" pInputText>
   </div>
 
   <div class="col-md-6">
     <label>سبب التواصل</label>
-    <p-dropdown [options]="cities" optionLabel="name"></p-dropdown>
+    <p-dropdown formControlName="CommunicationReason" [options]="cities" optionLabel="name"></p-dropdown>
   </div>
   <div class="col-12">
     <label>نص الرسالة </label>
-    <textarea [rows]="4" pInputTextarea></textarea>
+    <textarea formControlName="TextMessage" [rows]="4" pInputTextarea></textarea>
   </div>
   <div class="col-12">
-    <button pButton type="button" class="" label="إرسال"></button>
+    <button pButton type="button" class="" (click)="saveVisitors()" label="إرسال"></button>
   </div>
 </form>
