@@ -267,16 +267,28 @@
 </section>
 
 <!-- employment-Ad -->
-<div class="employment-ad">
+<ng-container *ngIf="Advertisements$ |async as data">
+<div class="employment-ad"  >
   <div class="container">
-    <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-md-8">
-        <p>
-          إعلان توظيف لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على
-          العميل
-        </p>
-        <a href="">قدم الان <i class="fa-solid fa-arrow-left-long ps-1"></i></a>
+    <div class="background">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+          <p>
+            {{
+              isEn
+                ? data[0]?.TitleEn
+                : data[0]?.TitleAr
+            }}
+          </p>
+          <a [href]="data.ButtonLink">{{
+              isEn
+                ? data[0]?.ButtonTitleAr
+                : data[0]?.ButtonTitleAr
+            }} <i class="fa-solid fa-arrow-left-long ps-1"></i></a>
+        </div>
       </div>
     </div>
+
   </div>
 </div>
+</ng-container>

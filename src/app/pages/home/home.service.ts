@@ -15,6 +15,7 @@ export class HomeService {
   private store = new BehaviorSubject<StoreInterface>({
     sliderData: { data: [], loading: false },
     Services: undefined,
+    Advertisements: undefined,
     MedicalRehabilitationFeatures: undefined,
   });
 
@@ -48,6 +49,12 @@ export class HomeService {
       'MedicalRehabilitationFeatures'
     );
   }
+  geAdvertisements() {
+    this.getFormApi(
+      'Advertisements/AdvertisementsSearch',
+      'Advertisements'
+    );
+  }
   getFormApi(
     api: string,
     selector: selectorsType,
@@ -67,6 +74,7 @@ export class HomeService {
 export interface StoreInterface {
   sliderData: { data: any; loading: boolean };
   Services: any;
+  Advertisements: any;
   MedicalRehabilitationFeatures: any;
 }
 export type selectorsType = keyof StoreInterface;
