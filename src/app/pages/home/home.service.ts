@@ -15,6 +15,7 @@ export class HomeService {
   private store = new BehaviorSubject<StoreInterface>({
     sliderData: { data: [], loading: false },
     Services: undefined,
+    mainInfo: undefined,
     Advertisements: undefined,
     MedicalRehabilitationFeatures: undefined,
   });
@@ -49,10 +50,16 @@ export class HomeService {
       'MedicalRehabilitationFeatures'
     );
   }
-  geAdvertisements() {
+  getAdvertisements() {
     this.getFormApi(
       'Advertisements/AdvertisementsSearch',
       'Advertisements'
+    );
+  }
+  getMainInfo() {
+    this.getFormApi(
+      'MainInfo/MainInfoSearch',
+      'mainInfo'
     );
   }
   getFormApi(
@@ -74,6 +81,7 @@ export class HomeService {
 export interface StoreInterface {
   sliderData: { data: any; loading: boolean };
   Services: any;
+  mainInfo: any;
   Advertisements: any;
   MedicalRehabilitationFeatures: any;
 }

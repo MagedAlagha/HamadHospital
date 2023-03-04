@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   sliderData$!: Observable<any>;
   Services$!: Observable<any>;
   Advertisements$!: Observable<any>;
+  MainInfo$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   avatar = environment?.avatar;
   constructor(private _homeService: HomeService) {}
@@ -20,11 +21,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this._homeService.getSliderData();
     this._homeService.getServicesInHome();
-    this._homeService.geAdvertisements();
+    this._homeService.getAdvertisements();
+    this._homeService.getMainInfo();
     this.sliderData$ = this._homeService.Selector$('sliderData');
     this.Services$ = this._homeService.Selector$('Services');
     this.Advertisements$ = this._homeService.Selector$('Advertisements');
-
+    this.MainInfo$ = this._homeService.Selector$('mainInfo');
   }
 
   /*   .pipe(map(value=>{

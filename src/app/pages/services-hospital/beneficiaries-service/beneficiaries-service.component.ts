@@ -55,7 +55,7 @@ export class BeneficiariesServiceComponent implements OnInit {
   saveAppointmentBooking(){
   this._servicesHospitalService.saveAppointmentBooking({
     ...this.Form_AppointmentBooking.value ,
-    DepartmentID:this.Form_AppointmentBooking.get('DepartmentID')?.value.Code
+    DepartmentID:this.Form_AppointmentBooking.get('DepartmentID')?.value.code
   });
 
 console.log(this.Form_AppointmentBooking.value)

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { HomeService } from '../home/home.service';
+import { FooterService } from './footer.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  MainInfo$!: Observable<any>;
+  Stats$!: Observable<any>;
+  isEn = document.dir == 'ltr' ? true : false;
+  constructor(private _homeService: HomeService , private _footerService:FooterService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.MainInfo$ = this._homeService.Selector$('mainInfo');
+    this.Stats$ = this._footerService.Selector$('Stats');
   }
 
 }

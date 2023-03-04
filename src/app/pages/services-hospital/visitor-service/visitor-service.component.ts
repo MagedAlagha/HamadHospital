@@ -31,11 +31,8 @@ export class VisitorServiceComponent implements OnInit {
   }
 
   saveVisitors(){
-     this._servicesHospitalService.saveVisitors({
-      ...this.Form_Visitors.value ,
-      CommunicationReason:this.Form_Visitors.get('CommunicationReason')?.value.Code
-    });
-
+     this._servicesHospitalService.saveVisitors(this.Form_Visitors.value );
+     console.log(this.Form_Visitors.value)
   }
 
 }
