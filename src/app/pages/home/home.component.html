@@ -1,25 +1,12 @@
 <div class="hero">
-  <ng-container *ngIf="MainInfo$ |async as data">
-  <div class="social-links d-md-block d-none">
-    <a [href]="data.FacebookLink"><img src="../../../assets/img/brand-facebook.svg" alt="" /></a>
-    <a [href]="data.YoutubeLink" class="mt-1"
-      ><img src="../../../assets/img/brand-youtube.svg" alt=""
-    /></a>
-    <a [href]="data.InstagramLink" class="mt-1"
-      ><img src="../../../assets/img/brand-instagram.svg" alt=""
-    /></a>
-    <a [href]="data.TwitterLink" class="mt-1"
-      ><img src="../../../assets/img/brand-twitter.svg" alt=""
-    /></a>
-  </div>
-</ng-container>
-
   <owl-carousel-o [options]="customOptions">
     <ng-container *ngIf="sliderData$ | async as data">
       <ng-template carouselSlide *ngFor="let item of data">
         <div
           class="img"
-          style="  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(http://hamad_api.accessline.ps{{item.ImagePath}});"
+          style="  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(http://hamad_api.accessline.ps{{
+            item.ImagePath
+          }});"
         >
           <div class="container">
             <div class="row justify-content-center">
@@ -33,41 +20,7 @@
         </div>
       </ng-template>
     </ng-container>
-
-    <ng-template carouselSlide>
-      <div class="img">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-7 col-10">
-              <div class="content">
-                <p>
-                  لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على
-                  العميل
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-template>
-    <ng-template carouselSlide>
-      <div class="img">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-7 col-10">
-              <div class="content">
-                <p>
-                  لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على
-                  العميل
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-template>
   </owl-carousel-o>
-
 </div>
 <section class="about">
   <div class="container">
@@ -77,7 +30,7 @@
           <span class="line"></span>
         </div>
         <div class="col-md-4 col-8">
-          <h3 class="px-md-5 px-2">الأطراف الصناعية</h3>
+          <h3 class="px-md-5 px-2">الأقسام الرئيسية</h3>
         </div>
         <div class="col-md-4 col-2">
           <span class="line"></span>
@@ -92,13 +45,14 @@
           <div class="icon">
             <img [src]="avatar + Services?.HearingIconPath" alt="" />
             <img src="../../../assets/img/04.svg" alt="" />
-
           </div>
-          <h4>
-            التأهيل الطبي
-          </h4>
+          <h4>التأهيل الطبي</h4>
           <p>
-            {{ isEn ? Services?.MedicalRehabilitationDescEn : Services?.MedicalRehabilitationDescAr }}
+            {{
+              isEn
+                ? Services?.MedicalRehabilitationDescEn
+                : Services?.MedicalRehabilitationDescAr
+            }}
           </p>
         </div>
       </div>
@@ -107,17 +61,16 @@
       >
         <div class="icon-box">
           <div class="icon">
-            <img [src]="avatar + Services?.MedicalRehabilitationIconPath" alt="" />
+            <img
+              [src]="avatar + Services?.MedicalRehabilitationIconPath"
+              alt=""
+            />
             <img src="../../../assets/img/03.svg" alt="" />
           </div>
-          <h4>
-            الاطراف الصناعية
-          </h4>
+          <h4>الاطراف الصناعية</h4>
           <p>
             {{
-              isEn
-                ? Services?.ProstheticsDescEn
-                : Services?.ProstheticsDescAr
+              isEn ? Services?.ProstheticsDescEn : Services?.ProstheticsDescAr
             }}
           </p>
         </div>
@@ -129,17 +82,10 @@
           <div class="icon">
             <img [src]="avatar + Services?.OutpatientClinicsIconPath" alt="" />
             <img src="../../../assets/img/02.svg" alt="" />
-
           </div>
-          <h4>
-            السمع والتوازن
-          </h4>
+          <h4>السمع والتوازن</h4>
           <p>
-            {{
-              isEn
-                ? Services?.HearingDescEn
-                : Services?.HearingDescAr
-            }}
+            {{ isEn ? Services?.HearingDescEn : Services?.HearingDescAr }}
           </p>
         </div>
       </div>
@@ -151,9 +97,7 @@
             <img [src]="avatar + Services?.HearingIconPath" alt="" />
             <img src="../../../assets/img/01.svg" alt="" />
           </div>
-          <h4>
-            العيادة الخارجية
-          </h4>
+          <h4>العيادة الخارجية</h4>
           <p>
             {{
               isEn
@@ -269,28 +213,37 @@
 </section>
 
 <!-- employment-Ad -->
-<ng-container *ngIf="Advertisements$ |async as data">
-<div class="employment-ad"  >
-  <div class="container">
-    <div class="background">
-      <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-md-8">
-          <p>
-            {{
-              isEn
-                ? data[0]?.TitleEn
-                : data[0]?.TitleAr
-            }}
-          </p>
-          <a [href]="data.ButtonLink">{{
-              isEn
-                ? data[0]?.ButtonTitleAr
-                : data[0]?.ButtonTitleAr
-            }} <i class="fa-solid fa-arrow-left-long ps-1"></i></a>
-        </div>
+<div class="employment-ad ">
+  <div class="container background ">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-md-8">
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngIf="Advertisements$ | async as data">
+            <ng-template carouselSlide *ngFor="let item of data">
+
+                <div class="container">
+
+                  <div class="row justify-content-center">
+                    <div class="col-12 py-4">
+
+                        <p >
+                          {{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr }}
+                        </p>
+                        <a [href]="data.ButtonLink"
+                          >{{
+                            isEn ? data[0]?.ButtonTitleAr : data[0]?.ButtonTitleAr
+                          }}
+                          <i class="fa-solid fa-arrow-left-long ps-1"></i
+                        ></a>
+
+                    </div>
+
+                  </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
       </div>
     </div>
-
   </div>
 </div>
-</ng-container>

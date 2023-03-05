@@ -1,0 +1,43 @@
+.social-links{
+  position: fixed;
+  left: 10px;
+  bottom: 30px;
+  z-index: 999;
+
+     img{
+       background: #8a1538;
+       padding: 11px;
+       border-radius: 50%;
+       transition: .3s all;
+       width: 38px;
+       height: 38px;
+       border: 1px solid #ffffff45;
+     }
+     img:hover{
+       background: #ED9B33;
+     }
+     p{
+       color: #fff;
+       margin-top: 5px;
+     }
+
+   }
+
+   .social-links a {
+     display: block;
+   }
+   button {
+    position: fixed;
+    bottom: 30px;
+    right: 10px;
+    font-size: 20px;
+    text-align: center;
+    outline: none;
+    background: #8a1538;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #fff;
+    border: 1px solid #ffffff45;
+    z-index: 99999;
+  }

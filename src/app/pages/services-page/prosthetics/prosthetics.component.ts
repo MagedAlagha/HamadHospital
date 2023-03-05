@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HomeService } from '../../home/home.service';
 
 @Component({
   selector: 'app-prosthetics',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProstheticsComponent implements OnInit {
 
-  constructor() { }
+  isEn = document.dir == 'ltr' ? true : false;
+  Services$!: Observable<any>;
+  constructor(private _homeService:HomeService) {
+  }
 
   ngOnInit(): void {
+    this.Services$ = this._homeService.Selector$('Services');
   }
 
 }

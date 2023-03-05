@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HomeService } from '../../home/home.service';
 import { MedicalRehabilitationService } from './medical-rehabilitation.service';
 
 @Component({
@@ -9,10 +10,12 @@ import { MedicalRehabilitationService } from './medical-rehabilitation.service';
 })
 export class MedicalRehabilitationComponent implements OnInit {
   constructor(
-    private _medicalRehabilitationService: MedicalRehabilitationService
+    private _medicalRehabilitationService: MedicalRehabilitationService , private  _homeService:HomeService
   ) {}
   MedicalRehabilitationFeatures$!: Observable<any>;
   ProstheticsSearch$!: Observable<any>;
+  Services$!: Observable<any>;
+
   isEn = document.dir == 'ltr' ? true : false;
 
   ngOnInit(): void {
@@ -25,5 +28,10 @@ export class MedicalRehabilitationComponent implements OnInit {
       );
     this.ProstheticsSearch$ =
       this._medicalRehabilitationService.Selector$('ProstheticsSearch');
+
+      this.Services$ = this._homeService.Selector$('Services');
   }
+
+
+
 }

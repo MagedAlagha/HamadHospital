@@ -172,3 +172,10 @@ a{
 .p-galleria-thumbnail-next span{
   transform: rotate(180deg);
 }
+
+.employment-ad .owl-nav{
+  display: none !important;
+}
+.employment-ad .owl-theme .owl-dots {
+  transform: translateY(0);
+}

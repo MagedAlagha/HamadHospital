@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HomeService } from '../home/home.service';
 
 @Component({
   selector: 'app-services-page',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicesPageComponent implements OnInit {
   active: any = 1;
-  constructor() {}
+  isEn = document.dir == 'ltr' ? true : false;
+  Services$!: Observable<any>;
+  constructor(private _homeService:HomeService) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.Services$ = this._homeService.Selector$('Services');
+  }
 }
