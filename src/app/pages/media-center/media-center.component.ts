@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MediaCenterService } from './media-center.service';
 
 @Component({
   selector: 'app-media-center',
@@ -9,9 +10,12 @@ import { Router } from '@angular/router';
 export class MediaCenterComponent implements OnInit {
   /* isActive = false; */
   active: any = 1;
-  constructor(public router: Router) {}
+  constructor(public router: Router , private _mediaSectionsItems:MediaCenterService) {
+    this._mediaSectionsItems.getMediaSectionsItems();
+  }
 
   ngOnInit(): void {
+
     /*  const url = this.router.url;
     if (url.includes('news')) {
       this.isActive = true;

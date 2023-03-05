@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
-import { Observable } from 'rxjs';
+import { filter, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HomeService } from './home.service';
 
@@ -24,6 +24,11 @@ export class HomeComponent implements OnInit {
     this.sliderData$ = this._homeService.Selector$('sliderData');
     this.Services$ = this._homeService.Selector$('Services');
     this.Advertisements$ = this._homeService.Selector$('Advertisements');
+    /* .pipe(
+      filter(val => {
+        return val.IsActive ;
+      })
+    ) */
   }
 
   /*   .pipe(map(value=>{
