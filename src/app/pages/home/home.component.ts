@@ -23,18 +23,14 @@ export class HomeComponent implements OnInit {
     this._homeService.getMainInfo();
     this.sliderData$ = this._homeService.Selector$('sliderData');
     this.Services$ = this._homeService.Selector$('Services');
-    this.Advertisements$ = this._homeService.Selector$('Advertisements');
-    /* .pipe(
-      filter(val => {
-        return val.IsActive ;
+    this.Advertisements$ = this._homeService.Selector$('Advertisements').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.IsActive;
+        });
       })
-    ) */
+    );
   }
-
-  /*   .pipe(map(value=>{
-    console.log("value" , value)
-  }))
- */
 
   customOptions: OwlOptions = {
     loop: true,
@@ -67,6 +63,5 @@ export class HomeComponent implements OnInit {
     },
   };
 
+
 }
-
-

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+import { AboutHospitalService } from './about-hospital.service';
 
 @Component({
   selector: 'app-about-hospital',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutHospitalComponent implements OnInit {
   active: any = 1;
-  constructor() {}
+  AboutHospital$!: Observable<any>;
+  constructor(private _aboutHospitalService:AboutHospitalService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._aboutHospitalService.getAboutHospital();
+    this.AboutHospital$ =
+            this._aboutHospitalService.Selector$('AboutHospital').pipe(tap(value=>{
+              console.log(value);
+            }));
+  }
+
+
 }

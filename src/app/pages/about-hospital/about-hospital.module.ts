@@ -8,7 +8,7 @@ import { MessageComponent } from './message/message.component';
 import { GoalsComponent } from './goals/goals.component';
 
 @NgModule({
-  declarations: [AboutHospitalComponent],
+  declarations: [AboutHospitalComponent , BeginningComponent , GoalsComponent , VisionComponent, MessageComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([

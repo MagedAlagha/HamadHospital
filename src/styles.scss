@@ -179,3 +179,8 @@ a{
 .employment-ad .owl-theme .owl-dots {
   transform: translateY(0);
 }
+.editor-img img{
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}

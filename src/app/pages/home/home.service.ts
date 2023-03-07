@@ -16,6 +16,7 @@ export class HomeService {
     sliderData: { data: [], loading: false },
     Services: undefined,
     mainInfo: undefined,
+    LandingPageInfo: undefined,
     Advertisements: undefined,
     MedicalRehabilitationFeatures: undefined,
   });
@@ -62,6 +63,13 @@ export class HomeService {
       'mainInfo'
     );
   }
+  getLandingPageInfo() {
+    this.getFormApi(
+      'LandingPage',
+      'LandingPageInfo',
+      { Lang: 'ar' },
+    );
+  }
   getFormApi(
     api: string,
     selector: selectorsType,
@@ -82,6 +90,7 @@ export interface StoreInterface {
   sliderData: { data: any; loading: boolean };
   Services: any;
   mainInfo: any;
+  LandingPageInfo: any;
   Advertisements: any;
   MedicalRehabilitationFeatures: any;
 }

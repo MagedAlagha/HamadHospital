@@ -7,27 +7,29 @@
 <section class="">
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
-        <ul class="nav flex-column py-4">
-          <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/about-us/beginning" [ngClass]="{'active':active==1}"
-              (click)="active=1">النشأة والبداية</a>
-          </li>
-          <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/about-us/vision" [ngClass]="{'active':active==2}"
-              (click)="active=2">الرؤية</a>
-          </li>
-          <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/about-us/goals" [ngClass]="{'active':active==3}"
-              (click)="active=3">الاهداف</a>
-          </li>
-          <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/about-us/message" [ngClass]="{'active':active==4}"
-              (click)="active=4">الرسالة</a>
-          </li>
 
-        </ul>
-      </div>
+        <div class="col-md-3">
+          <ul class="nav flex-column py-4">
+            <li class="nav-item mb-2">
+              <a class="nav-link" routerLink="/about-us/beginning" [ngClass]="{'active':active==1}"
+                (click)="active=1">النشأة والبداية</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" routerLink="/about-us/vision" [ngClass]="{'active':active==2}"
+                (click)="active=2">الرؤية</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" routerLink="/about-us/goals" [ngClass]="{'active':active==3}"
+                (click)="active=3">الاهداف</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" routerLink="/about-us/message" [ngClass]="{'active':active==4}"
+                (click)="active=4">الرسالة</a>
+            </li>
+
+          </ul>
+        </div>
+
       <div class="col-md-9">
         <router-outlet></router-outlet>
       </div>
