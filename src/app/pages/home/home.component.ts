@@ -10,7 +10,7 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  sliderData$!: Observable<any>;
+  LandingPageData$!: Observable<any>;
   Services$!: Observable<any>;
   Advertisements$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
@@ -21,15 +21,15 @@ export class HomeComponent implements OnInit {
     this._homeService.getSliderData();
     this._homeService.getAdvertisements();
     this._homeService.getMainInfo();
-    this.sliderData$ = this._homeService.Selector$('sliderData');
+    this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo').pipe(map(value=>value));
     this.Services$ = this._homeService.Selector$('Services');
-    this.Advertisements$ = this._homeService.Selector$('Advertisements').pipe(
+    /* this.Advertisements$ = this._homeService.Selector$('Advertisements').pipe(
       map((val) => {
         return val?.filter((item: any) => {
           return item.IsActive;
         });
       })
-    );
+    ); */
   }
 
   customOptions: OwlOptions = {

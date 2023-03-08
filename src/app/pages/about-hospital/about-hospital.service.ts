@@ -14,6 +14,7 @@ export class AboutHospitalService {
   ) {}
   store = new BehaviorSubject<jobFunctionalModel>({
     AboutHospital: undefined,
+    dataShow: undefined,
   });
   store$ = this.store.asObservable();
   updateStore(newSate: jobFunctionalModel) {
@@ -56,5 +57,6 @@ export class AboutHospitalService {
 }
 export interface jobFunctionalModel {
   AboutHospital?:any;
+  dataShow?:any;
 }
 export type selectorsType = keyof jobFunctionalModel;

@@ -1,43 +1,35 @@
 <footer id="footer">
-  <ng-container *ngIf="Stats$ |async as data">
+  <ng-container *ngIf="LandingPageData$ |async as data">
     <div class="counter">
       <div class="container">
         <div class="row">
-          <div class="col-md-3 col-6 text-center" *ngFor="let item of data">
+          <div class="col-md-3 col-6 text-center" *ngFor="let item of data?.Stats">
             <p>{{item.Count}} </p>
-            <span> {{
-              isEn
-                ? item?.NameEn
-                : item?.NameAr
-            }}</span>
+            <span> {{item?.Name}}</span>
           </div>
         </div>
       </div>
     </div>
   </ng-container>
 
-  <ng-container *ngIf="MainInfo$ |async as data">
+  <ng-container *ngIf="LandingPageData$ |async as data">
   <div class="footer-top" >
     <div class="container pt-5">
       <div class="row justify-content-between  ">
         <div class=" col-md-6 footer-info">
           <img src="../../../assets/img/QFFD 2.svg" width="180px" alt="logo">
-          <img src="../../../assets/img/Logo2.svg" height="50px" alt="logo" class="ms-4">
+          <img [src]=" 'http://hamad_api.accessline.ps'+ data?.MainInfo?.LogoImagePath" height="50px" alt="logo" class="ms-4">
           <p class="my-3 pe-4">
-            {{
-              isEn
-                ? data?.AboutEn
-                : data?.AboutAr
-            }}
+            {{data?.MainInfo?.About}}
           </p>
           <div class="social-links">
-            <a [href]="data.FacebookLink"><img src="../../../assets/img/brand-facebook.svg" alt=""></a>
-            <a [href]="data.YoutubeLink"><img src="../../../assets/img/brand-youtube.svg" alt=""></a>
-            <a [href]="data.InstagramLink"><img src="../../../assets/img/brand-instagram.svg" alt=""></a>
-            <a [href]="data.TwitterLink"><img src="../../../assets/img/brand-twitter.svg" alt=""></a>
-            <a [href]="data.WhatsAppLink"><img src="../../../assets/img/brand-whatsapp.svg" alt=""></a>
+            <a [href]="data?.MainInfo?.FacebookLink"><img src="../../../assets/img/brand-facebook.svg" alt=""></a>
+            <a [href]="data?.MainInfo?.YoutubeLink"><img src="../../../assets/img/brand-youtube.svg" alt=""></a>
+            <a [href]="data?.MainInfo?.InstagramLink"><img src="../../../assets/img/brand-instagram.svg" alt=""></a>
+            <a [href]="data?.MainInfo?.TwitterLink"><img src="../../../assets/img/brand-twitter.svg" alt=""></a>
+            <a [href]="data?.MainInfo?.WhatsAppLink"><img src="../../../assets/img/brand-whatsapp.svg" alt=""></a>
           </div>
-          <a [href]="" class="mt-2 text-white">@{{data.SocialMediaTag}}</a>
+          <a [href]="" class="mt-2 text-white">@{{data?.MainInfo?.SocialMediaTag}}</a>
         </div>
 
         <div class="col-md-2 col-6 footer-links">
@@ -54,16 +46,11 @@
           <h4>إتصل بنا</h4>
           <div class="footer-contacts">
             <p><img src="../../../assets/img/map-pin.svg" alt=""> <a href="">
-              {{
-                isEn
-                  ? data?.LocationEn
-                  : data?.LocationAr
-              }}
-
+              {{data?.MainInfo?.Location}}
               </a> </p>
-            <p><img src="../../../assets/img/phone.svg" alt=""> <a >{{data.Phone}}</a></p>
-            <p><img src="../../../assets/img/device-mobile.svg" alt=""> <a>{{data.Mobile}}</a></p>
-            <p><img src="../../../assets/img/mail.svg" alt=""> <a [href]="data.Email">{{data.Email}}</a></p>
+            <p><img src="../../../assets/img/phone.svg" alt=""> <a >{{data?.MainInfo?.Phone}}</a></p>
+            <p><img src="../../../assets/img/device-mobile.svg" alt=""> <a>{{data?.MainInfo?.Mobile}}</a></p>
+            <p><img src="../../../assets/img/mail.svg" alt=""> <a [href]="data?.MainInfo?.Email">{{data?.MainInfo?.Email}}</a></p>
           </div>
 
         </div>

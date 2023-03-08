@@ -11,6 +11,7 @@ import { FooterService } from './footer.service';
 export class FooterComponent implements OnInit {
   MainInfo$!: Observable<any>;
   Stats$!: Observable<any>;
+  LandingPageData$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   constructor(
     private _homeService: HomeService,
@@ -20,5 +21,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
     this.MainInfo$ = this._homeService.Selector$('mainInfo');
     this.Stats$ = this._footerService.Selector$('Stats');
+
+    this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo').pipe(map(value=>value));
   }
 }

@@ -3,16 +3,16 @@
 <app-footer></app-footer>
 
 
-<ng-container *ngIf="MainInfo$ |async as data">
+<ng-container *ngIf="LandingPageData$ |async as data">
   <div class="social-links "><!--  d-md-block d-none -->
-    <a [href]="data.FacebookLink"><img src="../../../assets/img/brand-facebook.svg" alt="" /></a>
-    <a [href]="data.YoutubeLink" class="mt-1"
+    <a [href]="data?.MainInfo?.FacebookLink"><img src="../../../assets/img/brand-facebook.svg" alt="" /></a>
+    <a [href]="data?.MainInfo?.YoutubeLink" class="mt-1"
       ><img src="../../../assets/img/brand-youtube.svg" alt=""
     /></a>
-    <a [href]="data.InstagramLink" class="mt-1"
+    <a [href]="data?.MainInfo?.InstagramLink" class="mt-1"
       ><img src="../../../assets/img/brand-instagram.svg" alt=""
     /></a>
-    <a [href]="data.TwitterLink" class="mt-1"
+    <a [href]="data?.MainInfo?.TwitterLink" class="mt-1"
       ><img src="../../../assets/img/brand-twitter.svg" alt=""
     /></a>
   </div>

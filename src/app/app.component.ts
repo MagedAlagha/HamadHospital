@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { FooterService } from './pages/footer/footer.service';
 import { HomeService } from './pages/home/home.service';
 
@@ -10,17 +10,19 @@ import { HomeService } from './pages/home/home.service';
 })
 export class AppComponent implements OnInit {
   title = 'HamadHospital';
-  MainInfo$!: Observable<any>;
+  LandingPageData$!: Observable<any>;
   Services$!: Observable<any>;
+  isEn = document.dir == 'ltr' ? true : false;
+  isEn_LandingPage = document.dir == 'ltr' ? "en" : "ar";
   constructor(
     private _footerService: FooterService,
     private _homeService: HomeService
   ) {}
   ngOnInit(): void {
     this._footerService.getStats();
-    this.MainInfo$ = this._homeService.Selector$('mainInfo');
     this._homeService.getServicesInHome();
-    this._homeService.getLandingPageInfo();
+    this._homeService.getLandingPageInfo(this.isEn_LandingPage);
+    this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo').pipe(map(value=>value));
   }
 
   isShow!: boolean;

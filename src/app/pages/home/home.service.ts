@@ -63,11 +63,11 @@ export class HomeService {
       'mainInfo'
     );
   }
-  getLandingPageInfo() {
+  getLandingPageInfo(lang:any) {
     this.getFormApi(
       'LandingPage',
       'LandingPageInfo',
-      { Lang: 'ar' },
+      { Lang: lang },
     );
   }
   getFormApi(

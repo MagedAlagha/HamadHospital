@@ -1,7 +1,7 @@
 <div class="hero">
   <owl-carousel-o [options]="customOptions">
-    <ng-container *ngIf="sliderData$ | async as data">
-      <ng-template carouselSlide *ngFor="let item of data">
+    <ng-container *ngIf="LandingPageData$ | async as data">
+      <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
         <div
           class="img"
           style="  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(http://hamad_api.accessline.ps{{
@@ -12,7 +12,7 @@
             <div class="row justify-content-center">
               <div class="col-md-7 col-10">
                 <div class="content">
-                  <p>{{ item.TitleAr }}</p>
+                  <p>{{ item.Title }}</p>
                 </div>
               </div>
             </div>
@@ -37,73 +37,68 @@
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="Services$ | async as Services">
-      <div
-        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
-      >
-        <div class="icon-box">
-          <div class="icon">
-            <img [src]="avatar + Services?.HearingIconPath" alt="" />
-            <img src="../../../assets/img/04.svg" alt="" />
-          </div>
-          <h4>التأهيل الطبي</h4>
-          <p>
-            {{
-              isEn
-                ? Services?.MedicalRehabilitationDescEn
-                : Services?.MedicalRehabilitationDescAr
-            }}
-          </p>
-        </div>
-      </div>
+    <div class="row" *ngIf="LandingPageData$ | async as data">
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
         <div class="icon-box">
           <div class="icon">
             <img
-              [src]="avatar + Services?.MedicalRehabilitationIconPath"
+              [src]="avatar + data?.Services?.MedicalRehabilitationIconPath"
               alt=""
             />
+            <img src="../../../assets/img/04.svg" alt="" />
+          </div>
+          <h4>التأهيل الطبي</h4>
+          <p>
+            {{ data?.Services?.MedicalRehabilitationDesc }}
+          </p>
+        </div>
+      </div>
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+      >
+        <div class="icon-box">
+          <div class="icon">
+            <img [src]="avatar + data?.Services?.ProstheticsIconPath" alt="" />
             <img src="../../../assets/img/03.svg" alt="" />
           </div>
           <h4>الاطراف الصناعية</h4>
           <p>
-            {{
-              isEn ? Services?.ProstheticsDescEn : Services?.ProstheticsDescAr
-            }}
+            {{ data?.Services?.ProstheticsDesc }}
           </p>
         </div>
       </div>
+
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
         <div class="icon-box">
           <div class="icon">
-            <img [src]="avatar + Services?.OutpatientClinicsIconPath" alt="" />
+            <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
             <img src="../../../assets/img/02.svg" alt="" />
           </div>
           <h4>السمع والتوازن</h4>
           <p>
-            {{ isEn ? Services?.HearingDescEn : Services?.HearingDescAr }}
+            {{ data?.Services?.HearingDesc }}
           </p>
         </div>
       </div>
+
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
         <div class="icon-box">
           <div class="icon">
-            <img [src]="avatar + Services?.HearingIconPath" alt="" />
+            <img
+              [src]="avatar + data?.Services?.OutpatientClinicsIconPath"
+              alt=""
+            />
             <img src="../../../assets/img/01.svg" alt="" />
           </div>
           <h4>العيادة الخارجية</h4>
           <p>
-            {{
-              isEn
-                ? Services?.OutpatientClinicsDescEn
-                : Services?.OutpatientClinicsDescAr
-            }}
+            {{ data?.Services?.OutpatientClinicsDesc }}
           </p>
         </div>
       </div>
@@ -213,31 +208,30 @@
 </section>
 
 <!-- employment-Ad -->
-<div class="employment-ad ">
-  <div class="container background ">
+<div class="employment-ad">
+  <div class="container background">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-md-8">
         <owl-carousel-o [options]="customOptions">
-          <ng-container *ngIf="Advertisements$ | async as data">
-            <ng-template carouselSlide *ngFor="let item of data">
-                <div class="container"  >
-
-                  <div class="row justify-content-center">
-                    <div class="col-12 py-4">
-
-                        <p >
-                          {{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr }}
-                        </p>
-                        <a [href]="data.ButtonLink"
-                          >{{
-                            isEn ? data[0]?.ButtonTitleAr : data[0]?.ButtonTitleAr
-                          }}
-                          <i class="fa-solid fa-arrow-left-long ps-1"></i
-                        ></a>
-
-                    </div>
+          <ng-container *ngIf="LandingPageData$ | async as data">
+            <ng-template carouselSlide *ngFor="let item of data?.Advertisements">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 py-4">
+                    <p>
+                      {{ item?.Title }}
+                    </p>
+                    <ng-container *ngIf="item?.ButtonAdded">
+                      <a [href]="item?.ButtonLink"
+                      >{{
+                        item?.ButtonTitle
+                      }}
+                      <i class="fa-solid fa-arrow-left-long ps-1"></i
+                    ></a>
+                    </ng-container>
 
                   </div>
+                </div>
               </div>
             </ng-template>
           </ng-container>
