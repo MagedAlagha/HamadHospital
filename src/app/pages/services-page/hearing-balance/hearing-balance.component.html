@@ -30,8 +30,13 @@
     </div>
 
     <div class="row py-5 section-2">
+    <div class="col-12" *ngIf="HearingServices$ | async as data">
+      <div  [innerHTML]="isEn ? data?.HearingSectionEn : data?.HearingSectionAr "></div>
+    </div>
 
-      <div class="col-md-7 order-md-0 order-1 mt-md-0 mt-3">
+
+
+      <!-- <div class="col-md-7 order-md-0 order-1 mt-md-0 mt-3">
         <div class=" d-flex align-items-baseline mb-2">
           <div class="line-2"> </div>
           <h2 class="d-inline-block ps-2">وحدة التشخيص</h2>
@@ -68,7 +73,7 @@
 
       <div class="col-md-5 order-md-1 order-0">
         <img src="../../../../assets/img/hearing-balance.png" alt="">
-      </div>
+      </div> -->
 
     </div>
 

@@ -8,7 +8,7 @@ import { AboutHospitalService } from './about-hospital.service';
   styleUrls: ['./about-hospital.component.scss'],
 })
 export class AboutHospitalComponent implements OnInit {
-  active: any ;
+  active: any;
   AboutHospital$!: Observable<any>;
   constructor(private _aboutHospitalService: AboutHospitalService) {}
   isEn = document.dir == 'ltr' ? true : false;
@@ -19,18 +19,19 @@ export class AboutHospitalComponent implements OnInit {
       .pipe(
         tap((value) => {
           console.log(value);
-          this.active = value[0]?.ID
-          console.log("data 222" , value[0]?.ID);
+          this.active = value[0]?.ID;
+          if (value[0]) {
+            console.log('fszgszgsgszg')
+            this.storeData(value[0]);
+          }
         })
       );
-
   }
   storeData(item: any) {
-    this._aboutHospitalService.updateStore({dataShow:item});
+    this._aboutHospitalService.updateStore({ dataShow: item });
     const data = this._aboutHospitalService.dataStore.dataShow;
     if (data) {
-
-      this.active = data.ID
+      this.active = data.ID;
     }
   }
 }

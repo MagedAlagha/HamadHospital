@@ -3,18 +3,19 @@ import { BehaviorSubject, distinctUntilChanged, map, Observable } from 'rxjs';
 import { GetFormApiService } from 'src/app/shared/services/functionsForHandelWithApi/getFormApi.service';
 import { HttpService } from 'src/app/shared/services/http.service';
 import { getFormApiGonfig } from 'src/app/shared/services/models';
+
 @Injectable({
   providedIn: 'root',
 })
-export class MedicalRehabilitationService {
+export class ProstheticsService {
   constructor(
     private http: HttpService,
     private _getFormApiService: GetFormApiService
   ) {}
 
   private store = new BehaviorSubject<StoreInterface>({
-    MedicalRehabilitationFeatures: undefined,
-    MedicalRehabilitationServices: undefined,
+    prostheticsTypes: undefined,
+    prosthetics: undefined,
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -35,21 +36,19 @@ export class MedicalRehabilitationService {
     );
   }
 
-  getMedicalRehabilitationFeaturesInHome() {
-    this.getFormApi(
-      'MedicalRehabilitationFeatures/MedicalRehabilitationFeaturesSearch',
-      'MedicalRehabilitationFeatures'
-    );
-  }
 
-  getMedicalRehabilitationServices() {
+  getProstheticsTypes() {
     this.getFormApi(
-        'MedicalRehabilitationServices/MedicalRehabilitationServicesSearch',
-        'MedicalRehabilitationServices'
+        'ProstheticsTypes/ProstheticsTypesSearch',
+        'prostheticsTypes',
     );
 }
-
-
+  getProsthetics() {
+    this.getFormApi(
+        'Prosthetics/ProstheticsSearch',
+        'prosthetics',
+    );
+}
 
   getFormApi(
     api: string,
@@ -68,7 +67,9 @@ export class MedicalRehabilitationService {
 }
 
 export interface StoreInterface {
-  MedicalRehabilitationFeatures: any;
-  MedicalRehabilitationServices: any;
+  prostheticsTypes: any;
+  prosthetics: any;
 }
 export type selectorsType = keyof StoreInterface;
+
+

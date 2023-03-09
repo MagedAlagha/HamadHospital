@@ -23,7 +23,7 @@ export class BeginningComponent implements OnInit {
       .Selector$('dataShow')
       .pipe(
         tap((value) => {
-          console.log(value);
+          console.log('value123',value);
         })
       );
   }

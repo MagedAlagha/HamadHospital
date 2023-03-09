@@ -6,7 +6,7 @@
           <span class="line"></span>
         </div>
         <div class="col-md-4 col-6">
-          <h3 class="px-md-5 px-2">العيادات التخصصية</h3>
+          <h3 class="px-md-5 px-2">العيادات الخارجية</h3>
         </div>
         <div class="col-md-4 col-3">
           <span class="line"></span>
@@ -15,10 +15,10 @@
     </div>
 
     <!--  -->
-    <div class="row d-flex justify-content-center ">
-      <div class="col-md-9 my-4">
-        <ng-container *ngIf="Services$ |async as data">
-          <p class="text-center"  >
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-9 mt-4 mb-2">
+        <ng-container *ngIf="Services$ | async as data">
+          <p class="text-center">
             {{
               isEn
                 ? data?.MedicalRehabilitationDescEn
@@ -29,233 +29,89 @@
       </div>
     </div>
 
-
-    <div class="row mb-5">
-      <div class=" col-md-4  d-flex align-items-stretch mt-4 mt-md-0">
+    <div class="row mb-5 justify-content-center">
+      <div
+        class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mt-4 mt-md-3"
+        *ngFor="let item of getOutpatientClinicsDepartments$ | async"
+      >
         <div class="icon-box">
-          <div class="icon"><img src="../../../../assets/img/X-Ray Symbol.svg" alt=""></div>
-          <div>
-            <h4>قسم الاشعة </h4>
-            <p>
-              لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-              كانت
-              تصاميم مطبوعه
-            </p>
+          <div class="icon">
+            <img
+              [src]="'http://hamad_api.accessline.ps' + item?.IconPath"
+              alt=""
+            />
           </div>
-        </div>
-      </div>
-      <div class=" col-md-4  d-flex align-items-stretch mt-4 mt-md-0 ">
-        <div class="icon-box">
-          <div class="icon"><img src="../../../../assets/img/Microscope.svg" alt=""></div>
-
           <div>
-            <h4>المختبر </h4>
-
-
+            <h4>{{ isEn ? item?.NameEn : item?.NameAr }}</h4>
             <p>
-              لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-              كانت
-              تصاميم مطبوعه
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class=" col-md-4  d-flex align-items-stretch  mt-4 mt-md-0">
-
-        <div class="icon-box">
-          <div class=" icon"><img src="../../../../assets/img/Pharmacy Symbol.svg" alt=""></div>
-          <div>
-
-            <h4>خدمة الصيدلة</h4>
-
-            <p>
-              لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-              كانت
-              تصاميم مطبوعه
+              {{ isEn ? item?.DescEn : item?.DescAr }}
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <hr>
-    <!--  -->
-    <p-accordion class="my-5 py-5">
-      <p-accordionTab header="العيادات التخصصية">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-4">
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-            <div class="body-box">
-              عيادة تأهيل السكتة الدماغية
-            </div>
-          </div>
+      <p-accordion class="my-5 py-5">
+      <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data; else m">
+        <ng-container *ngFor="let item of data">
+          <hr />
+          <p-accordionTab [header]="isEn ? item.NameEn : item.NameAr">
 
-        </div>
-      </p-accordionTab>
+                <div class="row d-flex justify-content-center"  *ngFor="
+                let serivce of OutpatientClinicsDepartmentsServices$ | async
+              " >
+                  <div class="col-md-4" *ngIf="item.ID == serivce.OutpatientClinicsDepartmentID" >
+                    <div class="body-box"  >
+                      {{ isEn ? serivce?.NameEn : serivce?.NameAr }}
+                    </div>
+                  </div>
+                </div>
+
+          </p-accordionTab>
+        </ng-container>
+      </ng-container>
     </p-accordion>
+
+    <hr />
     <!--  -->
 
-    <hr>
-    <!--  -->
-    <p-accordion class="my-5 py-5">
-      <p-accordionTab header="قسم الاشعة">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-6">
-            <div class="body-box">
-              لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض
-            </div>
-            <div class="body-box">
-              لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض
-            </div>
+    <div class="col-12" *ngIf="HearingServices$ | async as data">
+      <div  [innerHTML]="isEn ? data?.OutpatientClinicsSectionEn : data?.OutpatientClinicsSectionAr "></div>
+    </div>
 
-          </div>
-          <div class="col-md-6">
-            <div class="body-box">
-              لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض
-            </div>
-            <div class="body-box">
-              لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض
-            </div>
 
-          </div>
-        </div>
-      </p-accordionTab>
-    </p-accordion>
-    <!--  -->
-    <hr>
-
-    <!--  -->
-    <p-accordion class="my-5 py-5">
-      <p-accordionTab header="المختبر">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-3 col-6">
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-
-          </div>
-          <div class="col-md-3 col-6">
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-            <div class="body-box">
-              فحص الدم
-            </div>
-
-          </div>
-        </div>
-      </p-accordionTab>
-    </p-accordion>
-    <!--  -->
-    <hr>
-
-    <!--  -->
-    <div class="row py-5 section-2 align-items-center">
-
+   <!--  <div class="row py-5 section-2 align-items-center">
       <div class="col-md-5 order-md-0 order-1 mt-md-0 mt-3">
-
         <h2 class="d-inline-block pb-2">وحدة التشخيص</h2>
 
         <div class="content pe-2 ps-3">
-          <p>لوريم ايبسوم هو نموذج افتراضي لتعرض ليتصور طريقه وضع النصوص بالتصاميم سواء
-            كانت
-            تصاميم مطبوعه</p>
-          <p>لوريم ايبسوم هو نموذج افتراضالعميل ليتصور طريقلتصاميم سواء
-            كانت
-            تصاميم مطبوعه</p>
-          <p>لوريم ايبسوم هو نموذج افتراضالعميل ليتصور طريقلتصاميم سواء
-            كانت
-            تصاميم مطبوعه</p>
-
+          <p>
+            لوريم ايبسوم هو نموذج افتراضي لتعرض ليتصور طريقه وضع النصوص
+            بالتصاميم سواء كانت تصاميم مطبوعه
+          </p>
+          <p>
+            لوريم ايبسوم هو نموذج افتراضالعميل ليتصور طريقلتصاميم سواء كانت
+            تصاميم مطبوعه
+          </p>
+          <p>
+            لوريم ايبسوم هو نموذج افتراضالعميل ليتصور طريقلتصاميم سواء كانت
+            تصاميم مطبوعه
+          </p>
         </div>
-
       </div>
-
 
       <div class="col-md-7 order-md-1 order-0">
-        <img src="../../../../assets/img/outpatient.png" class="img-fluid" alt="">
+        <img
+          src="../../../../assets/img/outpatient.png"
+          class="img-fluid"
+          alt=""
+        />
       </div>
-
-    </div>
+    </div> -->
     <!--  -->
-
-
   </div>
 </section>
 
-
 <app-stories-home></app-stories-home>
-<br>
-<br>
+<br />
+<br />
