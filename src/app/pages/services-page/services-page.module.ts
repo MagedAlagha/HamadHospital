@@ -8,6 +8,7 @@ import { HearingBalanceComponent } from './hearing-balance/hearing-balance.compo
 import { OutpatientClinicsComponent } from './outpatient-clinics/outpatient-clinics.component';
 import { AccordionModule } from 'primeng/accordion';
 import { StoriesHomeComponent } from '../stories-home/stories-home.component';
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { StoriesHomeComponent } from '../stories-home/stories-home.component';
     CommonModule,
     AccordionModule,
     StoriesHomeComponent,
+    TooltipModule,
     RouterModule.forChild([
       {
         path: '',

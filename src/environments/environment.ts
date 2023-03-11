@@ -5,6 +5,7 @@
 export const environment = {
   baseUrl: `http://hamad_api.accessline.ps/api/`,
   avatar: `http://hamad_api.accessline.ps/Resources/Files/`,
+  FileUrl: 'http://hamad_api.accessline.ps',
   production: false,
 };
 

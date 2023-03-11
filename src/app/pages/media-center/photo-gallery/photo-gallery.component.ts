@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { MediaCenterService } from '../media-center.service';
 
 @Component({
   selector: 'app-photo-gallery',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhotoGalleryComponent implements OnInit {
 
-  constructor() { }
+  MediaCenterService$!:Observable<any>;
+  isEn = document.dir == 'ltr' ? true : false;
+  constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
-  }
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.MediaSectionID === 2;
+        });
+      })
+    );
+}
+
+showPhotosDetails(item:any){
+  this._mediaCenterService.updateStore({ PhotosDetails: item });
+  console.log(item)
+}
 
 }

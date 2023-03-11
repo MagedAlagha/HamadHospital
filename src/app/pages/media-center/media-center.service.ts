@@ -15,7 +15,9 @@ export class MediaCenterService {
   ) {}
 
   private store = new BehaviorSubject<StoreInterface>({
-    MediaSectionsItems: { data: [], loading: false },
+    MediaSectionsItems: undefined,
+    showNews:undefined,
+    PhotosDetails:undefined,
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -38,11 +40,8 @@ export class MediaCenterService {
 
     /*  *******   MediaSectionsItems - API ******* */
   getMediaSectionsItems() {
-      this.getFormApi('MediaSectionsItems/MediaSectionsItemsSearch', 'MediaSectionsItems', {
-          isLoading: true,
-      });
+      this.getFormApi('MediaSectionsItems/MediaSectionsItemsSearch', 'MediaSectionsItems');
   }
-
 
   getFormApi(
     api: string,
@@ -62,7 +61,9 @@ export class MediaCenterService {
 }
 
 export interface StoreInterface {
-  MediaSectionsItems: { data: any; loading: boolean };
+  MediaSectionsItems?: any;
+  showNews?: any;
+  PhotosDetails?: any;
 
 }
 export type selectorsType = keyof StoreInterface;

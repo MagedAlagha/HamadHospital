@@ -35,14 +35,14 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'news-details',
+    path: 'news-details/:id',
     loadChildren: () =>
       import('./pages/news-details/news-details.module').then(
         (m) => m.NewsDetailsModule
       ),
   },
   {
-    path: 'photo-details',
+    path: 'photo-details/:id',
     loadChildren: () =>
       import('./pages/photo-details/photo-details.module').then(
         (m) => m.PhotoDetailsModule

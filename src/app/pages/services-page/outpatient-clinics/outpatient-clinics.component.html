@@ -56,15 +56,16 @@
         <ng-container *ngFor="let item of data">
           <hr />
           <p-accordionTab [header]="isEn ? item.NameEn : item.NameAr">
-
-                <div class="row d-flex justify-content-center"  *ngFor="
-                let serivce of OutpatientClinicsDepartmentsServices$ | async
-              " >
-                  <div class="col-md-4" *ngIf="item.ID == serivce.OutpatientClinicsDepartmentID" >
-                    <div class="body-box"  >
-                      {{ isEn ? serivce?.NameEn : serivce?.NameAr }}
-                    </div>
-                  </div>
+                <div class="row"  >
+                  <ng-container *ngFor="let serivce of OutpatientClinicsDepartmentsServices$ | async">
+                    <ng-container *ngIf="item.ID == serivce.OutpatientClinicsDepartmentID">
+                      <div class="col-md-4">
+                        <div class="body-box" [pTooltip]="isEn ? serivce?.DescEn : serivce?.DescAr" tooltipPosition="top" [positionStyle]	="widthToolTip" >
+                          {{ isEn ? serivce?.NameEn : serivce?.NameAr }}
+                        </div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
                 </div>
 
           </p-accordionTab>

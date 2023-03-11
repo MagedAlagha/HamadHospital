@@ -1,57 +1,114 @@
 <div class="row">
-  <div class="col-md-6 mt-md-0 mt-3">
-    <div class="img" routerLink="/video-details">
-      <img src="../../../../assets/img/video1.png" class="img-fluid main-img" alt="">
+
+
+  <div class="col-md-6 mt-3">
+    <div class="img"  (click)="showVideoPreview()">
+      <img
+        src="../../../../assets/img/video1.png"
+        class="img-fluid main-img"
+        alt=""
+      />
       <div class="d-flex justify-content-between img-title">
         <p>عنوان الفيديو</p>
         <span>03:30</span>
       </div>
     </div>
   </div>
+  <div class="col-md-6 mt-3">
+    <div class="img"  (click)="showVideoPreview()">
+      <img
+        src="../../../../assets/img/video1.png"
+        class="img-fluid main-img"
+        alt=""
+      />
+      <div class="d-flex justify-content-between img-title">
+        <p>عنوان الفيديو</p>
+        <span>03:30</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="img"  (click)="showVideoPreview()">
+      <img
+        src="../../../../assets/img/video1.png"
+        class="img-fluid main-img"
+        alt=""
+      />
+      <div class="d-flex justify-content-between img-title">
+        <p>عنوان الفيديو</p>
+        <span>03:30</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="img"  (click)="showVideoPreview()">
+      <img
+        src="../../../../assets/img/video1.png"
+        class="img-fluid main-img"
+        alt=""
+      />
+      <div class="d-flex justify-content-between img-title">
+        <p>عنوان الفيديو</p>
+        <span>03:30</span>
+      </div>
+    </div>
+  </div>
+<!--
+  <div class="col-md-6 mt-3">
+    <div class="img" routerLink="/video-details">
+      <img
+        src="../../../../assets/img/video1.png"
+        class="img-fluid main-img"
+        alt=""
+      />
+      <div class="d-flex justify-content-between img-title">
+        <p>عنوان الفيديو</p>
+        <span>03:30</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="img" routerLink="/video-details">
+      <img
+        src="../../../../assets/img/video1.png"
+        class="img-fluid main-img"
+        alt=""
+      />
+      <div class="d-flex justify-content-between img-title">
+        <p>عنوان الفيديو</p>
+        <span>03:30</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="img" routerLink="/video-details">
+      <img
+        src="../../../../assets/img/video1.png"
+        class="img-fluid main-img"
+        alt=""
+      />
+      <div class="d-flex justify-content-between img-title">
+        <p>عنوان الفيديو</p>
+        <span>03:30</span>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+<div class="video-modal">
+  <p-dialog  [(visible)]="display" [modal]="true" [dismissableMask]="true"  [draggable]="false" [resizable]="false" [style]="{width: '50vw'}">
+    <app-video-preview-modal></app-video-preview-modal>
+  </p-dialog>
+
+</div>
+
+
+
+<!--
+
 
   <div class="col-md-6 mt-md-0 mt-3">
-    <div class="img" routerLink="/video-details">
-      <img src="../../../../assets/img/video1.png" class="img-fluid main-img" alt="">
-      <div class="d-flex justify-content-between img-title">
-        <p>عنوان الفيديو</p>
-        <span>03:30</span>
-      </div>
-    </div>
+   <a (click)="openModal()"></a>
   </div>
-  <div class="col-md-6 mt-3">
-    <div class="img" routerLink="/video-details">
-      <img src="../../../../assets/img/video1.png" class="img-fluid main-img" alt="">
-      <div class="d-flex justify-content-between img-title">
-        <p>عنوان الفيديو</p>
-        <span>03:30</span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 mt-3">
-    <div class="img" routerLink="/video-details">
-      <img src="../../../../assets/img/video1.png" class="img-fluid main-img" alt="">
-      <div class="d-flex justify-content-between img-title">
-        <p>عنوان الفيديو</p>
-        <span>03:30</span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 mt-3">
-    <div class="img" routerLink="/video-details">
-      <img src="../../../../assets/img/video1.png" class="img-fluid main-img" alt="">
-      <div class="d-flex justify-content-between img-title">
-        <p>عنوان الفيديو</p>
-        <span>03:30</span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 mt-3">
-    <div class="img" routerLink="/video-details">
-      <img src="../../../../assets/img/video1.png" class="img-fluid main-img" alt="">
-      <div class="d-flex justify-content-between img-title">
-        <p>عنوان الفيديو</p>
-        <span>03:30</span>
-      </div>
-    </div>
-  </div>
-</div>
+  <app-video-preview-modal *ngIf="(VideoDialog$ | async).isOpen"></app-video-preview-modal>
+ -->

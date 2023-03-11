@@ -41,6 +41,7 @@
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
+      <a routerLink="/services/medical-rehabilitation" >
         <div class="icon-box">
           <div class="icon">
             <img
@@ -54,10 +55,12 @@
             {{ data?.Services?.MedicalRehabilitationDesc }}
           </p>
         </div>
+      </a>
       </div>
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
+      <a routerLink="/services/prosthetics" >
         <div class="icon-box">
           <div class="icon">
             <img [src]="avatar + data?.Services?.ProstheticsIconPath" alt="" />
@@ -68,11 +71,13 @@
             {{ data?.Services?.ProstheticsDesc }}
           </p>
         </div>
+      </a>
       </div>
 
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
+      <a  routerLink="/services/hearing-balance" >
         <div class="icon-box">
           <div class="icon">
             <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
@@ -83,11 +88,13 @@
             {{ data?.Services?.HearingDesc }}
           </p>
         </div>
+      </a>
       </div>
 
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
+      <a routerLink="/services/outpatient-clinics">
         <div class="icon-box">
           <div class="icon">
             <img
@@ -101,6 +108,7 @@
             {{ data?.Services?.OutpatientClinicsDesc }}
           </p>
         </div>
+      </a>
       </div>
     </div>
   </div>

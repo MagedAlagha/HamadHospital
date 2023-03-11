@@ -15,6 +15,7 @@ export class OutpatientClinicsComponent implements OnInit {
   OutpatientClinicsDepartmentsServices$!: Observable<any>;
   HearingServices$!: Observable<any>;
   m:any;
+  widthToolTip:any = '100%';
   constructor(private _homeService:HomeService , private _outpatientClinicsService:OutpatientClinicsService) {
   }
 

@@ -1,53 +1,36 @@
+<ng-container *ngIf="showNews$ |async as data">
+
 <section class="news">
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
         <div class="section-title">
-          <span>تصنيف الخبر </span>
-          <h1>وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه لتعرض على العميل ليتصور طريقه
-            لتعرض على العميل </h1>
+
+          <ng-container *ngIf="data.MainServiceID === 1">  <span></span> التأهيل الطبي </ng-container>
+          <ng-container *ngIf="data.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
+          <ng-container *ngIf="data.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
+          <ng-container *ngIf="data.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
+          <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
         </div>
       </div>
     </div>
 
-    <img src="../../../assets/img/news-details.webp" style="object-fit: cover; width: 100%;" class="img-fluid" alt="">
+    <img [src]=" 'http://hamad_api.accessline.ps'+ data?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
 
     <div class="row d-flex justify-content-center">
       <div class="col-md-8 d-flex justify-content-between align-items-center my-4">
         <div class="entry-meta">
-          <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p>
-          <span>نشر بتاريخ: 11/01/2023 05:27 AM </span>
+         <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
+          <span>نشر بتاريخ: <span>{{data?.CreatedDate | date}} </span> </span>
         </div>
         <div class="share-post">
-          <span> <i class="fa-brands fa-whatsapp"></i></span>
+       <!--    <span> <i class="fa-brands fa-whatsapp"></i></span> -->
           <span><i class="fa-regular fa-clone ps-3"></i></span>
         </div>
       </div>
       <div class="col-md-8 post-p">
         <!--  -->
-        <p>
-          وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-          تصاميم موريم ايبسوم هو نموذج افتراضي يوضع فالتصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-          كانت تصاميم موريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه النصوص
-
-        </p>
-        <p>
-          بالتصاميم سواء كانت تصاميم موريم ايبسوم هو نموذج افتراضي يوضع التصاميم لتعرض على العميل ليتصور طريقه وضع
-          النصوص بالتصاميم سواء كانت تصاميم موريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه
-          وضع النصوص بالتصاميم سواء كانت تصاميم موريم ايبسوم هو نموذج افتراضي يوضع التصاميم لتعرض على العميل ليتصور
-          طريقه وضع النصوص بالتصاميم سواء كانت تصاميم موريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
-
-        </p>
-        <p>
-          ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم النصوص بالتصاميم سواء كانت تصاميم موريم ايبسوم هو
-          نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم موريم
-          ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم
-          موريم ايبسوم هو نموذج افتراضي يوضع التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-
-        </p>
-        <p> تصاميايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-          تصاميم موريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-          كانت تصاميم موريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه.</p>
+          <p>{{ isEn ? data?.DescEn : data?.DescAr }}</p>
       </div>
     </div>
     <div class="last-news mt-5">
@@ -55,45 +38,32 @@
         <div class="line"> </div>
         <h2 class="d-inline-block ps-2">اخر الاخبار</h2>
       </div>
-      <div class="row align-items-center">
-        <div class="col-md-3">
-          <img src="../../../assets/img/last-news.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-md-8">
-          <div class="last-news-title">
-            <h3>لوريم ايبوسم هو نموذجسي افتراضي لوريم لوريم ايبوسم هو نموذج افتراضي هو سي نموذجلوريم ايبوسم هو نموذج
-              افتراضي </h3>
-            <p>موجز صغير عن الخبر موجز صغير عن الخبر موجز صغير عن الخبر موجز صغير عن الخبر </p>
+      <ng-container *ngIf="MediaCenterService$ |async as data">
+
+      <ng-container *ngFor="let item of data ">  <!-- | slice:-3  -->
+
+        <div class="row align-items-center mt-4">
+        <!--   <a href=""  routerLink="/news-details/{{item.ID}}" ></a> -->
+          <div class="col-md-3">
+            <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-8">
+            <div class="last-news-title">
+              <h3> {{ isEn ? item?.TitleEn : item?.TitleAr }} </h3>
+              <p>{{ isEn ? item?.DescEn : item?.DescAr }} </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row align-items-center mt-4">
-        <div class="col-md-3">
-          <img src="../../../assets/img/last-news.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-md-8">
-          <div class="last-news-title">
-            <h3>لوريم ايبوسم هو نموذجسي افتراضي لوريم لوريم ايبوسم هو نموذج افتراضي هو سي نموذجلوريم ايبوسم هو نموذج
-              افتراضي </h3>
-            <p>موجز صغير عن الخبر موجز صغير عن الخبر موجز صغير عن الخبر موجز صغير عن الخبر </p>
-          </div>
-        </div>
-      </div>
-      <div class="row align-items-center mt-4">
-        <div class="col-md-3">
-          <img src="../../../assets/img/last-news.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-md-8">
-          <div class="last-news-title">
-            <h3>لوريم ايبوسم هو نموذجسي افتراضي لوريم لوريم ايبوسم هو نموذج افتراضي هو سي نموذجلوريم ايبوسم هو نموذج
-              افتراضي </h3>
-            <p>موجز صغير عن الخبر موجز صغير عن الخبر موجز صغير عن الخبر موجز صغير عن الخبر </p>
-          </div>
-        </div>
-      </div>
+
+      </ng-container>
+      </ng-container>
+
+
+
     </div>
 
 
 
   </div>
 </section>
+</ng-container>
