@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap, filter } from 'rxjs';
 import { AboutHospitalService } from './about-hospital.service';
 
 @Component({
@@ -16,20 +16,23 @@ export class AboutHospitalComponent implements OnInit {
     this._aboutHospitalService.getAboutHospital();
     this.AboutHospital$ = this._aboutHospitalService
       .Selector$('AboutHospital')
-      .pipe(
-        tap((value) => {
-          console.log(value);
-          this.active = value[0]?.ID;
-          if (value[0]) {
-            console.log('fszgszgsgszg')
-            this.storeData(value[0]);
-          }
-        })
-      );
+      // .pipe(
+      //   // filter(value => (value && Array?.isArray(value) && value?.length)),
+      //   map((value) => {
+      //     console.log("----:",value);
+      //     if (value && Array?.isArray(value) && value?.length) {
+      //       this.active = value[0]?.ID;
+      //       console.log('value [0]', value[0]);
+      //       // this._aboutHospitalService.updateStore({dataShow:value[0]});
+      //       this.storeData(value[0])
+      //     }
+      //     return value;
+      //   })
+      // );
   }
   storeData(item: any) {
     this._aboutHospitalService.updateStore({ dataShow: item });
-    const data = this._aboutHospitalService.dataStore.dataShow;
+    const data = item;
     if (data) {
       this.active = data.ID;
     }

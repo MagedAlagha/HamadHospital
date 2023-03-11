@@ -5,17 +5,18 @@
         <div>
           <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
           <h2  routerLink="/news-details/{{item.ID}}" (click)="showNews(item)"  > {{ isEn ? item?.TitleEn : item?.TitleAr }} </h2>
-          <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:10 }}</p>
+          <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
           <a routerLink="/news-details/{{item.ID}}" (click)="showNews(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
               المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
           </a>
         </div>
       </div>
       <div class="col-md-4 d-flex align-items-stretch ">
-        <img  [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid" alt="">
+        <img  [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
       </div>
     </div>
   </div>
 </ng-container>
 
-
+<!-- {{ descriptionText | slice:0:100 }}{{ descriptionText.length > 100 ? '...' : '' }}
+ -->

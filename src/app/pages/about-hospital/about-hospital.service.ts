@@ -34,10 +34,20 @@ export class AboutHospitalService {
     );
   }
   getAboutHospital() {
-    this.getFormApi(
-      'AboutHospitalPoints/AboutHospitalPointsSearch',
-      'AboutHospital',
-    );
+    if(!this.dataStore?.dataShow){
+      const data = {
+        index: 0,
+        func: (arg:any) => this.updateStore({dataShow:arg})
+      }
+      this.getFormApi(
+        'AboutHospitalPoints/AboutHospitalPointsSearch',
+        'AboutHospital'
+        ,
+        null,
+        {selectIndexOfDataToNextInSomeFunction: data}
+      );
+
+    }
   }
 
   getFormApi(

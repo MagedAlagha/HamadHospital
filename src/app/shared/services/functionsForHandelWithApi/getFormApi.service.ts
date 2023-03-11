@@ -1,7 +1,7 @@
 import { map } from 'rxjs/operators';
 import { getFormApiGonfig } from './../../services/models';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject, config, of } from 'rxjs';
 import { HttpHRService } from '../httpHR.service';
 import { HttpService } from '../http.service';
 
@@ -59,6 +59,12 @@ export class GetFormApiService {
                     }
 
                     return res;
+                }),
+                map(data => {
+                  if(Config?.selectIndexOfDataToNextInSomeFunction){
+                    Config?.selectIndexOfDataToNextInSomeFunction?.func(data?.[Config?.selectIndexOfDataToNextInSomeFunction?.index])
+                  }
+                  return data;
                 })
                 // catchError((value) => of([]))
             )
