@@ -1,15 +1,19 @@
-<!--
-<ng-container *ngIf="PhotosDetails$ |async as data"></ng-container> -->
+
+<ng-container *ngIf="PhotosDetails$ |async as data">
 
 
-<section class="news">
+<section class="news mt-5">
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
         <div class="section-title">
-          <span>تصنيف الخبر </span>
-          <h1>وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه لتعرض على العميل ليتصور طريقه
-            لتعرض على العميل </h1>
+          <div class="section-title">
+            <ng-container *ngIf="data.MainServiceID === 1">  <span></span> التأهيل الطبي </ng-container>
+            <ng-container *ngIf="data.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
+            <ng-container *ngIf="data.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
+            <ng-container *ngIf="data.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
+            <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
+          </div>
         </div>
       </div>
     </div>
@@ -40,80 +44,64 @@
       </ng-template>
     </p-galleria>
 
-
-
-
-    <!-- <img src="../../../assets/img/news-details.webp" class="img-fluid" alt=""> -->
-
     <div class="row d-flex justify-content-center my-4">
       <div class="col-md-10 post-p">
         <!--  -->
         <p>
-          وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-          تصاميم موريم ايبسوم هو نموذج افتراضي يوضع فالتصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-          كانت تصاميم موريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه النصوص
+          {{ isEn ? data?.DescEn : data?.DescAr }}
         </p>
 
-        <p>
-          ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم النصوص بالتصاميم سواء كانت تصاميم موريم ايبسوم هو
-          نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم موريم
-          ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم
-          موريم ايبسوم هو نموذج افتراضي يوضع التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-
-        </p>
-        <p> تصاميايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت
-          تصاميم موريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-          كانت تصاميم موريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه.</p>
       </div>
     </div>
-
-
-    <div class="section-2 d-flex align-items-center mb-2">
-      <div class="line"> </div>
-      <h2 class="d-inline-block ps-2">اخر الاخبار</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-4 mt-md-0 mt-3">
-        <div class="img">
-          <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
-          <div class="d-flex justify-content-between img-title">
-            <p>عنوان الالبوم</p>
-            <div>
-              <span>10</span>
-              <img src="../../../../assets/img/photo.svg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mt-md-0 mt-3">
-        <div class="img">
-          <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
-          <div class="d-flex justify-content-between img-title">
-            <p>عنوان الالبوم</p>
-            <div>
-              <span>10</span>
-              <img src="../../../../assets/img/photo.svg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mt-md-0 mt-3">
-        <div class="img">
-          <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
-          <div class="d-flex justify-content-between img-title">
-            <p>عنوان الالبوم</p>
-            <div>
-              <span>10</span>
-              <img src="../../../../assets/img/photo.svg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
 
   </div>
 </section>
 
+</ng-container>
 
+
+<div class="container mb-4">
+  <div class="section-2 d-flex align-items-center mb-2">
+    <div class="line"> </div>
+    <h2 class="d-inline-block ps-2">اخر الاخبار</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mt-md-0 mt-3">
+      <div class="img">
+        <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
+        <div class="d-flex justify-content-between img-title">
+          <p>عنوان الالبوم</p>
+          <div>
+            <span>10</span>
+            <img src="../../../../assets/img/photo.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-md-0 mt-3">
+      <div class="img">
+        <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
+        <div class="d-flex justify-content-between img-title">
+          <p>عنوان الالبوم</p>
+          <div>
+            <span>10</span>
+            <img src="../../../../assets/img/photo.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-md-0 mt-3">
+      <div class="img">
+        <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
+        <div class="d-flex justify-content-between img-title">
+          <p>عنوان الالبوم</p>
+          <div>
+            <span>10</span>
+            <img src="../../../../assets/img/photo.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

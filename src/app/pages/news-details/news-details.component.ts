@@ -26,6 +26,8 @@ showNews$!:Observable<any>;
         return val?.filter((item: any) => {
           return item.MediaSectionID === 1;
         });
+      }), map(value=>{
+        return value.slice(-3)
       })
     );
 

@@ -15,7 +15,9 @@ export class AboutHospitalComponent implements OnInit {
   ngOnInit(): void {
     this._aboutHospitalService.getAboutHospital();
     this.AboutHospital$ = this._aboutHospitalService
-      .Selector$('AboutHospital')
+      .Selector$('AboutHospital').pipe(tap(value=>{
+        this.active = value[0]?.ID;
+      }))
       // .pipe(
       //   // filter(value => (value && Array?.isArray(value) && value?.length)),
       //   map((value) => {
@@ -29,6 +31,7 @@ export class AboutHospitalComponent implements OnInit {
       //     return value;
       //   })
       // );
+
   }
   storeData(item: any) {
     this._aboutHospitalService.updateStore({ dataShow: item });

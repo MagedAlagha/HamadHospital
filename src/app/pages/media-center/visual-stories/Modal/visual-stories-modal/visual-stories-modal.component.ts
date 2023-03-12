@@ -1,16 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MediaCenterService } from '../../../media-center.service';
-import { VideoGalleryService } from '../../video-gallery.service';
+import { VisualStoriesService } from '../../visual-stories.service';
 
 @Component({
-  selector: 'app-video-preview-modal',
-  templateUrl: './video-preview-modal.component.html',
-  styleUrls: ['./video-preview-modal.component.scss']
+  selector: 'app-visual-stories-modal',
+  templateUrl: './visual-stories-modal.component.html',
+  styleUrls: ['./visual-stories-modal.component.scss']
 })
-export class VideoPreviewModalComponent implements OnInit {
-data:any;
-  constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) {}
+export class VisualStoriesModalComponent implements OnInit {
+  data:any;
+  constructor(private _visualStoriesService:VisualStoriesService , private _mediaCenterService:MediaCenterService) {}
 
 video$!:Observable<any>;
   ngOnInit(): void {

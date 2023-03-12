@@ -1,18 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { map, Observable, tap } from 'rxjs';
+import { MediaCenterService } from '../media-center.service';
 
 @Component({
   selector: 'app-written-stories',
   templateUrl: './written-stories.component.html',
-  styleUrls: ['./written-stories.component.scss']
+  styleUrls: ['./written-stories.component.scss'],
 })
 export class WrittenStoriesComponent implements OnInit {
+  VideoDialog$!:Observable<any>;
+  MediaCenterService$!:Observable<any>;
+  isEn = document.dir == 'ltr' ? true : false;
 
-  constructor() { }
+  constructor(
+     private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
+
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.MediaSectionID === 6;
+        });
+      }), tap(value=>{
+        console.log("value" , value)
+      })
+    );
   }
 
-
+  showVisualStories(item:any) {
+    this._mediaCenterService.updateStore({ VisualStories: item });
+    console.log(item)
+  }
   images: any[] = [
     {
       previewImageSrc: '../../../assets/img/news-details.webp',
@@ -54,6 +73,4 @@ export class WrittenStoriesComponent implements OnInit {
       numVisible: 1,
     },
   ];
-
-
 }

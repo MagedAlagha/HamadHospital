@@ -18,6 +18,11 @@ export class MediaCenterService {
     MediaSectionsItems: undefined,
     showNews:undefined,
     PhotosDetails:undefined,
+    VideoDetails:undefined,
+    MedicalArticles:undefined,
+    PressStories:undefined,
+    ImageSection:undefined,
+    VisualStories:undefined,
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -42,6 +47,13 @@ export class MediaCenterService {
   getMediaSectionsItems() {
       this.getFormApi('MediaSectionsItems/MediaSectionsItemsSearch', 'MediaSectionsItems');
   }
+  getImageSection(ID?:any) {
+    this.getFormApi(
+        'MediaSectionsItemsImages/MediaSectionsItemsImagesSearch',
+        'ImageSection',
+        { MediaSectionsItemID:ID },
+    );
+}
 
   getFormApi(
     api: string,
@@ -64,6 +76,10 @@ export interface StoreInterface {
   MediaSectionsItems?: any;
   showNews?: any;
   PhotosDetails?: any;
-
+  VideoDetails?: any;
+  MedicalArticles?: any;
+  PressStories?: any;
+  ImageSection?: any;
+  VisualStories?: any;
 }
 export type selectorsType = keyof StoreInterface;

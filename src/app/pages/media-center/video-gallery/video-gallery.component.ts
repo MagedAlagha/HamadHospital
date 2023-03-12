@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { MediaCenterService } from '../media-center.service';
 import { VideoGalleryService } from './video-gallery.service';
 
 @Component({
@@ -10,20 +11,33 @@ import { VideoGalleryService } from './video-gallery.service';
 })
 export class VideoGalleryComponent implements OnInit {
   VideoDialog$!:Observable<any>;
-  constructor(private _videoGalleryService:VideoGalleryService) { }
+  MediaCenterService$!:Observable<any>;
+  isEn = document.dir == 'ltr' ? true : false;
+
+  constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) { }
 
   Avatar=environment.FileUrl;
   ngOnInit(): void {
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.MediaSectionID === 3;
+        });
+      })
+    );
     this.VideoDialog$ = this._videoGalleryService.Selector$('VideoDialog')
   }
 
   display: boolean = false;
 
-  showVideoPreview() {
+  showVideoPreview(item:any) {
     this.display = true;
+    this._mediaCenterService.updateStore({ VideoDetails: item });
+    console.log(item)
   }
   openModal(item?:any){
     this._videoGalleryService.displayDialogs('VideoDialog', true, item);
+
   }
 
 }

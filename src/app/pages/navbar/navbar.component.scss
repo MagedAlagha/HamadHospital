@@ -1,9 +1,7 @@
 .nav-item .nav-link{
   font-weight: 600;
 }
-.navbar {
-  background: transparent !important;
-}
+
 :root{
   --main-color:#8a1538;
 }
@@ -170,4 +168,13 @@ box-shadow: none !important;
 }
 .drop-down-2:hover{
  color: black;
+}
+
+
+.navbar {
+  transition: top 0.3s;
+}
+
+.navbar-scrolled {
+  top: -95px;
 }

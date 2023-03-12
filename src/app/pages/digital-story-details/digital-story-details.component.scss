@@ -1,11 +1,9 @@
 section{
   padding: 50px 0 70px 0;
-  background-image: linear-gradient(#8a1538b7, #000000), url(../../../assets/img/written-stories-details.webp);
-
 }
 .section-title{
   span{
-    color: #ffffff;
+    color: #5e5e5f;
   }
   h1{
     font-weight: 800;
@@ -14,12 +12,12 @@ section{
    padding-right: 8px;
    line-height: 32px;
    margin: 6px 0 35px 0;
-   color: #ffffff;
   }
 }
 .main-img{
   position: relative;
   z-index: -2;
+  width: 100%;
 }
 .img{
   cursor: pointer;
@@ -28,7 +26,6 @@ section{
 }
 .img-title p {
 font-size: 18px;
-color: #fff;
 }
 .img-title{
   margin-top: -42px;
@@ -51,40 +48,4 @@ color: #fff;
       color: #8a1538;
     }
 
-}
-.news p{
-  color: #fff;
-}
-
-
-.content {
-  background: #ffffffa7;
-  padding: 15px 25px;
-  border-radius: 5px;
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.content p {
-  color: rgba(28, 28, 28, 1);
-  font-weight: 800;
-  font-size: 20px;
-}
-
-@media(max-width:600px) {
-  .content p {
-    font-weight: 700;
-    font-size: 18px;
-  }
-
-  .section-title  h1{
-     font-size:16px;
-     font-weight: 700;
-     line-height: 26px;
-  }
-
-}
-
-.news{
-  margin-top: 13vh;
 }

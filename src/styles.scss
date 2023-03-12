@@ -186,9 +186,18 @@ a{
 }
 
 
+/*
 .video-modal .p-dialog .p-dialog-content{
   padding: 0;
 }
+};
+ */
+
 .video-modal .p-dialog-header{
  display: none
-};
+
+}
+.video-modal .p-dialog .p-dialog-content{
+  padding: 2.2rem 1.5rem 2rem 1.5rem;
+  border-radius: 6px;
+}

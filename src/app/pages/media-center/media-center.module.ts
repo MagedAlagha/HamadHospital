@@ -41,14 +41,14 @@ import { RouterModule } from '@angular/router';
               ).then((m) => m.MedicalArticlesModule),
           },
           {
-            path: 'success-stories/visual-stories',
+            path: 'press-stories',
             loadChildren: () =>
               import(
                 '../media-center/visual-stories/visual-stories.module'
               ).then((m) => m.VisualStoriesModule),
           },
           {
-            path: 'success-stories/written-stories',
+            path: 'visual-stories',
             loadChildren: () =>
               import(
                 '../media-center/written-stories/written-stories.module'

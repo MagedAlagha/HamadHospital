@@ -20,17 +20,18 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoriesHomeComponent,
     DropdownModule,
     CarouselModule,
-    HttpClientModule
+    HttpClientModule,
+    StoriesHomeComponent,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })

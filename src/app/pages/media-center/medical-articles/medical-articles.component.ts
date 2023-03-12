@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { MediaCenterService } from '../media-center.service';
 
 @Component({
   selector: 'app-medical-articles',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicalArticlesComponent implements OnInit {
 
-  constructor() { }
+  MediaCenterService$!:Observable<any>;
+  isEn = document.dir == 'ltr' ? true : false;
+  constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
-  }
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.MediaSectionID === 4;
+        });
+      })
+    );
+}
+
+showMedicalArticles(item:any){
+  this._mediaCenterService.updateStore({ MedicalArticles: item });
+}
 
 }

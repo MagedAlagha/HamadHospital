@@ -11,7 +11,7 @@ export class MediaCenterComponent implements OnInit {
   /* isActive = false; */
   active: any = 1;
   constructor(public router: Router , private _mediaSectionsItems:MediaCenterService) {
-    this._mediaSectionsItems.getMediaSectionsItems();
+
   }
 
   ngOnInit(): void {

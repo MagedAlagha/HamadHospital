@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,5 +26,12 @@ export class NavbarComponent implements OnInit {
     } else {
       selectHeader.classList.remove('header-scrolled')
     } */
+  }
+
+  isScrolled = false;
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    this.isScrolled = window.pageYOffset === 0 ? false : true;
   }
 }

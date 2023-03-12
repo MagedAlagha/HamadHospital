@@ -2,10 +2,10 @@
   <div class="row">
         <div class="col-md-6 mt-md-0 mt-3"  *ngFor="let item of data">
           <div class="box-blog py-3"  >
-          <div class="img" routerLink="/photo-details/{{item.ID}}">
-            <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover;" alt="">
+          <div class="img" routerLink="/photo-details/{{item.ID}}" (click)="showPhotosDetails(item)" >
+            <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;" alt="">
             <div class="d-flex justify-content-between img-title">
-              <p>{{ isEn ? item?.TitleEn : item?.TitleAr }} </p>
+              <p>{{ isEn ? item?.TitleEn : item?.TitleAr | slice:0:35 }} {{  isEn ? item?.TitleEn.length : item?.TitleAr.length > 35 ? '...' : '' }}</p>
               <div>
              <!--    <span>10</span> -->
                 <img src="../../../../assets/img/photo.svg" alt="">

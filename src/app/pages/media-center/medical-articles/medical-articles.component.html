@@ -1,77 +1,32 @@
 <div class="row">
-  <div class="col-md-6 mt-md-0 mt-3">
-    <div class="post-box" routerLink="/medical-article-details">
-      <div class="post-img"><img src="../../../assets/img/Bg.png" class="img-fluid" alt=""></div>
-      <div class="d-flex justify-content-between align-items-baseline mb-1 ">
-        <span class="categories">التأهيل الطبي</span>
-        <span class="post-date">12/12/2022</span>
+  <ng-container *ngIf="MediaCenterService$ | async as data">
+    <div class="col-md-6" *ngFor="let item of data">
+      <div class="post-box mt-3" routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)"  >
+        <div class="post-img"><img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;"  class="img-fluid" alt=""></div>
+        <div class="d-flex justify-content-between align-items-baseline mb-1 ">
+          <ng-container *ngIf="item.MainServiceID === 1">
+            <span class="categories">التأهيل الطبي</span>
+          </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 2">
+            <span class="categories">الاطراف الصناعية</span>
+          </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 3">
+            <span class="categories">السمع والتوازن</span>
+          </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 4">
+            <span class="categories">العيادة الخارجية</span>
+          </ng-container>
+
+          <span class="post-date">{{item?.CreatedDate | date }}</span>
+        </div>
+        <h3 class="post-title">{{ isEn ? item?.TitleEn : item?.TitleAr }}  </h3>
+       <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
+        <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
+            المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
+        </a>
       </div>
-      <h3 class="post-title">عنوان المقال نموذج افتراضي يوضع </h3>
-      <p>لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-        كانت تصاميم مطبوعه ... بروشور او فلاير على سبيل المثال ... </p>
-      <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-          المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
-      </a>
     </div>
-  </div>
-  <div class="col-md-6 mt-md-0 mt-3">
-    <div class="post-box" routerLink="/medical-article-details">
-      <div class="post-img"><img src="../../../assets/img/Bg.png" class="img-fluid" alt=""></div>
-      <div class="d-flex justify-content-between align-items-baseline mb-1 ">
-        <span class="categories">التأهيل الطبي</span>
-        <span class="post-date">12/12/2022</span>
-      </div>
-      <h3 class="post-title">عنوان المقال نموذج افتراضي يوضع </h3>
-      <p>لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-        كانت تصاميم مطبوعه ... بروشور او فلاير على سبيل المثال ... </p>
-      <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-          المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
-      </a>
-    </div>
-  </div>
-  <div class="col-md-6 mt-3">
-    <div class="post-box" routerLink="/medical-article-details">
-      <div class="post-img"><img src="../../../assets/img/Bg.png" class="img-fluid" alt=""></div>
-      <div class="d-flex justify-content-between align-items-baseline mb-1 ">
-        <span class="categories">التأهيل الطبي</span>
-        <span class="post-date">12/12/2022</span>
-      </div>
-      <h3 class="post-title">عنوان المقال نموذج افتراضي يوضع </h3>
-      <p>لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-        كانت تصاميم مطبوعه ... بروشور او فلاير على سبيل المثال ... </p>
-      <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-          المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
-      </a>
-    </div>
-  </div>
-  <div class="col-md-6 mt-3">
-    <div class="post-box" routerLink="/medical-article-details">
-      <div class="post-img"><img src="../../../assets/img/Bg.png" class="img-fluid" alt=""></div>
-      <div class="d-flex justify-content-between align-items-baseline mb-1 ">
-        <span class="categories">التأهيل الطبي</span>
-        <span class="post-date">12/12/2022</span>
-      </div>
-      <h3 class="post-title">عنوان المقال نموذج افتراضي يوضع </h3>
-      <p>لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-        كانت تصاميم مطبوعه ... بروشور او فلاير على سبيل المثال ... </p>
-      <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-          المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
-      </a>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="post-box mt-3" routerLink="/medical-article-details">
-      <div class="post-img"><img src="../../../assets/img/Bg.png" class="img-fluid" alt=""></div>
-      <div class="d-flex justify-content-between align-items-baseline mb-1 ">
-        <span class="categories">التأهيل الطبي</span>
-        <span class="post-date">12/12/2022</span>
-      </div>
-      <h3 class="post-title">عنوان المقال نموذج افتراضي يوضع </h3>
-      <p>لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء
-        كانت تصاميم مطبوعه ... بروشور او فلاير على سبيل المثال ... </p>
-      <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-          المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
-      </a>
-    </div>
-  </div>
+
+
+  </ng-container>
 </div>

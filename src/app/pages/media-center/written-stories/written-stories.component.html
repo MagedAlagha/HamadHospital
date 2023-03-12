@@ -1,15 +1,18 @@
 <div class="row">
-
-<!--   <div class="col-12">
-    <div class="img" routerLink="/written-stories-details">
-      <img src="../../../../assets/img/written-stories.webp" class="img-fluid main-img" alt="">
+  <ng-container *ngIf="MediaCenterService$ |async as data">
+   <div class="col-12 mb-4"  *ngFor="let item of data">
+    <div class="img" routerLink="/digital-story-details/{{item.ID}}" (click)="showVisualStories(item)">
+      <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="height: 450px; object-fit: cover; border-radius: 6px;" class="img-fluid main-img" alt="">
       <div class="d-flex justify-content-between img-title">
-        <p>عنوان الالبوم</p>
+        <p>{{ isEn ? item?.TitleEn : item?.TitleAr | slice:0:35 }} {{  isEn ? item?.TitleEn.length : item?.TitleAr.length > 35 ? '...' : '' }}</p>
       </div>
     </div>
-  </div> -->
+    </div>
+  </ng-container>
 
-  <p-galleria [numVisible]="3" [value]="images">
+
+
+ <!--  <p-galleria [numVisible]="3" [value]="images">
     <ng-template pTemplate="item" let-item>
       <img [src]="item.previewImageSrc" [alt]="item.alt" [title]="item.title"
         style="width: 90%; height: 450px; object-fit: cover;" />
@@ -20,6 +23,6 @@
         <img [src]="item.thumbnailImageSrc" [alt]="item.alt" [title]="item.title" width=80% />
       </div>
     </ng-template>
-  </p-galleria>
+  </p-galleria> -->
 
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
 import { filter, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { MediaCenterService } from '../media-center/media-center.service';
 import { HomeService } from './home.service';
 
 @Component({
@@ -12,10 +13,12 @@ import { HomeService } from './home.service';
 export class HomeComponent implements OnInit {
   LandingPageData$!: Observable<any>;
   Services$!: Observable<any>;
+  LastNews$!:Observable<any>;
+
   Advertisements$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   avatar = environment?.avatar;
-  constructor(private _homeService: HomeService) {}
+  constructor(private _homeService: HomeService , private _mediaCenterService:MediaCenterService) {}
 
   ngOnInit(): void {
     this._homeService.getSliderData();
@@ -30,7 +33,22 @@ export class HomeComponent implements OnInit {
         }); he
       })
     ); */
+
+    this.LastNews$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.MediaSectionID === 1;
+        });
+      })
+    );
+
   }
+
+  showNews(item:any){
+    this._mediaCenterService.updateStore({ showNews: item });
+    console.log(item)
+  }
+
 
   customOptions: OwlOptions = {
     loop: true,

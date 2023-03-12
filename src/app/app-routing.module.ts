@@ -49,6 +49,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'digital-story-details/:id',
+    loadChildren: () =>
+      import('./pages/digital-story-details/digital-story-details.module').then(
+        (m) => m.DigitalStoryDetailsModule
+      ),
+  },
+  {
     path: 'video-details',
     loadChildren: () =>
       import('./pages/video-details/video-details.module').then(
@@ -56,7 +63,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'medical-article-details',
+    path: 'medical-article-details/:id',
     loadChildren: () =>
       import(
         './pages/medical-article-details/medical-article-details.module'

@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { FooterService } from './pages/footer/footer.service';
 import { HomeService } from './pages/home/home.service';
+import { MediaCenterService } from './pages/media-center/media-center.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,11 @@ export class AppComponent implements OnInit {
   isEn_LandingPage = document.dir == 'ltr' ? "en" : "ar";
   constructor(
     private _footerService: FooterService,
-    private _homeService: HomeService
+    private _homeService: HomeService,
+    private _mediaSectionsItems:MediaCenterService
   ) {}
   ngOnInit(): void {
+    this._mediaSectionsItems.getMediaSectionsItems();
     this._footerService.getStats();
     this._homeService.getServicesInHome();
     this._homeService.getLandingPageInfo(this.isEn_LandingPage);

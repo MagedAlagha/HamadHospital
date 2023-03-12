@@ -4,15 +4,18 @@ import { map, Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../media-center/media-center.service';
 
 @Component({
-  selector: 'app-photo-details',
-  templateUrl: './photo-details.component.html',
-  styleUrls: ['./photo-details.component.scss'],
+  selector: 'app-digital-story-details',
+  templateUrl: './digital-story-details.component.html',
+  styleUrls: ['./digital-story-details.component.scss']
 })
-export class PhotoDetailsComponent implements OnInit {
+export class DigitalStoryDetailsComponent implements OnInit {
+
   MediaCenterService$!:Observable<any>;
+  ImageSection$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-ID:any;
-PhotosDetails$!:Observable<any>;
+  ID:any;
+  postID:any;
+  VisualStories$!:Observable<any>;
   constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID)
@@ -20,22 +23,23 @@ PhotosDetails$!:Observable<any>;
 
 
    ngOnInit(): void {
-
-
+    this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
+    this._mediaCenterService.getImageSection();
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 2;
+          return item.MediaSectionID === 6;
         });
       })
     );
 
-    this.PhotosDetails$ = this._mediaCenterService.Selector$('PhotosDetails').pipe(tap(value=>{
+    this.VisualStories$ = this._mediaCenterService.Selector$('VisualStories').pipe(tap(value=>{
       console.log('value' , value)
     }))
-    const data  = this._mediaCenterService.dataStore.PhotosDetails
+    const data  = this._mediaCenterService.dataStore.ImageSection
     if(data){
-    console.log(data , "{gege")
+    console.log(data , "ID000")
+    this.postID = data.ID;
     }
   }
 
@@ -84,4 +88,5 @@ PhotosDetails$!:Observable<any>;
       numVisible: 1,
     },
   ];
+
 }

@@ -41,74 +41,77 @@
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
-      <a routerLink="/services/medical-rehabilitation" >
-        <div class="icon-box">
-          <div class="icon">
-            <img
-              [src]="avatar + data?.Services?.MedicalRehabilitationIconPath"
-              alt=""
-            />
-            <img src="../../../assets/img/04.svg" alt="" />
+        <a routerLink="/services/medical-rehabilitation">
+          <div class="icon-box">
+            <div class="icon">
+              <img
+                [src]="avatar + data?.Services?.MedicalRehabilitationIconPath"
+                alt=""
+              />
+              <img src="../../../assets/img/04.svg" alt="" />
+            </div>
+            <h4>التأهيل الطبي</h4>
+            <p>
+              {{ data?.Services?.MedicalRehabilitationDesc }}
+            </p>
           </div>
-          <h4>التأهيل الطبي</h4>
-          <p>
-            {{ data?.Services?.MedicalRehabilitationDesc }}
-          </p>
-        </div>
-      </a>
+        </a>
       </div>
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
-      <a routerLink="/services/prosthetics" >
-        <div class="icon-box">
-          <div class="icon">
-            <img [src]="avatar + data?.Services?.ProstheticsIconPath" alt="" />
-            <img src="../../../assets/img/03.svg" alt="" />
+        <a routerLink="/services/prosthetics">
+          <div class="icon-box">
+            <div class="icon">
+              <img
+                [src]="avatar + data?.Services?.ProstheticsIconPath"
+                alt=""
+              />
+              <img src="../../../assets/img/03.svg" alt="" />
+            </div>
+            <h4>الاطراف الصناعية</h4>
+            <p>
+              {{ data?.Services?.ProstheticsDesc }}
+            </p>
           </div>
-          <h4>الاطراف الصناعية</h4>
-          <p>
-            {{ data?.Services?.ProstheticsDesc }}
-          </p>
-        </div>
-      </a>
-      </div>
-
-      <div
-        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
-      >
-      <a  routerLink="/services/hearing-balance" >
-        <div class="icon-box">
-          <div class="icon">
-            <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
-            <img src="../../../assets/img/02.svg" alt="" />
-          </div>
-          <h4>السمع والتوازن</h4>
-          <p>
-            {{ data?.Services?.HearingDesc }}
-          </p>
-        </div>
-      </a>
+        </a>
       </div>
 
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
-      <a routerLink="/services/outpatient-clinics">
-        <div class="icon-box">
-          <div class="icon">
-            <img
-              [src]="avatar + data?.Services?.OutpatientClinicsIconPath"
-              alt=""
-            />
-            <img src="../../../assets/img/01.svg" alt="" />
+        <a routerLink="/services/hearing-balance">
+          <div class="icon-box">
+            <div class="icon">
+              <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
+              <img src="../../../assets/img/02.svg" alt="" />
+            </div>
+            <h4>السمع والتوازن</h4>
+            <p>
+              {{ data?.Services?.HearingDesc }}
+            </p>
           </div>
-          <h4>العيادة الخارجية</h4>
-          <p>
-            {{ data?.Services?.OutpatientClinicsDesc }}
-          </p>
-        </div>
-      </a>
+        </a>
+      </div>
+
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+      >
+        <a routerLink="/services/outpatient-clinics">
+          <div class="icon-box">
+            <div class="icon">
+              <img
+                [src]="avatar + data?.Services?.OutpatientClinicsIconPath"
+                alt=""
+              />
+              <img src="../../../assets/img/01.svg" alt="" />
+            </div>
+            <h4>العيادة الخارجية</h4>
+            <p>
+              {{ data?.Services?.OutpatientClinicsDesc }}
+            </p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -126,92 +129,122 @@
           <h4>الاخبار</h4>
         </div>
         <div class="col-6 text-end">
-          <a href="#">
+          <a routerLink="/media-center/news/news-main">
             عرض الكل <i class="fa-solid fa-arrow-left-long ps-1"></i
           ></a>
         </div>
       </div>
     </div>
-    <div class="row gy-4">
-      <div class="col-md-8 d-flex align-items-stretch box">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="post-box" routerLink="/news-details">
-              <div class="post-img">
-                <img
-                  src="../../../assets/img/Bg.png"
-                  class="img-fluid"
-                  alt=""
-                />
-              </div>
+    <ng-container *ngIf="LastNews$ | async as data">
+      <div class="row gy-4">
+        <div class="col-md-8 d-flex align-items-stretch box">
+          <div class="row">
+            <!--  <ng-container *ngFor="let item of data">  </ng-container> -->
+            <div class="col-md-6">
               <div
-                class="d-flex justify-content-between align-items-baseline mb-1"
+                class="post-box"
+                (click)="showNews(data[data.length - 2])"
+                routerLink="/news-details/{{ data[data.length - 2].ID }}"
               >
-                <span class="categories">التأهيل الطبي</span>
-                <span class="post-date">12/12/2022</span>
+                <div class="post-img">
+                  <img
+                  [src]=" 'http://hamad_api.accessline.ps'+ data[data.length - 2]?.ImagePath"
+                  />
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-baseline mb-1"
+                >
+                  <ng-container
+                    *ngIf="data[data.length - 2].MainServiceID === 1"
+                  >
+                    <span class="categories">التأهيل الطبي</span>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="data[data.length - 2].MainServiceID === 2"
+                  >
+                    <span class="categories">الاطراف الصناعية</span>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="data[data.length - 2].MainServiceID === 3"
+                  >
+                    <span class="categories">السمع والتوازن</span>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="data[data.length - 2].MainServiceID === 4"
+                  >
+                    <span class="categories">العيادة الخارجية</span>
+                  </ng-container>
+
+                  <span class="post-date">{{
+                    data[data.length - 2]?.CreatedDate | date
+                  }}</span>
+                </div>
+                <h3 class="post-title">
+                  {{
+                    isEn
+                      ? data[data.length - 2]?.TitleEn
+                      : data[data.length - 2]?.TitleAr
+                  }}
+                </h3>
+                <p>
+                  {{
+                    isEn
+                      ? data[data.length - 2]?.DescEn
+                      : (data[data.length - 2]?.DescAr | slice : 0 : 100)
+                  }}
+                  {{
+                    isEn
+                      ? data[data.length - 2]?.DescEn.length
+                      : data[data.length - 2]?.DescAr.length > 100
+                      ? "..."
+                      : ""
+                  }}
+                </p>
+                <a href="#" class="readmore mt-auto d-flex align-items-baseline"
+                  ><span>إقراء المزيد</span
+                  ><i class="fa-solid fa-arrow-left-long ps-1"></i>
+                </a>
               </div>
-              <h3 class="post-title">عنوان المقال نموذج افتراضي يوضع</h3>
-              <p>
-                لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
-                ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه ...
-                بروشور او فلاير على سبيل المثال ...
-              </p>
-              <a href="#" class="readmore mt-auto d-flex align-items-baseline"
+            </div>
+
+            <div class="col-md-6 mt-md-0 mt-3">
+              <div class="titlis-box">
+                <p><strong>إقراء المزيد</strong></p>
+                <ng-container *ngFor="let item of data">
+
+                <a routerLink="/news-details/{{item.ID}}" (click)="showNews(item)" class="title"
+                  >عنوان المقال نموذج افتراضي يوضع
+                  <i class="fa-solid fa-arrow-left-long ps-1"></i
+                ></a>
+              </ng-container>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-stretch">
+          <div class="news-box2" (click)="showNews(data[data.length - 1])"  routerLink="/news-details/{{data[data.length - 1].ID}}">
+            <div class="d-flex justify-content-center">
+              <img [src]=" 'http://hamad_api.accessline.ps'+ data[data.length - 1]?.ImagePath" class="img-fluid" alt="" />
+            </div>
+            <div class="news-box2-xontent">
+              <h3 class="post-title">
+                {{
+                  isEn
+                    ? data[data.length - 1]?.TitleEn
+                    : data[data.length - 1]?.TitleAr
+                }}
+              </h3>
+              <a (click)="showNews(data[data.length - 1])" class="readmore mt-auto d-flex align-items-baseline"
                 ><span>إقراء المزيد</span
                 ><i class="fa-solid fa-arrow-left-long ps-1"></i>
               </a>
             </div>
           </div>
-          <div class="col-md-6 mt-md-0 mt-3">
-            <div class="titlis-box">
-              <p><strong>إقراء المزيد</strong></p>
-              <a routerLink="/news-details" class="title"
-                >عنوان المقال نموذج افتراضي يوضع
-                <i class="fa-solid fa-arrow-left-long ps-1"></i
-              ></a>
-              <a routerLink="/news-details" class="title"
-                >عنوان المقال نموذج افتراضي يوضع
-                <i class="fa-solid fa-arrow-left-long ps-1"></i
-              ></a>
-              <a routerLink="/news-details" class="title"
-                >عنوان المقال نموذج افتراضي يوضع
-                <i class="fa-solid fa-arrow-left-long ps-1"></i
-              ></a>
-              <a routerLink="/news-details" class="title"
-                >عنوان المقال نموذج افتراضي يوضع
-                <i class="fa-solid fa-arrow-left-long ps-1"></i
-              ></a>
-              <a routerLink="/news-details" class="title"
-                >عنوان المقال نموذج افتراضي يوضع
-                <i class="fa-solid fa-arrow-left-long ps-1"></i
-              ></a>
-              <a routerLink="/news-details" class="title"
-                >عنوان المقال نموذج افتراضي يوضع
-                <i class="fa-solid fa-arrow-left-long ps-1"></i
-              ></a>
-              <a routerLink="/news-details" class="title"
-                >عنوان المقال نموذج افتراضي يوضع
-                <i class="fa-solid fa-arrow-left-long ps-1"></i
-              ></a>
-            </div>
-          </div>
         </div>
       </div>
-      <div class="col-md-4 d-flex align-items-stretch">
-        <div class="news-box2" routerLink="/news-details">
-          <img src="../../../assets/img/Bg2.png" class="img-fluid" alt="" />
-          <div class="news-box2-xontent">
-            <h3 class="post-title">
-              وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض
-            </h3>
-            <a href="#" class="readmore mt-auto d-flex align-items-baseline"
-              ><span>إقراء المزيد</span
-              ><i class="fa-solid fa-arrow-left-long ps-1"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    </ng-container>
   </div>
 </section>
 
@@ -222,7 +255,10 @@
       <div class="col-md-8">
         <owl-carousel-o [options]="customOptions">
           <ng-container *ngIf="LandingPageData$ | async as data">
-            <ng-template carouselSlide *ngFor="let item of data?.Advertisements">
+            <ng-template
+              carouselSlide
+              *ngFor="let item of data?.Advertisements"
+            >
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-12 py-4">
@@ -231,13 +267,10 @@
                     </p>
                     <ng-container *ngIf="item?.ButtonAdded">
                       <a [href]="item?.ButtonLink"
-                      >{{
-                        item?.ButtonTitle
-                      }}
-                      <i class="fa-solid fa-arrow-left-long ps-1"></i
-                    ></a>
+                        >{{ item?.ButtonTitle }}
+                        <i class="fa-solid fa-arrow-left-long ps-1"></i
+                      ></a>
                     </ng-container>
-
                   </div>
                 </div>
               </div>

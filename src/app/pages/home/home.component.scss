@@ -1,5 +1,5 @@
 .hero .img {
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../../../assets/img/hero.png);
   /* object-fit: cover;
@@ -233,6 +233,7 @@ section {
   display: flex;
   flex-direction: column;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .news .post-box .post-img {
