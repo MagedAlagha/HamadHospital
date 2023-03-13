@@ -9,10 +9,10 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoriesHomeComponent } from './pages/stories-home/stories-home.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HttpClientModule } from '@angular/common/http';
+import { StoriesHomeComponent } from './pages/stories-home/stories-home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     DropdownModule,
     CarouselModule,
     HttpClientModule,
-    StoriesHomeComponent,
+    StoriesHomeComponent
   ],
-
+exports:[
+  StoriesHomeComponent,
+],
   providers: [],
   bootstrap: [AppComponent],
 })

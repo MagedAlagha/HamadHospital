@@ -33,46 +33,16 @@ export class DigitalStoryDetailsComponent implements OnInit {
       })
     );
 
-    this.VisualStories$ = this._mediaCenterService.Selector$('VisualStories').pipe(tap(value=>{
+     this.VisualStories$ = this._mediaCenterService.Selector$('VisualStories').pipe(tap(value=>{
+      this.postID = value.ID;
       console.log('value' , value)
     }))
-    const data  = this._mediaCenterService.dataStore.ImageSection
+   /*  const data  = this._mediaCenterService.dataStore.VisualStories
     if(data){
     console.log(data , "ID000")
     this.postID = data.ID;
-    }
+    } */
   }
-
-
-
-  title = 'GFG';
-
-  images: any[] = [
-    {
-      previewImageSrc: '../../../assets/img/news-details.webp',
-      thumbnailImageSrc: '../../../assets/img/news-details.webp',
-      alt: 'Description for Image 1',
-      title: 'Title 1',
-    },
-    {
-      previewImageSrc: '../../../assets/img/image.webp',
-      thumbnailImageSrc: '../../../assets/img/image.webp',
-      alt: 'Description for Image 2',
-      title: 'Title 2',
-    },
-    {
-      previewImageSrc: '../../../assets/img/story.webp',
-      thumbnailImageSrc: '../../../assets/img/story.webp',
-      alt: 'Description for Image 3',
-      title: 'Title 3',
-    },
-    {
-      previewImageSrc: '../../../assets/img/video.webp',
-      thumbnailImageSrc: '../../../assets/img/video.webp',
-      alt: 'Description for Image 4',
-      title: 'Title 4',
-    },
-  ];
 
   responsiveOptions: any[] = [
     {

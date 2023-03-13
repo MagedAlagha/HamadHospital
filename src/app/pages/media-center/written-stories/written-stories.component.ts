@@ -30,7 +30,6 @@ export class WrittenStoriesComponent implements OnInit {
 
   showVisualStories(item:any) {
     this._mediaCenterService.updateStore({ VisualStories: item });
-    console.log(item)
   }
   images: any[] = [
     {

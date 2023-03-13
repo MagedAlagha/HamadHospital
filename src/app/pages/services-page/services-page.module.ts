@@ -21,8 +21,8 @@ import {TooltipModule} from 'primeng/tooltip';
   imports: [
     CommonModule,
     AccordionModule,
-    StoriesHomeComponent,
     TooltipModule,
+    StoriesHomeComponent,
     RouterModule.forChild([
       {
         path: '',

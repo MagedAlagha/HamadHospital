@@ -40,7 +40,7 @@
       </div>
       <ng-container *ngIf="MediaCenterService$ |async as data">
 
-      <ng-container *ngFor="let item of data ">  <!-- | slice:-3  -->
+      <ng-container *ngFor="let item of data.slice(-3) ">  <!-- | slice:-3  -->
 
         <div class="row align-items-center mt-4">
         <!--   <a href=""  routerLink="/news-details/{{item.ID}}" ></a> -->
