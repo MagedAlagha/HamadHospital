@@ -1,22 +1,21 @@
+
+<ng-container *ngIf="PhotosDetails$ |async as data">
 <section class="news">
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
         <div class="section-title">
-          <span>عنوان القصة الرقمية </span>
-          <h1>
-            وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
-            ليتصور طريقه لتعرض على العميل ليتصور طريقه لتعرض على العميل
-          </h1>
+          <ng-container *ngIf="data.MainServiceID === 1">  <span>التأهيل الطبي</span>  </ng-container>
+          <ng-container *ngIf="data.MainServiceID === 2">  <span>الاطراف الصناعية</span>  </ng-container>
+          <ng-container *ngIf="data.MainServiceID === 3">  <span>السمع والتوازن</span>  </ng-container>
+          <ng-container *ngIf="data.MainServiceID === 4">  <span>العيادة الخارجية</span>  </ng-container>
+          <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
         </div>
       </div>
     </div>
 
     <div class="row justify-content-center" >
       <div class="col-md-10">
-         <!--   <ng-container *ngIf="sliderData$ | async as data"> </ng-container>
-    *ngFor="let item of data"
-    -->
 
     <owl-carousel-o [options]="customOptions" style="position: relative;">
       <ng-template carouselSlide  >
@@ -52,54 +51,32 @@
 
   </div>
 </section>
-
+</ng-container>
 <div class="container py-5">
   <div class="section-2 d-flex align-items-center mb-2">
     <div class="line"></div>
     <h2 class="d-inline-block ps-2">قصص نجاح</h2>
   </div>
-  <div class="row">
-    <div class="col-md-4 mt-md-0 mt-3">
-      <div class="img">
-        <img
-          src="../../../../assets/img/video1.png"
-          class="img-fluid main-img"
-          alt=""
-          style="object-fit: cover; width: 100%"
-        />
-        <div class="d-flex justify-content-between img-title">
-          <p>عنوان الفيديو</p>
-          <span>03:30</span>
+  <ng-container *ngIf="MediaCenterService$ |async as data">
+    <div class="row">
+      <div class="col-md-4 mt-md-0 mt-3" *ngFor="let item of data.slice(-3)">
+        <div class="img">
+          <img
+          [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
+            class="img-fluid main-img"
+            alt=""
+          />
+          <div class="d-flex justify-content-between img-title">
+            <p> {{ isEn ? item?.TitleEn : item?.TitleAr  | slice:0:30 }} {{  isEn ? item?.TitleEn.length : item?.TitleAr.length > 30 ? '...' : '' }}</p>
+            <div>
+             <!--  <span>{{data.length}}</span> -->
+              <img src="../../../../assets/img/photo.svg" alt="" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4 mt-md-0 mt-3">
-      <div class="img">
-        <img
-          src="../../../../assets/img/video1.png"
-          class="img-fluid main-img"
-          alt=""
-          style="object-fit: cover; width: 100%"
-        />
-        <div class="d-flex justify-content-between img-title">
-          <p>عنوان الفيديو</p>
-          <span>03:30</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mt-md-0 mt-3">
-      <div class="img">
-        <img
-          src="../../../../assets/img/video1.png"
-          class="img-fluid main-img"
-          alt=""
-          style="object-fit: cover; width: 100%"
-        />
-        <div class="d-flex justify-content-between img-title">
-          <p>عنوان الفيديو</p>
-          <span>03:30</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  </ng-container>
 </div>
+
+

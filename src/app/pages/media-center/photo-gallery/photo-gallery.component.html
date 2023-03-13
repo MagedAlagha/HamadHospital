@@ -1,7 +1,7 @@
 <ng-container *ngIf="MediaCenterService$ |async as data">
   <div class="row">
-        <div class="col-md-6 mt-md-0 mt-3"  *ngFor="let item of data">
-          <div class="box-blog py-3"  >
+        <div class="col-md-6 mt-md-0 mb-4"  *ngFor="let item of data">
+          <div class="box-blog"  >
           <div class="img" routerLink="/photo-details/{{item.ID}}" (click)="showPhotosDetails(item)" >
             <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;" alt="">
             <div class="d-flex justify-content-between img-title">

@@ -70,14 +70,14 @@ const routes: Routes = [
       ).then((m) => m.MedicalArticleDetailsModule),
   },
   {
-    path: 'visual-stories-details',
+    path: 'visual-stories-details/:id',
     loadChildren: () =>
       import(
         './pages/visual-stories-details/visual-stories-details.module'
       ).then((m) => m.VisualStoriesDetailsModule),
   },
   {
-    path: 'written-stories-details',
+    path: 'written-stories-details/:id',
     loadChildren: () =>
       import(
         './pages/written-stories-details/written-stories-details.module'

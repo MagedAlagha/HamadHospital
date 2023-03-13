@@ -18,18 +18,6 @@
       </div>
     </div>
 
-    <!--     <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '640px'}"
-      [numVisible]="5">
-      <ng-template pTemplate="item" let-item>
-        <img [src]="item.previewImageSrc" style="width: 100%;" />
-      </ng-template>
-      <ng-template pTemplate="thumbnail" let-item>
-        <div class="grid grid-nogutter justify-content-center">
-          <img [src]="item.thumbnailImageSrc" />
-        </div>
-      </ng-template>
-    </p-galleria> -->
-
 
     <p-galleria [numVisible]="3" [value]="images">
       <ng-template pTemplate="item" let-item>
@@ -62,46 +50,27 @@
 
 <div class="container mb-4">
   <div class="section-2 d-flex align-items-center mb-2">
-    <div class="line"> </div>
-    <h2 class="d-inline-block ps-2">اخر الاخبار</h2>
+    <div class="line"></div>
+    <h2 class="d-inline-block ps-2">اخر الصور</h2>
   </div>
+  <ng-container *ngIf="MediaCenterService$ |async as data">
   <div class="row">
-    <div class="col-md-4 mt-md-0 mt-3">
+    <div class="col-md-4 mt-md-0 mt-3" *ngFor="let item of data.slice(-3)">
       <div class="img">
-        <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
+        <img
+        [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
+          class="img-fluid main-img"
+          alt=""
+        />
         <div class="d-flex justify-content-between img-title">
-          <p>عنوان الالبوم</p>
+          <p> {{ isEn ? item?.TitleEn : item?.TitleAr  | slice:0:30 }} {{  isEn ? item?.TitleEn.length : item?.TitleAr.length > 30 ? '...' : '' }}</p>
           <div>
-            <span>10</span>
-            <img src="../../../../assets/img/photo.svg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mt-md-0 mt-3">
-      <div class="img">
-        <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
-        <div class="d-flex justify-content-between img-title">
-          <p>عنوان الالبوم</p>
-          <div>
-            <span>10</span>
-            <img src="../../../../assets/img/photo.svg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mt-md-0 mt-3">
-      <div class="img">
-        <img src="../../../../assets/img/image.webp" class="img-fluid main-img" alt="">
-        <div class="d-flex justify-content-between img-title">
-          <p>عنوان الالبوم</p>
-          <div>
-            <span>10</span>
-            <img src="../../../../assets/img/photo.svg" alt="">
+           <!--  <span>{{data.length}}</span> -->
+            <img src="../../../../assets/img/photo.svg" alt="" />
           </div>
         </div>
       </div>
     </div>
   </div>
-
+</ng-container>
 </div>
