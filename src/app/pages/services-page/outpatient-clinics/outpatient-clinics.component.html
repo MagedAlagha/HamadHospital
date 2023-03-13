@@ -76,40 +76,17 @@
     <hr />
     <!--  -->
 
-    <div class="col-12" *ngIf="HearingServices$ | async as data">
+
+    <div class="row py-5 section-2" *ngIf="HearingServices$ | async as data">
+      <div class="col-md-6">
+        <img [src]=" 'http://hamad_api.accessline.ps'+ data?.OutpatientClinicsSectionImagePath" class="img-fluid" >
+      </div>
+    <div class="col-md-6">
       <div  [innerHTML]="isEn ? data?.OutpatientClinicsSectionEn : data?.OutpatientClinicsSectionAr "></div>
+    </div>
     </div>
 
 
-   <!--  <div class="row py-5 section-2 align-items-center">
-      <div class="col-md-5 order-md-0 order-1 mt-md-0 mt-3">
-        <h2 class="d-inline-block pb-2">وحدة التشخيص</h2>
-
-        <div class="content pe-2 ps-3">
-          <p>
-            لوريم ايبسوم هو نموذج افتراضي لتعرض ليتصور طريقه وضع النصوص
-            بالتصاميم سواء كانت تصاميم مطبوعه
-          </p>
-          <p>
-            لوريم ايبسوم هو نموذج افتراضالعميل ليتصور طريقلتصاميم سواء كانت
-            تصاميم مطبوعه
-          </p>
-          <p>
-            لوريم ايبسوم هو نموذج افتراضالعميل ليتصور طريقلتصاميم سواء كانت
-            تصاميم مطبوعه
-          </p>
-        </div>
-      </div>
-
-      <div class="col-md-7 order-md-1 order-0">
-        <img
-          src="../../../../assets/img/outpatient.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-    </div> -->
-    <!--  -->
   </div>
 </section>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { MediaCenterService } from '../media-center/media-center.service';
@@ -13,7 +13,7 @@ export class NewsDetailsComponent implements OnInit {
   isEn = document.dir == 'ltr' ? true : false;
 ID:any;
 showNews$!:Observable<any>;
-  constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService) {
+  constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService , private renderer: Renderer2) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID)
    }
@@ -36,6 +36,10 @@ showNews$!:Observable<any>;
     if(data){
     console.log(data , "{gege")
     }
+  }
+  showNews(item:any){
+    this._mediaCenterService.updateStore({ showNews: item });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 }

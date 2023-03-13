@@ -19,7 +19,29 @@
     </div>
 
 
-    <p-galleria [numVisible]="3" [value]="images">
+    <ng-container *ngIf="ImageSection$ | async as data">
+      <p-galleria [numVisible]="3" [value]="data" >
+        <ng-template pTemplate="item" let-item>
+          <img
+          [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+
+            style="width: 90%; height: 450px; object-fit: cover"
+          />
+        </ng-template>
+
+        <ng-template pTemplate="thumbnail" let-item>
+          <div class="grid grid-nogutter justify-content-center">
+            <img
+            [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+              width="80%"
+            />
+          </div>
+        </ng-template>
+      </p-galleria>
+    </ng-container>
+
+
+ <!--    <p-galleria [numVisible]="3" [value]="images">
       <ng-template pTemplate="item" let-item>
         <img [src]="item.previewImageSrc" [alt]="item.alt" [title]="item.title"
           style="width: 90%; height: 450px; object-fit: cover;" />
@@ -30,17 +52,8 @@
           <img [src]="item.thumbnailImageSrc" [alt]="item.alt" [title]="item.title" width=80% />
         </div>
       </ng-template>
-    </p-galleria>
+    </p-galleria> -->
 
-    <div class="row d-flex justify-content-center my-4">
-      <div class="col-md-10 post-p">
-        <!--  -->
-        <p>
-          {{ isEn ? data?.DescEn : data?.DescAr }}
-        </p>
-
-      </div>
-    </div>
 
   </div>
 </section>
@@ -56,7 +69,7 @@
   <ng-container *ngIf="MediaCenterService$ |async as data">
   <div class="row">
     <div class="col-md-4 mt-md-0 mt-3" *ngFor="let item of data.slice(-3)">
-      <div class="img">
+      <div class="img" routerLink="/photo-details/{{item.ID}}" (click)="showPhotosDetails(item)"  >
         <img
         [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
           class="img-fluid main-img"

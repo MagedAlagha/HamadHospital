@@ -8,7 +8,7 @@ import { VideoPreviewModalComponent } from './modal/video-preview-modal/video-pr
 import { SafePipe } from 'src/app/pages/media-center/video-gallery/safe.pipe';
 
 @NgModule({
-  declarations: [VideoGalleryComponent, VideoPreviewModalComponent , SafePipe ],
+  declarations: [VideoGalleryComponent, VideoPreviewModalComponent ,     SafePipe  ],
   imports: [
     CommonModule,
     ImageModule,

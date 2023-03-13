@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../../../media-center.service';
 import { VisualStoriesService } from '../../visual-stories.service';
 
@@ -19,7 +19,9 @@ video$!:Observable<any>;
     if(this.data){
       console.log('data' , this.data)
     }
-this.video$ = this._mediaCenterService.Selector$('VideoDetails');
+    this.video$ = this._mediaCenterService.Selector$('VideoDetails').pipe(tap(value=>{
+      console.log('data3333333' , value)
+    }));
 
   }
 

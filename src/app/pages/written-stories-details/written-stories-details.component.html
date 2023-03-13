@@ -1,75 +1,90 @@
+<ng-container *ngIf="PhotosDetails$ | async as data">
+  <section class="news">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+          <div class="section-title">
+            <ng-container *ngIf="data.MainServiceID === 1">
+              <span>التأهيل الطبي</span>
+            </ng-container>
+            <ng-container *ngIf="data.MainServiceID === 2">
+              <span>الاطراف الصناعية</span>
+            </ng-container>
+            <ng-container *ngIf="data.MainServiceID === 3">
+              <span>السمع والتوازن</span>
+            </ng-container>
+            <ng-container *ngIf="data.MainServiceID === 4">
+              <span>العيادة الخارجية</span>
+            </ng-container>
+            <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}</h1>
+          </div>
+        </div>
+      </div>
 
-<ng-container *ngIf="PhotosDetails$ |async as data">
-<section class="news">
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-8">
-        <div class="section-title">
-          <ng-container *ngIf="data.MainServiceID === 1">  <span>التأهيل الطبي</span>  </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 2">  <span>الاطراف الصناعية</span>  </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 3">  <span>السمع والتوازن</span>  </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 4">  <span>العيادة الخارجية</span>  </ng-container>
-          <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <owl-carousel-o [options]="customOptions" style="position: relative">
+            <ng-container *ngIf="ImageSection$ | async as data">
+              <ng-template carouselSlide *ngFor="let item of data">
+                <img
+                  [src]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+                  class="img-fluid"
+                  style="
+                    object-fit: cover;
+                    width: 100%;
+                    max-height: 530px;
+                    border-radius: 8px;
+                  "
+                  alt=""
+                />
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+        <div class="col-md-10">
+          <p>{{ isEn ? data?.DescEn : data?.DescAr }}</p>
         </div>
       </div>
     </div>
-
-    <div class="row justify-content-center" >
-      <div class="col-md-10">
-
-    <owl-carousel-o [options]="customOptions" style="position: relative;">
-      <ng-template carouselSlide  >
-        <img
-          src="../../../../assets/img/hero.png"
-          class="img-fluid"
-          style="object-fit: cover; width: 100% ; max-height: 530px; border-radius: 8px;"
-          alt=""
-        />
-
-      </ng-template>
-      <ng-template carouselSlide  >
-        <img
-          src="../../../../assets/img/hero.png"
-          class="img-fluid"
-          style="object-fit: cover; width: 100% ; max-height: 530px; border-radius: 8px;"
-          alt=""
-        />
-
-      </ng-template>
-      <ng-template carouselSlide  >
-        <img
-          src="../../../../assets/img/hero.png"
-          class="img-fluid"
-          style="object-fit: cover; width: 100% ; max-height: 530px; border-radius: 8px;"
-          alt=""
-        />
-
-      </ng-template>
-    </owl-carousel-o>
-      </div>
-    </div>
-
-  </div>
-</section>
+  </section>
 </ng-container>
 <div class="container py-5">
   <div class="section-2 d-flex align-items-center mb-2">
     <div class="line"></div>
     <h2 class="d-inline-block ps-2">قصص نجاح</h2>
   </div>
-  <ng-container *ngIf="MediaCenterService$ |async as data">
+  <ng-container *ngIf="MediaCenterService$ | async as data">
     <div class="row">
       <div class="col-md-4 mt-md-0 mt-3" *ngFor="let item of data.slice(-3)">
-        <div class="img">
+        <div
+          class="img"
+          routerLink="/written-stories-details/{{ item.ID }}"
+          (click)="showPhotosDetails(item)"
+        >
           <img
-          [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
+            [src]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+            style="
+              width: 100%;
+              object-fit: cover;
+              height: 260px;
+              border-radius: 6px;
+            "
             class="img-fluid main-img"
             alt=""
           />
           <div class="d-flex justify-content-between img-title">
-            <p> {{ isEn ? item?.TitleEn : item?.TitleAr  | slice:0:30 }} {{  isEn ? item?.TitleEn.length : item?.TitleAr.length > 30 ? '...' : '' }}</p>
+            <p>
+              {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 30) }}
+              {{
+                isEn
+                  ? item?.TitleEn.length
+                  : item?.TitleAr.length > 30
+                  ? "..."
+                  : ""
+              }}
+            </p>
             <div>
-             <!--  <span>{{data.length}}</span> -->
+              <!--  <span>{{data.length}}</span> -->
               <img src="../../../../assets/img/photo.svg" alt="" />
             </div>
           </div>
@@ -78,5 +93,3 @@
     </div>
   </ng-container>
 </div>
-
-

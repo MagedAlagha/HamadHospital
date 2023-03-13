@@ -57,3 +57,23 @@ li a.active , a:hover , .active{
 .remove-rotate{
   /* transform: rotate(0); */
 }
+
+/* عربي */
+
+.portfolio #portfolio-flters li:last-child {
+  margin-right: 10px !important;
+}
+.cta .startProjectBtn{
+  display: inline-flex !important;
+}
+
+.contact-box .align-items-center{
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 786px){
+  .partners img {
+    width: 100% !important;
+}
+}

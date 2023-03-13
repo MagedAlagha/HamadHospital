@@ -23,6 +23,7 @@ export class MediaCenterService {
     PressStories:undefined,
     ImageSection:undefined,
     VisualStories:undefined,
+    PhotoGalaryDetails:undefined,
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -81,5 +82,6 @@ export interface StoreInterface {
   PressStories?: any;
   ImageSection?: any;
   VisualStories?: any;
+  PhotoGalaryDetails?: any;
 }
 export type selectorsType = keyof StoreInterface;

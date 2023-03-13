@@ -4,7 +4,7 @@ import { MediaCenterComponent } from './media-center.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [MediaCenterComponent],
+  declarations: [MediaCenterComponent ],
   imports: [
     CommonModule,
     RouterModule.forChild([

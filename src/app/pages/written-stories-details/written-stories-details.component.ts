@@ -7,37 +7,48 @@ import { MediaCenterService } from '../media-center/media-center.service';
 @Component({
   selector: 'app-written-stories-details',
   templateUrl: './written-stories-details.component.html',
-  styleUrls: ['./written-stories-details.component.scss']
+  styleUrls: ['./written-stories-details.component.scss'],
 })
 export class WrittenStoriesDetailsComponent implements OnInit {
-
-  MediaCenterService$!:Observable<any>;
+  MediaCenterService$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-ID:any;
-PhotosDetails$!:Observable<any>;
-  constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService) {
+  ID: any;
+  PhotosDetails$!: Observable<any>;
+  ImageSection$!: Observable<any>;
+  constructor(
+    private route: ActivatedRoute,
+    private _mediaCenterService: MediaCenterService
+  ) {
     this.ID = this.route.snapshot.paramMap.get('id');
-    console.log(this.ID)
-   }
+    console.log(this.ID);
+  }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
+    this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
+    this.MediaCenterService$ = this._mediaCenterService
+      .Selector$('MediaSectionsItems')
+      .pipe(
+        map((val) => {
+          return val?.filter((item: any) => {
+            return item.MediaSectionID === 2;
+          });
+        })
+      );
 
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID === 2;
-        });
-      })
-    );
+    this.PhotosDetails$ = this._mediaCenterService
+      .Selector$('VideoDetails')
+      .pipe(
+        tap((value) => {
+          console.log('PhotosDetails', value);
+          this._mediaCenterService.getImageSection(value.ID);
+        })
+      );
+  }
 
-    this.PhotosDetails$ = this._mediaCenterService.Selector$('PhotosDetails').pipe(tap(value=>{
-      console.log('PhotosDetails' , value)
-    }))
-    const data  = this._mediaCenterService.dataStore.PhotosDetails
-    if(data){
-    console.log(data , "{gege")
-    }
+  showPhotosDetails(item: any) {
+    this._mediaCenterService.updateStore({ PhotosDetails: item });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   customOptions: OwlOptions = {
@@ -70,5 +81,4 @@ PhotosDetails$!:Observable<any>;
       },
     },
   };
-
 }

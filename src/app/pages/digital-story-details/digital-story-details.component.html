@@ -58,7 +58,7 @@
   <ng-container *ngIf="MediaCenterService$ |async as data">
   <div class="row">
     <div class="col-md-4 mt-md-0 mt-3" *ngFor="let item of data.slice(-3)">
-      <div class="img">
+      <div class="img" routerLink="/digital-story-details/{{item.ID}}" (click)="showVisualStories(item)">
         <img
         [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
           class="img-fluid main-img"

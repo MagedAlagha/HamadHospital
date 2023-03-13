@@ -47,8 +47,9 @@
     <ng-container *ngIf="MediaCenterService$ |async as data">
 
     <div class="col-md-4" *ngFor="let item of data.slice(-3) ">
-      <div class="post-box mt-3">
-        <div class="post-img"><img src="../../../assets/img/Bg.png" class="img-fluid" alt=""></div>
+      <div class="post-box mt-3" routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)" >
+        <div class="post-img"> <img [src]="'http://hamad_api.accessline.ps'+ item?.ImagePath" style="object-fit: cover; width: 100%; max-height: 300px;" class="img-fluid" alt="">
+        </div>
         <div class="d-flex justify-content-between align-items-baseline mb-1 ">
 
           <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
@@ -61,7 +62,7 @@
         </div>
         <h3 class="post-title">{{ isEn ? item?.TitleEn : item?.TitleAr   | slice:0:50 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 50 ? '...' : '' }}  </h3>
         <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
-         <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
+         <a routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
              المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
          </a>
       </div>
