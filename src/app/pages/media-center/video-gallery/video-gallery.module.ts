@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { VideoGalleryComponent } from '../video-gallery/video-gallery.component';
 import { RouterModule } from '@angular/router';
 import {ImageModule} from 'primeng/image';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule } from 'primeng/dialog';
-import { BrowserModule } from '@angular/platform-browser';
 import { VideoPreviewModalComponent } from './modal/video-preview-modal/video-preview-modal.component';
+import { SafePipe } from 'src/app/pages/media-center/video-gallery/safe.pipe';
 
 @NgModule({
-  declarations: [VideoGalleryComponent, VideoPreviewModalComponent ],
+  declarations: [VideoGalleryComponent, VideoPreviewModalComponent , SafePipe ],
   imports: [
     CommonModule,
     ImageModule,

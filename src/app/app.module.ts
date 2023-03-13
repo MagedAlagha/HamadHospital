@@ -13,6 +13,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HttpClientModule } from '@angular/common/http';
 import { StoriesHomeComponent } from './pages/stories-home/stories-home.component';
+import { SafePipe } from './pages/media-center/video-gallery/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { StoriesHomeComponent } from './pages/stories-home/stories-home.componen
     FooterComponent,
     HomeComponent,
     PageNotFoundComponent,
+
   ],
   imports: [
     BrowserModule,

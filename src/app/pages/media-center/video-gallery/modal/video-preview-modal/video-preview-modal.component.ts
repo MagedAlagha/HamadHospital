@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../../../media-center.service';
 import { VideoGalleryService } from '../../video-gallery.service';
 
@@ -17,17 +17,13 @@ video$!:Observable<any>;
 
      this.data = this._mediaCenterService.dataStore.VideoDetails ;
     if(this.data){
-      console.log('data' , this.data)
+      console.log('datadatadatadata' , this.data)
     }
-this.video$ = this._mediaCenterService.Selector$('VideoDetails');
+    this.video$ = this._mediaCenterService.Selector$('VideoDetails').pipe(tap(value=>{
+      console.log('data3333333' , value)
+    }));
 
   }
-
-
-  @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
-
-
-
 
   /* closeDialog() {
     this._videoGalleryService.displayDialogs('VideoDialog', false);
