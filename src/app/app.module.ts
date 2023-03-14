@@ -11,9 +11,12 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoriesHomeComponent } from './pages/stories-home/stories-home.component';
 import { SafePipe } from './pages/media-center/video-gallery/safe.pipe';
+import { InterceptorService } from './shared/services/interceptor.service';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,20 @@ import { SafePipe } from './pages/media-center/video-gallery/safe.pipe';
     DropdownModule,
     CarouselModule,
     HttpClientModule,
-    StoriesHomeComponent
+    StoriesHomeComponent,
+    ToastModule
   ],
 exports:[
   StoriesHomeComponent,
 ],
-  providers: [],
+  providers: [MessageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true,
+  },
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

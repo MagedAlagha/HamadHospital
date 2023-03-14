@@ -23,6 +23,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^5.2.3",
     "primeicons": "^6.0.1",
+    "@ngx-translate/core": "^13.0.0",
     "moment": "^2.29.0",
     "primeng": "^14.0.0",
     "rxjs": "~7.5.0",
