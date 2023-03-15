@@ -9,6 +9,9 @@
       <div class="col-md-6">
         <label>البريد الالكتروني </label>
         <input formControlName="Email" type="email" pInputText>
+        <div *ngIf="Form_AppointmentBooking.get('Email')?.invalid && Form_AppointmentBooking.get('Email')?.touched" class="error">
+          <div *ngIf="Form_AppointmentBooking.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
+        </div>
       </div>
       <div class="col-md-6">
         <label>رقم الهاتف </label>
@@ -45,6 +48,9 @@
       <div class="col-md-6">
         <label>البريد الالكتروني </label>
         <input formControlName="Email" type="email" pInputText>
+        <div *ngIf="Form_Suggestion.get('Email')?.invalid && Form_Suggestion.get('Email')?.touched" class="error">
+          <div *ngIf="Form_Suggestion.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
+        </div>
       </div>
       <div class="col-md-6">
         <label>رقم الهاتف </label>
@@ -72,6 +78,9 @@
       <div class="col-md-6">
         <label>البريد الالكتروني </label>
         <input formControlName="Email" type="email" pInputText>
+        <div *ngIf="Form_Rating.get('Email')?.invalid && Form_Rating.get('Email')?.touched" class="error">
+          <div *ngIf="Form_Rating.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
+        </div>
       </div>
       <div class="col-md-6">
         <label>رقم الهاتف </label>

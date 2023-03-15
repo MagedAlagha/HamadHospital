@@ -10,6 +10,9 @@
       <div class="col-md-6">
         <label>البريد الالكتروني </label>
         <input formControlName="Email" type="email" pInputText>
+        <div *ngIf="Form_PressCoverageRequest.get('Email')?.invalid && Form_PressCoverageRequest.get('Email')?.touched" class="error">
+          <div *ngIf="Form_PressCoverageRequest.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
+        </div>
       </div>
       <div class="col-md-6">
         <label>رقم الهاتف </label>

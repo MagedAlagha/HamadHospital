@@ -37,7 +37,7 @@ export class WrittenStoriesDetailsComponent implements OnInit {
       );
 
     this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('VideoDetails')
+      .Selector$('PhotosDetails')
       .pipe(
         tap((value) => {
           console.log('PhotosDetails', value);

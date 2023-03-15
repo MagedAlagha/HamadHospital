@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { ServicesHospitalService } from '../services-hospital.service';
 
 @Component({
@@ -10,14 +11,14 @@ import { ServicesHospitalService } from '../services-hospital.service';
 export class VisitorServiceComponent implements OnInit {
   Form_Visitors:FormGroup;
   cities!: any[];
-  constructor(private fb:FormBuilder , private _servicesHospitalService:ServicesHospitalService) {
+  constructor(private fb:FormBuilder , private _servicesHospitalService:ServicesHospitalService , private messageService: MessageService) {
     this.Form_Visitors = fb.group({
-      FullName:[''],
-      Email:[''],
-      PhoneNumber:[''],
-      Address:[''],
-      CommunicationReason:[''],
-      TextMessage:[''],
+      FullName:['' , Validators.required],
+      Email:['', [Validators.required, Validators.email]],
+      PhoneNumber:['', Validators.required],
+      Address:['', Validators.required],
+      CommunicationReason:['', Validators.required],
+      TextMessage:['', Validators.required],
     })
   }
 
@@ -31,8 +32,16 @@ export class VisitorServiceComponent implements OnInit {
   }
 
   saveVisitors(){
-     this._servicesHospitalService.saveVisitors(this.Form_Visitors.value );
-     console.log(this.Form_Visitors.value)
+    if (this.Form_Visitors.invalid) {
+      this.messageService.add({
+        severity: 'error',
+        detail: 'جميع الحقول مطلوبة',
+      });
+    } else {
+      this._servicesHospitalService.saveVisitors(this.Form_Visitors.value );
+      this.Form_Visitors.reset();
+    }
+
   }
 
 }
