@@ -6,7 +6,7 @@
   </div>
   <div class="col-md-6">
     <label>البريد الالكتروني </label>
-    <input formControlName="Email" type="email" pInputText>
+    <input formControlName="Email" type="email" pInputText  required>
     <div *ngIf="Form_Visitors.get('Email')?.invalid && Form_Visitors.get('Email')?.touched" class="error">
       <div *ngIf="Form_Visitors.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
     </div>

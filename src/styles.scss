@@ -4,7 +4,7 @@
  @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
-body , .p-component{
+body , .p-component , .p-dropdown .p-dropdown-label{
   font-family: 'Cairo', sans-serif !important;
 }
 body {
@@ -213,4 +213,11 @@ a{
 }
 .section-2 img{
   border-radius: 6px;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight{
+  color: #8a1538 !important;
+    background: #8a153822 !important;
+}
+.p-dropdown:not(.p-disabeld).p-focus{
+  box-shadow: 0 0 0 0.2rem #8a153851 !important;
 }

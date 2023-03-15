@@ -23,7 +23,11 @@ export class BeneficiariesServiceComponent implements OnInit {
     this.Form_AppointmentBooking = fb.group({
       FullName: ['', Validators.required],
       Email: ['',  [Validators.required, Validators.email]],
-      PhoneNumber: ['', Validators.required],
+      PhoneNumber:['',[
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ]],
       Address: ['', Validators.required],
       Appointment: ['', Validators.required],
       DepartmentID: ['', Validators.required],
@@ -33,7 +37,11 @@ export class BeneficiariesServiceComponent implements OnInit {
     this.Form_Suggestion = fb.group({
       FullName: ['', Validators.required],
       Email: ['',  [Validators.required, Validators.email]],
-      PhoneNumber: ['', Validators.required],
+      PhoneNumber:['',[
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ]],
       Address: ['', Validators.required],
       TextMessage: ['', Validators.required],
     });
@@ -41,7 +49,11 @@ export class BeneficiariesServiceComponent implements OnInit {
     this.Form_Rating = fb.group({
       FullName: ['', Validators.required],
       Email: ['',  [Validators.required, Validators.email]],
-      PhoneNumber: ['', Validators.required],
+      PhoneNumber:['',[
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ]],
       Address: ['', Validators.required],
       hospitalRating: ['', Validators.required],
     });

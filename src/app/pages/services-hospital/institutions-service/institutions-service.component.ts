@@ -19,14 +19,22 @@ export class InstitutionsServiceComponent implements OnInit {
     this.Form_PressCoverageRequest = fb.group({
       FullName: ['' , Validators.required],
       Email: ['', [Validators.required, Validators.email]],
-      PhoneNumber: ['', Validators.required],
+      PhoneNumber:['',[
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ]],
       Address: ['', Validators.required],
       TextMessage: ['', Validators.required],
     });
     this.Form_VisitRequest = fb.group({
       FullName: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
-      PhoneNumber: ['', Validators.required],
+      PhoneNumber:['',[
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ]],
       Address: ['', Validators.required],
       TextMessage: ['', Validators.required],
     });

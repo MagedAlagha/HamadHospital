@@ -1,6 +1,7 @@
 <section class="mt-5">
   <div class="container">
     <div class="row">
+      <ng-container *ngIf="LandingPageData$ | async as data"  >
       <div class="col-md-4 pe-md-0 d-flex align-items-stretch ">
         <div class="contact-box p-5">
           <img src="../../../assets/img/patern.png" class="img-fluid patern" alt="">
@@ -8,41 +9,41 @@
             <img src="../../../assets/img/mail.svg" alt="">
             <div class="ms-3">
               <span>الإيميل</span>
-              <a href="mailto:info@hamad.ps">info@hamad.ps</a>
+              <a href="mailto:{{data?.MainInfo.Email}}">{{data?.MainInfo.Email}}</a>
             </div>
           </div>
           <div class="contacts mt-4">
             <img src="../../../assets/img/phone.svg" alt="">
             <div class="ms-3">
               <span>الهاتف</span>
-              <a href="1700170070">1700 1700 70</a>
+              <a >{{data?.MainInfo.Phone}}</a>
             </div>
           </div>
           <div class="contacts my-4">
             <img src="../../../assets/img/device-mobile.svg" alt="">
             <div class="ms-3">
               <span>الجوال</span>
-              <a href="tel:0562331013">0562331013</a>
+              <a href="tel:0562331013">{{data?.MainInfo.Mobile}}</a>
             </div>
           </div>
           <div class="contacts">
             <img src="../../../assets/img/map-pin.svg" alt="">
             <div class="ms-3">
               <span>العنوان</span>
-              <a href=""> غزة, ش الرشيد بجوار فندق
-                المتحف مقابل مسجد الخالدي.</a>
+              <a>{{data?.MainInfo.Location}} </a>
             </div>
           </div>
           <div class="social-links text-center">
             <h6>مواقع التواصل الاجتماعي :</h6>
-            <p>@gazahamad</p>
-            <a href=""><img src="../../../assets/img/brand-facebook.svg" alt=""></a>
-            <a href="" class="mx-2"><img src="../../../assets/img/brand-youtube.svg" alt=""></a>
-            <a href="" class="me-2"><img src="../../../assets/img/brand-instagram.svg" alt=""></a>
-            <a href=""><img src="../../../assets/img/brand-twitter.svg" alt=""></a>
+            <p>{{data?.MainInfo.SocialMediaTag}}</p>
+            <a [href]="data?.MainInfo.FacebookLink" target="_blank"><img src="../../../assets/img/brand-facebook.svg" alt=""></a>
+            <a [href]="data?.MainInfo.YoutubeLink" class="mx-2" target="_blank"><img src="../../../assets/img/brand-youtube.svg" alt=""></a>
+            <a [href]="data?.MainInfo.InstagramLink" class="me-2" target="_blank"><img src="../../../assets/img/brand-instagram.svg" alt=""></a>
+            <a [href]="data?.MainInfo.TwitterLink" target="_blank"><img src="../../../assets/img/brand-twitter.svg" alt=""></a>
           </div>
         </div>
       </div>
+    </ng-container>
       <div class="col-md-8 ps-md-0 d-flex align-items-stretch">
         <div class="form-box p-4">
           <router-outlet></router-outlet>

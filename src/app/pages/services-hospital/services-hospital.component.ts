@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { HomeService } from '../home/home.service';
 
 @Component({
   selector: 'app-services-hospital',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services-hospital.component.scss']
 })
 export class ServicesHospitalComponent implements OnInit {
-
-  constructor() { }
+  LandingPageData$!:Observable<any>;
+  constructor(private _homeService:HomeService) { }
 
   ngOnInit(): void {
+    this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo');
   }
 
 }
