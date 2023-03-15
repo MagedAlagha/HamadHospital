@@ -119,3 +119,14 @@ hr{
     top: 10px;
 
 }
+
+.p-hide{
+  display: none;
+  transition: .5s all;
+}
+
+
+.body-box:hover .p-hide{
+  display: block;
+  transition: .5s all;
+}

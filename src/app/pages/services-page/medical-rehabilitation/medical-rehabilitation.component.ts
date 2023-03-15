@@ -33,7 +33,13 @@ export class MedicalRehabilitationComponent implements OnInit {
       );
 
     this.MedicalRehabilitationServices$ =
-      this._medicalRehabilitationService.Selector$('MedicalRehabilitationServices');
+      this._medicalRehabilitationService.Selector$('MedicalRehabilitationServices').pipe(
+        map((val) => {
+          return val?.filter((item: any) => {
+            return item.IsActive;
+          });
+        })
+      );;
 
     this.Services$ = this._homeService.Selector$('Services');
   }

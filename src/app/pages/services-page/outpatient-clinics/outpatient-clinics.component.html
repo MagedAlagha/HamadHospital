@@ -59,9 +59,10 @@
                 <div class="row"  >
                   <ng-container *ngFor="let serivce of OutpatientClinicsDepartmentsServices$ | async">
                     <ng-container *ngIf="item.ID == serivce.OutpatientClinicsDepartmentID">
-                      <div class="col-md-4">
-                        <div class="body-box" [pTooltip]="isEn ? serivce?.DescEn : serivce?.DescAr" tooltipPosition="top" [positionStyle]	="widthToolTip" >
+                      <div class="col-md-4"> <!--  [pTooltip]="isEn ? serivce?.DescEn : serivce?.DescAr"  tooltipPosition="top" [positionStyle]	="widthToolTip" -->
+                        <div class="body-box"  >
                           {{ isEn ? serivce?.NameEn : serivce?.NameAr }}
+                          <p class="text-center p-hide" style="font-size: 13px; padding-top: 8px;">{{isEn ? serivce?.DescEn : serivce?.DescAr}}</p>
                         </div>
                       </div>
                     </ng-container>

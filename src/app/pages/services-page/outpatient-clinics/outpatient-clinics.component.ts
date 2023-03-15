@@ -35,7 +35,13 @@ export class OutpatientClinicsComponent implements OnInit {
       })
     );
 
-    this.OutpatientClinicsDepartmentsServices$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartmentsServices')
+    this.OutpatientClinicsDepartmentsServices$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartmentsServices').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.IsActive;
+        });
+      })
+    );
 
   }
 

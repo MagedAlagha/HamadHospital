@@ -24,6 +24,11 @@ export class ProstheticsComponent implements OnInit {
     this._prostheticsService.getProstheticsTypes();
     this._prostheticsService.getProsthetics();
     this.Prosthetics$ = this._prostheticsService.Selector$('prosthetics').pipe(
+      map((val: any) => {
+        return val?.filter((item: any) => {
+          return item.IsActive;
+        });
+      }),
       filter((val:any)=>val.length),
       map((val: any) => {
         return (
@@ -41,17 +46,24 @@ export class ProstheticsComponent implements OnInit {
         return (this.ProstheticsTypes$ = this._prostheticsService
           .Selector$('prostheticsTypes')
           .pipe(
+            map((val: any) => {
+              return val?.filter((item: any) => {
+                return item.IsActive;
+              });
+            }),
             map((prostheticsType: any) => {
               return this.convertToTree(prostheticsType.concat(prosthetic));
             }),
 
-            tap((val: any) => {
-              console.log('xxxccc', val);
-            }),
+
           ));
       })
     );
   }
+
+
+
+
 
   convertToTree(list: any[]) {
     // });

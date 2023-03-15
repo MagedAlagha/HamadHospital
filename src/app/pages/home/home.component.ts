@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       map((val) => {
         return val?.filter((item: any) => {
           return item.IsActive;
-        }); he
+        });
       })
     ); */
 
