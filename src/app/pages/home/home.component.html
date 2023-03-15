@@ -1,4 +1,4 @@
-<div class="hero">
+<div class="hero" >
   <owl-carousel-o [options]="customOptions">
     <ng-container *ngIf="LandingPageData$ | async as data">
       <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
@@ -24,7 +24,7 @@
 </div>
 <section class="about">
   <div class="container">
-    <div class="section-header text-center mb-5">
+    <div class="section-header text-center mb-4">
       <div class="row">
         <div class="col-md-4 col-2">
           <span class="line"></span>
@@ -37,11 +37,17 @@
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="LandingPageData$ | async as data">
+    <ng-container *ngIf="LandingPageData$ | async as data" >
+      <div class="row justify-content-center mb-4  ">
+        <div class=" col-md-9 col-sm-6 col-12 text-center   ">
+          <p style="font-weight: 600; line-height: 28px; "   >{{data.MainInfo.About}}</p>
+        </div>
+      </div>
+    <div class="row" >
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
-        <a routerLink="/services/medical-rehabilitation">
+        <a routerLink="/services/medical-rehabilitation" style="100%">
           <div class="icon-box">
             <div class="icon">
               <img
@@ -60,7 +66,7 @@
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
-        <a routerLink="/services/prosthetics">
+        <a routerLink="/services/prosthetics" style="100%">
           <div class="icon-box">
             <div class="icon">
               <img
@@ -80,7 +86,7 @@
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
-        <a routerLink="/services/hearing-balance">
+        <a routerLink="/services/hearing-balance" style="100%">
           <div class="icon-box">
             <div class="icon">
               <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
@@ -97,7 +103,7 @@
       <div
         class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
       >
-        <a routerLink="/services/outpatient-clinics">
+        <a routerLink="/services/outpatient-clinics" style="100%">
           <div class="icon-box">
             <div class="icon">
               <img
@@ -114,6 +120,7 @@
         </a>
       </div>
     </div>
+  </ng-container>
   </div>
 </section>
 

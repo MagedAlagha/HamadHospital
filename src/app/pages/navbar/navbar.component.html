@@ -1,6 +1,6 @@
   <!-- [class]="isActive ==true ? 'hide-bg' : 'bg-light fixed-top'" -->
-
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top "  [class.navbar-scrolled]="isScrolled">
+ <!--  [class.navbar-scrolled]="isScrolled" -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top " [ngClass]="{'fixed-top': previousScrollPosition === 0}"  >
   <div class="container d-flex justify-content-between">
 
     <a class="navbar-brand" routerLink="/home">
@@ -94,13 +94,9 @@
       </ul>
 
       <div
-        routerLink="/services-form/beneficiaries-service"
-        class="drop-down d-inline-block"
-      >
-        <a>حجز موعد</a>
+        routerLink="/services-form/beneficiaries-service" class="drop-down d-inline-block">
+        <a style="color: #fff;">حجز موعد</a>
       </div>
-
-
 
     </div>
   </div>

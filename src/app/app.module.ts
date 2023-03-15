@@ -14,6 +14,9 @@ import { StoriesHomeComponent } from './pages/stories-home/stories-home.componen
 import { InterceptorService } from './interceptor.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { ParallaxComponent } from './pages/parallax/parallax.component';
+
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { ToastModule } from 'primeng/toast';
     FooterComponent,
     HomeComponent,
     PageNotFoundComponent,
+    ParallaxComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,8 @@ import { ToastModule } from 'primeng/toast';
     HttpClientModule,
     StoriesHomeComponent,
     ToastModule,
+
+
   ],
   exports: [StoriesHomeComponent],
   providers: [

@@ -172,9 +172,24 @@ box-shadow: none !important;
 
 
 .navbar {
-  transition: top 0.3s;
+  transition:  0.3s  all;
 }
 
 .navbar-scrolled {
   top: -95px;
+}
+.navbar-scroll {
+  transition: all 0.8s ease-in-out;
+}
+
+.navbar.show {
+  top: 0;
+  opacity: 1;
+  transition: .5s all;
+}
+
+.navbar:not(.show) {
+  top: -100px;
+  opacity: 0;
+  transition: .8s all !important;
 }

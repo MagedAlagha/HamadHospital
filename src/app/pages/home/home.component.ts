@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
 import { filter, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   Advertisements$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   avatar = environment?.avatar;
-  constructor(private _homeService: HomeService , private _mediaCenterService:MediaCenterService) {}
+  constructor(private _homeService: HomeService , private _mediaCenterService:MediaCenterService , private el: ElementRef) {}
 
   ngOnInit(): void {
     this._homeService.getSliderData();
@@ -41,8 +41,13 @@ export class HomeComponent implements OnInit {
         });
       })
     );
-
   }
+
+
+
+
+
+
 
   showNews(item:any){
     this._mediaCenterService.updateStore({ showNews: item });
