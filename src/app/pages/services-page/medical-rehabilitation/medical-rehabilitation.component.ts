@@ -20,6 +20,7 @@ export class MedicalRehabilitationComponent implements OnInit {
   isEn = document.dir == 'ltr' ? true : false;
 
   ngOnInit(): void {
+
     this._medicalRehabilitationService.getMedicalRehabilitationFeaturesInHome();
     this._medicalRehabilitationService.getMedicalRehabilitationServices();
     this.MedicalRehabilitationFeatures$ = this._medicalRehabilitationService

@@ -1,4 +1,4 @@
-<div class="hero" >
+<div class="hero">
   <owl-carousel-o [options]="customOptions">
     <ng-container *ngIf="LandingPageData$ | async as data">
       <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
@@ -37,115 +37,225 @@
         </div>
       </div>
     </div>
-    <ng-container *ngIf="LandingPageData$ | async as data" >
-      <div class="row justify-content-center mb-4  ">
-        <div class=" col-md-9 col-sm-6 col-12 text-center   ">
-          <p style="font-weight: 600; line-height: 28px; "   >{{data.MainInfo.About}}</p>
+    <ng-container *ngIf="LandingPageData$ | async as data">
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-9 col-sm-6 col-12 text-center">
+          <p style="font-weight: 600; line-height: 28px">
+            {{ data.MainInfo.About }}
+          </p>
         </div>
       </div>
-    <div class="row" >
-      <div
-        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
-      >
-        <a routerLink="/services/medical-rehabilitation" style="100%">
-          <div class="icon-box">
-            <div class="icon">
-              <img
-                [src]="avatar + data?.Services?.MedicalRehabilitationIconPath"
-                alt=""
-              />
-              <img src="../../../assets/img/04.svg" alt="" />
+      <div class="row">
+        <div
+          class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+        >
+          <a routerLink="/sections/medical-rehabilitation">
+            <div class="icon-box">
+              <div class="icon">
+                <img
+                  [src]="avatar + data?.Services?.MedicalRehabilitationIconPath"
+                  alt=""
+                />
+                <img src="../../../assets/img/04.svg" alt="" />
+              </div>
+              <h4>التأهيل الطبي</h4>
+              <p>
+                {{ data?.Services?.MedicalRehabilitationDesc }}
+              </p>
             </div>
-            <h4>التأهيل الطبي</h4>
-            <p>
-              {{ data?.Services?.MedicalRehabilitationDesc }}
-            </p>
-          </div>
-        </a>
-      </div>
-      <div
-        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
-      >
-        <a routerLink="/services/prosthetics" style="100%">
-          <div class="icon-box">
-            <div class="icon">
-              <img
-                [src]="avatar + data?.Services?.ProstheticsIconPath"
-                alt=""
-              />
-              <img src="../../../assets/img/03.svg" alt="" />
+          </a>
+        </div>
+        <div
+          class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+        >
+          <a routerLink="/sections/prosthetics">
+            <div class="icon-box">
+              <div class="icon">
+                <img
+                  [src]="avatar + data?.Services?.ProstheticsIconPath"
+                  alt=""
+                />
+                <img src="../../../assets/img/03.svg" alt="" />
+              </div>
+              <h4>الاطراف الصناعية</h4>
+              <p>
+                {{ data?.Services?.ProstheticsDesc }}
+              </p>
             </div>
-            <h4>الاطراف الصناعية</h4>
-            <p>
-              {{ data?.Services?.ProstheticsDesc }}
-            </p>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
 
-      <div
-        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
-      >
-        <a routerLink="/services/hearing-balance" style="100%">
-          <div class="icon-box">
-            <div class="icon">
-              <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
-              <img src="../../../assets/img/02.svg" alt="" />
+        <div
+          class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+        >
+          <a routerLink="/sections/hearing-balance">
+            <div class="icon-box">
+              <div class="icon">
+                <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
+                <img src="../../../assets/img/02.svg" alt="" />
+              </div>
+              <h4>السمع والتوازن</h4>
+              <p>
+                {{ data?.Services?.HearingDesc }}
+              </p>
             </div>
-            <h4>السمع والتوازن</h4>
-            <p>
-              {{ data?.Services?.HearingDesc }}
-            </p>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
 
-      <div
-        class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
-      >
-        <a routerLink="/services/outpatient-clinics" style="100%">
-          <div class="icon-box">
-            <div class="icon">
-              <img
-                [src]="avatar + data?.Services?.OutpatientClinicsIconPath"
-                alt=""
-              />
-              <img src="../../../assets/img/01.svg" alt="" />
+        <div
+          class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+        >
+          <a routerLink="/sections/outpatient-clinics">
+            <div class="icon-box">
+              <div class="icon">
+                <img
+                  [src]="avatar + data?.Services?.OutpatientClinicsIconPath"
+                  alt=""
+                />
+                <img src="../../../assets/img/01.svg" alt="" />
+              </div>
+              <h4>العيادة الخارجية</h4>
+              <p>
+                {{ data?.Services?.OutpatientClinicsDesc }}
+              </p>
             </div>
-            <h4>العيادة الخارجية</h4>
-            <p>
-              {{ data?.Services?.OutpatientClinicsDesc }}
-            </p>
+          </a>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>
+<!-- -------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------- -->
+
+<!-- Stores -->
+<section class="stores" >
+  <div class="section-header text-center">
+    <h3 class="px-md-5 px-2 text-white"> قصص ملهمة !<img src="../../../assets/img/05.svg" alt=""></h3>
+  </div>
+  <div class="container">
+    <div class="section-title">
+      <h4>قصص فيديو</h4>
+      <div class="line"></div>
+       <div class="d-flex justify-content-end mb-3">
+        <a  routerLink="/visual-stories-details" >شاهد المزيد</a>
+      </div>
+    </div>
+    <!-- row -->
+    <ng-container *ngIf="MediaCenterService$ |async as data">
+    <div class="row align-items-stretch">
+      <div class="col-md-8 d-flex align-items-stretch pb-5"  (click)="showVideoPreview(data[1])" >
+        <div style="width: 100%;">
+        <img [src]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/visual-stories-details/{{data[1]?.ID}}"
+           class="img-fluid" alt="">
+           <p style="color: #fff;">{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:40 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 40 ? '...' : '' }} </p>
+
+        </div>
+
+      </div>
+      <div class="col-md-4 d-flex align-items-stretch">
+        <div class="row">
+          <div class="col-md-12 col-6" (click)="showVideoPreview(data[0])">
+            <figure routerLink="/visual-stories-details">
+              <img [src]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/visual-stories-details/{{data[0]?.ID}}"
+           class="img-fluid" alt="">
+              <figcaption>{{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr  | slice:0:35 }} {{  isEn ? data[0]?.TitleEn.length : data[0]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
+            </figure>
           </div>
-        </a>
+          <div class="col-md-12 col-6" (click)="showVideoPreview(data[2])">
+            <figure>
+              <img [src]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/visual-stories-details/{{data[2]?.ID}}"
+              class="img-fluid" alt="">
+              <figcaption>{{ isEn ? data[2]?.TitleEn : data[2]?.TitleAr  | slice:0:35 }} {{  isEn ? data[2]?.TitleEn.length : data[2]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div>
+        </div>
       </div>
     </div>
   </ng-container>
   </div>
+  <!-- قصص مكتوبة -->
+  <div class="container mt-4">
+    <div class="section-title">
+      <h4>قصص رقمية</h4>
+      <div class="line"></div>
+      <div class="d-flex justify-content-end mb-3">
+        <a  routerLink="/visual-stories-details" >شاهد المزيد</a>
+      </div>
+    </div>
+    <!-- row  -->
+    <ng-container *ngIf="MediaCenterService2$ |async as data">
+      <div class="row align-items-stretch">
+        <div class="col-md-8 d-flex align-items-stretch pb-5"  (click)="showPhotosDetails(data[1])" >
+          <div style="width: 100%;">
+          <img [src]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/written-stories-details/{{data[1]?.ID}}"
+             class="img-fluid" alt="">
+             <p style="color: #fff;">{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:40 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 40 ? '...' : '' }} </p>
+          </div>
+
+        </div>
+        <div class="col-md-4 d-flex align-items-stretch">
+          <div class="row">
+            <div class="col-md-12 col-6" (click)="showPhotosDetails(data[0])">
+              <figure routerLink="/written-stories-details">
+                <img [src]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/written-stories-details/{{data[0]?.ID}}"
+             class="img-fluid" alt="">
+                <figcaption>{{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr  | slice:0:35 }} {{  isEn ? data[0]?.TitleEn.length : data[0]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
+              </figure>
+            </div>
+            <div class="col-md-12 col-6" (click)="showPhotosDetails(data[2])">
+              <figure>
+                <img [src]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/written-stories-details/{{data[2]?.ID}}"
+                class="img-fluid" alt="">
+                <figcaption>{{ isEn ? data[2]?.TitleEn : data[2]?.TitleAr  | slice:0:35 }} {{  isEn ? data[2]?.TitleEn.length : data[2]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
 </section>
 
+
+<!-- -------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------- -->
 <app-stories-home></app-stories-home>
 
 <!-- news -->
+  <!--   <a routerLink="/media-center/news/news-main">
+            عرض الكل <i class="fa-solid fa-arrow-left-long ps-1"></i
+          ></a>
 
-<section class="news">
-  <div class="container">
-    <div class="section-title mb-2">
+          <div class="section-title mb-2">
       <div class="row">
         <div class="col-6">
           <h4>الاخبار</h4>
         </div>
         <div class="col-6 text-end">
-          <a routerLink="/media-center/news/news-main">
-            عرض الكل <i class="fa-solid fa-arrow-left-long ps-1"></i
-          ></a>
+          <h4>منوعات</h4>
         </div>
       </div>
     </div>
+
+
+        -->
+<section class="news">
+  <div class="container">
+
     <ng-container *ngIf="LastNews$ | async as data">
       <div class="row gy-4">
-        <div class="col-md-8 d-flex align-items-stretch box">
-          <div class="row">
+
+        <div class="col-md-8  "><!--  d-flex align-items-stretch -->
+          <div class="section-title">
+            <h4>الاخبار</h4>
+        </div>
+          <div class="row box">
             <!--  <ng-container *ngFor="let item of data">  </ng-container> -->
             <div class="col-md-6">
               <div
@@ -155,7 +265,10 @@
               >
                 <div class="post-img">
                   <img
-                  [src]=" 'http://hamad_api.accessline.ps'+ data[data.length - 2]?.ImagePath"
+                    [src]="
+                      'http://hamad_api.accessline.ps' +
+                      data[data.length - 2]?.ImagePath
+                    "
                   />
                 </div>
                 <div
@@ -218,20 +331,56 @@
               <div class="titlis-box">
                 <p><strong>إقراء المزيد</strong></p>
                 <ng-container *ngFor="let item of data">
-
-                <a routerLink="/news-details/{{item.ID}}" (click)="showNews(item)" class="title"
-                  >عنوان المقال نموذج افتراضي يوضع
-                  <i class="fa-solid fa-arrow-left-long ps-1"></i
-                ></a>
-              </ng-container>
-
-
+                  <a
+                    routerLink="/news-details/{{ item.ID }}"
+                    (click)="showNews(item)"
+                    class="title"
+                    >عنوان المقال نموذج افتراضي يوضع
+                    <i class="fa-solid fa-arrow-left-long ps-1"></i
+                  ></a>
+                </ng-container>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 d-flex align-items-stretch">
-          <div class="news-box2" (click)="showNews(data[data.length - 1])"  routerLink="/news-details/{{data[data.length - 1]?.ID}}">
+
+
+
+        <div class="col-md-4  flex-column"><!--  d-flex align-items-stretch -->
+          <div class="section-title mb-2">
+            <h4>منوعات</h4>
+          </div>
+          <div class="news-box2">
+            <owl-carousel-o [options]="mix">
+              <ng-container *ngIf="LandingPageData$ | async as data">
+                <ng-template
+                  carouselSlide
+                  *ngFor="let item of data?.HeaderSlider"
+                >
+                  <img
+                    [src]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+                    class="img-fluid"
+                    style="border-radius: 8px"
+                    alt=""
+                  />
+
+                  <div class="news-box2-xontent">
+                    <h3 class="post-title">
+                      {{ isEn ? item?.Title : item?.Title }}
+                    </h3>
+                    <a
+                      (click)="showNews(data[data.length - 1])"
+                      class="readmore mt-auto d-flex align-items-baseline"
+                      ><span>إقراء المزيد</span
+                      ><i class="fa-solid fa-arrow-left-long ps-1"></i>
+                    </a>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div>
+
+          <!--   <div class="news-box2" (click)="showNews(data[data.length - 1])"  routerLink="/news-details/{{data[data.length - 1]?.ID}}">
             <div class="d-flex justify-content-center">
               <img [src]=" 'http://hamad_api.accessline.ps'+ data[data.length - 1]?.ImagePath" class="img-fluid" alt="" />
             </div>
@@ -248,7 +397,7 @@
                 ><i class="fa-solid fa-arrow-left-long ps-1"></i>
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </ng-container>
@@ -259,7 +408,7 @@
 <div class="employment-ad">
   <div class="container background">
     <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-md-8">
+      <div class="col-md-9">
         <owl-carousel-o [options]="customOptions">
           <ng-container *ngIf="LandingPageData$ | async as data">
             <ng-template

@@ -15,12 +15,14 @@ export class AppComponent implements OnInit {
   Services$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   isEn_LandingPage = document.dir == 'ltr' ? "en" : "ar";
+  isScroll:boolean = false;
   constructor(
     private _footerService: FooterService,
     private _homeService: HomeService,
     private _mediaSectionsItems:MediaCenterService
   ) {}
   ngOnInit(): void {
+
     this._mediaSectionsItems.getMediaSectionsItems();
     this._footerService.getStats();
     this._homeService.getServicesInHome();
@@ -46,8 +48,10 @@ export class AppComponent implements OnInit {
 
     if (scrollPosition >= this.topPosToStartShowing) {
       this.isShow = true;
+      this.isScroll = true
     } else {
       this.isShow = false;
+      this.isScroll = false
     }
   }
 

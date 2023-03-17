@@ -20,6 +20,7 @@ export class ProstheticsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.Services$ = this._homeService.Selector$('Services');
     this._prostheticsService.getProstheticsTypes();
     this._prostheticsService.getProsthetics();

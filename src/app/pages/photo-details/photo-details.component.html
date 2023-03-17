@@ -15,30 +15,40 @@
             <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
           </div>
         </div>
+
+        <!--  -->
+
+        <ng-container *ngIf="ImageSection$ | async as data">
+          <p-galleria [numVisible]="3" [value]="data" >
+            <ng-template pTemplate="item" let-item>
+              <img
+              [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+
+                style="width: 100%; height: 567px; object-fit: cover; border-radius: 4px;"
+              />
+            </ng-template>
+
+            <ng-template pTemplate="thumbnail" let-item>
+              <div class="grid grid-nogutter justify-content-center">
+                <img
+                [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+                  width="80%"
+                />
+              </div>
+            </ng-template>
+          </p-galleria>
+        </ng-container>
+
+
+        <!--  -->
+
+
+
       </div>
     </div>
 
 
-    <ng-container *ngIf="ImageSection$ | async as data">
-      <p-galleria [numVisible]="3" [value]="data" >
-        <ng-template pTemplate="item" let-item>
-          <img
-          [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
 
-            style="width: 90%; height: 450px; object-fit: cover"
-          />
-        </ng-template>
-
-        <ng-template pTemplate="thumbnail" let-item>
-          <div class="grid grid-nogutter justify-content-center">
-            <img
-            [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
-              width="80%"
-            />
-          </div>
-        </ng-template>
-      </p-galleria>
-    </ng-container>
 
 
  <!--    <p-galleria [numVisible]="3" [value]="images">

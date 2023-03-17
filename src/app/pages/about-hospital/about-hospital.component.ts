@@ -12,6 +12,7 @@ export class AboutHospitalComponent implements OnInit {
   AboutHospital$!: Observable<any>;
   constructor(private _aboutHospitalService: AboutHospitalService) {}
   isEn = document.dir == 'ltr' ? true : false;
+  data:any
   ngOnInit(): void {
     this._aboutHospitalService.getAboutHospital();
     this.AboutHospital$ = this._aboutHospitalService
@@ -31,13 +32,14 @@ export class AboutHospitalComponent implements OnInit {
       //     return value;
       //   })
       // );
-
+    /*   this.active = this.data;
+ */
   }
   storeData(item: any) {
     this._aboutHospitalService.updateStore({ dataShow: item });
-    const data = item;
-    if (data) {
-      this.active = data.ID;
+    this.data = item;
+    if (this.data) {
+      this.active = this.data.ID;
     }
   }
 }

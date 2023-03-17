@@ -16,14 +16,22 @@ export class MediaCenterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    /*  const url = this.router.url;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const url = window.location.href;
     if (url.includes('news')) {
-      this.isActive = true;
-      console.log('majed');
-    } else {
-      this.isActive = false;
-      console.log('nooooooo');
-    } */
+      this.active = 1;
+    }else if(url.includes('photo')){
+      this.active = 2;
+    }else if(url.includes('video')){
+      this.active = 3;
+    }else if(url.includes('medical-articles')){
+      this.active = 4;
+    }else if(url.includes('press-stories')){
+      this.active = 5;
+    }else if(url.includes('visual-stories')){
+      this.active = 6;
+    }
   }
 }
 

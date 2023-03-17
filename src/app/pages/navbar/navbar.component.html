@@ -1,6 +1,6 @@
   <!-- [class]="isActive ==true ? 'hide-bg' : 'bg-light fixed-top'" -->
  <!--  [class.navbar-scrolled]="isScrolled" -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top " [ngClass]="{'fixed-top': previousScrollPosition === 0}"  >
+<nav class="navbar py-1 navbar-expand-lg navbar-light bg-white  bg-custom " [ngClass]="{'fixed-top': previousScrollPosition === 0}"  >
   <div class="container d-flex justify-content-between">
 
     <a class="navbar-brand" routerLink="/home">
@@ -36,7 +36,7 @@
         </li>
         <li class="nav-item">
           <a
-            routerLink="/services"
+            routerLink="/sections"
             class="nav-link"
             [ngClass]="{ active: active == 2 }"
             (click)="active = 2"
@@ -68,15 +68,15 @@
           <i class="fa-solid fa-chevron-down ps-2 arrow2"></i>
           <ul>
             <li>
-              <a routerLink="/services-form/beneficiaries-service"
+              <a routerLink="/services-form/beneficiaries"
                 >خدمة مستفيدين</a
               >
             </li>
             <li>
-              <a routerLink="/services-form/visitor-service">خدمة زائرين</a>
+              <a routerLink="/services-form/visitor">خدمة زائرين</a>
             </li>
             <li>
-              <a routerLink="/services-form/institutions-service"
+              <a routerLink="/services-form/institutions"
                 >خدمة مؤسسات</a
               >
             </li>
@@ -84,7 +84,7 @@
         </div>
         <li class="nav-item">
           <a
-            routerLink="/services-form/beneficiaries-service"
+            routerLink="/services-form/beneficiaries"
             class="nav-link"
             [ngClass]="{ active: active == 6 }"
             (click)="active = 6"
@@ -94,7 +94,7 @@
       </ul>
 
       <div
-        routerLink="/services-form/beneficiaries-service" class="drop-down d-inline-block">
+        routerLink="/services-form/beneficiaries" class="drop-down d-inline-block">
         <a style="color: #fff;">حجز موعد</a>
       </div>
 

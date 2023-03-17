@@ -20,21 +20,21 @@ import { RouterModule } from '@angular/router';
               ).then((m) => m.BeneficiariesServiceModule),
           },
           {
-            path: 'beneficiaries-service',
+            path: 'beneficiaries',
             loadChildren: () =>
               import(
                 '../services-hospital/beneficiaries-service/beneficiaries-service.module'
               ).then((m) => m.BeneficiariesServiceModule),
           },
           {
-            path: 'visitor-service',
+            path: 'visitor',
             loadChildren: () =>
               import(
                 '../services-hospital/visitor-service/visitor-service.module'
               ).then((m) => m.VisitorServiceModule),
           },
           {
-            path: 'institutions-service',
+            path: 'institutions',
             loadChildren: () =>
               import(
                 '../services-hospital/institutions-service/institutions-service.module'

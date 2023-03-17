@@ -42,7 +42,7 @@ p{
  .icon-box {
   text-align: center;
   background: #fefefe;
-  padding: 50px 10px;
+  padding: 25px 10px;
   transition: all ease-in-out 0.3s;
   border-radius:10px ;
   border: 2px solid #70707017;
@@ -77,3 +77,12 @@ p{
 }
 
 
+.p-hide{
+  display: none;
+  transition: .5s all;
+}
+
+.icon-box:hover .p-hide{
+  display: block;
+  transition: .5s all;
+}

@@ -24,6 +24,8 @@ export class WrittenStoriesDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
     this.MediaCenterService$ = this._mediaCenterService

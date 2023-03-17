@@ -46,7 +46,7 @@ export class StoriesHomeComponent implements OnInit {
   showVideoPreview(item:any) {
     this.display = true;
     this._mediaCenterService.updateStore({ VideoDetails: item });
-    console.log(item);
+    console.log( 'item item item' , item );
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

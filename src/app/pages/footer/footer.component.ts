@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { map, Observable } from 'rxjs';
 import { HomeService } from '../home/home.service';
 import { FooterService } from './footer.service';
@@ -24,4 +25,38 @@ export class FooterComponent implements OnInit {
 
     this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo').pipe(map(value=>value));
   }
+
+  customOptions: OwlOptions = {
+    loop: true,
+    rtl: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    autoplay: true,
+    nav: false,
+    dots: false,
+    navSpeed: 700,
+    navText: [
+      '<i class="fa-solid fa-chevron-left"></i>',
+      '<i class="fa-solid fa-chevron-right"></i>',
+    ],
+
+    responsive: {
+      0: {
+        items: 2,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 4,
+      },
+      1400: {
+        items: 4,
+      },
+    },
+  };
+
+
+
 }

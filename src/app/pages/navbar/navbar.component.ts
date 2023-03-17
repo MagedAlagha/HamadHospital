@@ -22,13 +22,24 @@ export class NavbarComponent implements OnInit {
   constructor(public router: Router) {}
 
   ngOnInit(): void {
+
     const url = window.location.href;
-    console.log('url', url);
     if (url.includes('home')) {
-      this.isActive = true;
-    } else {
-      this.isActive = false;
+      this.active = 1;
+    }else if(url.includes('sections')){
+      this.active = 2;
+    }else if(url.includes('media-center')){
+      this.active = 3;
+    }else if(url.includes('about-us')){
+      this.active = 4;
+    }else if(url.includes('beneficiaries')){
+      this.active = 6;
     }
+
+   /*  else if(url.includes('visitor') ||  url.includes('visitor')){
+      this.active = 5;
+    }
+ */
 
     /*  if (window.scrollY > 100) {
       selectHeader.classList.add('header-scrolled')

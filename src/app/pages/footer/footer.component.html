@@ -1,16 +1,22 @@
+
+
+
 <footer id="footer">
-  <ng-container *ngIf="LandingPageData$ |async as data">
-    <div class="counter">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-6 text-center mb-3" *ngFor="let item of data?.Stats">
-            <p>{{item.Count}} </p>
-            <span>{{item?.Name}}</span>
-          </div>
+<owl-carousel-o [options]="customOptions">
+  <ng-container *ngIf="LandingPageData$ | async as data">
+    <ng-template carouselSlide *ngFor="let item of data?.Stats">
+      <div class="counter text-center  mb-3">
+
+          <p>{{item.Count}} </p>
+          <span>{{item?.Name}}</span>
         </div>
-      </div>
-    </div>
+
+    </ng-template>
   </ng-container>
+</owl-carousel-o>
+
+
+
 
   <ng-container *ngIf="LandingPageData$ |async as data">
   <div class="footer-top" >

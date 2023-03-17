@@ -28,7 +28,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'services',
+    path: 'sections',
     loadChildren: () =>
       import('./pages/services-page/services-page.module').then(
         (m) => m.ServicesPageModule
