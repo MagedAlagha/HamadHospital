@@ -36,8 +36,8 @@ export class VideoGalleryComponent implements OnInit {
     this._mediaCenterService.updateStore({ VideoDetails: item });
     console.log(item , "itemitemitem")
   }
-  openModal(item?:any){
+/*   openModal(item?:any){
     this._videoGalleryService.displayDialogs('VideoDialog', true, item);
   }
-
+ */
 }

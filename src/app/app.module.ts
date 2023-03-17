@@ -15,6 +15,8 @@ import { InterceptorService } from './interceptor.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ParallaxComponent } from './pages/parallax/parallax.component';
+import { DialogModule } from 'primeng/dialog';
+import { VideoPreviewModalComponent } from './pages/home/Modals/video-preview-modal/video-preview-modal.component';
 
 
 
@@ -26,6 +28,7 @@ import { ParallaxComponent } from './pages/parallax/parallax.component';
     HomeComponent,
     PageNotFoundComponent,
     ParallaxComponent,
+    VideoPreviewModalComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { ParallaxComponent } from './pages/parallax/parallax.component';
     HttpClientModule,
     StoriesHomeComponent,
     ToastModule,
-
+    DialogModule,
 
   ],
   exports: [StoriesHomeComponent],

@@ -88,10 +88,6 @@ export class HomeComponent implements OnInit {
 
 
 
-
-
-
-
   showNews(item:any){
     this._mediaCenterService.updateStore({ showNews: item });
     console.log(item)
