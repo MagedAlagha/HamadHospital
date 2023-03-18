@@ -22,12 +22,28 @@
         <input formControlName="Address" type="text" id="inputAddress" pInputText>
       </div>
       <div class="col-md-6">
+        <label>رقم الهوية</label>
+        <input formControlName="IdentityNumber" type="number" id="inputAddress" pInputText>
+      </div>
+      <div class="col-md-6">
+        <label>طبيعة الزيارة</label>
+        <ng-container *ngIf="Codes1$ |async as code">
+          <p-dropdown formControlName="VisitTypeID" [options]="code.data" [optionLabel]="'Name'"
+          [optionValue]="'ID'" ></p-dropdown>
+        </ng-container>
+
+      </div>
+      <div class="col-md-6">
         <label>التاريخ / الوقت المفضل للموعد</label>
         <p-calendar formControlName="Appointment" dateFormat="dd.mm.yy"></p-calendar>
       </div>
       <div class="col-md-6">
         <label>القسم</label>
-        <p-dropdown formControlName="DepartmentID" [options]="cities" optionLabel="name"></p-dropdown>
+        <ng-container *ngIf="Codes2$ |async as code">
+          <p-dropdown formControlName="DepartmentID" [options]="code.data" [optionLabel]="'Name'"
+          [optionValue]="'ID'" ></p-dropdown>
+        </ng-container>
+
       </div>
       <div class="col-12">
         <label>نص الرسالة </label>
@@ -59,6 +75,10 @@
       <div class="col-md-6">
         <label>العنوان بالكامل</label>
         <input  formControlName="Address" type="text" id="inputAddress" pInputText>
+      </div>
+      <div class="col-md-6">
+        <label>رقم الهوية</label>
+        <input formControlName="IdentityNumber" type="number" id="inputAddress" pInputText>
       </div>
       <div class="col-12">
         <label>نص الرسالة </label>

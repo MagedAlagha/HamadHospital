@@ -6,7 +6,7 @@
           <span class="line"></span>
         </div>
         <div class="col-md-4 col-6">
-          <h3 class="px-md-5 px-2"> السمع والتوازن</h3>
+          <h3 class="px-md-5 px-2"> خدمات طبية مساندة</h3>
         </div>
         <div class="col-md-4 col-3">
           <span class="line"></span>
@@ -21,8 +21,8 @@
           <p>
             {{
               isEn
-                ? data?.MedicalRehabilitationDescEn
-                : data?.MedicalRehabilitationDescAr
+                ? data?.SupportiveMedicalDescEn
+                : data?.SupportiveMedicalDescAr
             }}
           </p>
         </ng-container>
@@ -34,7 +34,7 @@
 <div class="row mb-5 justify-content-center">
   <div
     class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mt-4 mt-md-3"
-    *ngFor="let item of HearingDepartemt$ | async"
+    *ngFor="let item of SupportiveMedicalDepartments$ | async"
   >
     <div class="icon-box">
       <div class="icon">
@@ -52,24 +52,9 @@
     </div>
   </div>
 </div>
-<!-- ------------------------------------ -->
-
-
-
-
-
-
-    <div class="row py-5 section-2" *ngIf="HearingServices$ | async as data">
-      <div class="col-md-6">
-        <img [src]=" 'http://hamad_api.accessline.ps'+ data?.HearingSectionImagePath" >
-      </div>
-    <div class="col-md-6">
-      <div  [innerHTML]="isEn ? data?.HearingSectionEn : data?.HearingSectionAr "></div>
-    </div>
-    </div>
 
   </div>
 </section>
 
-<app-stories-home></app-stories-home>
-
+<!-- <app-stories-home></app-stories-home>
+ -->

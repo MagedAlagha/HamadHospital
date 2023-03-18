@@ -17,6 +17,8 @@ import { ToastModule } from 'primeng/toast';
 import { ParallaxComponent } from './pages/parallax/parallax.component';
 import { DialogModule } from 'primeng/dialog';
 import { VideoPreviewModalComponent } from './pages/home/Modals/video-preview-modal/video-preview-modal.component';
+import { StoriesHomeModule } from './pages/stories-home/stories-home.module';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 
@@ -28,7 +30,7 @@ import { VideoPreviewModalComponent } from './pages/home/Modals/video-preview-mo
     HomeComponent,
     PageNotFoundComponent,
     ParallaxComponent,
-    VideoPreviewModalComponent
+    VideoPreviewModalComponent ,
   ],
   imports: [
     BrowserModule,
@@ -37,12 +39,12 @@ import { VideoPreviewModalComponent } from './pages/home/Modals/video-preview-mo
     DropdownModule,
     CarouselModule,
     HttpClientModule,
-    StoriesHomeComponent,
     ToastModule,
     DialogModule,
-
+    StoriesHomeModule,
+    YouTubePlayerModule
   ],
-  exports: [StoriesHomeComponent],
+
   providers: [
     MessageService,
     {

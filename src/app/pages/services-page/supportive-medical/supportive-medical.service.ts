@@ -7,8 +7,7 @@ import { getFormApiGonfig } from 'src/app/shared/services/models';
 @Injectable({
   providedIn: 'root'
 })
-export class HearingBalanceService {
-
+export class SupportiveMedicalService {
   constructor(
     private http: HttpService,
     private _getFormApiService: GetFormApiService
@@ -16,7 +15,7 @@ export class HearingBalanceService {
 
   private store = new BehaviorSubject<StoreInterface>({
     Services: undefined,
-    HearingDepartemt: undefined,
+    SupportiveMedicalDepartments: undefined,
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -40,8 +39,8 @@ export class HearingBalanceService {
   getServices() {
     this.getFormApi('Services/ServicesSearch', 'Services');
   }
-  getHearingDepartemt() {
-    this.getFormApi('HearingDepartments/HearingDepartmentsSearch', 'HearingDepartemt');
+  getSupportiveMedicalDepartments() {
+    this.getFormApi('SupportiveMedicalDepartments/SupportiveMedicalDepartmentsSearch', 'SupportiveMedicalDepartments');
   }
   getFormApi(
     api: string,
@@ -61,6 +60,6 @@ export class HearingBalanceService {
 
 export interface StoreInterface {
   Services: any;
-  HearingDepartemt: any;
+  SupportiveMedicalDepartments: any;
 }
 export type selectorsType = keyof StoreInterface;

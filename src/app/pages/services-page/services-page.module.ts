@@ -9,6 +9,8 @@ import { OutpatientClinicsComponent } from './outpatient-clinics/outpatient-clin
 import { AccordionModule } from 'primeng/accordion';
 import { StoriesHomeComponent } from '../stories-home/stories-home.component';
 import {TooltipModule} from 'primeng/tooltip';
+import { StoriesHomeModule } from '../stories-home/stories-home.module';
+import { SupportiveMedicalComponent } from './supportive-medical/supportive-medical.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,13 @@ import {TooltipModule} from 'primeng/tooltip';
     HearingBalanceComponent,
     OutpatientClinicsComponent,
     MedicalRehabilitationComponent,
+    SupportiveMedicalComponent
   ],
   imports: [
     CommonModule,
     AccordionModule,
     TooltipModule,
-    StoriesHomeComponent,
+    StoriesHomeModule,
     RouterModule.forChild([
       {
         path: '',
@@ -47,6 +50,10 @@ import {TooltipModule} from 'primeng/tooltip';
           {
             path: 'outpatient-clinics',
             component: OutpatientClinicsComponent,
+          },
+          {
+            path: 'supportive',
+            component: SupportiveMedicalComponent,
           },
         ],
       },

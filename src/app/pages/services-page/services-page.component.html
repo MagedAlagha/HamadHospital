@@ -1,4 +1,6 @@
-<section class="breadcrumbs">
+<!-- <ng-container *ngIf="bgSection$ |async as data ;else bg "></ng-container> -->
+
+<section class="breadcrumbs"> <!-- style="background-image:url({{data}})" -->
   <div class="container">
     <h2>الأقسام والخدمات الرئيسية</h2>
   </div>
@@ -8,20 +10,52 @@
       <div class="col-md-7">
         <div class="card">
           <ul>
-            <li class="mb-md-0 mb-1" routerLink="/sections/medical-rehabilitation" [ngClass]="{'active':active==1}" (click)="active=1">
-              التأهيل الطبي</li>
-            <li class="mb-md-0 mb-1" routerLink="/sections/prosthetics" [ngClass]="{'active':active==2}" (click)="active=2">الأطراف الصناعية
+            <li
+              class="mb-md-0 mb-1"
+              routerLink="/sections/medical-rehabilitation"
+              [ngClass]="{ active: active == 1 }"
+              (click)="active = 1; setBackGround(active)"
+            >
+              التأهيل الطبي
             </li>
-            <li class="mb-md-0 mb-1" routerLink="/sections/hearing-balance" [ngClass]="{'active':active==3}" (click)="active=3">السمع
-              والتوازن</li>
-            <li class="mb-md-0 mb-1" routerLink="/sections/outpatient-clinics" [ngClass]="{'active':active==4}" (click)="active=4">العيادات
-              الخارجية</li>
+            <li
+              class="mb-md-0 mb-1"
+              routerLink="/sections/prosthetics"
+              [ngClass]="{ active: active == 2 }"
+              (click)="active = 2; setBackGround(active)"
+            >
+              الأطراف الصناعية
+            </li>
+            <li
+              class="mb-md-0 mb-1"
+              routerLink="/sections/hearing-balance"
+              [ngClass]="{ active: active == 3 }"
+              (click)="active = 3; setBackGround(active)"
+            >
+              السمع والتوازن
+            </li>
+            <li
+              class="mb-md-0 mb-1"
+              routerLink="/sections/outpatient-clinics"
+              [ngClass]="{ active: active == 4 }"
+              (click)="active = 4; setBackGround(active)"
+            >
+              العيادات الخارجية
+            </li>
+            <li
+              class="mb-md-0 mb-1"
+              routerLink="/sections/supportive"
+              [ngClass]="{ active: active == 5 }"
+              (click)="active = 5; setBackGround(active)"
+            >
+              خدمات طبية مساندة
+            </li>
           </ul>
         </div>
       </div>
     </div>
-
   </div>
 </section>
+
 
 <router-outlet></router-outlet>

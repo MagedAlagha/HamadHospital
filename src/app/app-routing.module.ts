@@ -90,8 +90,13 @@ const routes: Routes = [
         (m) => m.AboutHospitalModule
       ),
   },
-
-
+  {
+    path: 'mix-details/:id',
+    loadChildren: () =>
+      import('./pages/mix-details/mix-details.module').then(
+        (m) => m.MixDetailsModule
+      ),
+  },
   {
     path: '**',
     component: PageNotFoundComponent,

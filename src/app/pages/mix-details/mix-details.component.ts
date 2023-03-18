@@ -4,15 +4,16 @@ import { map, Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../media-center/media-center.service';
 
 @Component({
-  selector: 'app-photo-details',
-  templateUrl: './photo-details.component.html',
-  styleUrls: ['./photo-details.component.scss'],
+  selector: 'app-mix-details',
+  templateUrl: './mix-details.component.html',
+  styleUrls: ['./mix-details.component.scss']
 })
-export class PhotoDetailsComponent implements OnInit {
+export class MixDetailsComponent implements OnInit {
+
   MediaCenterService$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   ID: any;
-  PhotosDetails$!: Observable<any>;
+  MixDetails$!: Observable<any>;
   ImageSection$!: Observable<any>;
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +28,8 @@ export class PhotoDetailsComponent implements OnInit {
     this.ImageSection$ =
       this._mediaCenterService.Selector$('ImageSection');
 
-    this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('PhotosDetails')
+    this.MixDetails$ = this._mediaCenterService
+      .Selector$('MixDetails')
       .pipe(
         tap((value) => {
           console.log('value', value);
@@ -42,45 +43,18 @@ export class PhotoDetailsComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 2;
+            return item.MediaSectionID === 7;
           });
         })
       );
   }
 
-  showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PhotosDetails: item });
+  showMixDetails(item: any) {
+    this._mediaCenterService.updateStore({ MixDetails: item });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   title = 'GFG';
-
-  images: any[] = [
-    {
-      previewImageSrc: '../../../assets/img/news-details.webp',
-      thumbnailImageSrc: '../../../assets/img/news-details.webp',
-      alt: 'Description for Image 1',
-      title: 'Title 1',
-    },
-    {
-      previewImageSrc: '../../../assets/img/image.webp',
-      thumbnailImageSrc: '../../../assets/img/image.webp',
-      alt: 'Description for Image 2',
-      title: 'Title 2',
-    },
-    {
-      previewImageSrc: '../../../assets/img/story.webp',
-      thumbnailImageSrc: '../../../assets/img/story.webp',
-      alt: 'Description for Image 3',
-      title: 'Title 3',
-    },
-    {
-      previewImageSrc: '../../../assets/img/video.webp',
-      thumbnailImageSrc: '../../../assets/img/video.webp',
-      alt: 'Description for Image 4',
-      title: 'Title 4',
-    },
-  ];
 
   responsiveOptions: any[] = [
     {
@@ -97,3 +71,4 @@ export class PhotoDetailsComponent implements OnInit {
     },
   ];
 }
+

@@ -2,11 +2,9 @@
  <ng-container *ngIf="video$ | async as data">
 
  <div class="video-preview">
-<!--   <video #videoPlayer controls>
-    <source src="../../../../assets/img/video.mp4" type="video/mp4">
-  </video> -->
-  <iframe width="100%" height="400"  [src]='data?.VideoPath ' title="YouTube video player"
-   frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <!-- {{data?.VideoPath.substring(32)}} -->
+  <youtube-player [videoId]="data?.VideoPath.substring(32)" [height]="width"
+  [width]="width"> </youtube-player>
 </div>
 
 <!-- https://www.youtube.com/embed/Se73tHMWmIU -->

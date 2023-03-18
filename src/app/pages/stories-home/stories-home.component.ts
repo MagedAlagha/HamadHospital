@@ -8,8 +8,8 @@ import { MediaCenterService } from '../media-center/media-center.service';
 import { VideoGalleryService } from '../media-center/video-gallery/video-gallery.service';
 
 @Component({
-  standalone: true,
-  imports:[CommonModule , RouterModule ],
+  /* standalone: true,
+  imports:[CommonModule , RouterModule ], */
 
   selector: 'app-stories-home',
   templateUrl: './stories-home.component.html',

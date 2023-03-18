@@ -11,7 +11,7 @@ import { VideoGalleryService } from '../../video-gallery.service';
 export class VideoPreviewModalComponent implements OnInit {
 data:any;
   constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) {}
-
+  width:any = '100%'
 video$!:Observable<any>;
   ngOnInit(): void {
 

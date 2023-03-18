@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   LandingPageData$!: Observable<any>;
   Services$!: Observable<any>;
   LastNews$!:Observable<any>;
+  mix$!:Observable<any>;
 
   Advertisements$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
@@ -23,10 +24,26 @@ export class HomeComponent implements OnInit {
   MediaCenterService$!:Observable<any>;
   MediaCenterService2$!:Observable<any>;
 
+   apiLoaded = false;
 
   constructor(private _homeService: HomeService , private _mediaCenterService:MediaCenterService , private el: ElementRef) {}
 
+
+
+
   ngOnInit(): void {
+
+    if (!this.apiLoaded) {
+      // This code loads the IFrame Player API code asynchronously, according to the instructions at
+      // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+      this.apiLoaded = true;
+    }
+
+
+
     this._homeService.getSliderData();
     this._homeService.getAdvertisements();
     this._homeService.getMainInfo();
@@ -44,6 +61,14 @@ export class HomeComponent implements OnInit {
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID === 1;
+        });
+      })
+    );
+
+    this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.MediaSectionID == 7;
         });
       })
     );
@@ -76,7 +101,6 @@ export class HomeComponent implements OnInit {
     this.display = true;
     this._mediaCenterService.updateStore({ VideoDetails: item });
     console.log(item);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   showPhotosDetails(item:any){
@@ -90,6 +114,10 @@ export class HomeComponent implements OnInit {
 
   showNews(item:any){
     this._mediaCenterService.updateStore({ showNews: item });
+    console.log(item)
+  }
+  showmix(item:any){
+    this._mediaCenterService.updateStore({ MixDetails: item });
     console.log(item)
   }
 
@@ -132,7 +160,7 @@ export class HomeComponent implements OnInit {
     pullDrag: false,
     autoplay: true,
     nav: false,
-    dots: true,
+    dots: false,
     navSpeed: 400,
     navText: [
       '<i class="fa-solid fa-chevron-left"></i>',

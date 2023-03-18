@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, distinctUntilChanged, map, Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { GetFormApiService } from 'src/app/shared/services/functionsForHandelWithApi/getFormApi.service';
 import { HttpService } from 'src/app/shared/services/http.service';
+import { getFormApiGonfig } from 'src/app/shared/services/models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,29 @@ export class ServicesHospitalService {
   constructor(  private _http: HttpService,
     private _getFormApiService: GetFormApiService,
     private _authService: AuthService) { }
+
+    private store = new BehaviorSubject<StoreInterface>({
+      codes1: undefined,
+      codes2: undefined,
+    });
+
+    store$: Observable<StoreInterface> = this.store.asObservable();
+    get dataStore() {
+      return this.store.value;
+    }
+    updateStore(newSate: StoreInterface) {
+      this.store.next({
+        ...this.store.value,
+        ...newSate,
+      });
+    }
+
+    Selector$(selectorName: selectorsType) {
+      return this.store$.pipe(
+        map((value: any) => value[selectorName]),
+        distinctUntilChanged()
+      );
+    }
 
 
 
@@ -38,5 +63,51 @@ export class ServicesHospitalService {
     saveVisitRequest(data: any) {
       return this._http.saveData('PublicServices/PublicServiceSave/Institution/VisitRequest', data).subscribe();
     }
+    /*  ******* get Code ******* */
+    getCodes1() {
+      this.getFormApi(
+          'Codes/CodesSelect',
+          'codes1',
+          {
+              ParentID:1
+          },
+          {
+              isLoading: true,
+          }
+      );
+  }
+    getCodes2() {
+      this.getFormApi(
+          'Codes/CodesSelect',
+          'codes2',
+          {
+              ParentID:2
+          },
+          {
+              isLoading: true,
+          }
+      );
+  }
+
+  getFormApi(
+    api: string,
+    selector: selectorsType,
+    params?: any,
+    config?: getFormApiGonfig
+  ) {
+    this._getFormApiService.getFormApi(
+      this.store,
+      api,
+      selector,
+      params,
+      config
+    );
+  }
 
 }
+
+export interface StoreInterface {
+  codes1: any;
+  codes2: any;
+}
+export type selectorsType = keyof StoreInterface;

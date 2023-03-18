@@ -12,8 +12,8 @@
           <ng-container *ngIf="data.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
           <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
         </div>
+        <img [src]=" 'http://hamad_api.accessline.ps'+ data?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
       </div>
-      <img [src]=" 'http://hamad_api.accessline.ps'+ data?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
 
     </div>
 
@@ -35,30 +35,37 @@
       </div>
     </div>
     <div class="last-news mt-5">
-      <div class="section-2 d-flex align-items-center mb-2">
-        <div class="line"> </div>
-        <h2 class="d-inline-block ps-2">اخر الاخبار</h2>
-      </div>
-      <ng-container *ngIf="MediaCenterService$ |async as data">
 
-      <ng-container *ngFor="let item of data.slice(-3) ">  <!-- | slice:-3  -->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="section-2 d-flex align-items-center mb-2">
+            <div class="line"> </div>
+            <h2 class="d-inline-block ps-2">اخر الاخبار</h2>
+          </div>
+          <ng-container *ngIf="MediaCenterService$ |async as data">
 
-        <div class="row align-items-center mt-4" routerLink="/news-details/{{item.ID}}" (click)="showNews(item)" style="cursor: pointer;"  >
-        <!--   <a href=""  routerLink="/news-details/{{item.ID}}" ></a> -->
-          <div class="col-md-3">
-            <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-8">
-            <div class="last-news-title">
-              <h3> {{ isEn ? item?.TitleEn : item?.TitleAr }} </h3>
-              <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }} </p>
-            </div>
-          </div>
+            <ng-container *ngFor="let item of data.slice(-3) ">  <!-- | slice:-3  -->
+
+              <div class="row align-items-center mt-4" routerLink="/news-details/{{item.ID}}" (click)="showNews(item)" style="cursor: pointer;"  >
+              <!--   <a href=""  routerLink="/news-details/{{item.ID}}" ></a> -->
+                <div class="col-md-3 px-0">
+                  <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-8">
+                  <div class="last-news-title">
+                    <h3> {{ isEn ? item?.TitleEn : item?.TitleAr }} </h3>
+                    <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }} </p>
+                  </div>
+                </div>
+              </div>
+
+            </ng-container>
+            </ng-container>
+
         </div>
-
-      </ng-container>
-      </ng-container>
-
+      </div>
+    </div>
 
 
     </div>
