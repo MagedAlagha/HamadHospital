@@ -1,0 +1,32 @@
+<form class="row g-3" [formGroup]="Form_Suggestion">
+  <div class="col-md-6">
+    <label>الاسم كامل</label>
+    <input formControlName="FullName"  type="text" pInputText>
+  </div>
+  <div class="col-md-6">
+    <label>البريد الالكتروني </label>
+    <input formControlName="Email" type="email" pInputText>
+    <div *ngIf="Form_Suggestion.get('Email')?.invalid && Form_Suggestion.get('Email')?.touched" class="error">
+      <div *ngIf="Form_Suggestion.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label>رقم الهاتف </label>
+    <input  formControlName="PhoneNumber" type="number" pInputText>
+  </div>
+  <div class="col-md-6">
+    <label>العنوان بالكامل</label>
+    <input  formControlName="Address" type="text" id="inputAddress" pInputText>
+  </div>
+  <div class="col-md-6">
+    <label>رقم الهوية</label>
+    <input formControlName="IdentityNumber" type="number" id="inputAddress" pInputText>
+  </div>
+  <div class="col-12">
+    <label>نص الرسالة </label>
+    <textarea formControlName="TextMessage" [rows]="6" pInputTextarea></textarea>
+  </div>
+  <div class="col-12">
+    <button pButton type="button" class=""  (click)="saveSuggestion()" label="إرسال"></button>
+  </div>
+</form>

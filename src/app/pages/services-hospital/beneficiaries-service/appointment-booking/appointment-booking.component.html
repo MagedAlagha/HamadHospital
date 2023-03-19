@@ -1,0 +1,52 @@
+<form class="row g-3"[formGroup]="Form_AppointmentBooking" >
+  <div class="col-md-6">
+    <label>الاسم كامل</label>
+    <input formControlName="FullName" type="text" pInputText>
+  </div>
+  <div class="col-md-6">
+    <label>البريد الالكتروني </label>
+    <input formControlName="Email" type="email" pInputText>
+    <div *ngIf="Form_AppointmentBooking.get('Email')?.invalid && Form_AppointmentBooking.get('Email')?.touched" class="error">
+      <div *ngIf="Form_AppointmentBooking.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label>رقم الهاتف </label>
+    <input formControlName="PhoneNumber" type="number" pInputText>
+  </div>
+  <div class="col-md-6">
+    <label>العنوان بالكامل</label>
+    <input formControlName="Address" type="text" id="inputAddress" pInputText>
+  </div>
+  <div class="col-md-6">
+    <label>رقم الهوية</label>
+    <input formControlName="IdentityNumber" type="number" id="inputAddress" pInputText>
+  </div>
+  <div class="col-md-6">
+    <label>طبيعة الزيارة</label>
+    <ng-container *ngIf="Codes1$ |async as code">
+      <p-dropdown formControlName="VisitTypeID" [options]="code.data" [optionLabel]="'Name'"
+      [optionValue]="'ID'" ></p-dropdown>
+    </ng-container>
+
+  </div>
+  <div class="col-md-6">
+    <label>التاريخ / الوقت المفضل للموعد</label>
+    <p-calendar formControlName="Appointment" dateFormat="dd.mm.yy"></p-calendar>
+  </div>
+  <div class="col-md-6">
+    <label>القسم</label>
+    <ng-container *ngIf="Codes2$ |async as code">
+      <p-dropdown formControlName="DepartmentID" [options]="code.data" [optionLabel]="'Name'"
+      [optionValue]="'ID'" ></p-dropdown>
+    </ng-container>
+
+  </div>
+  <div class="col-12">
+    <label>نص الرسالة </label>
+    <textarea formControlName="TextMessage" [rows]="4" pInputTextarea></textarea>
+  </div>
+  <div class="col-12">
+    <button formControlName="" pButton type="button" class="" (click)="saveAppointmentBooking()" label="إرسال"></button>
+  </div>
+</form>

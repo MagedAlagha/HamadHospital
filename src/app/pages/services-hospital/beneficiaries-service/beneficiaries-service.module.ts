@@ -10,9 +10,12 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RatingModule } from 'primeng/rating';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppointmentBookingComponent } from './appointment-booking/appointment-booking.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
-  declarations: [BeneficiariesServiceComponent],
+  declarations: [BeneficiariesServiceComponent, AppointmentBookingComponent, SuggestionComponent, RatingComponent],
   imports: [
     CommonModule,
     InputTextModule,
