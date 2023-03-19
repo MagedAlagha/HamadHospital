@@ -10,6 +10,7 @@ import { VisualStoriesService } from '../../visual-stories.service';
 })
 export class VisualStoriesModalComponent implements OnInit {
   data:any;
+  width:any = '100%'
   constructor(private _visualStoriesService:VisualStoriesService , private _mediaCenterService:MediaCenterService) {}
 
 video$!:Observable<any>;
