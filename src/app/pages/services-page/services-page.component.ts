@@ -22,19 +22,23 @@ export class ServicesPageComponent implements OnInit {
   Services: any;
   ngOnInit(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.bgSection$ = this._servicesPageService.Selector$('bgSection').pipe(tap(value=>{
-      console.log('value' , value) ;
-    }));
+   /*  this.bgSection$ = this._servicesPageService.Selector$('bgSection').pipe(tap(value=>{
+      console.log('value 111111111111' , value) ;
+    })); */
     this.Services$ = this._homeService.Selector$('Services').pipe(
       tap((value) => {
         this.Services = value;
+        console.log("value ......" , value);
+        this.background = value.MedicalRehabilitationBackgroundPath;
       })
     );
+
 
     const url = window.location.href;
 
     if (url.includes('rehabilitation')) {
       this.active = 1;
+
       this._servicesPageService.updateStore({ bgSection: this.Services.MedicalRehabilitationBackgroundPath });
     } else if (url.includes('prosthetics')) {
       this.active = 2;
@@ -49,22 +53,29 @@ export class ServicesPageComponent implements OnInit {
   setBackGround(active: any) {
     switch (active) {
       case 1:
-        this._servicesPageService.updateStore({ bgSection: this.Services.MedicalRehabilitationBackgroundPath });
+        this.background = this.Services.MedicalRehabilitationBackgroundPath;
         break;
       case 2:
-        this._servicesPageService.updateStore({ bgSection: this.Services.ProstheticsBackgroundPath });
+        this.background = this.Services.ProstheticsBackgroundPath
         break;
       case 3:
-        this._servicesPageService.updateStore({ bgSection: this.Services.HearingBackgroundPath });
+        this.background = this.Services.HearingBackgroundPath
         break;
       case 4:
-        this._servicesPageService.updateStore({ bgSection: this.Services.OutpatientClinicsBackgroundPath });
+        this.background = this.Services.OutpatientClinicsBackgroundPath;
         break;
       case 5:
-        this._servicesPageService.updateStore({ bgSection: this.Services.SupportiveMedicalBackgroundPath });
+        this.background = this.Services.SupportiveMedicalBackgroundPath
         break;
     }
   }
+
+
+/*   changeBackgroundImage(id:any){
+    console.log(this.background , "this.background")
+  } */
+
+
 }
 /* MedicalRehabilitationBackgroundPath
 ProstheticsBackgroundPath

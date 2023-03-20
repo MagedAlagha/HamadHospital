@@ -17,6 +17,7 @@ export class ServicesHospitalService {
     private store = new BehaviorSubject<StoreInterface>({
       codes1: undefined,
       codes2: undefined,
+      codes3: undefined,
     });
 
     store$: Observable<StoreInterface> = this.store.asObservable();
@@ -88,6 +89,18 @@ export class ServicesHospitalService {
           }
       );
   }
+    getCodes3() {
+      this.getFormApi(
+          'Codes/CodesSelect',
+          'codes3',
+          {
+              ParentID:3
+          },
+          {
+              isLoading: true,
+          }
+      );
+  }
 
   getFormApi(
     api: string,
@@ -109,5 +122,6 @@ export class ServicesHospitalService {
 export interface StoreInterface {
   codes1: any;
   codes2: any;
+  codes3: any;
 }
 export type selectorsType = keyof StoreInterface;

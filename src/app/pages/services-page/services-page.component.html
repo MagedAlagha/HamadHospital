@@ -1,11 +1,12 @@
-<!-- <ng-container *ngIf="bgSection$ |async as data ;else bg "></ng-container> -->
+<!--  <ng-container *ngIf="bgSection$ |async as data ;else bg ">
+ -->
+<section class="breadcrumbs" style=" background-image: linear-gradient(#8a1538ab, #8a1538c0), url(http://hamad_api.accessline.ps{{background}});"> <!-- style="background-image:url({{data}})" -->
 
-<section class="breadcrumbs"> <!-- style="background-image:url({{data}})" -->
   <div class="container">
 <!--     <ng-container *ngIf="bgSection$ |async as data ;else bg ">  </ng-container>
  -->    <h2>الأقسام والخدمات الرئيسية</h2>
 
-
+ <ng-container *ngIf="Services$ |async as data  ">  </ng-container>
   </div>
   <div class="container">
     <div class="row justify-content-center align-items-end">
@@ -16,7 +17,7 @@
               class="mb-md-0 mb-1"
               routerLink="/sections/medical-rehabilitation"
               [ngClass]="{ active: active == 1 }"
-              (click)="active = 1; setBackGround(active)"
+              (click)="active = 1  ; setBackGround(active)"
             >
               التأهيل الطبي
             </li>
@@ -59,5 +60,5 @@
   </div>
 </section>
 
-
+<!-- ; setBackGround(active) -->
 <router-outlet></router-outlet>

@@ -22,7 +22,10 @@
 
   <div class="col-md-6">
     <label>سبب التواصل</label>
-    <p-dropdown formControlName="CommunicationReason" [options]="cities" [optionLabel]="'Name'" [optionValue]="'Code'" ></p-dropdown>
+    <ng-container *ngIf="Codes$ |async as code">
+      <p-dropdown formControlName="CommunicationReason" [options]="code.data" [optionLabel]="'Name'"
+      [optionValue]="'ID'" ></p-dropdown>
+    </ng-container>
   </div>
   <div class="col-12">
     <label>نص الرسالة </label>

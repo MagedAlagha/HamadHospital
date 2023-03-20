@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { Observable, tap } from 'rxjs';
 import { ServicesHospitalService } from '../services-hospital.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class VisitorServiceComponent implements OnInit {
   Form_Visitors:FormGroup;
   cities!: any[];
   submitted = false;
+  Codes$!:Observable<any>;
   constructor(private fb:FormBuilder , private _servicesHospitalService:ServicesHospitalService , private messageService: MessageService) {
     this.Form_Visitors = fb.group({
       FullName:['' , Validators.required],
@@ -28,6 +30,11 @@ export class VisitorServiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._servicesHospitalService.getCodes3();
+    this.Codes$ = this._servicesHospitalService.Selector$('codes3').pipe(tap(valye=>{
+      console.log(valye , 'valye');
+    }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.cities = [
       { Name: 'اقتراح', Code: '1' },
       { Name: 'ملاحظة', Code: '2' },

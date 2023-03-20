@@ -65,5 +65,7 @@ export class InstitutionsServiceComponent implements OnInit {
       this.Form_VisitRequest.reset();
     }
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
