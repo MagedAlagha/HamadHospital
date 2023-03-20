@@ -1,7 +1,7 @@
 
  <ng-container *ngIf="video$ | async as data">
  <div class="video-preview">
-  {{data?.VideoPath.substring(32)}}
+<!--   {{data?.VideoPath.substring(32)}} -->
   <youtube-player [videoId]="data?.VideoPath.substring(32)" [height]="width" [width]="width"> </youtube-player>
 </div>
 </ng-container>

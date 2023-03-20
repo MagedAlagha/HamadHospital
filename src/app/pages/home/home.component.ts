@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   avatar = environment?.avatar;
 
   VideoDialog$!:Observable<any>;
-  MediaCenterService0$!:Observable<any>;
+  MediaCenterServiceNews$!:Observable<any>;
   MediaCenterService$!:Observable<any>;
   MediaCenterService2$!:Observable<any>;
 
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
     );
 
 /* ******************************************************************************************* */
-this.MediaCenterService0$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+this.MediaCenterServiceNews$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
   map((val) => {
     return val?.filter((item: any) => {
       return item.MediaSectionID === 1;
