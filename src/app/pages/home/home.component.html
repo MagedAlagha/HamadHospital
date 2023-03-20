@@ -13,16 +13,16 @@
               <div class="col-md-7 col-10">
                 <div class="content">
 
-                  <a  routerLink="{{item?.Link.substring(21)}}" (click)="showNews(item)" > <p>{{ item.Title }} </p></a>
+                <!--   <a  routerLink="{{item?.Link.substring(21)}}" (click)="showNews(item)" > <p>{{ item.Title }} </p></a> -->
 
                 <!--  <p>{{ item.Title }} </p>  --><!--  [href]="item?.Link" -->
-                <!-- <ng-container *ngIf="MediaCenterServiceNews$ | async as news">
+                 <ng-container *ngIf="MediaCenterServiceNews$ | async as news">
                   <ng-container *ngFor="let item_2 of news">
-                   <ng-container *ngIf="item_2.ID  == item.slice(-3) ">
-                    <a  routerLink="{{item?.Link.substring(21)}}" (click)="showNews(item)" > <p>{{ item.Title }} </p></a>
+                   <ng-container *ngIf="item_2.ID  == item.Link ">
+                    <a  routerLink="/news-details/{{item?.Link}}" (click)="showNews(item_2)" > <p>{{ item.Title }} </p></a>
                   </ng-container>
                   </ng-container>
-                </ng-container> -->
+                </ng-container>
                  </div>
               </div>
             </div>
