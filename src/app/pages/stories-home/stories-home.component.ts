@@ -20,15 +20,35 @@ export class StoriesHomeComponent implements OnInit {
   MediaCenterService$!:Observable<any>;
   MediaCenterService2$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-
+  active:any = 1;
   constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) { }
 
   Avatar=environment.FileUrl;
   ngOnInit(): void {
+
+
+    const url = window.location.href;
+    if (url.includes('medical-rehabilitation')) {
+      this.active = 1;
+    }else if(url.includes('prosthetics')){
+      this.active = 2;
+    }else if(url.includes('hearing-balance')){
+      this.active = 3;
+    }else if(url.includes('outpatient-clinics')){
+      this.active = 4;
+    }else if(url.includes('supportive')){
+      this.active = 5;
+    }
+
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID === 3;
+        });
+      }),
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.MainServiceID === this.active;
         });
       })
     );
@@ -37,8 +57,17 @@ export class StoriesHomeComponent implements OnInit {
         return val?.filter((item: any) => {
           return item.MediaSectionID === 2;
         });
+      }),
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.MainServiceID === this.active;
+        });
       })
     );
+
+
+
+
   }
 
   display: boolean = false;
@@ -54,9 +83,4 @@ export class StoriesHomeComponent implements OnInit {
     this._mediaCenterService.updateStore({ PhotosDetails: item });
     console.log(item)
   }
-
-
-
-
-
 }

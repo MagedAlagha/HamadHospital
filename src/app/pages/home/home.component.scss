@@ -174,7 +174,7 @@ section {
   width: 100%;
   height: 3px;
   background: #ED9B33;
-  transform: translateY(-31px);
+  transform: translateY(-45px);
 }
 
 .stores figure img {
@@ -408,4 +408,32 @@ align-items: center; */
 
 .stores img{
   cursor: pointer;
+}
+
+
+
+
+/* .main-img{
+  cursor: pointer;
+ box-shadow: 4px -41px 40px 6px rgba(0,0,0,0.56) inset;
+} */
+.main-img{
+  position: relative;
+}
+.video-icon{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  width: auto !important;
+  height: auto !important;
+}
+.shadow{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 4px -41px 40px 6px rgba(0,0,0,0.56) inset;
+  background-color: #00000039;
+  top: 0;
+  border-radius: 6px;
 }

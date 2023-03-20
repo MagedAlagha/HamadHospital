@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ClipboardService } from 'ngx-clipboard';
 import { map, Observable } from 'rxjs';
 import { MediaCenterService } from '../media-center/media-center.service';
 
@@ -12,8 +13,9 @@ export class NewsDetailsComponent implements OnInit {
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
 ID:any;
+text:any = 'نسخ';
 showNews$!:Observable<any>;
-  constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService , private renderer: Renderer2) {
+  constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService , private renderer: Renderer2 , private _clipboardService: ClipboardService) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID)
    }
@@ -31,15 +33,26 @@ showNews$!:Observable<any>;
       })
     );
 
+
+
+
+
     this.showNews$ = this._mediaCenterService.Selector$('showNews')
     const data  = this._mediaCenterService.dataStore.showNews
     if(data){
     console.log(data , "{gege")
     }
   }
+
+  copy(text: string){
+    this._clipboardService.copy(text);
+    this.text = "تم النسخ"
+  }
+
   showNews(item:any){
     this._mediaCenterService.updateStore({ showNews: item });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 }
+

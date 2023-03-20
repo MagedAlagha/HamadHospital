@@ -12,9 +12,9 @@
             <div class="row justify-content-center">
               <div class="col-md-7 col-10">
                 <div class="content">
-                  <p>{{ item.Title }} </p>
-<!--                   <a [href]="item?.Link"> <p>{{ item.Title }} </p></a>
- -->                </div>
+                 <p>{{ item.Title }} </p> <!--  [href]="item?.Link"
+                 <a routerLink="{{item?.Link.substring(21)}}" (click)="showNews(item)" > <p>{{ item.Title }} </p></a> -->
+                 </div>
               </div>
             </div>
           </div>
@@ -151,10 +151,11 @@
     <ng-container *ngIf="MediaCenterService$ |async as data">
     <div class="row align-items-stretch">
       <div class="col-md-8 d-flex align-items-stretch "  (click)="showVideoPreview(data[1])" >
-        <div>
-        <img [src]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid"
-           class="img-fluid" alt="">
-           <p style="color: #fff;">{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:150 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 90 ? '...' : '' }} </p>
+        <div >
+            <img [src]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid main-img"
+            class="img-fluid" alt="">
+           <img src="../../../assets/img/video.mp4" class="video-icon" alt="">
+           <p style="color: #fff;">{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:80 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 80 ? '...' : '' }} </p>
         </div>
 
       </div>

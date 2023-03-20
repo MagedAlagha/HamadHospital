@@ -4,6 +4,7 @@ import { StoriesHomeComponent } from './stories-home.component';
 import { DialogModule } from 'primeng/dialog';
 import { VideoPreviewModalComponent } from './Modal/video-preview-modal/video-preview-modal.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,7 +13,8 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
   imports: [
     CommonModule,
     DialogModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    RouterModule
   ],
   exports: [StoriesHomeComponent],
 })

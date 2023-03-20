@@ -1,12 +1,13 @@
-.main-img{
-  position: relative;
-  z-index: -2;
-  width: 100%;
-}
+
 .img{
   cursor: pointer;
  box-shadow: 4px -41px 40px 6px rgba(0,0,0,0.56) inset;
  border-radius: 3px;
+}
+.main-img{
+  position: relative;
+  z-index: -2;
+  width: 100%;
 }
 .img-title p {
 font-size: 18px;

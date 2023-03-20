@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   avatar = environment?.avatar;
 
   VideoDialog$!:Observable<any>;
+  MediaCenterService0$!:Observable<any>;
   MediaCenterService$!:Observable<any>;
   MediaCenterService2$!:Observable<any>;
 
@@ -34,28 +35,18 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     if (!this.apiLoaded) {
-      // This code loads the IFrame Player API code asynchronously, according to the instructions at
-      // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
       const tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
       document.body.appendChild(tag);
       this.apiLoaded = true;
     }
 
-
-
     this._homeService.getSliderData();
     this._homeService.getAdvertisements();
     this._homeService.getMainInfo();
     this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo').pipe(map(value=>value));
     this.Services$ = this._homeService.Selector$('Services');
-    /* this.Advertisements$ = this._homeService.Selector$('Advertisements').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.IsActive;
-        });
-      })
-    ); */
+
 
     this.LastNews$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
@@ -74,6 +65,14 @@ export class HomeComponent implements OnInit {
     );
 
 /* ******************************************************************************************* */
+this.MediaCenterService0$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+  map((val) => {
+    return val?.filter((item: any) => {
+      return item.MediaSectionID === 1;
+    });
+  })
+);
+
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
@@ -84,7 +83,7 @@ export class HomeComponent implements OnInit {
     this.MediaCenterService2$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 2;
+          return item.MediaSectionID === 6;
         });
       })
     );
@@ -114,7 +113,7 @@ export class HomeComponent implements OnInit {
 
   showNews(item:any){
     this._mediaCenterService.updateStore({ showNews: item });
-    console.log(item)
+    console.log(item , "itemitemitem")
   }
   showmix(item:any){
     this._mediaCenterService.updateStore({ MixDetails: item });
@@ -152,6 +151,10 @@ export class HomeComponent implements OnInit {
       },
     },
   };
+
+
+
+
   mix: OwlOptions = {
     loop: true,
     rtl: true,
@@ -182,6 +185,7 @@ export class HomeComponent implements OnInit {
       },
     },
   };
+
 
 
 }
