@@ -1,6 +1,7 @@
   <!-- [class]="isActive ==true ? 'hide-bg' : 'bg-light fixed-top'" -->
- <!--  [class.navbar-scrolled]="isScrolled" -->
-<nav class="navbar py-1 navbar-expand-lg navbar-light bg-white  bg-custom " [ngClass]="{'fixed-top': previousScrollPosition === 0}"  >
+ <!--  [class.navbar-scrolled]="isScrolled" --> <!-- bg-custom -->
+ <!-- show  [class]="isActive ==true ? 'hide-bg' : 'bg-light fixed-top'" [ngClass]="{'fixed-top': previousScrollPosition === 0}"    -->
+<nav class="navbar py-1 navbar-expand-lg navbar-light bg-white   "  [class.navbar-scrolled]="isScrolled">
   <div class="container d-flex justify-content-between">
 
     <a class="navbar-brand" routerLink="/home">

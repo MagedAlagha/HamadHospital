@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   isActive = false;
   active: any = 1;
   previousScrollPosition = 0;
-
+  fisrt:any = 0 ;
   constructor(public router: Router) {}
 
   ngOnInit(): void {
@@ -36,33 +36,30 @@ export class NavbarComponent implements OnInit {
       this.active = 6;
     }
 
-   /*  else if(url.includes('visitor') ||  url.includes('visitor')){
-      this.active = 5;
-    }
- */
 
-    /*  if (window.scrollY > 100) {
-      selectHeader.classList.add('header-scrolled')
+      /*  if (window.scrollY > 100) {
+      navbar.classList.add('header-scrolled')
     } else {
       selectHeader.classList.remove('header-scrolled')
-    } */
+    }
+ */
   }
 
   isScrolled = false;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const currentScrollPosition = window.pageYOffset;
+     const currentScrollPosition = window.pageYOffset;
     const isScrollingUp = currentScrollPosition < this.previousScrollPosition;
 
-    const navbar = document.querySelector('.navbar');
+    /* const navbar = document.querySelector('.navbar');
     if (isScrollingUp || currentScrollPosition === 0) {
       navbar?.classList.add('fixed-top', 'show');
     } else {
       navbar?.classList.remove('fixed-top', 'show');
     }
 
-    this.previousScrollPosition = currentScrollPosition;
+    this.previousScrollPosition = currentScrollPosition; */
 
   }
 }

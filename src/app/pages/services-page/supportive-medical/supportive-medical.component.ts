@@ -30,6 +30,11 @@ export class SupportiveMedicalComponent implements OnInit {
     );
 
 
+
+
+
+
+
   }
 
 }

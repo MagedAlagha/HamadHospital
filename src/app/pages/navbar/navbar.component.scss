@@ -181,7 +181,7 @@ box-shadow: none !important;
 .navbar-scroll {
   transition: all 0.8s ease-in-out;
 }
-
+/*
 .navbar.show {
   top: 0;
   opacity: 1;
@@ -192,7 +192,7 @@ box-shadow: none !important;
   top: -100px;
   opacity: 0;
   transition: .8s all !important;
-}
+} */
 .bg-custom{
    background: rgba(255, 255, 255, 0.33) !important;
    backdrop-filter: blur(6px) !important;

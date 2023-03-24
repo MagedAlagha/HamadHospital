@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (!this.apiLoaded) {
       const tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
@@ -109,8 +109,6 @@ this.MediaCenterServiceNews$ = this._mediaCenterService.Selector$('MediaSections
 
   /* ************************************************************************* */
 
-
-
   showNews(item:any){
     this._mediaCenterService.updateStore({ showNews: item });
     console.log(item , "itemitemitem")
@@ -151,8 +149,6 @@ this.MediaCenterServiceNews$ = this._mediaCenterService.Selector$('MediaSections
       },
     },
   };
-
-
 
 
   mix: OwlOptions = {

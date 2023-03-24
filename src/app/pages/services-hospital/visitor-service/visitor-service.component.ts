@@ -17,7 +17,7 @@ export class VisitorServiceComponent implements OnInit {
   constructor(private fb:FormBuilder , private _servicesHospitalService:ServicesHospitalService , private messageService: MessageService) {
     this.Form_Visitors = fb.group({
       FullName:['' , Validators.required],
-      Email:['', [Validators.required, Validators.email]],
+      Email:['', [ Validators.email]],
       PhoneNumber:['',[
         Validators.required,
         Validators.minLength(10),

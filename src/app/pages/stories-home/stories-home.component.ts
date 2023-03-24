@@ -55,7 +55,7 @@ export class StoriesHomeComponent implements OnInit {
     this.MediaCenterService2$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 2;
+          return item.MediaSectionID === 6;
         });
       }),
       map((val) => {

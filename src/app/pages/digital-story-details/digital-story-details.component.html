@@ -1,54 +1,62 @@
-<ng-container *ngIf="VisualStories$ | async as data">
+<ng-container *ngIf="VisualStories$ | async as dataa">
   <section class="news mt-5">
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">
           <div class="section-title">
             <div class="section-title">
-              <ng-container *ngIf="data.MainServiceID === 1">
+              <ng-container *ngIf="dataa.MainServiceID === 1">
                 <span></span> التأهيل الطبي
               </ng-container>
-              <ng-container *ngIf="data.MainServiceID === 2">
+              <ng-container *ngIf="dataa.MainServiceID === 2">
                 <span></span> الاطراف الصناعية
               </ng-container>
-              <ng-container *ngIf="data.MainServiceID === 3">
+              <ng-container *ngIf="dataa.MainServiceID === 3">
                 <span></span> السمع والتوازن
               </ng-container>
-              <ng-container *ngIf="data.MainServiceID === 4">
+              <ng-container *ngIf="dataa.MainServiceID === 4">
                 <span></span> العيادة الخارجية
               </ng-container>
-              <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}</h1>
+              <h1>{{ isEn ? dataa?.TitleEn : dataa?.TitleAr }}</h1>
             </div>
           </div>
         </div>
       </div>
-<div class="row justify-content-center">
-  <div class="col-md-9">
-    <ng-container *ngIf="ImageSection$ | async as data">
-      <p-galleria [numVisible]="3" [value]="data" >
-        <ng-template pTemplate="item" let-item>
-          <img
-          [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
-            [alt]="item.alt"
-            [title]="item.title"
-            style="width: 90%; height: 450px; object-fit: cover ; border-radius: 6px;"
-          />
-        </ng-template>
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <ng-container *ngIf="ImageSection$ | async as data">
+            <p-galleria [numVisible]="3" [value]="data" >
+              <ng-template pTemplate="item" let-item>
+                <img
+                [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+                  [alt]="item.alt"
+                  [title]="item.title"
+                  style="width: 90%; height: 450px; object-fit: cover ; border-radius: 6px;"
+                />
+              </ng-template>
+             <!--  <ng-template pTemplate="item" let-item>
+                <img
+                  [src]=" 'http://hamad_api.accessline.ps'+ dataa?.ImagePath"
+                  [alt]="item.alt"
+                  [title]="item.title"
+                  style="width: 90%; height: 450px; object-fit: cover ; border-radius: 6px;"
+                />
+              </ng-template> -->
 
-        <ng-template pTemplate="thumbnail" let-item>
-          <div class="grid grid-nogutter justify-content-center">
-            <img
-            [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
-              [alt]="item.alt"
-              [title]="item.title"
-              width="80%"
-            />
-          </div>
-        </ng-template>
-      </p-galleria>
-    </ng-container>
-  </div>
-</div>
+              <ng-template pTemplate="thumbnail" let-item>
+                <div class="grid grid-nogutter justify-content-center">
+                  <img
+                  [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+                    [alt]="item.alt"
+                    [title]="item.title"
+                    width="80%"
+                  />
+                </div>
+              </ng-template>
+            </p-galleria>
+          </ng-container>
+        </div>
+      </div>
 
     </div>
   </section>

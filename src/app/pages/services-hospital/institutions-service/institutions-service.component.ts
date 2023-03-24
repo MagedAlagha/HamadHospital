@@ -18,7 +18,7 @@ export class InstitutionsServiceComponent implements OnInit {
   ) {
     this.Form_PressCoverageRequest = fb.group({
       FullName: ['' , Validators.required],
-      Email: ['', [Validators.required, Validators.email]],
+      Email: ['', [ Validators.email]],
       PhoneNumber:['',[
         Validators.required,
         Validators.minLength(10),
@@ -29,7 +29,7 @@ export class InstitutionsServiceComponent implements OnInit {
     });
     this.Form_VisitRequest = fb.group({
       FullName: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email]],
+      Email: ['', [ Validators.email]],
       PhoneNumber:['',[
         Validators.required,
         Validators.minLength(10),

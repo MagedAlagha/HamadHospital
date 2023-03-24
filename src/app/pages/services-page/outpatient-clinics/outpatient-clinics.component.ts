@@ -20,7 +20,6 @@ export class OutpatientClinicsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this._outpatientClinicsService.getServices();
     this._outpatientClinicsService.getOutpatientClinicsDepartments();
     this._outpatientClinicsService.getOutpatientClinicsDepartmentsServices();
