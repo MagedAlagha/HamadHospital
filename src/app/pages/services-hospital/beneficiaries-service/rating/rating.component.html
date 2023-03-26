@@ -1,27 +1,44 @@
 <form class="row g-3" [formGroup]="Form_Rating">
   <div class="col-md-6">
-    <label>الاسم كامل</label>
-    <input formControlName="FullName" type="text" pInputText>
-  </div>
-  <div class="col-md-6">
-    <label>البريد الالكتروني </label>
-    <input formControlName="Email" type="email" pInputText>
-    <div *ngIf="Form_Rating.get('Email')?.invalid && Form_Rating.get('Email')?.touched" class="error">
-      <div *ngIf="Form_Rating.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
+
+    <label>الاسم كامل <span>(مطلوب)</span></label>
+    <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="FullName" type="text" pInputText>
+    <div *ngIf="FullName?.invalid && FullName?.touched">
+    <small class="text-danger" *ngIf="FullName?.errors?.['required']"  >الاسم مطلوب</small>
+    <small class="text-danger" *ngIf="FullName?.errors?.['minlength']" >الاسم يجب ان يكون على الاقل 5 حروف</small>
     </div>
   </div>
   <div class="col-md-6">
-    <label>رقم الهاتف </label>
-    <input  formControlName="PhoneNumber" type="number" pInputText>
+    <label>البريد الالكتروني </label>
+    <input [class.is-invalid]="Email?.invalid && Email?.touched" formControlName="Email" type="email" pInputText>
+<!--      <small [class.d-none]="Email?.valid || Email?.untouched"> يرجى ادخال الاميميل بشكل صحيح</small>
+ -->     <div *ngIf="Email?.invalid && Email?.touched">
+      <small class="text-danger" *ngIf="Email?.errors?.['email']" >يرجى ادخال الايميل بشكل صحيح</small>
+      </div>
   </div>
   <div class="col-md-6">
-    <label>العنوان بالكامل</label>
-    <input  formControlName="Address" type="text" id="inputAddress" pInputText>
+    <label>رقم الموبايل <span>(مطلوب)</span></label>
+    <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="PhoneNumber" type="text" pInputText>
+    <div *ngIf="PhoneNumber?.invalid && PhoneNumber?.touched">
+      <small class="text-danger" *ngIf="PhoneNumber?.errors?.['required']"  >رقم الموبايل مطلوب</small>
+      <small class="text-danger d-block " *ngIf="PhoneNumber?.errors?.['pattern']" >يرجى ادخال موبايل بشكل صحيح </small>
+       <small class="text-danger" *ngIf="PhoneNumber?.errors?.['minlength'] ||PhoneNumber?.errors?.['maxlength']" >الرقم يجب ان يكون من 10ارقام </small>
+      </div>
+  </div>
+  <div class="col-md-6">
+    <label>العنوان بالكامل <span>(مطلوب)</span></label>
+    <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="Address" type="text" id="inputAddress" pInputText>
+    <div *ngIf="Address?.invalid && Address?.touched">
+      <small class="text-danger" *ngIf="Address?.errors?.['required']"  >العنوان مطلوب</small>
+      </div>
   </div>
   <div class="col-6">
-    <label>تقييم أداء المستشفى </label>
+    <label>تقييم أداء المستشفى  <span>(مطلوب)</span></label>
     <div class="rate-box">
       <p-rating  formControlName="hospitalRating" [cancel]="false"></p-rating>
+      <div *ngIf="hospitalRating?.invalid && hospitalRating?.touched">
+        <small class="text-danger" *ngIf="hospitalRating?.errors?.['required']"  >التقييم مطلوب</small>
+        </div>
     </div>
   </div>
   <div class="col-12">

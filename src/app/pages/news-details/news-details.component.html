@@ -1,4 +1,4 @@
-<ng-container *ngIf="showNews$ |async as data">
+<ng-container *ngIf="showNews$ |async as item">
 
 <section class="news mt-5">
   <div class="container">
@@ -6,13 +6,13 @@
       <div class="col-md-8">
         <div class="section-title">
 
-          <ng-container *ngIf="data.MainServiceID === 1">  <span></span> التأهيل الطبي </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
-          <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
+          <ng-container *ngIf="item.MainServiceID === 1">  <span></span> التأهيل الطبي </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
+          <h1>{{ isEn ? item?.TitleEn : item?.TitleAr }}  </h1>
         </div>
-        <img [src]=" 'http://hamad_api.accessline.ps'+ data?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
+        <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
       </div>
 
     </div>
@@ -22,16 +22,16 @@
       <div class="col-md-8 d-flex justify-content-between align-items-center my-4">
         <div class="entry-meta">
          <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
-          <span>نشر بتاريخ: <span>{{data?.CreatedDate | date}} </span> </span>
+          <span>نشر بتاريخ: <span>{{item?.CreatedDate | date}} </span> </span>
         </div>
         <div class="share-post">
        <!--    <span> <i class="fa-brands fa-whatsapp"></i></span> -->
-          <span ngxClipboard  (click)="copy(data?.DescAr)"   [pTooltip]="text"  tooltipPosition="top" ><i class="fa-regular fa-clone ps-3"></i></span>
+          <span ngxClipboard  (click)="copy(item?.DescAr)"   [pTooltip]="text"  tooltipPosition="top" ><i class="fa-regular fa-clone ps-3"></i></span>
         </div>
       </div>
       <div class="col-md-8 post-p">
         <!--  -->
-          <p>{{ isEn ? data?.DescEn : data?.DescAr }}</p>
+          <p>{{ isEn ? item?.DescEn : item?.DescAr }}</p>
       </div>
     </div>
     <div class="last-news mt-5">
@@ -44,23 +44,24 @@
             <h2 class="d-inline-block ps-2">اخر الاخبار</h2>
           </div>
           <ng-container *ngIf="MediaCenterService$ |async as data">
-
-            <ng-container *ngFor="let item of data.slice(-3) ">  <!-- | slice:-3  -->
-
-              <div class="row align-items-center mt-4" routerLink="/news-details/{{item.ID}}" (click)="showNews(item)" style="cursor: pointer;"  >
-              <!--   <a href=""  routerLink="/news-details/{{item.ID}}" ></a> -->
-                <div class="col-md-3 px-0">
-                  <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
-                </div>
-                <div class="col-md-8">
-                  <div class="last-news-title">
-                    <h3> {{ isEn ? item?.TitleEn : item?.TitleAr }} </h3>
-                    <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }} </p>
+            <ng-container *ngIf="item.ID != data.ID">
+              <ng-container *ngFor="let item of data.slice(-3) ">  <!-- | slice:-3  -->
+                <div class="row align-items-center mt-4" routerLink="/news-details/{{item.ID}}" (click)="showNews(item)" style="cursor: pointer;"  >
+                <!--   <a href=""  routerLink="/news-details/{{item.ID}}" ></a> -->
+                  <div class="col-md-3 px-0">
+                    <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="last-news-title">
+                      <h3> {{ isEn ? item?.TitleEn : item?.TitleAr }} </h3>
+                      <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }} </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
+              </ng-container>
             </ng-container>
+
+
             </ng-container>
 
         </div>

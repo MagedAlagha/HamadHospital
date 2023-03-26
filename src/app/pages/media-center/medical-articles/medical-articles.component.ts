@@ -14,7 +14,7 @@ export class MedicalArticlesComponent implements OnInit {
   constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {

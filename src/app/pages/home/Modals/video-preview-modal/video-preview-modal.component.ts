@@ -14,6 +14,7 @@ width:any = '100% ';
   constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) {}
 
 video$!:Observable<any>;
+apiLoaded = false;
   ngOnInit(): void {
 
      this.data = this._mediaCenterService.dataStore.VideoDetails ;
@@ -24,10 +25,13 @@ video$!:Observable<any>;
       console.log('data3333333' , value)
     }));
 
+    if (!this.apiLoaded) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+      this.apiLoaded = true;
+    }
   }
 
-  /* closeDialog() {
-    this._videoGalleryService.displayDialogs('VideoDialog', false);
-} */
 
 }

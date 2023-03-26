@@ -46,7 +46,7 @@ MedicalArticles$!:Observable<any>;
   }
   showMedicalArticles(item:any){
     this._mediaCenterService.updateStore({ MedicalArticles: item });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
   }
 
 }

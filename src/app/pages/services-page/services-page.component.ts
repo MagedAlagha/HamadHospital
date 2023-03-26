@@ -21,7 +21,7 @@ export class ServicesPageComponent implements OnInit {
   ) {}
   Services: any;
   ngOnInit(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
    /*  this.bgSection$ = this._servicesPageService.Selector$('bgSection').pipe(tap(value=>{
       console.log('value 111111111111' , value) ;
     })); */
@@ -29,7 +29,7 @@ export class ServicesPageComponent implements OnInit {
       tap((value) => {
         this.Services = value;
         console.log("value ......" , value);
-        this.background = value.MedicalRehabilitationBackgroundPath;
+         this.setBackGround(this.active);
       })
     );
 
@@ -38,7 +38,6 @@ export class ServicesPageComponent implements OnInit {
 
     if (url.includes('rehabilitation')) {
       this.active = 1;
-
       this._servicesPageService.updateStore({ bgSection: this.Services.MedicalRehabilitationBackgroundPath });
     } else if (url.includes('prosthetics')) {
       this.active = 2;

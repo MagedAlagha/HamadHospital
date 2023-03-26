@@ -19,18 +19,20 @@ export class AppointmentBookingComponent implements OnInit {
 ) {
 
   this.Form_AppointmentBooking = fb.group({
-    FullName: ['', Validators.required],
-    Email: ['',  [Validators.required, Validators.email]],
+    FullName: ['', [Validators.required , Validators.minLength(5)]],
+    Email: ['',  Validators.email],
     PhoneNumber:['',[
       Validators.required,
       Validators.minLength(10),
-      Validators.maxLength(10)
+      Validators.maxLength(10),
+      Validators.pattern("^[0-9]*$")
     ]],
     Address: ['', Validators.required],
     IdentityNumber: ['',[
       Validators.required,
       Validators.minLength(9),
-      Validators.maxLength(9)
+      Validators.maxLength(9),
+      Validators.pattern("^[0-9]*$")
     ]],
     VisitTypeID: ['', Validators.required],
     Appointment: ['', Validators.required],
@@ -54,7 +56,7 @@ export class AppointmentBookingComponent implements OnInit {
     if (this.Form_AppointmentBooking.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'جميع الحقول مطلوبة',
+        detail: 'يوجد حقول مطلوبة',
       });
     } else {
       this._servicesHospitalService.saveAppointmentBooking({
@@ -65,6 +67,31 @@ export class AppointmentBookingComponent implements OnInit {
 
       this.Form_AppointmentBooking.reset();
     }
+  }
+
+  get FullName () {
+    return this.Form_AppointmentBooking.get('FullName')
+  }
+  get Email () {
+    return this.Form_AppointmentBooking.get('Email')
+  }
+  get PhoneNumber () {
+    return this.Form_AppointmentBooking.get('PhoneNumber')
+  }
+  get Address () {
+    return this.Form_AppointmentBooking.get('Address')
+  }
+  get IdentityNumber () {
+    return this.Form_AppointmentBooking.get('IdentityNumber')
+  }
+  get VisitTypeID () {
+    return this.Form_AppointmentBooking.get('VisitTypeID')
+  }
+  get Appointment () {
+    return this.Form_AppointmentBooking.get('Appointment')
+  }
+  get DepartmentID () {
+    return this.Form_AppointmentBooking.get('DepartmentID')
   }
 
 

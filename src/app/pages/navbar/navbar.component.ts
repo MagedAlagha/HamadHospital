@@ -37,29 +37,37 @@ export class NavbarComponent implements OnInit {
     }
 
 
-      /*  if (window.scrollY > 100) {
-      navbar.classList.add('header-scrolled')
+    /*   if (window.scrollY > 100) {
+      selectHeader.classList.add('header-scrolled')
     } else {
       selectHeader.classList.remove('header-scrolled')
-    }
- */
+    }  */
+
   }
 
   isScrolled = false;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-     const currentScrollPosition = window.pageYOffset;
-    const isScrollingUp = currentScrollPosition < this.previousScrollPosition;
+   /*   const currentScrollPosition = window.pageYOffset;
+    const isScrollingUp = currentScrollPosition < this.previousScrollPosition; */
 
-    /* const navbar = document.querySelector('.navbar');
-    if (isScrollingUp || currentScrollPosition === 0) {
-      navbar?.classList.add('fixed-top', 'show');
+    const navbar = document.querySelector('.navbar');
+  /*   if (isScrollingUp || currentScrollPosition === 0) {
+      navbar?.classList.add( 'fixed-top' , 'show');
     } else {
       navbar?.classList.remove('fixed-top', 'show');
     }
-
     this.previousScrollPosition = currentScrollPosition; */
+
+     if( window.scrollY > 0){
+      navbar?.classList.add('header-scrolled' );
+   /*    navbar?.classList.remove( 'bg-white-opacity'); */
+    }else{
+      navbar?.classList.remove('header-scrolled' );
+     /*  navbar?.classList.add( 'bg-white-opacity'); */
+    }
+
 
   }
 }

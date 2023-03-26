@@ -13,7 +13,7 @@ export class ServicesHospitalComponent implements OnInit {
   constructor(private _homeService:HomeService , private _servicesHospitalService:ServicesHospitalService) { }
 
   ngOnInit(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
     this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo');
   }
 

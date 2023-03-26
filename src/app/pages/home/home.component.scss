@@ -1,5 +1,5 @@
 .hero .img {
-  height: 89vh;
+  height: 108vh;
   width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../../../assets/img/hero.png);
   /* object-fit: cover;
@@ -11,6 +11,7 @@
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
+  top: 50px;
 }
 
 section {
@@ -39,7 +40,7 @@ section {
   background: #ffffffa7;
   padding: 15px 25px;
   border-radius: 5px;
-  margin-bottom: 50px;
+  margin-bottom: 135px;
   text-align: center;
 }
 
@@ -53,6 +54,14 @@ section {
   .content p {
     font-weight: 700;
     font-size: 18px;
+  }
+  .hero .img {
+    height: 75vh;
+  }
+  .content {
+
+    margin-bottom: 80px;
+
   }
 }
 

@@ -16,16 +16,17 @@ export class VisitorServiceComponent implements OnInit {
   Codes$!:Observable<any>;
   constructor(private fb:FormBuilder , private _servicesHospitalService:ServicesHospitalService , private messageService: MessageService) {
     this.Form_Visitors = fb.group({
-      FullName:['' , Validators.required],
-      Email:['', [ Validators.email]],
+      FullName: ['', [Validators.required , Validators.minLength(5)]],
+      Email: ['',  Validators.email],
       PhoneNumber:['',[
         Validators.required,
         Validators.minLength(10),
-        Validators.maxLength(10)
+        Validators.maxLength(10),
+        Validators.pattern("^[0-9]*$")
       ]],
       Address:['', Validators.required],
       CommunicationReason:['', Validators.required],
-      TextMessage:['', Validators.required],
+      TextMessage:[''],
     })
   }
 
@@ -34,7 +35,7 @@ export class VisitorServiceComponent implements OnInit {
     this.Codes$ = this._servicesHospitalService.Selector$('codes3').pipe(tap(valye=>{
       console.log(valye , 'valye');
     }));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
     this.cities = [
       { Name: 'اقتراح', Code: '1' },
       { Name: 'ملاحظة', Code: '2' },
@@ -48,7 +49,7 @@ export class VisitorServiceComponent implements OnInit {
     if (this.Form_Visitors.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'جميع الحقول مطلوبة',
+        detail: 'يوجد حقول مطلوبة',
       });
     } else {
       this._servicesHospitalService.saveVisitors(this.Form_Visitors.value );
@@ -57,5 +58,24 @@ export class VisitorServiceComponent implements OnInit {
     this.submitted = true;
 
   }
+
+
+  get FullName () {
+    return this.Form_Visitors.get('FullName')
+  }
+  get Email () {
+    return this.Form_Visitors.get('Email')
+  }
+  get PhoneNumber () {
+    return this.Form_Visitors.get('PhoneNumber')
+  }
+  get Address () {
+    return this.Form_Visitors.get('Address')
+  }
+  get CommunicationReason () {
+    return this.Form_Visitors.get('CommunicationReason')
+  }
+
+
 
 }

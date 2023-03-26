@@ -16,7 +16,6 @@ export class MediaCenterComponent implements OnInit {
 
   ngOnInit(): void {
 
-     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     const url = window.location.href;
     if (url.includes('news')) {

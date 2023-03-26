@@ -17,12 +17,13 @@ export class InstitutionsServiceComponent implements OnInit {
     private messageService: MessageService
   ) {
     this.Form_PressCoverageRequest = fb.group({
-      FullName: ['' , Validators.required],
-      Email: ['', [ Validators.email]],
+      FullName: ['', [Validators.required , Validators.minLength(5)]],
+      Email: ['',  Validators.email],
       PhoneNumber:['',[
         Validators.required,
         Validators.minLength(10),
-        Validators.maxLength(10)
+        Validators.maxLength(10),
+        Validators.pattern("^[0-9]*$")
       ]],
       Address: ['', Validators.required],
       TextMessage: ['', Validators.required],
@@ -43,7 +44,7 @@ export class InstitutionsServiceComponent implements OnInit {
     if (this.Form_PressCoverageRequest.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'جميع الحقول مطلوبة',
+        detail: 'يوجد حقول مطلوبة',
       });
     } else {
       this._servicesHospitalService.savePressCoverageRequest(
@@ -56,7 +57,7 @@ export class InstitutionsServiceComponent implements OnInit {
     if (this.Form_VisitRequest.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'جميع الحقول مطلوبة',
+        detail: 'يوجد حقول مطلوبة',
       });
     } else {
       this._servicesHospitalService.saveVisitRequest(
@@ -66,6 +67,31 @@ export class InstitutionsServiceComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
+  }
+
+  get FullName () {
+    return this.Form_PressCoverageRequest.get('FullName')
+  }
+  get Email () {
+    return this.Form_PressCoverageRequest.get('Email')
+  }
+  get PhoneNumber () {
+    return this.Form_PressCoverageRequest.get('PhoneNumber')
+  }
+  get Address () {
+    return this.Form_PressCoverageRequest.get('Address')
+  }
+  get FullName2 () {
+    return this.Form_VisitRequest.get('FullName')
+  }
+  get Email2 () {
+    return this.Form_VisitRequest.get('Email')
+  }
+  get PhoneNumber2 () {
+    return this.Form_VisitRequest.get('PhoneNumber')
+  }
+  get Address2 () {
+    return this.Form_VisitRequest.get('Address')
   }
 }

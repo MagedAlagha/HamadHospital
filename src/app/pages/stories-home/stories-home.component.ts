@@ -76,7 +76,7 @@ export class StoriesHomeComponent implements OnInit {
     this.display = true;
     this._mediaCenterService.updateStore({ VideoDetails: item });
     console.log( 'item item item' , item );
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
   }
 
   showPhotosDetails(item:any){

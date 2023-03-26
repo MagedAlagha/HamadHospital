@@ -25,7 +25,7 @@ export class WrittenStoriesDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
     this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
     this.MediaCenterService$ = this._mediaCenterService
@@ -43,14 +43,14 @@ export class WrittenStoriesDetailsComponent implements OnInit {
       .pipe(
         tap((value) => {
           console.log('PhotosDetails', value);
-          this._mediaCenterService.getImageSection(value.ID);
+          this._mediaCenterService.getImageSection(value?.ID);
         })
       );
   }
 
   showPhotosDetails(item: any) {
     this._mediaCenterService.updateStore({ PhotosDetails: item });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
   }
 
   customOptions: OwlOptions = {

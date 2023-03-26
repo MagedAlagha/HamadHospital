@@ -49,7 +49,7 @@ export class VisualStoriesDetailsComponent implements OnInit {
 
   showStoruVideoDetails(item: any) {
     this._mediaCenterService.updateStore({ VideoDetails: item });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
   }
 
 }

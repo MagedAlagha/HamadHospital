@@ -4,7 +4,7 @@
       <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
         <div
           class="img"
-          style="  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(http://hamad_api.accessline.ps{{
+          style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url(http://hamad_api.accessline.ps{{
             item?.ImagePath
           }});"
         >
@@ -51,7 +51,7 @@
       <div class="row justify-content-center mb-4">
         <div class="col-md-9 col-sm-6 col-12 text-center">
           <p style="font-weight: 600; line-height: 28px">
-            {{ data.MainInfo.About }}
+            {{ data?.MainInfo?.About }}
           </p>
         </div>
       </div>
@@ -138,7 +138,7 @@
 <!-- -------------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------------- -->
 <div class="video-modal">
-  <p-dialog header="هذا النص هو مثال لنص يمكن أن يستبدل ..." [(visible)]="display" [modal]="true" [dismissableMask]="true"  [draggable]="false" [resizable]="false" [style]="{width: '47vw' , height: '28vw'}">
+  <p-dialog header="هذا النص هو مثال لنص يمكن أن يستبدل ..." [(visible)]="display" *ngIf="display" [modal]="true" [dismissableMask]="true"  [draggable]="false" [resizable]="false" [style]="{width: '47vw' , height: '28vw'}">
     <app-video-preview-modal></app-video-preview-modal>
   </p-dialog>
 </div>

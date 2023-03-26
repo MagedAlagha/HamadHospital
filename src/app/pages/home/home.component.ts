@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
   MediaCenterService$!:Observable<any>;
   MediaCenterService2$!:Observable<any>;
 
-   apiLoaded = false;
 
   constructor(private _homeService: HomeService , private _mediaCenterService:MediaCenterService , private el: ElementRef) {}
 
@@ -33,13 +32,10 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (!this.apiLoaded) {
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.body.appendChild(tag);
-      this.apiLoaded = true;
-    }
+/*    ;
+ */
+
+
 
     this._homeService.getSliderData();
     this._homeService.getAdvertisements();

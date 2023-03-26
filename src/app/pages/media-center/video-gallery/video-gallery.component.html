@@ -20,7 +20,7 @@
 </div>
 
 <div class="video-modal">
-  <p-dialog header="هذا النص هو مثال لنص يمكن أن يستبدل ..." [(visible)]="display" [modal]="true" [dismissableMask]="true"  [draggable]="false" [resizable]="false" [style]="{width: '47vw' , height: '55vh'}">
+  <p-dialog header="هذا النص هو مثال لنص يمكن أن يستبدل ..." [(visible)]="display" *ngIf="display" [modal]="true" [dismissableMask]="true"  [draggable]="false" [resizable]="false" [style]="{width: '47vw' , height: '55vh'}">
     <app-video-preview-modal></app-video-preview-modal>
   </p-dialog>
 </div>

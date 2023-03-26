@@ -17,13 +17,14 @@ export class RatingComponent implements OnInit {
     ) {
 
       this.Form_Rating = fb.group({
-        FullName: ['', Validators.required],
-        Email: ['',  [Validators.required, Validators.email]],
-        PhoneNumber:['',[
-          Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(10)
-        ]],
+        FullName: ['', [Validators.required , Validators.minLength(5)]],
+    Email: ['',  Validators.email],
+    PhoneNumber:['',[
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10),
+      Validators.pattern("^[0-9]*$")
+    ]],
         Address: ['', Validators.required],
         hospitalRating: ['', Validators.required],
       });
@@ -37,12 +38,28 @@ export class RatingComponent implements OnInit {
     if (this.Form_Rating.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'جميع الحقول مطلوبة',
+        detail: 'يوجد حقول مطلوبة',
       });
     } else {
       this._servicesHospitalService.saveRating(this.Form_Rating.value);
       this.Form_Rating.reset();
     }
+  }
+
+  get FullName () {
+    return this.Form_Rating.get('FullName')
+  }
+  get Email () {
+    return this.Form_Rating.get('Email')
+  }
+  get PhoneNumber () {
+    return this.Form_Rating.get('PhoneNumber')
+  }
+  get Address () {
+    return this.Form_Rating.get('Address')
+  }
+  get hospitalRating () {
+    return this.Form_Rating.get('hospitalRating')
   }
 
 }

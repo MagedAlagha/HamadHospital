@@ -25,6 +25,8 @@ video$!:Observable<any>;
 
   }
 
+
+
   /* closeDialog() {
     this._videoGalleryService.displayDialogs('VideoDialog', false);
 } */

@@ -21,8 +21,6 @@ showNews$!:Observable<any>;
    }
 
   ngOnInit(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {

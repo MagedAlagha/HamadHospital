@@ -1,30 +1,52 @@
 <form class="row g-3" [formGroup]="Form_Suggestion">
   <div class="col-md-6">
-    <label>الاسم كامل</label>
-    <input formControlName="FullName"  type="text" pInputText>
-  </div>
-  <div class="col-md-6">
-    <label>البريد الالكتروني </label>
-    <input formControlName="Email" type="email" pInputText>
-    <div *ngIf="Form_Suggestion.get('Email')?.invalid && Form_Suggestion.get('Email')?.touched" class="error">
-      <div *ngIf="Form_Suggestion.get('Email')?.errors?.['Email']" class="f">يرجى ادخال ايميل صحيح</div>
+
+    <label>الاسم كامل <span>(مطلوب)</span></label>
+    <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="FullName" type="text" pInputText>
+    <div *ngIf="FullName?.invalid && FullName?.touched">
+    <small class="text-danger" *ngIf="FullName?.errors?.['required']"  >الاسم مطلوب</small>
+    <small class="text-danger" *ngIf="FullName?.errors?.['minlength']" >الاسم يجب ان يكون على الاقل 5 حروف</small>
     </div>
   </div>
   <div class="col-md-6">
-    <label>رقم الهاتف </label>
-    <input  formControlName="PhoneNumber" type="number" pInputText>
+    <label>البريد الالكتروني </label>
+    <input [class.is-invalid]="Email?.invalid && Email?.touched" formControlName="Email" type="email" pInputText>
+<!--      <small [class.d-none]="Email?.valid || Email?.untouched"> يرجى ادخال الاميميل بشكل صحيح</small>
+ -->     <div *ngIf="Email?.invalid && Email?.touched">
+      <small class="text-danger" *ngIf="Email?.errors?.['email']" >يرجى ادخال الايميل بشكل صحيح</small>
+      </div>
   </div>
   <div class="col-md-6">
-    <label>العنوان بالكامل</label>
-    <input  formControlName="Address" type="text" id="inputAddress" pInputText>
+    <label>رقم الموبايل <span>(مطلوب)</span></label>
+    <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="PhoneNumber" type="text" pInputText>
+    <div *ngIf="PhoneNumber?.invalid && PhoneNumber?.touched">
+      <small class="text-danger" *ngIf="PhoneNumber?.errors?.['required']"  >رقم الموبايل مطلوب</small>
+      <small class="text-danger d-block " *ngIf="PhoneNumber?.errors?.['pattern']" >يرجى ادخال موبايل بشكل صحيح </small>
+       <small class="text-danger" *ngIf="PhoneNumber?.errors?.['minlength'] ||PhoneNumber?.errors?.['maxlength']" >الرقم يجب ان يكون من 10ارقام </small>
+      </div>
   </div>
   <div class="col-md-6">
-    <label>رقم الهوية</label>
-    <input formControlName="IdentityNumber" type="number" id="inputAddress" pInputText>
+    <label>العنوان بالكامل <span>(مطلوب)</span></label>
+    <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="Address" type="text" id="inputAddress" pInputText>
+    <div *ngIf="Address?.invalid && Address?.touched">
+      <small class="text-danger" *ngIf="Address?.errors?.['required']"  >العنوان مطلوب</small>
+      </div>
+  </div>
+  <div class="col-md-6">
+    <label>رقم الهوية <span>(مطلوب)</span></label>
+    <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="IdentityNumber" type="text" id="inputAddress" pInputText>
+    <div *ngIf="IdentityNumber?.invalid && IdentityNumber?.touched">
+      <small class="text-danger" *ngIf="IdentityNumber?.errors?.['required']"  >رقم الهوية مطلوب</small>
+      <small class="text-danger d-block " *ngIf="IdentityNumber?.errors?.['pattern']" >رقم الهوية ارقام فقط </small>
+       <small class="text-danger" *ngIf="IdentityNumber?.errors?.['minlength'] ||IdentityNumber?.errors?.['maxlength']" >الرقم يجب ان يكون من 9 ارقام </small>
+      </div>
   </div>
   <div class="col-12">
-    <label>نص الرسالة </label>
+    <label>نص الرسالة <span>(مطلوب)</span></label>
     <textarea formControlName="TextMessage" [rows]="6" pInputTextarea></textarea>
+    <div *ngIf="TextMessage?.invalid && TextMessage?.touched">
+      <small class="text-danger" *ngIf="TextMessage?.errors?.['required']"  >الرسالة مطلوبة</small>
+      </div>
   </div>
   <div class="col-12">
     <button pButton type="button" class=""  (click)="saveSuggestion()" label="إرسال"></button>

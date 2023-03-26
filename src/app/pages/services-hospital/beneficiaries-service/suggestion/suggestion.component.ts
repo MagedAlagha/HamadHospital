@@ -20,17 +20,19 @@ export class SuggestionComponent implements OnInit {
     private messageService: MessageService
   ) {
     this.Form_Suggestion = fb.group({
-      FullName: ['', Validators.required],
-      Email: ['',  [Validators.required, Validators.email]],
+      FullName: ['', [Validators.required , Validators.minLength(5)]],
+      Email: ['',  Validators.email],
       PhoneNumber:['',[
         Validators.required,
         Validators.minLength(10),
-        Validators.maxLength(10)
+        Validators.maxLength(10),
+        Validators.pattern("^[0-9]*$")
       ]],
       IdentityNumber: ['',[
         Validators.required,
         Validators.minLength(9),
-        Validators.maxLength(9)
+        Validators.maxLength(9),
+        Validators.pattern("^[0-9]*$")
       ]],
       Address: ['', Validators.required],
       TextMessage: ['', Validators.required],
@@ -51,7 +53,7 @@ export class SuggestionComponent implements OnInit {
     if (this.Form_Suggestion.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'جميع الحقول مطلوبة',
+        detail: 'يوجد حقول مطلوبة',
       });
     } else {
       this._servicesHospitalService.saveSuggestion(this.Form_Suggestion.value);
@@ -59,5 +61,24 @@ export class SuggestionComponent implements OnInit {
     }
   }
 
+
+  get FullName () {
+    return this.Form_Suggestion.get('FullName')
+  }
+  get Email () {
+    return this.Form_Suggestion.get('Email')
+  }
+  get PhoneNumber () {
+    return this.Form_Suggestion.get('PhoneNumber')
+  }
+  get Address () {
+    return this.Form_Suggestion.get('Address')
+  }
+  get IdentityNumber () {
+    return this.Form_Suggestion.get('IdentityNumber')
+  }
+  get TextMessage () {
+    return this.Form_Suggestion.get('TextMessage')
+  }
 
 }

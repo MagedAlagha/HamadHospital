@@ -23,7 +23,7 @@ export class PhotoDetailsComponent implements OnInit {
     console.log(this.ID);
   }
   ngOnInit(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
     this.ImageSection$ =
       this._mediaCenterService.Selector$('ImageSection');
 
@@ -32,7 +32,7 @@ export class PhotoDetailsComponent implements OnInit {
       .pipe(
         tap((value) => {
           console.log('value', value);
-          this._mediaCenterService.getImageSection(value.ID);
+          this._mediaCenterService.getImageSection(value?.ID);
         })
       );
 
@@ -50,7 +50,7 @@ export class PhotoDetailsComponent implements OnInit {
 
   showPhotosDetails(item: any) {
     this._mediaCenterService.updateStore({ PhotosDetails: item });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+   ;
   }
 
   title = 'GFG';
