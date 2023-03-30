@@ -19,6 +19,8 @@ import { DialogModule } from 'primeng/dialog';
 import { VideoPreviewModalComponent } from './pages/home/Modals/video-preview-modal/video-preview-modal.component';
 import { StoriesHomeModule } from './pages/stories-home/stories-home.module';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { SkeletonModule } from 'primeng/skeleton';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 
@@ -42,7 +44,9 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     ToastModule,
     DialogModule,
     StoriesHomeModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    SkeletonModule,
+    TooltipModule
   ],
 
   providers: [

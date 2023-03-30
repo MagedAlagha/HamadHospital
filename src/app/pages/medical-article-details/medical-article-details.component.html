@@ -26,7 +26,7 @@
         </div>
         <div class="share-post">
        <!--    <span> <i class="fa-brands fa-whatsapp"></i></span> -->
-       <span ngxClipboard  (click)="copy(data?.DescAr)"   [pTooltip]="text"  tooltipPosition="top" ><i class="fa-regular fa-clone ps-3"></i></span>
+       <span ngxClipboard  (click)="copy()"   [pTooltip]="text"  tooltipPosition="top" ><i class="fa-regular fa-clone ps-3"></i></span>
 
         </div>
       </div>
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    </ng-container>
+
 
     <div class="last-news mt-5">
       <div class="section-2 d-flex align-items-center mb-2">
@@ -46,21 +46,21 @@
 
 
   <div class="row">
-    <ng-container *ngIf="MediaCenterService$ |async as data">
+    <ng-container *ngIf="MediaCenterService$ |async as data2">
+      <ng-container *ngFor="let item of data2.slice(-3) ">
 
-    <div class="col-md-4" *ngFor="let item of data.slice(-3) ">
+    <div class="col-md-4"  *ngIf="item.ID !== data.ID">
       <div class="post-box mt-3" routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)" >
         <div class="post-img"> <img [src]="'http://hamad_api.accessline.ps'+ item?.ImagePath" style="object-fit: cover; width: 100%; max-height: 300px;" class="img-fluid" alt="">
         </div>
         <div class="d-flex justify-content-between align-items-baseline mb-1 ">
+          <h1>{{ isEn ? data2?.TitleEn : data2?.TitleAr }}  </h1>
 
-          <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
-
-          <ng-container *ngIf="data.MainServiceID === 1">  <span class="categories">التأهيل الطبي</span>  </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 2">  <span class="categories">الاطراف الصناعية</span>  </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 3">  <span class="categories">السمع والتوازن</span>  </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 4">  <span class="categories">العيادة الخارجية</span>  </ng-container>
-          <span class="post-date">{{data?.CreatedDate | date}} </span>
+          <ng-container *ngIf="data2.MainServiceID === 1">  <span class="categories">التأهيل الطبي</span>  </ng-container>
+          <ng-container *ngIf="data2.MainServiceID === 2">  <span class="categories">الاطراف الصناعية</span>  </ng-container>
+          <ng-container *ngIf="data2.MainServiceID === 3">  <span class="categories">السمع والتوازن</span>  </ng-container>
+          <ng-container *ngIf="data2.MainServiceID === 4">  <span class="categories">العيادة الخارجية</span>  </ng-container>
+          <span class="post-date">{{data2?.CreatedDate | date}} </span>
         </div>
         <h3 class="post-title">{{ isEn ? item?.TitleEn : item?.TitleAr   | slice:0:50 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 50 ? '...' : '' }}  </h3>
         <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
@@ -69,10 +69,13 @@
          </a>
       </div>
     </div>
+  </ng-container>
 
   </ng-container>
   </div>
 
 </div>
+</ng-container>
 </div>
+
 </section>

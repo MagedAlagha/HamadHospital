@@ -76,18 +76,19 @@
     <div class="line"></div>
     <h2 class="d-inline-block ps-2">اخر الصور</h2>
   </div>
-  <ng-container *ngIf="MediaCenterService$ |async as data">
-    <ng-container *ngIf="item.ID != data.ID">
   <div class="row">
-    <div class="col-md-4 mt-md-0 mt-3" *ngFor="let item of data.slice(-3)">
-      <div class="img" routerLink="/photo-details/{{item.ID}}" (click)="showPhotosDetails(item)"  >
+
+  <ng-container *ngIf="MediaCenterService$ |async as data">
+    <ng-container *ngFor="let item2 of data.slice(-3)">
+    <div class="col-md-4 mt-md-0 mt-3" *ngIf="item2.ID !== item.ID" >
+      <div class="img" routerLink="/photo-details/{{item2.ID}}" (click)="showPhotosDetails(item2)"  >
         <img
-        [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
+        [src]=" 'http://hamad_api.accessline.ps'+ item2?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
           class="img-fluid main-img"
           alt=""
         />
         <div class="d-flex justify-content-between img-title">
-          <p> {{ isEn ? item?.TitleEn : item?.TitleAr  | slice:0:30 }} {{  isEn ? item?.TitleEn.length : item?.TitleAr.length > 30 ? '...' : '' }}</p>
+          <p> {{ isEn ? item2?.TitleEn : item2?.TitleAr  | slice:0:30 }} {{  isEn ? item2?.TitleEn.length : item2?.TitleAr.length > 30 ? '...' : '' }}</p>
           <div>
            <!--  <span>{{data.length}}</span> -->
             <img src="../../../../assets/img/photo.svg" alt="" />
@@ -95,8 +96,9 @@
         </div>
       </div>
     </div>
-  </div>
+
 </ng-container>
 </ng-container>
+</div>
 </div>
 </ng-container>

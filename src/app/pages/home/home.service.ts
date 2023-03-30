@@ -70,6 +70,7 @@ export class HomeService {
       { Lang: lang },
     );
   }
+
   getFormApi(
     api: string,
     selector: selectorsType,

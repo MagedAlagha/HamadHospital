@@ -11,6 +11,7 @@ export class PhotoGalleryComponent implements OnInit {
 
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
+
   constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
@@ -25,8 +26,8 @@ export class PhotoGalleryComponent implements OnInit {
 }
 
 showPhotosDetails(item:any){
-  this._mediaCenterService.updateStore({ PhotosDetails: item });
-  console.log(item)
+  this._mediaCenterService.updateStore({ PostInfo: item });
+  console.log(item , "itemitemitemitem")
 }
 
 }

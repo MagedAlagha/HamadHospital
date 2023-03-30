@@ -1,7 +1,7 @@
 <!-- Stores -->
 <section class="stores">
   <div class="section-header text-center">
-    <h3 class="px-md-5 px-2">
+    <h3 class="px-md-5 px-2 mb-0">
       قصص ملهمة !<img src="../../../assets/img/05.svg" alt="" />
     </h3>
   </div>
@@ -9,25 +9,26 @@
     <div class="section-title">
       <h4>قصص فيديو</h4>
       <div class="line"></div>
-      <div class="d-flex justify-content-end mb-3">
+      <div class="d-flex justify-content-end " style="margin-top: -12px;">
         <a routerLink="/media-center/video/video-main">شاهد المزيد</a>
       </div>
+
     </div>
     <!-- row -->
     <ng-container *ngIf="MediaCenterService$ | async as data">
       <div class="row align-items-stretch">
           <div
-            class="col-md-4 d-flex align-items-stretch pb-5" *ngFor="let item of data.slice(-3)"
+            class="col-md-3 img pb-3" *ngFor="let item of data.slice(-3)"
             (click)="showVideoPreview(item)"
           >
             <div style="width: 100%">
               <img
                 [src]="'http://hamad_api.accessline.ps' + item?.ImagePath"
-                style="width: 100%; height: 85% ; border-radius: 6px;"
+                style="width: 100%; height: 80% ; border-radius: 6px;"
                 class="img-fluid"
                 alt=""
               />
-              <p style="color: #fff">
+              <p style="color: #fff ; margin-bottom: 4px;">
                 {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 40) }}
                 {{
                   isEn
@@ -38,35 +39,38 @@
                 }}
               </p>
             </div>
+            <a class=" icon_video play-btn mb-4"></a>
           </div>
-
       </div>
     </ng-container>
   </div>
   <!-- قصص مكتوبة -->
-  <div class="container mt-4">
+  <div class="container write-sory">
     <div class="section-title">
       <h4>قصص صحفية</h4>
       <div class="line"></div>
-      <div class="d-flex justify-content-end mb-3">
-        <a routerLink="/media-center/visual-stories">شاهد المزيد</a>
+      <div class="d-flex justify-content-end "style="margin-top: -12px;">
+        <a routerLink="/media-center/visual-stories">اقرا المزيد</a>
       </div>
     </div>
     <!-- row  -->
     <ng-container *ngIf="MediaCenterService2$ | async as data">
       <div class="row align-items-stretch">
           <div
-            class="col-md-4 d-flex align-items-stretch pb-5" *ngFor="let item of data.slice(-3)"
+            class="col-md-3  pb-3   " *ngFor="let item of data.slice(-3)"
             (click)="showPhotosDetails(item)"
             routerLink="/written-stories-details/{{item.ID}}"
           >
-            <div style="width: 100%">
+            <div style="width: 100% " >
+            <div class="figure">
               <img
-                [src]="'http://hamad_api.accessline.ps' + item?.ImagePath"
-                style="width: 100%; height: 85% ; border-radius: 6px;"
-                class="img-fluid"
-                alt=""
-              />
+              [src]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+              style="width: 100%; height: 80% ; border-radius: 6px;"
+              class="img-fluid"
+              alt=""
+            />
+            </div>
+
               <p style="color: #fff">
                 {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 40) }}
                 {{

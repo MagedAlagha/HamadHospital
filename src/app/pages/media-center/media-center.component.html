@@ -38,23 +38,11 @@
               [ngClass]="{'active':active==6}" (click)="active=6">قصص رقمية
               </a>
           </li>
-      <!--     <li>
-            <a href="#submenu" data-bs-toggle="collapse"
-              class="nav-link d-flex justify-content-between align-items-baseline" [ngClass]="{'active':active==5}"
-              (click)="active=5">
-              <span class="ms-1 d-none d-sm-inline">قصص النجاح</span>
-              <i class="fa-solid fa-caret-left" [class]="active==5 ? 'rotate' : 'remove-rotate'"></i>
-            </a>
-            <ul class="collapse hide nav flex-column" id="submenu" data-bs-parent="#menu">
-              <li class="w-100">
-                <a class="nav-link" routerLink="/media-center/success-stories/visual-stories"> قصص مرئية </a>
-              </li>
-              <li>
-                <a class="nav-link" routerLink="/media-center/success-stories/written-stories"> قصص مكتوبة</a>
-              </li>
-            </ul>
-          </li> -->
-
+          <li class="nav-item mb-2">
+            <a class="nav-link" routerLink="/media-center/mix"
+              [ngClass]="{'active':active==7}" (click)="active=7">منوعات
+              </a>
+          </li>
         </ul>
       </div>
       <div class="col-md-9">

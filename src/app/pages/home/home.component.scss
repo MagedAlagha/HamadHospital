@@ -42,6 +42,7 @@ section {
   border-radius: 5px;
   margin-bottom: 135px;
   text-align: center;
+  cursor: pointer;
 }
 
 .content p {
@@ -419,7 +420,11 @@ align-items: center; */
   cursor: pointer;
 }
 
-
+.stores .img{
+  cursor: pointer;
+ border-radius: 3px;
+ position: relative;
+}
 
 
 /* .main-img{
@@ -446,3 +451,4 @@ align-items: center; */
   top: 0;
   border-radius: 6px;
 }
+

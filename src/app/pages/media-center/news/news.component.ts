@@ -23,7 +23,7 @@ export class NewsComponent implements OnInit {
 }
 
 showNews(item:any){
-  this._mediaCenterService.updateStore({ showNews: item });
+  this._mediaCenterService.updateStore({ PostInfo: item });
   console.log(item)
 }
 

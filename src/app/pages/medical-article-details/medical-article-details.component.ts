@@ -15,7 +15,7 @@ export class MedicalArticleDetailsComponent implements OnInit {
   isEn = document.dir == 'ltr' ? true : false;
 ID:any;
 text:any = 'نسخ';
-
+location:any
 MedicalArticles$!:Observable<any>;
   constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService , private renderer: Renderer2 ,private _clipboardService: ClipboardService) {
     this.ID = this.route.snapshot.paramMap.get('id');
@@ -23,7 +23,9 @@ MedicalArticles$!:Observable<any>;
    }
 
   ngOnInit(): void {
+    this.location = window.location.href;
 
+    this._mediaCenterService.getPostId(this.ID);
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
@@ -34,18 +36,18 @@ MedicalArticles$!:Observable<any>;
       })
     );
 
-    this.MedicalArticles$ = this._mediaCenterService.Selector$('MedicalArticles')
+    this.MedicalArticles$ = this._mediaCenterService.Selector$('PostInfo')
     const data  = this._mediaCenterService.dataStore.MedicalArticles
     if(data){
     console.log(data , "gege")
     }
   }
-  copy(text: string){
-    this._clipboardService.copy(text);
+  copy(){
+    this._clipboardService.copy(this.location);
     this.text = "تم النسخ"
   }
   showMedicalArticles(item:any){
-    this._mediaCenterService.updateStore({ MedicalArticles: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
    ;
   }
 

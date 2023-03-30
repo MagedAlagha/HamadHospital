@@ -15,12 +15,20 @@ export class NewsDetailsComponent implements OnInit {
 ID:any;
 text:any = 'نسخ';
 showNews$!:Observable<any>;
-  constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService , private renderer: Renderer2 , private _clipboardService: ClipboardService) {
+location:any
+  constructor(private route:ActivatedRoute ,
+     private _mediaCenterService:MediaCenterService
+      , private renderer: Renderer2 ,
+      private _clipboardService: ClipboardService
+      ) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID)
    }
 
   ngOnInit(): void {
+    this.location = window.location.href;
+
+    this._mediaCenterService.getPostId(this.ID);
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
@@ -30,25 +38,16 @@ showNews$!:Observable<any>;
         return value.slice(-3)
       })
     );
-
-
-
-
-
-    this.showNews$ = this._mediaCenterService.Selector$('showNews')
-    const data  = this._mediaCenterService.dataStore.showNews
-    if(data){
-    console.log(data , "{gege")
-    }
+    this.showNews$ = this._mediaCenterService.Selector$('PostInfo')
   }
 
-  copy(text: string){
-    this._clipboardService.copy(text);
+  copy(){
+    this._clipboardService.copy(this.location);
     this.text = "تم النسخ"
   }
 
   showNews(item:any){
-    this._mediaCenterService.updateStore({ showNews: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

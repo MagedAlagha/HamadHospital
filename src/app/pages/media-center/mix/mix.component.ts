@@ -3,29 +3,30 @@ import { map, Observable } from 'rxjs';
 import { MediaCenterService } from '../media-center.service';
 
 @Component({
-  selector: 'app-medical-articles',
-  templateUrl: './medical-articles.component.html',
-  styleUrls: ['./medical-articles.component.scss']
+  selector: 'app-mix',
+  templateUrl: './mix.component.html',
+  styleUrls: ['./mix.component.scss']
 })
-export class MedicalArticlesComponent implements OnInit {
+export class MixComponent implements OnInit {
 
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
-   ;
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 4;
+          return item.MediaSectionID === 7;
         });
       })
     );
 }
 
-showMedicalArticles(item:any){
+showNews(item:any){
   this._mediaCenterService.updateStore({ PostInfo: item });
+  console.log(item)
 }
+
 
 }

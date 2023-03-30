@@ -24,11 +24,13 @@ export class MixDetailsComponent implements OnInit {
     console.log(this.ID);
   }
   ngOnInit(): void {
+    this._mediaCenterService.getPostId(this.ID);
+
     this.ImageSection$ =
       this._mediaCenterService.Selector$('ImageSection');
 
     this.MixDetails$ = this._mediaCenterService
-      .Selector$('MixDetails')
+      .Selector$('PostInfo')
       .pipe(
         tap((value) => {
           console.log('value', value);
@@ -49,7 +51,7 @@ export class MixDetailsComponent implements OnInit {
   }
 
   showMixDetails(item: any) {
-    this._mediaCenterService.updateStore({ MixDetails: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
    ;
   }
 

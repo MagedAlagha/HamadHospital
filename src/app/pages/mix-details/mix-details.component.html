@@ -1,7 +1,6 @@
 
 <ng-container *ngIf="MixDetails$ |async as data">
 
-
   <section class="news mt-5">
     <div class="container">
       <div class="row d-flex justify-content-center">
@@ -47,7 +46,7 @@
     </div>
   </section>
 
-  </ng-container>
+
 
 
   <div class="container mb-4">
@@ -55,9 +54,10 @@
       <div class="line"></div>
       <h2 class="d-inline-block ps-2">منوعات اخرى</h2>
     </div>
-    <ng-container *ngIf="MediaCenterService$ |async as data">
+    <ng-container *ngIf="MediaCenterService$ |async as data2">
     <div class="row">
-      <div class="col-md-4 mt-md-0 mt-3" *ngFor="let item of data.slice(-3)">
+      <ng-container *ngFor="let item of data2.slice(-3)">
+      <div class="col-md-4 mt-md-0 mt-3"   *ngIf="item.ID !== data.ID">
         <div class="img" routerLink="/mix-details/{{item.ID}}" (click)="showMixDetails(item)"  >
           <img
           [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
@@ -73,6 +73,8 @@
           </div>
         </div>
       </div>
+    </ng-container>
     </div>
   </ng-container>
   </div>
+</ng-container>

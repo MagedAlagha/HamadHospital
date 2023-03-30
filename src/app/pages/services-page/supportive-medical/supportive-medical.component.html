@@ -31,7 +31,7 @@
 
 
     <!-- ------------------------------------ -->
-<div class="row mb-5 justify-content-center">
+<!-- <div class="row mb-5 justify-content-center">
   <div
     class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mt-4 mt-md-3"
     *ngFor="let item of SupportiveMedicalDepartments$ | async"
@@ -51,7 +51,34 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
+  <ng-container *ngFor="let item of data">
+    <hr />
+         <div class="py-2">
+          <h3>{{isEn ? item.NameEn : item.NameAr}}</h3>
+          <div class="row"  >
+            <ng-container *ngFor="let serivce of OutpatientClinicsDepartmentsServices$ | async">
+              <ng-container *ngIf="item.ID == serivce.OutpatientClinicsDepartmentID">
+                <div class="col-md-4"> <!--  [pTooltip]="isEn ? serivce?.DescEn : serivce?.DescAr"  tooltipPosition="top" [positionStyle]	="widthToolTip" -->
+                  <div class="body-box"  >
+                    {{ isEn ? serivce?.NameEn : serivce?.NameAr }}
+                    <p class="text-center p-hide" style="font-size: 13px; padding-top: 8px;">{{isEn ? serivce?.DescEn : serivce?.DescAr}}</p>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+         </div>
+  </ng-container>
+</ng-container>
+
+<hr />
+
+
+
+
 
   </div>
 </section>

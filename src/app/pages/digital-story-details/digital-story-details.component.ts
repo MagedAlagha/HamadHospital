@@ -23,6 +23,8 @@ export class DigitalStoryDetailsComponent implements OnInit {
 
 
    ngOnInit(): void {
+
+    this._mediaCenterService.getPostId(this.ID);
     this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
@@ -33,7 +35,7 @@ export class DigitalStoryDetailsComponent implements OnInit {
       })
     );
 
-     this.VisualStories$ = this._mediaCenterService.Selector$('VisualStories').pipe(tap(value=>{
+     this.VisualStories$ = this._mediaCenterService.Selector$('PostInfo').pipe(tap(value=>{
       this.postID = value.ID;
       console.log('value' , value)
       this._mediaCenterService.getImageSection(value?.ID);
@@ -41,7 +43,7 @@ export class DigitalStoryDetailsComponent implements OnInit {
 
   }
   showVisualStories(item:any) {
-    this._mediaCenterService.updateStore({ VisualStories: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
    ;
   }
   responsiveOptions: any[] = [

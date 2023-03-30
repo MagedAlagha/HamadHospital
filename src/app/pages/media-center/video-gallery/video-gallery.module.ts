@@ -5,11 +5,10 @@ import { RouterModule } from '@angular/router';
 import {ImageModule} from 'primeng/image';
 import { DialogModule } from 'primeng/dialog';
 import { VideoPreviewModalComponent } from './modal/video-preview-modal/video-preview-modal.component';
-import { SafePipe } from 'src/app/pages/media-center/video-gallery/safe.pipe';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
-  declarations: [VideoGalleryComponent, VideoPreviewModalComponent ,     SafePipe  ],
+  declarations: [VideoGalleryComponent, VideoPreviewModalComponent   ],
   imports: [
     CommonModule,
     ImageModule,

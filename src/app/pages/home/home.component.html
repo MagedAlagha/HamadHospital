@@ -7,20 +7,20 @@
           style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url(http://hamad_api.accessline.ps{{
             item?.ImagePath
           }});"
-        >
+           >
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-md-7 col-10">
-                <div class="content">
-
+                <div class="content" [routerLink]="item?.Link">
                 <!--   <a  routerLink="{{item?.Link.substring(21)}}" (click)="showNews(item)" > <p>{{ item.Title }} </p></a> -->
 <!-- *ngIf="item_2.ID  == item.Link " -->
                 <!--  <p>{{ item.Title }} </p>  --><!--  [href]="item?.Link" -->
                  <ng-container *ngIf="MediaCenterServiceNews$ | async as news">
+                  <p class="mb-1">{{ item.Title }} </p>
                   <ng-container *ngFor="let item_2 of news">
-                   <ng-container >
-                    <a  [routerLink]="item?.Link" (click)="showNews(item_2)" > <p>{{ item.Title }} </p></a>
-                  </ng-container>
+                     <ng-container *ngIf="item_2.ID  === 0 ">
+                   <a   (click)="showNews(item_2)" > </a>
+                   </ng-container>
                   </ng-container>
                 </ng-container>
                  </div>
@@ -40,7 +40,7 @@
           <span class="line"></span>
         </div>
         <div class="col-md-4 col-8">
-          <h3 class="px-md-5 px-2">الأقسام الرئيسية</h3>
+          <h3 class="px-md-5 px-2">مقدمة عن المستشفى</h3>
         </div>
         <div class="col-md-4 col-2">
           <span class="line"></span>
@@ -145,44 +145,53 @@
 
 <!-- Stores -->
 <section class="stores" >
+  <!-- <ng-template #loading><p-skeleton width="100%" styleClass="bg-custom-color" height="20rem"></p-skeleton>
+  </ng-template>
+  ;else loading
+  -->
   <div class="section-header text-center">
-    <h3 class="px-md-5 px-2 text-white"> قصص ملهمة !<img src="../../../assets/img/05.svg" alt=""></h3>
+    <h3 class="px-md-5 px-2 text-white mb-0"> قصص ملهمة !<img src="../../../assets/img/05.svg" alt=""></h3>
   </div>
   <div class="container">
     <div class="section-title">
       <h4>قصص فيديو</h4>
       <div class="line"></div>
-       <div class="d-flex justify-content-end mb-3">
+       <div class="d-flex justify-content-end mb-3" style="margin-top: -40px;">
         <a  routerLink="/media-center/video/video-main" >شاهد المزيد</a>
       </div>
     </div>
     <!-- row -->
-    <ng-container *ngIf="MediaCenterService$ |async as data">
+    <ng-container *ngIf="MediaCenterService$ |async as data ">
     <div class="row align-items-stretch">
-      <div class="col-md-8 d-flex align-items-stretch "  (click)="showVideoPreview(data[1])" >
+      <div class="col-md-8 d-flex align-items-stretch img "  (click)="showVideoPreview(data[1])" >
         <div >
             <img [src]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid main-img"
             class="img-fluid" alt="">
            <img src="../../../assets/img/video.mp4" class="video-icon" alt="">
            <p style="color: #fff;">{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:80 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 80 ? '...' : '' }} </p>
         </div>
+        <a class=" icon_video play-btn mb-4"></a>
 
       </div>
       <div class="col-md-4 d-flex align-items-stretch">
         <div class="row">
-          <div class="col-md-12 col-6" (click)="showVideoPreview(data[0])">
+          <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[0])">
             <figure >
               <img [src]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 90%;" class="img-fluid"
            class="img-fluid" alt="">
               <figcaption>{{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr  | slice:0:35 }} {{  isEn ? data[0]?.TitleEn.length : data[0]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
             </figure>
+            <a class=" icon_video play-btn mb-4"></a>
+
           </div>
-          <div class="col-md-12 col-6" (click)="showVideoPreview(data[2])">
+          <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[2])">
             <figure>
               <img [src]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%;height: 90%;" class="img-fluid"
               class="img-fluid" alt="">
               <figcaption>{{ isEn ? data[2]?.TitleEn : data[2]?.TitleAr  | slice:0:35 }} {{  isEn ? data[2]?.TitleEn.length : data[2]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
             </figure>
+                    <a class=" icon_video play-btn mb-4"></a>
+
           </div>
         </div>
         <div>
@@ -196,8 +205,8 @@
     <div class="section-title">
       <h4>قصص صحفية</h4>
       <div class="line"></div>
-      <div class="d-flex justify-content-end mb-3">
-        <a  routerLink="/media-center/visual-stories" >شاهد المزيد</a>
+      <div class="d-flex justify-content-end mb-3" style="margin-top: -40px;">
+        <a  routerLink="/media-center/visual-stories" >اقرا المزيد</a>
       </div>
     </div>
     <!-- row  -->
@@ -239,35 +248,16 @@
 
 
 <!-- -------------------------------------------------------------------------------------------------- -->
-<!-- -------------------------------------------------------------------------------------------------- -->
 
-<!-- news -->
-  <!--   <a routerLink="/media-center/news/news-main">
-            عرض الكل <i class="fa-solid fa-arrow-left-long ps-1"></i
-          ></a>
-
-          <div class="section-title mb-2">
-      <div class="row">
-        <div class="col-6">
-          <h4>الاخبار</h4>
-        </div>
-        <div class="col-6 text-end">
-          <h4>منوعات</h4>
-        </div>
-      </div>
-    </div>
-
-
-        -->
 <section class="news">
   <div class="container">
 
       <div class="row gy-4">
         <ng-container *ngIf="LastNews$ | async as data">
 
-        <div class="col-md-8  "><!--  d-flex align-items-stretch -->
+        <div class="col-md-8"><!--  d-flex align-items-stretch -->
           <div class="section-title">
-            <h4>الاخبار</h4>
+            <h4 routerLink="/media-center/news/news-main" style="cursor: pointer;"  >الاخبار</h4>
         </div>
           <div class="row box">
             <!--  <ng-container *ngFor="let item of data">  </ng-container> -->
@@ -362,7 +352,7 @@
 
         <div class="col-md-4  flex-column"><!--  d-flex align-items-stretch -->
           <div class="section-title mb-2">
-            <h4>منوعات</h4>
+            <h4  routerLink="/media-center/mix" style="cursor: pointer;" >منوعات</h4>
           </div>
           <div class="news-box2">
             <owl-carousel-o [options]="mix">
@@ -394,25 +384,6 @@
               </ng-container>
             </owl-carousel-o>
           </div>
-
-          <!--   <div class="news-box2" (click)="showNews(data[data.length - 1])"  routerLink="/news-details/{{data[data.length - 1]?.ID}}">
-            <div class="d-flex justify-content-center">
-              <img [src]=" 'http://hamad_api.accessline.ps'+ data[data.length - 1]?.ImagePath" class="img-fluid" alt="" />
-            </div>
-            <div class="news-box2-xontent">
-              <h3 class="post-title">
-                {{
-                  isEn
-                    ? data[data.length - 1]?.TitleEn
-                    : data[data.length - 1]?.TitleAr
-                }}
-              </h3>
-              <a (click)="showNews(data[data.length - 1])" class="readmore mt-auto d-flex align-items-baseline"
-                ><span>إقراء المزيد</span
-                ><i class="fa-solid fa-arrow-left-long ps-1"></i>
-              </a>
-            </div>
-          </div> -->
         </div>
       </div>
 

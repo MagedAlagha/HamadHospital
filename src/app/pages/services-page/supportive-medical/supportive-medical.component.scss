@@ -160,13 +160,19 @@ color: #8a1538;
 
 }
 
+
 .p-hide{
-display: none;
-transition: .5s all;
-text-align: start;
+  display: none;
+  transition: .5s all;
 }
 
-.icon-box:hover .p-hide{
-display: block;
-transition: .5s all;
+.body-box:hover .p-hide{
+  display: block;
+  transition: .5s all;
+}
+
+h3{
+  font-size: 18px;
+  font-weight: 700;
+  color: #8a1538;
 }

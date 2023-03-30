@@ -25,6 +25,8 @@ export class MediaCenterService {
     VisualStories:undefined,
     PhotoGalaryDetails:undefined,
     MixDetails:undefined,
+    PostInfo: undefined,
+
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -55,7 +57,14 @@ export class MediaCenterService {
         'ImageSection',
         { MediaSectionsItemID:ID },
     );
+ }
+
+ getPostId(ID:any) {
+  this.getFormApi(
+    `LandingPage/MediaSectionsItems/${ID}`,'PostInfo',
+  );
 }
+
 
   getFormApi(
     api: string,
@@ -85,5 +94,7 @@ export interface StoreInterface {
   VisualStories?: any;
   PhotoGalaryDetails?: any;
   MixDetails?: any;
+  PostInfo?: any;
+
 }
 export type selectorsType = keyof StoreInterface;

@@ -124,18 +124,18 @@ export class HomeComponent implements OnInit {
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PhotosDetails: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
     console.log(item);
   }
 
   /* ************************************************************************* */
 
   showNews(item: any) {
-    this._mediaCenterService.updateStore({ showNews: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
     console.log(item, 'itemitemitem');
   }
   showmix(item: any) {
-    this._mediaCenterService.updateStore({ MixDetails: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
     console.log(item);
   }
 

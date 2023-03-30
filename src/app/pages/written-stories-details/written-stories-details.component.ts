@@ -25,7 +25,8 @@ export class WrittenStoriesDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-   ;
+    this._mediaCenterService.getPostId(this.ID);
+
     this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
     this.MediaCenterService$ = this._mediaCenterService
@@ -39,7 +40,7 @@ export class WrittenStoriesDetailsComponent implements OnInit {
       );
 
     this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('PhotosDetails')
+      .Selector$('PostInfo')
       .pipe(
         tap((value) => {
           console.log('PhotosDetails', value);
@@ -49,7 +50,7 @@ export class WrittenStoriesDetailsComponent implements OnInit {
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PhotosDetails: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
    ;
   }
 

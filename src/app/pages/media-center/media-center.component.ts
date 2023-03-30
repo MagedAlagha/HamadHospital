@@ -30,6 +30,8 @@ export class MediaCenterComponent implements OnInit {
       this.active = 5;
     }else if(url.includes('visual-stories')){
       this.active = 6;
+    }else if(url.includes('mix')){
+      this.active = 7;
     }
   }
 }

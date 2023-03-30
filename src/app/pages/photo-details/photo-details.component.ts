@@ -23,12 +23,12 @@ export class PhotoDetailsComponent implements OnInit {
     console.log(this.ID);
   }
   ngOnInit(): void {
-   ;
+    this._mediaCenterService.getPostId(this.ID);
     this.ImageSection$ =
       this._mediaCenterService.Selector$('ImageSection');
 
     this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('PhotosDetails')
+      .Selector$('PostInfo')
       .pipe(
         tap((value) => {
           console.log('value', value);
@@ -49,7 +49,7 @@ export class PhotoDetailsComponent implements OnInit {
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PhotosDetails: item });
+    this._mediaCenterService.updateStore({ PostInfo: item });
    ;
   }
 

@@ -54,6 +54,13 @@ import { RouterModule } from '@angular/router';
                 '../media-center/written-stories/written-stories.module'
               ).then((m) => m.WrittenStoriesModule),
           },
+          {
+            path: 'mix',
+            loadChildren: () =>
+              import(
+                './mix/mix.module'
+              ).then((m) => m.MixModule),
+          },
         ],
       },
     ]),

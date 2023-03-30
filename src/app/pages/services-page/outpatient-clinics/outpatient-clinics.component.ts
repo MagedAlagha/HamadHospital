@@ -31,6 +31,11 @@ export class OutpatientClinicsComponent implements OnInit {
         return val?.filter((item: any) => {
           return item.IsActive;
         });
+      }),
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.TypeID === 4;
+        });
       })
     );
 
