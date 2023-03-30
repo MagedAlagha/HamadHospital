@@ -3,7 +3,7 @@
         <div class="col-md-6 mt-md-0 mb-4"  *ngFor="let item of data">
           <div class="box-blog"  >
           <div class="img" routerLink="/photo-details/{{item.ID}}" (click)="showPhotosDetails(item)" >
-            <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;" alt="">
+            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;" alt="">
             <div class="d-flex justify-content-between img-title">
               <p>{{ isEn ? item?.TitleEn : item?.TitleAr | slice:0:35 }} {{  isEn ? item?.TitleEn.length : item?.TitleAr.length > 35 ? '...' : '' }}</p>
               <div>

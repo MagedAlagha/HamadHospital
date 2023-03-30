@@ -21,6 +21,8 @@ import { StoriesHomeModule } from './pages/stories-home/stories-home.module';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TooltipModule } from 'primeng/tooltip';
+import { NgOptimizedImage } from '@angular/common';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 
@@ -46,7 +48,8 @@ import { TooltipModule } from 'primeng/tooltip';
     StoriesHomeModule,
     YouTubePlayerModule,
     SkeletonModule,
-    TooltipModule
+    TooltipModule ,
+    LazyLoadImageModule
   ],
 
   providers: [

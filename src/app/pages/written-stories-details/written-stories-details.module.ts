@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { WrittenStoriesDetailsComponent } from './written-stories-details.component';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [WrittenStoriesDetailsComponent],
@@ -15,6 +16,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
         component: WrittenStoriesDetailsComponent,
       },
     ]),
+    LazyLoadImageModule
   ],
 })
 export class WrittenStoriesDetailsModule {}

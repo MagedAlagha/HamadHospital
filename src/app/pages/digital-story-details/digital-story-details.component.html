@@ -28,7 +28,7 @@
             <p-galleria [numVisible]="3" [value]="data" >
               <ng-template pTemplate="item" let-item>
                 <img
-                [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+                [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
                   [alt]="item.alt"
                   [title]="item.title"
                   style="width: 90%; height: 450px; object-fit: cover ; border-radius: 6px;"
@@ -46,7 +46,7 @@
               <ng-template pTemplate="thumbnail" let-item>
                 <div class="grid grid-nogutter justify-content-center">
                   <img
-                  [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+                  [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
                     [alt]="item.alt"
                     [title]="item.title"
                     width="80%"
@@ -74,7 +74,7 @@
     <div class="col-md-4 mt-md-0 mt-3" *ngIf="item.ID !== dataa.ID" >
       <div class="img" routerLink="/digital-story-details/{{item.ID}}" (click)="showVisualStories(item)">
         <img
-        [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
+        [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
           class="img-fluid main-img"
           alt=""
         />

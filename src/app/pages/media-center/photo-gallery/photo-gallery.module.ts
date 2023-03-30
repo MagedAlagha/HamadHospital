@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PhotoGalleryComponent } from '../photo-gallery/photo-gallery.component';
 import { RouterModule } from '@angular/router';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [PhotoGalleryComponent],
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
         component: PhotoGalleryComponent,
       },
     ]),
+    LazyLoadImageModule
   ],
 })
 export class PhotoGalleryModule {}

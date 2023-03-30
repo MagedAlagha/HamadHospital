@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DigitalStoryDetailsComponent } from './digital-story-details.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { RouterModule } from '@angular/router';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
         component: DigitalStoryDetailsComponent,
       },
     ]),
+    LazyLoadImageModule
   ],
 })
 export class DigitalStoryDetailsModule { }

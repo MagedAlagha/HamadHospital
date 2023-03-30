@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MixComponent } from './mix.component';
 import { RouterModule } from '@angular/router';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
         component: MixComponent,
       },
     ]),
+    LazyLoadImageModule
   ],
 })
 export class MixModule { }

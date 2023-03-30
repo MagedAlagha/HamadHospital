@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MixDetailsComponent } from './mix-details.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { RouterModule } from '@angular/router';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
         component: MixDetailsComponent,
       },
     ]),
+    LazyLoadImageModule
   ],
 })
 export class MixDetailsModule { }

@@ -4,6 +4,7 @@ import { MedicalArticleDetailsComponent } from './medical-article-details.compon
 import { RouterModule } from '@angular/router';
 import { ClipboardModule } from 'ngx-clipboard';
 import { TooltipModule } from 'primeng/tooltip';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [MedicalArticleDetailsComponent],
@@ -17,6 +18,7 @@ import { TooltipModule } from 'primeng/tooltip';
         component: MedicalArticleDetailsComponent,
       },
     ]),
+    LazyLoadImageModule
   ],
 })
 export class MedicalArticleDetailsModule {}

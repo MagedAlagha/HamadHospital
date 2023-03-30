@@ -2,7 +2,7 @@
   <ng-container *ngIf="MediaCenterService$ | async as data">
     <div class="col-md-6" *ngFor="let item of data">
       <div class="post-box mb-4" routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)"  >
-        <div class="post-img"><img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;"  class="img-fluid" alt=""></div>
+        <div class="post-img"><img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;"  class="img-fluid" alt=""></div>
         <div class="d-flex justify-content-between align-items-baseline mb-1 ">
           <ng-container *ngIf="item.MainServiceID === 1">
             <span class="categories">التأهيل الطبي</span>

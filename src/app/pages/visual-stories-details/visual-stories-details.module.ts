@@ -14,6 +14,7 @@ import { SafePipe } from '../../shared/pipe/safe.pipe';
         component: VisualStoriesDetailsComponent,
       },
     ]),
+
   ],
 })
 export class VisualStoriesDetailsModule {}

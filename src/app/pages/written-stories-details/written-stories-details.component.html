@@ -27,7 +27,7 @@
             <ng-container *ngIf="ImageSection$ | async as data">
               <ng-template carouselSlide *ngFor="let item of data">
                 <img
-                  [src]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+                  [lazyLoad]="'http://hamad_api.accessline.ps' + item?.ImagePath"
                   class="img-fluid"
                   style="
                     object-fit: cover;
@@ -62,7 +62,7 @@
           (click)="showPhotosDetails(item)"
         >
           <img
-            [src]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+            [lazyLoad]="'http://hamad_api.accessline.ps' + item?.ImagePath"
             style="
               width: 100%;
               object-fit: cover;
