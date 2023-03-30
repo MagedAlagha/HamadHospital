@@ -1,19 +1,18 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
-
 <p-toast></p-toast>
 
 <ng-container *ngIf="LandingPageData$ |async as data">
   <div class="social-links  " [ngClass]="{'social-links-scroll':isScroll ==true}" ><!--  d-md-block d-none -->
-    <a [href]="data?.MainInfo?.FacebookLink" target="_blank"><img src="../../../assets/img/brand-facebook.svg" alt="" /></a>
-    <a [href]="data?.MainInfo?.YoutubeLink" class="mt-1" target="_blank"
+    <a [href]="data?.MainInfo?.FacebookLink" target="_blank" pTooltip="Facebook" tooltipPosition="right"><img src="../../../assets/img/brand-facebook.svg" alt="" /></a>
+    <a [href]="data?.MainInfo?.YoutubeLink" class="mt-1" target="_blank" pTooltip="Youtube" tooltipPosition="right"
       ><img src="../../../assets/img/brand-youtube.svg" alt=""
     /></a>
-    <a [href]="data?.MainInfo?.InstagramLink" class="mt-1" target="_blank"
+    <a [href]="data?.MainInfo?.InstagramLink" class="mt-1" target="_blank" pTooltip="instagram" tooltipPosition="right"
       ><img src="../../../assets/img/brand-instagram.svg" alt=""
     /></a>
-    <a [href]="data?.MainInfo?.TwitterLink" class="mt-1" target="_blank"
+    <a [href]="data?.MainInfo?.TwitterLink" class="mt-1" target="_blank" pTooltip="twitter" tooltipPosition="right"
       ><img src="../../../assets/img/brand-twitter.svg" alt=""
     /></a>
   </div>
@@ -22,3 +21,5 @@
 
 <button *ngIf="isShow" (click)="gotoTop()"><i class="pi pi-chevron-up"></i>
 </button>
+
+
