@@ -31,7 +31,7 @@
       </div>
       <div class="col-md-8 post-p">
         <!--  -->
-          <p>{{ isEn ? item?.DescEn : item?.DescAr }}</p>
+          <p  [innerHTML]="isEn ? item?.DescEn : item?.DescAr "></p>
       </div>
     </div>
     <div class="last-news mt-5">

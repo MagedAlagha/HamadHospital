@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit  , Renderer2 } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
 import { filter, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -30,7 +30,9 @@ export class HomeComponent implements OnInit {
     private _homeService: HomeService,
     private _mediaCenterService: MediaCenterService,
     private el: ElementRef,
-    private location: Location
+    private location: Location,
+    private elementRef: ElementRef,
+     private renderer: Renderer2
   ) {}
   dominUrl: any;
   ngOnInit(): void {
@@ -111,7 +113,13 @@ export class HomeComponent implements OnInit {
       );
 
     /* **************************************************************************************** */
+
+
+
   }
+
+
+
 
   /* ************************************************************************* */
 

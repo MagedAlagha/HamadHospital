@@ -27,12 +27,33 @@
               </div>
             </div>
           </div>
+
         </div>
       </ng-template>
     </ng-container>
   </owl-carousel-o>
+
 </div>
-<section class="about">
+<!-- <button
+
+  ngxScrollTo
+  [ngxScrollToOffset]="770">
+  <i class="pi pi-chevron-down"></i>
+</button>
+ -->
+
+<div id="scroll-down-animation"   ngxScrollTo
+[ngxScrollToOffset]="770">
+  <span class="mouse">
+    <span class="move"></span>
+  </span>
+</div>
+
+
+<!-- <button><i class="pi pi-chevron-up"></i></button>
+ -->
+
+<section class="about" id="section1">
   <div class="container">
     <div class="section-header text-center mb-4">
       <div class="row">
@@ -144,7 +165,7 @@
 </div>
 
 <!-- Stores -->
-<section class="stores" >
+<section class="stores" id="section2" >
   <!-- <ng-template #loading><p-skeleton width="100%" styleClass="bg-custom-color" height="20rem"></p-skeleton>
   </ng-template>
   ;else loading
@@ -245,11 +266,9 @@
   </div>
 
 </section>
-
-
 <!-- -------------------------------------------------------------------------------------------------- -->
 
-<section class="news">
+<section class="news" id="section3" >
   <div class="container">
 
       <div class="row gy-4">
@@ -391,7 +410,7 @@
 </section>
 
 <!-- employment-Ad -->
-<div class="employment-ad">
+<div class="employment-ad" id="section4">
   <div class="container background">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-md-9">

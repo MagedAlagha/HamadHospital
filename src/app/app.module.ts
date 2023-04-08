@@ -23,6 +23,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { TooltipModule } from 'primeng/tooltip';
 import { NgOptimizedImage } from '@angular/common';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
 
@@ -49,7 +50,8 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     YouTubePlayerModule,
     SkeletonModule,
     TooltipModule ,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    ScrollToModule.forRoot()
   ],
 
   providers: [
