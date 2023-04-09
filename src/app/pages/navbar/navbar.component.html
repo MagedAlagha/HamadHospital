@@ -10,6 +10,8 @@
         alt=""
         width="130"
         class="d-inline-block align-text-top"
+        [ngClass]="{ active: active == 1 }"
+            (click)="active = 1"
       />
     </a>
     <button

@@ -17,16 +17,14 @@
   </div>
 </div>
 
-
-
-
   <ng-container *ngIf="LandingPageData$ |async as data">
   <div class="footer-top" >
     <div class="container pt-5">
       <div class="row justify-content-between  ">
         <div class=" col-md-6 footer-info">
           <img src="../../../assets/img/QFFD 2.svg" width="180px" alt="logo">
-          <img [src]=" 'http://hamad_api.accessline.ps'+ data?.MainInfo?.LogoImagePath" height="50px" alt="logo" class="ms-4">
+<!--           <img [src]=" 'http://hamad_api.accessline.ps'+ data?.MainInfo?.LogoImagePath" height="50px" alt="logo" class="ms-4">
+ -->          <img src="../../../assets/img/Logo2.svg" height="50px" alt="logo" class="ms-4">
           <p class="my-3 pe-4">
             {{data?.MainInfo?.About}}
           </p>
@@ -58,7 +56,7 @@
               </a> </p>
             <p><img src="../../../assets/img/phone.svg" alt=""> <a >{{data?.MainInfo?.Phone}}</a></p>
             <p><img src="../../../assets/img/device-mobile.svg" alt=""> <a>{{data?.MainInfo?.Mobile}}</a></p>
-            <p><img src="../../../assets/img/mail.svg" alt=""> <a [href]="data?.MainInfo?.Email">{{data?.MainInfo?.Email}}</a></p>
+            <p><img src="../../../assets/img/mail.svg" alt=""> <a [href]="'mailto:'+data?.MainInfo?.Email">{{data?.MainInfo?.Email}}</a></p>
           </div>
 
         </div>

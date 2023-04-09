@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
+import { HomeService } from '../home/home.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,16 +20,18 @@ export class NavbarComponent implements OnInit {
   active: any = 1;
   previousScrollPosition = 0;
   fisrt:any = 0 ;
-  constructor(public router: Router) {}
+  constructor(public router: Router , private _homeService: HomeService,) {}
 
   ngOnInit(): void {
+
+    console.log(this._homeService.dataStore.activeNave  , "this._homeService.activeNave ==3")
 
     const url = window.location.href;
     if (url.includes('home')) {
       this.active = 1;
     }else if(url.includes('sections')){
       this.active = 2;
-    }else if(url.includes('media-center')){
+    }else if(url.includes('media-center') ){
       this.active = 3;
     }else if(url.includes('about-us')){
       this.active = 4;

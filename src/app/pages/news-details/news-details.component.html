@@ -5,18 +5,21 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
         <div class="section-title">
+         <!--  <ng-container *ngIf="item.MainServiceID === 1">  <span>التأهيل الطبي</span>  </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 2">  <span>الاطراف الصناعية</span>  </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 3">  <span>السمع والتوازن</span>  </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 4">  <span>العيادة الخارجية</span>  </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 5">  <span>خدمات طبية مساندة</span>  </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 6">  <span>الاخبار</span> </ng-container> -->
+          <div class="title">
+            <p class="mb-1">{{  item?.SubTitleAr }}  </p>
+              <h1>{{ isEn ? item?.TitleEn : item?.TitleAr }}  </h1>
+          </div>
 
-          <ng-container *ngIf="item.MainServiceID === 1">  <span></span> التأهيل الطبي </ng-container>
-          <ng-container *ngIf="item.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
-          <ng-container *ngIf="item.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
-          <ng-container *ngIf="item.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
-          <h1>{{ isEn ? item?.TitleEn : item?.TitleAr }}  </h1>
         </div>
         <img [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
       </div>
-
     </div>
-
 
     <div class="row d-flex justify-content-center">
       <div class="col-md-8 d-flex justify-content-between align-items-center my-4">
@@ -54,8 +57,12 @@
                   <div class="col-md-8">
                     <div class="last-news-title">
                       <h3> {{ isEn ? item2?.TitleEn : item2?.TitleAr }} </h3>
-                      <p>{{ isEn ? item2?.DescEn : item2?.DescAr | slice:0:100 }} {{  isEn ? item2?.DescEn.length : item2?.DescAr.length > 100 ? '...' : '' }} </p>
-                    </div>
+                      <div class="post-pp">
+                        <p  [innerHTML]="isEn ? item?.DescEn : item?.DescAr  | slice:0:100"></p>
+                      </div>
+
+<!--                       <p>{{ isEn ? item2?.DescEn : item2?.DescAr | slice:0:100 }} {{  isEn ? item2?.DescEn.length : item2?.DescAr.length > 100 ? '...' : '' }} </p>
+ -->                    </div>
                   </div>
                 </div>
               </ng-container>

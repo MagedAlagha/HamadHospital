@@ -145,6 +145,7 @@ export class HomeComponent implements OnInit {
   showmix(item: any) {
     this._mediaCenterService.updateStore({ PostInfo: item });
     console.log(item);
+
   }
 
   customOptions: OwlOptions = {

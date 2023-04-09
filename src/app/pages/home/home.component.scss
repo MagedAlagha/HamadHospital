@@ -500,3 +500,14 @@ align-items: center; */
     opacity: 0;
   }
 }
+
+
+.p-hide{
+  display: none;
+  transition: .5s all;
+}
+
+.icon-box:hover .p-hide{
+  display: block;
+  transition: .5s all;
+}

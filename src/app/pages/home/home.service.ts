@@ -18,6 +18,7 @@ export class HomeService {
     mainInfo: undefined,
     LandingPageInfo: undefined,
     Advertisements: undefined,
+    activeNave: undefined,
     MedicalRehabilitationFeatures: undefined,
   });
 
@@ -93,6 +94,7 @@ export interface StoreInterface {
   mainInfo: any;
   LandingPageInfo: any;
   Advertisements: any;
+  activeNave: any;
   MedicalRehabilitationFeatures: any;
 }
 export type selectorsType = keyof StoreInterface;

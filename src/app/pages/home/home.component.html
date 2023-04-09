@@ -61,7 +61,7 @@
           <span class="line"></span>
         </div>
         <div class="col-md-4 col-8">
-          <h3 class="px-md-5 px-2">مقدمة عن المستشفى</h3>
+          <h3 class="px-md-5 px-2">عن المستشفى</h3>
         </div>
         <div class="col-md-4 col-2">
           <span class="line"></span>
@@ -72,7 +72,9 @@
       <div class="row justify-content-center mb-4">
         <div class="col-md-9 col-sm-6 col-12 text-center">
           <p style="font-weight: 600; line-height: 28px">
-            {{ data?.MainInfo?.About }}
+            <!-- {{ data?.MainInfo?.About }} -->
+            أحد أكبر مستشفيات التأهيل العاملة في قطاع غزة، يقدم خدمات التأهيل والكشف المجاني لحالات (أمراض الأعصاب، العظام، العضلات، مبتوري الأطراف، انحناء العمود الفقري، مشاكل السمع وزراعة القوقعة)
+            وذلك من خلال الاقسام الرئيسية التالية
           </p>
         </div>
       </div>
@@ -80,7 +82,7 @@
         <div
           class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
         >
-          <a routerLink="/sections/medical-rehabilitation">
+          <a routerLink="/sections/medical-rehabilitation" style="width: 100%;">
             <div class="icon-box">
               <div class="icon">
                 <img
@@ -90,7 +92,7 @@
                 <img src="../../../assets/img/04.svg" alt="" />
               </div>
               <h4>التأهيل الطبي</h4>
-              <p>
+              <p class="p-hide">
                 {{ data?.Services?.MedicalRehabilitationDesc }}
               </p>
             </div>
@@ -99,7 +101,7 @@
         <div
           class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
         >
-          <a routerLink="/sections/prosthetics">
+          <a routerLink="/sections/prosthetics" style="width: 100%;">
             <div class="icon-box">
               <div class="icon">
                 <img
@@ -109,7 +111,7 @@
                 <img src="../../../assets/img/03.svg" alt="" />
               </div>
               <h4>الاطراف الصناعية</h4>
-              <p>
+              <p class="p-hide">
                 {{ data?.Services?.ProstheticsDesc }}
               </p>
             </div>
@@ -119,14 +121,14 @@
         <div
           class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
         >
-          <a routerLink="/sections/hearing-balance">
+          <a routerLink="/sections/hearing-balance" style="width: 100%;">
             <div class="icon-box">
               <div class="icon">
                 <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
                 <img src="../../../assets/img/02.svg" alt="" />
               </div>
               <h4>السمع والتوازن</h4>
-              <p>
+              <p class="p-hide">
                 {{ data?.Services?.HearingDesc }}
               </p>
             </div>
@@ -136,7 +138,7 @@
         <div
           class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
         >
-          <a routerLink="/sections/outpatient-clinics">
+          <a routerLink="/sections/outpatient-clinics" style="width: 100%;" >
             <div class="icon-box">
               <div class="icon">
                 <img
@@ -146,7 +148,7 @@
                 <img src="../../../assets/img/01.svg" alt="" />
               </div>
               <h4>العيادة الخارجية</h4>
-              <p>
+              <p class="p-hide">
                 {{ data?.Services?.OutpatientClinicsDesc }}
               </p>
             </div>
@@ -290,7 +292,7 @@
                   <img
                     [lazyLoad]="
                       'http://hamad_api.accessline.ps' +
-                      data[data.length - 2]?.ImagePath
+                      data[data?.length - 2]?.ImagePath
                     "
                   />
                 </div>
@@ -298,51 +300,61 @@
                   class="d-flex justify-content-between align-items-baseline mb-1"
                 >
                   <ng-container
-                    *ngIf="data[data.length - 2]?.MainServiceID === 1"
+                    *ngIf="data[data?.length - 2]?.MainServiceID === 1"
                   >
                     <span class="categories">التأهيل الطبي</span>
                   </ng-container>
                   <ng-container
-                    *ngIf="data[data.length - 2]?.MainServiceID === 2"
+                    *ngIf="data[data?.length - 2]?.MainServiceID === 2"
                   >
                     <span class="categories">الاطراف الصناعية</span>
                   </ng-container>
                   <ng-container
-                    *ngIf="data[data.length - 2]?.MainServiceID === 3"
+                    *ngIf="data[data?.length - 2]?.MainServiceID === 3"
                   >
                     <span class="categories">السمع والتوازن</span>
                   </ng-container>
                   <ng-container
-                    *ngIf="data[data.length - 2]?.MainServiceID === 4"
+                    *ngIf="data[data?.length - 2]?.MainServiceID === 4"
                   >
                     <span class="categories">العيادة الخارجية</span>
                   </ng-container>
+                  <ng-container
+                    *ngIf="data[data?.length - 2]?.MainServiceID === 5"
+                  >
+                    <span class="categories">الأخبار</span>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="data[data?.length - 2]?.MainServiceID === 6"
+                  >
+                    <span class="categories">غير مصنف</span>
+                  </ng-container>
 
                   <span class="post-date">{{
-                    data[data.length - 2]?.CreatedDate | date
+                    data[data?.length - 2]?.CreatedDate | date
                   }}</span>
                 </div>
                 <h3 class="post-title">
                   {{
                     isEn
-                      ? data[data.length - 2]?.TitleEn
-                      : data[data.length - 2]?.TitleAr
+                      ? data[data?.length - 2]?.TitleEn
+                      : data[data?.length - 2]?.TitleAr
                   }}
                 </h3>
-                <p>
+                <!-- <p>
                   {{
                     isEn
-                      ? data[data.length - 2]?.DescEn
-                      : (data[data.length - 2]?.DescAr | slice : 0 : 100)
+                      ? data[data?.length - 2]?.DescEn
+                      : (data[data?.length - 2]?.DescAr | slice : 0 : 100)
                   }}
                   {{
                     isEn
-                      ? data[data.length - 2]?.DescEn.length
-                      : data[data.length - 2]?.DescAr.length > 100
+                      ? data[data?.length - 2]?.DescEn.length
+                      : data[data?.length - 2]?.DescAr.length > 100
                       ? "..."
                       : ""
                   }}
-                </p>
+                </p> -->
                 <a href="#" class="readmore mt-auto d-flex align-items-baseline"
                   ><span>إقراء المزيد</span
                   ><i class="fa-solid fa-arrow-left-long ps-1"></i>
@@ -353,12 +365,12 @@
             <div class="col-md-6 mt-md-0 mt-3">
               <div class="titlis-box">
                 <p><strong>إقراء المزيد</strong></p>
-                <ng-container *ngFor="let item of data">
+                <ng-container *ngFor="let item of data.slice(-3)">
                   <a
                     routerLink="/news-details/{{ item.ID }}"
                     (click)="showNews(item)"
                     class="title"
-                    >عنوان المقال نموذج افتراضي يوضع
+                    >{{item.TitleAr}}
                     <i class="fa-solid fa-arrow-left-long ps-1"></i
                   ></a>
                 </ng-container>
