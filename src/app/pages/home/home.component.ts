@@ -49,11 +49,11 @@ export class HomeComponent implements OnInit {
         return {
           ...value,
           HeaderSlider: value?.HeaderSlider?.map((item: any) => {
-            console.log('this.dominUrl', this.dominUrl);
+            /* console.log('this.dominUrl', this.dominUrl);
             console.log(
               'item',
               item?.Link.toString()?.replace(this.dominUrl, '')
-            );
+            ); */
             return {
               ...item,
               Link: item?.Link?.replace(this.dominUrl, ''),

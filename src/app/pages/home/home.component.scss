@@ -501,7 +501,6 @@ align-items: center; */
   }
 }
 
-
 .p-hide{
   display: none;
   transition: .5s all;
@@ -510,4 +509,7 @@ align-items: center; */
 .icon-box:hover .p-hide{
   display: block;
   transition: .5s all;
+}
+.news-box2 img{
+  height: 280px;
 }

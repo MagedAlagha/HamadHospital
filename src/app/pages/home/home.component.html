@@ -8,6 +8,9 @@
             item?.ImagePath
           }});"
            >
+           <ng-container *ngIf="item.ShowTitle">
+
+
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-md-7 col-10">
@@ -27,7 +30,7 @@
               </div>
             </div>
           </div>
-
+        </ng-container>
         </div>
       </ng-template>
     </ng-container>
@@ -285,14 +288,14 @@
             <div class="col-md-6">
               <div
                 class="post-box"
-                (click)="showNews(data[data.length - 2])"
-                routerLink="/news-details/{{ data[data.length - 2]?.ID }}"
+                (click)="showNews(data[data.length - 1])"
+                routerLink="/news-details/{{ data[data.length - 1]?.ID }}"
               >
                 <div class="post-img">
                   <img
                     [lazyLoad]="
                       'http://hamad_api.accessline.ps' +
-                      data[data?.length - 2]?.ImagePath
+                      data[data?.length - 1]?.ImagePath
                     "
                   />
                 </div>
@@ -300,61 +303,47 @@
                   class="d-flex justify-content-between align-items-baseline mb-1"
                 >
                   <ng-container
-                    *ngIf="data[data?.length - 2]?.MainServiceID === 1"
+                    *ngIf="data[data?.length - 1]?.MainServiceID === 1"
                   >
                     <span class="categories">التأهيل الطبي</span>
                   </ng-container>
                   <ng-container
-                    *ngIf="data[data?.length - 2]?.MainServiceID === 2"
+                    *ngIf="data[data?.length - 1]?.MainServiceID === 2"
                   >
                     <span class="categories">الاطراف الصناعية</span>
                   </ng-container>
                   <ng-container
-                    *ngIf="data[data?.length - 2]?.MainServiceID === 3"
+                    *ngIf="data[data?.length - 1]?.MainServiceID === 3"
                   >
                     <span class="categories">السمع والتوازن</span>
                   </ng-container>
                   <ng-container
-                    *ngIf="data[data?.length - 2]?.MainServiceID === 4"
+                    *ngIf="data[data?.length - 1]?.MainServiceID === 4"
                   >
                     <span class="categories">العيادة الخارجية</span>
                   </ng-container>
                   <ng-container
-                    *ngIf="data[data?.length - 2]?.MainServiceID === 5"
+                    *ngIf="data[data?.length - 1]?.MainServiceID === 5"
                   >
                     <span class="categories">الأخبار</span>
                   </ng-container>
                   <ng-container
-                    *ngIf="data[data?.length - 2]?.MainServiceID === 6"
+                    *ngIf="data[data?.length - 1]?.MainServiceID === 6"
                   >
                     <span class="categories">غير مصنف</span>
                   </ng-container>
 
                   <span class="post-date">{{
-                    data[data?.length - 2]?.CreatedDate | date
+                    data[data?.length - 1]?.CreatedDate | date
                   }}</span>
                 </div>
                 <h3 class="post-title">
                   {{
                     isEn
-                      ? data[data?.length - 2]?.TitleEn
-                      : data[data?.length - 2]?.TitleAr
+                      ? data[data?.length - 1]?.TitleEn
+                      : data[data?.length - 1]?.TitleAr
                   }}
                 </h3>
-                <!-- <p>
-                  {{
-                    isEn
-                      ? data[data?.length - 2]?.DescEn
-                      : (data[data?.length - 2]?.DescAr | slice : 0 : 100)
-                  }}
-                  {{
-                    isEn
-                      ? data[data?.length - 2]?.DescEn.length
-                      : data[data?.length - 2]?.DescAr.length > 100
-                      ? "..."
-                      : ""
-                  }}
-                </p> -->
                 <a href="#" class="readmore mt-auto d-flex align-items-baseline"
                   ><span>إقراء المزيد</span
                   ><i class="fa-solid fa-arrow-left-long ps-1"></i>
@@ -365,7 +354,7 @@
             <div class="col-md-6 mt-md-0 mt-3">
               <div class="titlis-box">
                 <p><strong>إقراء المزيد</strong></p>
-                <ng-container *ngFor="let item of data.slice(-3)">
+                <ng-container *ngFor="let item of data.slice(-4, -1)">
                   <a
                     routerLink="/news-details/{{ item.ID }}"
                     (click)="showNews(item)"
