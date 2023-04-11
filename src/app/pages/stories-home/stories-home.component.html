@@ -18,7 +18,7 @@
     <ng-container *ngIf="MediaCenterService$ | async as data">
       <div class="row align-items-stretch">
           <div
-            class="col-md-3 img pb-3" *ngFor="let item of data.slice(-3)"
+            class="col-md-3 img pb-3" *ngFor="let item of data.slice(-4)"
             (click)="showVideoPreview(item)"
           >
             <div style="width: 100%">
@@ -57,7 +57,7 @@
     <ng-container *ngIf="MediaCenterService2$ | async as data">
       <div class="row align-items-stretch">
           <div
-            class="col-md-3  pb-3   " *ngFor="let item of data.slice(-3)"
+            class="col-md-3  pb-3   " *ngFor="let item of data.slice(-4)"
             (click)="showPhotosDetails(item)"
             routerLink="/written-stories-details/{{item.ID}}"
           >

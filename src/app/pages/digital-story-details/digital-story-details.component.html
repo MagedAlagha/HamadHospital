@@ -46,7 +46,7 @@
               <ng-template pTemplate="thumbnail" let-item>
                 <div class="grid grid-nogutter justify-content-center">
                   <img
-                  [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+                  [src]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
                     [alt]="item.alt"
                     [title]="item.title"
                     width="80%"

@@ -22,11 +22,8 @@ export class StoriesHomeComponent implements OnInit {
   isEn = document.dir == 'ltr' ? true : false;
   active:any = 1;
   constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) { }
-
   Avatar=environment.FileUrl;
   ngOnInit(): void {
-
-
     const url = window.location.href;
     if (url.includes('medical-rehabilitation')) {
       this.active = 1;
@@ -43,6 +40,11 @@ export class StoriesHomeComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
+          return item.ShowHome == true;
+        });
+      }),
+      map((val) => {
+        return val?.filter((item: any) => {
           return item.MediaSectionID === 3;
         });
       }),
@@ -53,6 +55,11 @@ export class StoriesHomeComponent implements OnInit {
       })
     );
     this.MediaCenterService2$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.ShowHome == true;
+        });
+      }),
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID === 6;

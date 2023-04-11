@@ -54,7 +54,7 @@
       <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data; else m">
         <ng-container *ngFor="let item of data">
           <hr />
-               <div class="py-2">
+               <div class="py-2 content-page">
                 <h3>{{isEn ? item.NameEn : item.NameAr}}</h3>
                 <div class="row"  >
                   <ng-container *ngFor="let serivce of OutpatientClinicsDepartmentsServices$ | async">

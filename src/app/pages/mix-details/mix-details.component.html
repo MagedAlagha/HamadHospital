@@ -37,18 +37,15 @@
               </ng-template>
             </p-galleria>
           </ng-container>
-
-           <p>{{ isEn ? data?.DescAr : data?.DescAr }}</p>
+          <div class="post-p">
+            <p  [innerHTML]="isEn ? data?.DescEn : data?.DescAr "></p>
+          </div>
 
           <!--  -->
         </div>
       </div>
     </div>
   </section>
-
-
-
-
   <div class="container mb-4">
     <div class="section-2 d-flex align-items-center mb-2">
       <div class="line"></div>

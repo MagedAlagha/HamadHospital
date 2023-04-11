@@ -20,8 +20,9 @@
           <span class="post-date">{{item?.CreatedDate | date }}</span>
         </div>
         <h3 class="post-title">{{ isEn ? item?.TitleEn : item?.TitleAr }}  </h3>
-       <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
-        <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
+        <p  [innerHTML]="isEn ? item?.DescEn : item?.DescAr | slice:0:100 "></p>
+<!--        <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
+ -->        <a href="#" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
             المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
         </a>
       </div>

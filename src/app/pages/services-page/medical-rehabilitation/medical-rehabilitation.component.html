@@ -63,8 +63,9 @@
         *ngFor="let item of MedicalRehabilitationServices$ | async">
         <div class="icon-box">
           <h4>{{ isEn ? item?.NameEn : item?.NameAr }}</h4>
-          <p class="p-hide">
-            {{ isEn ? item?.DescEn : item?.DescAr }}
+          <p class="p-hide medical">
+            <span [innerHTML]="isEn ? item?.DescEn : item?.DescAr "></span>
+            <!-- {{ isEn ? item?.DescEn : item?.DescAr }} -->
           </p>
         </div>
       </div>

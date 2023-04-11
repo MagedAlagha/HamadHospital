@@ -64,7 +64,7 @@ p{
   line-height: 26px;
   font-size: 15px;
   margin-bottom: 0;
-  color: #5e5e5f;
+  color: #ffffff;
 }
 
  .icon-box:hover {
@@ -85,4 +85,7 @@ p{
 .icon-box:hover .p-hide{
   display: block;
   transition: .5s all;
+}
+.p-hide p {
+  color: #fff !important;
 }
