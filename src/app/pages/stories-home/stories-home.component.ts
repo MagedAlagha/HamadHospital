@@ -38,11 +38,7 @@ export class StoriesHomeComponent implements OnInit {
     }
 
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.ShowHome == true;
-        });
-      }),
+
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID === 3;
@@ -55,14 +51,10 @@ export class StoriesHomeComponent implements OnInit {
       })
     );
     this.MediaCenterService2$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+
       map((val) => {
         return val?.filter((item: any) => {
-          return item.ShowHome == true;
-        });
-      }),
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID === 6;
+          return item.MediaSectionID === 5;
         });
       }),
       map((val) => {

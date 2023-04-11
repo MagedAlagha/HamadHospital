@@ -16,6 +16,8 @@
             <ng-container *ngIf="data.MainServiceID === 4">
               <span>العيادة الخارجية</span>
             </ng-container>
+            <ng-container *ngIf="data.MainServiceID === 5">  <span></span> خدمات طبية مساندة </ng-container>
+            <ng-container *ngIf="data.MainServiceID === 6">  <span></span> غير مصنف </ng-container>
             <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}</h1>
           </div>
         </div>

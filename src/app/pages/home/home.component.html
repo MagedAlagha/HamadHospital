@@ -217,6 +217,53 @@
               <figcaption>{{ isEn ? data[2]?.TitleEn : data[2]?.TitleAr  | slice:0:35 }} {{  isEn ? data[2]?.TitleEn.length : data[2]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
             </figure>
                     <a class=" icon_video play-btn mb-4"></a>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  </div>
+  <div class="container">
+    <div class="section-title">
+      <h4>قصص صحفية</h4>
+      <div class="line"></div>
+       <div class="d-flex justify-content-end mb-3" style="margin-top: -40px;">
+        <a  routerLink="/media-center/video/video-main" >شاهد المزيد</a>
+      </div>
+    </div>
+    <!-- row -->
+    <ng-container *ngIf="MediaCenterService2$ |async as data ">
+    <div class="row align-items-stretch">
+      <div class="col-md-8 d-flex align-items-stretch img "  (click)="showVideoPreview(data[1])" >
+        <div >
+            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid main-img"
+            class="img-fluid" alt="">
+           <img src="../../../assets/img/video.mp4" class="video-icon" alt="">
+           <p style="color: #fff;">{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:80 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 80 ? '...' : '' }} </p>
+        </div>
+        <a class=" icon_video play-btn mb-4"></a>
+
+      </div>
+      <div class="col-md-4 d-flex align-items-stretch">
+        <div class="row">
+          <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[0])">
+            <figure >
+              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 90%;" class="img-fluid"
+           class="img-fluid" alt="">
+              <figcaption>{{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr  | slice:0:35 }} {{  isEn ? data[0]?.TitleEn.length : data[0]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
+            </figure>
+            <a class=" icon_video play-btn mb-4"></a>
+
+          </div>
+          <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[2])">
+            <figure>
+              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%;height: 90%;" class="img-fluid"
+              class="img-fluid" alt="">
+              <figcaption>{{ isEn ? data[2]?.TitleEn : data[2]?.TitleAr  | slice:0:35 }} {{  isEn ? data[2]?.TitleEn.length : data[2]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
+            </figure>
+                    <a class=" icon_video play-btn mb-4"></a>
 
           </div>
         </div>
@@ -227,7 +274,7 @@
   </ng-container>
   </div>
   <!-- قصص مكتوبة -->
-  <div class="container mt-4">
+ <!--  <div class="container mt-4">
     <div class="section-title">
       <h4>قصص صحفية</h4>
       <div class="line"></div>
@@ -235,10 +282,10 @@
         <a  routerLink="/media-center/visual-stories" >اقرا المزيد</a>
       </div>
     </div>
-    <!-- row  -->
+
     <ng-container *ngIf="MediaCenterService2$ |async as data">
       <div class="row align-items-stretch">
-        <div class="col-md-8 d-flex align-items-stretch"  (click)="showPhotosDetails(data[1])" >
+        <div class="col-md-8 d-flex align-items-stretch"  (click)="showVideoPreview(data[1])" >
           <div style="width: 100%;">
           <img  [lazyLoad]="'http://hamad_api.accessline.ps'+ data[1]?.ImagePath"  style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid" routerLink="/written-stories-details/{{data[1]?.ID}}"
              class="img-fluid" alt="">
@@ -248,14 +295,14 @@
         </div>
         <div class="col-md-4 d-flex align-items-stretch">
           <div class="row">
-            <div class="col-md-12 col-6" (click)="showPhotosDetails(data[0])">
+            <div class="col-md-12 col-6" (click)="showVideoPreview(data[0])">
               <figure routerLink="/written-stories-details">
                 <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/written-stories-details/{{data[0]?.ID}}"
              class="img-fluid" alt="">
                 <figcaption>{{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr  | slice:0:35 }} {{  isEn ? data[0]?.TitleEn.length : data[0]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
               </figure>
             </div>
-            <div class="col-md-12 col-6" (click)="showPhotosDetails(data[2])">
+            <div class="col-md-12 col-6" (click)="showVideoPreview(data[2])">
               <figure>
                 <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/written-stories-details/{{data[2]?.ID}}"
                 class="img-fluid" alt="">
@@ -268,7 +315,7 @@
         </div>
       </div>
     </ng-container>
-  </div>
+  </div> -->
 
 </section>
 <!-- -------------------------------------------------------------------------------------------------- -->
@@ -278,7 +325,6 @@
 
       <div class="row gy-4">
         <ng-container *ngIf="LastNews$ | async as data">
-
         <div class="col-md-8"><!--  d-flex align-items-stretch -->
           <div class="section-title">
             <h4 routerLink="/media-center/news/news-main" style="cursor: pointer;"  >الاخبار</h4>
@@ -386,15 +432,16 @@
                     class="img-fluid"
                     style="border-radius: 8px"
                     alt=""
+                    routerLink="/mix-details/{{ item?.ID }}"
                   />
 
-                  <div class="news-box2-xontent">
+                  <div class="news-box2-xontent" routerLink="/mix-details/{{ item?.ID }}" >
                     <h3 class="post-title">
                       {{ isEn ? item?.TitleEn : item?.TitleAr }}
                     </h3>
                     <a
                     (click)="showmix(item)"
-                    routerLink="/mix-details/{{ item?.ID }}"
+
                       class="readmore mt-auto d-flex align-items-baseline"
                       ><span>إقراء المزيد</span
                       ><i class="fa-solid fa-arrow-left-long ps-1"></i>

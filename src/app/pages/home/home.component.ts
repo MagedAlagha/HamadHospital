@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 6;
+            return item.MediaSectionID === 5;
           });
         })
       );
