@@ -16,14 +16,14 @@ font-size: 45px;
 font-weight: 600;
 position: relative;
 }
-#footer .counter p::after{
+/* #footer .counter p::after{
   content: '+';
   position: absolute;
   color: #fff;
   right: 24%;
   top: 0;
   font-size: 26px;
-}
+} */
 #footer .counter span{
 color: #fff;
 font-size: 18px;
