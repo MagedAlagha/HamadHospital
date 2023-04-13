@@ -26,6 +26,8 @@ export class MediaCenterService {
     PhotoGalaryDetails:undefined,
     MixDetails:undefined,
     PostInfo: undefined,
+    activeNave: undefined,
+
 
   });
 
@@ -95,6 +97,8 @@ export interface StoreInterface {
   PhotoGalaryDetails?: any;
   MixDetails?: any;
   PostInfo?: any;
+  activeNave?: any;
+
 
 }
 export type selectorsType = keyof StoreInterface;

@@ -133,7 +133,22 @@ a{
   color: #8a1538;
 }
 .owl-theme .owl-dots{
-  transform: translateY(-32px);
+  transform: translateY(-130px);
+}
+@media(max-width:992px) {
+  .owl-theme .owl-dots{
+    transform: translateY(-90px);
+  }
+}
+@media(max-width:768px) {
+  .owl-theme .owl-dots{
+    transform: translateY(-90px);
+  }
+}
+@media(max-width:768px) {
+  .owl-theme .owl-dots{
+    transform: translateY(-70px);
+  }
 }
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
   background: #8a1538 !important;
@@ -232,7 +247,7 @@ a{
  .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-prev , .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-next {
   position: absolute;
   top: 39%;
-  background-color: #ffffffb0 !important;
+  background-color: #ffffff !important;
 
  }
  .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-prev{
@@ -417,4 +432,12 @@ color: #76102e;
   font-size: 18px;
   font-weight: 600;
   color: #fff;
+}
+
+
+.medical-articaels h1 {
+
+}
+.medical-articaels h2 {
+  font-size: 16px;
 }

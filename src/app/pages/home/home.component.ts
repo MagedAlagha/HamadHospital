@@ -77,9 +77,10 @@ export class HomeComponent implements OnInit {
     this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID == 7;
+          return item.MediaSectionID == 7 ||item.ShowVarious ;
         });
-      })
+      }) ,
+
     );
 
     /* ******************************************************************************************* */
@@ -152,6 +153,10 @@ export class HomeComponent implements OnInit {
     this._mediaCenterService.updateStore({ PostInfo: item });
     console.log(item);
 
+  }
+  addAvtiveNaveBar(){
+    this._mediaCenterService.updateStore({ activeNave: 3 });
+    console.log('activeNave : 3')
   }
 
   customOptions: OwlOptions = {

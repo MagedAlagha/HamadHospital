@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../media-center/media-center.service';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-mix-details',
@@ -9,21 +10,27 @@ import { MediaCenterService } from '../media-center/media-center.service';
   styleUrls: ['./mix-details.component.scss']
 })
 export class MixDetailsComponent implements OnInit {
-
+  width:any = '100% ';
+  height:any = '420px ';
   MediaCenterService$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   ID: any;
   MixDetails$!: Observable<any>;
   ImageSection$!: Observable<any>;
+  text:any = 'نسخ';
+  location:any
+
   constructor(
     private route: ActivatedRoute,
     private _mediaCenterService: MediaCenterService ,
+    private _clipboardService: ClipboardService
 
   ) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID);
   }
   ngOnInit(): void {
+    this.location = window.location.href;
     this._mediaCenterService.getPostId(this.ID);
 
     this.ImageSection$ =
@@ -33,7 +40,7 @@ export class MixDetailsComponent implements OnInit {
       .Selector$('PostInfo')
       .pipe(
         tap((value) => {
-          console.log('value', value);
+          console.log('value222222222', value);
           this._mediaCenterService.getImageSection(value?.ID);
         })
       );
@@ -52,7 +59,15 @@ export class MixDetailsComponent implements OnInit {
 
   showMixDetails(item: any) {
     this._mediaCenterService.updateStore({ PostInfo: item });
-   ;
+  }
+
+  copy(){
+    this._clipboardService.copy(this.location);
+    this.text = "تم النسخ"
+  }
+
+  getImage(value:any){
+
   }
 
   title = 'GFG';

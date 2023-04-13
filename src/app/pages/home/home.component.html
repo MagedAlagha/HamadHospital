@@ -83,10 +83,10 @@
       </div>
       <div class="row">
         <div
-          class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+          class="col-lg-3 col-md-4 col-sm-6 pe-md-0 col-12 d-flex align-items-stretch  mt-4 mt-lg-0"
         >
           <a routerLink="/sections/medical-rehabilitation" style="width: 100%;">
-            <div class="icon-box">
+            <div class="icon-box border-right">
               <div class="icon">
                 <img
                   [src]="avatar + data?.Services?.MedicalRehabilitationIconPath"
@@ -102,8 +102,7 @@
           </a>
         </div>
         <div
-          class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
-        >
+          class="col-lg-3 col-md-4 col-sm-6 px-md-0 col-12 d-flex align-items-stretch mt-4 mt-lg-0">
           <a routerLink="/sections/prosthetics" style="width: 100%;">
             <div class="icon-box">
               <div class="icon">
@@ -120,10 +119,8 @@
             </div>
           </a>
         </div>
-
         <div
-          class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
-        >
+          class="col-lg-3 col-md-4 col-sm-6 px-md-0 col-12 d-flex align-items-stretch mt-4 mt-lg-0">
           <a routerLink="/sections/hearing-balance" style="width: 100%;">
             <div class="icon-box">
               <div class="icon">
@@ -139,10 +136,10 @@
         </div>
 
         <div
-          class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+          class="col-lg-3 col-md-4 ps-md-0 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
         >
           <a routerLink="/sections/outpatient-clinics" style="width: 100%;" >
-            <div class="icon-box">
+            <div class="icon-box bordr-left" >
               <div class="icon">
                 <img
                   [src]="avatar + data?.Services?.OutpatientClinicsIconPath"
@@ -171,19 +168,15 @@
 
 <!-- Stores -->
 <section class="stores" id="section2" >
-  <!-- <ng-template #loading><p-skeleton width="100%" styleClass="bg-custom-color" height="20rem"></p-skeleton>
-  </ng-template>
-  ;else loading
-  -->
+
   <div class="section-header text-center">
-    <h3 class="px-md-5 px-2 text-white mb-0"> قصص ملهمة !<img src="../../../assets/img/05.svg" alt=""></h3>
+    <h3 class="px-md-5 px-2 text-white mb-0"> معرض الفيديو </h3>
   </div>
   <div class="container">
     <div class="section-title">
-      <h4>قصص فيديو</h4>
       <div class="line"></div>
-       <div class="d-flex justify-content-end mb-3" style="margin-top: -40px;">
-        <a  routerLink="/media-center/video/video-main" >شاهد المزيد</a>
+       <div class="d-flex justify-content-end mb-3">
+        <a  routerLink="/media-center/video/video-main" (click)="addAvtiveNaveBar()" >شاهد المزيد</a>
       </div>
     </div>
     <!-- row -->
@@ -225,15 +218,15 @@
     </div>
   </ng-container>
   </div>
-  <div class="container">
+  <!-- <div class="container">
     <div class="section-title">
       <h4>قصص صحفية</h4>
       <div class="line"></div>
        <div class="d-flex justify-content-end mb-3" style="margin-top: -40px;">
-        <a  routerLink="/media-center/video/video-main" >شاهد المزيد</a>
+        <a  routerLink="/media-center/press-stories" (click)="addAvtiveNaveBar()">شاهد المزيد</a>
       </div>
     </div>
-    <!-- row -->
+
     <ng-container *ngIf="MediaCenterService2$ |async as data ">
     <div class="row align-items-stretch">
       <div class="col-md-8 d-flex align-items-stretch img "  (click)="showVideoPreview(data[0])" >
@@ -272,14 +265,19 @@
       </div>
     </div>
   </ng-container>
-  </div>
+  </div> -->
   <!-- قصص مكتوبة -->
- <!--  <div class="container mt-4">
+</section>
+
+ <div class="section" style="margin-top: 60px;">
+  <div class="container mt-4">
+    <div class="section-header text-center">
+      <h3 class="px-md-5 px-2  mb-0"> قصص صحفية </h3>
+    </div>
     <div class="section-title">
-      <h4>قصص صحفية</h4>
-      <div class="line"></div>
-      <div class="d-flex justify-content-end mb-3" style="margin-top: -40px;">
-        <a  routerLink="/media-center/visual-stories" >اقرا المزيد</a>
+      <div class="line" style="height: 3px;"></div>
+      <div class="d-flex justify-content-end mb-3" >
+        <a  routerLink="/media-center/visual-stories" style="color:#8a1538;" >اقرا المزيد</a>
       </div>
     </div>
 
@@ -291,8 +289,8 @@
              class="img-fluid" alt="">
              <p style="color: #fff;">{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:40 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 40 ? '...' : '' }} </p>
           </div>
-
         </div>
+
         <div class="col-md-4 d-flex align-items-stretch">
           <div class="row">
             <div class="col-md-12 col-6" (click)="showVideoPreview(data[0])">
@@ -315,9 +313,14 @@
         </div>
       </div>
     </ng-container>
-  </div> -->
+  </div>
+ </div>
 
-</section>
+
+
+
+
+
 <!-- -------------------------------------------------------------------------------------------------- -->
 
 <section class="news" id="section3" >
@@ -327,16 +330,15 @@
         <ng-container *ngIf="LastNews$ | async as data">
         <div class="col-md-8"><!--  d-flex align-items-stretch -->
           <div class="section-title">
-            <h4 routerLink="/media-center/news/news-main" style="cursor: pointer;"  >الاخبار</h4>
+            <h4 routerLink="/media-center/news/news-main" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >الاخبار</h4>
         </div>
           <div class="row box">
             <!--  <ng-container *ngFor="let item of data">  </ng-container> -->
             <div class="col-md-6">
               <div
                 class="post-box"
-                (click)="showNews(data[data.length - 1])"
-                routerLink="/news-details/{{ data[data.length - 1]?.ID }}"
-              >
+                (click)="showNews(data[data.length - 1]) ; addAvtiveNaveBar()"
+                routerLink="/news-details/{{ data[data.length - 1]?.ID }}">
                 <div class="post-img">
                   <img
                     [lazyLoad]="
@@ -390,9 +392,7 @@
                       : data[data?.length - 1]?.TitleAr
                   }}
                 </h3>
-                <a href="#" class="readmore mt-auto d-flex align-items-baseline"
-                  ><span>إقراء المزيد</span
-                  ><i class="fa-solid fa-arrow-left-long ps-1"></i>
+                <a href="#" class="readmore mt-auto d-flex align-items-baseline"><span>إقراء المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
                 </a>
               </div>
             </div>
@@ -403,11 +403,12 @@
                 <ng-container *ngFor="let item of data.slice(-4, -1)">
                   <a
                     routerLink="/news-details/{{ item.ID }}"
-                    (click)="showNews(item)"
+                    (click)="showNews(item) ; addAvtiveNaveBar()"
                     class="title"
                     >{{item.TitleAr}}
-                    <i class="fa-solid fa-arrow-left-long ps-1"></i
-                  ></a>
+                    <i class="fa-solid fa-arrow-left-long ps-1"></i>
+
+                  </a>
                 </ng-container>
               </div>
             </div>
@@ -416,9 +417,11 @@
 
       </ng-container>
 
+      <!-- قسم منوعات -->
+
         <div class="col-md-4  flex-column"><!--  d-flex align-items-stretch -->
           <div class="section-title mb-2">
-            <h4  routerLink="/media-center/mix" style="cursor: pointer;" >منوعات</h4>
+            <h4  routerLink="/media-center/mix" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >منوعات</h4>
           </div>
           <div class="news-box2">
             <owl-carousel-o [options]="mix">
@@ -433,15 +436,16 @@
                     style="border-radius: 8px"
                     alt=""
                     routerLink="/mix-details/{{ item?.ID }}"
+                    (click)="addAvtiveNaveBar()"
                   />
 
-                  <div class="news-box2-xontent" routerLink="/mix-details/{{ item?.ID }}" >
+                  <div class="news-box2-xontent" routerLink="/mix-details/{{ item?.ID }}" (click)="addAvtiveNaveBar()" >
                     <h3 class="post-title">
                       {{ isEn ? item?.TitleEn : item?.TitleAr }}
                     </h3>
                     <a
                     (click)="showmix(item)"
-
+                    (click)="addAvtiveNaveBar()"
                       class="readmore mt-auto d-flex align-items-baseline"
                       ><span>إقراء المزيد</span
                       ><i class="fa-solid fa-arrow-left-long ps-1"></i>
@@ -453,7 +457,6 @@
           </div>
         </div>
       </div>
-
   </div>
 </section>
 

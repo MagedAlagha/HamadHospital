@@ -2,6 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
 import { HomeService } from '../home/home.service';
+import { MediaCenterService } from '../media-center/media-center.service';
+import { Observable, map, pipe } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -17,21 +19,21 @@ import { HomeService } from '../home/home.service';
 export class NavbarComponent implements OnInit {
   navbarState = 'hidden';
   isActive = false;
-  active: any = 1;
+  active: any  = 1;
   previousScrollPosition = 0;
   fisrt:any = 0 ;
-  constructor(public router: Router , private _homeService: HomeService,) {}
+  activeNave$!:Observable<any>;
+  constructor(public router: Router , private _mediaCenterService:MediaCenterService) {}
 
   ngOnInit(): void {
-
-    console.log(this._homeService.dataStore.activeNave  , "this._homeService.activeNave ==3")
+    this._mediaCenterService.Selector$('activeNave').pipe(map(value=> this.active = value )).subscribe()
 
     const url = window.location.href;
     if (url.includes('home')) {
       this.active = 1;
     }else if(url.includes('sections')){
       this.active = 2;
-    }else if(url.includes('media-center') ){
+    }else if(url.includes('media-center') || url.includes('video') || url.includes('mix-details')){
       this.active = 3;
     }else if(url.includes('about-us')){
       this.active = 4;

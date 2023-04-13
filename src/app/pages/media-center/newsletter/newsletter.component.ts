@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { MediaCenterService } from '../media-center.service';
 
 @Component({
-  selector: 'app-mix',
-  templateUrl: './mix.component.html',
-  styleUrls: ['./mix.component.scss']
+  selector: 'app-newsletter',
+  templateUrl: './newsletter.component.html',
+  styleUrls: ['./newsletter.component.scss']
 })
-export class MixComponent implements OnInit {
+export class NewsletterComponent implements OnInit {
 
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
@@ -27,6 +27,5 @@ showNews(item:any){
   this._mediaCenterService.updateStore({ PostInfo: item });
   console.log(item);
 }
-
 
 }

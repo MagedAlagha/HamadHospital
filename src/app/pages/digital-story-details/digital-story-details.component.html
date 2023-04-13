@@ -5,27 +5,19 @@
         <div class="col-md-8">
           <div class="section-title">
             <div class="section-title">
-              <ng-container *ngIf="dataa.MainServiceID === 1">
-                <span></span> التأهيل الطبي
-              </ng-container>
-              <ng-container *ngIf="dataa.MainServiceID === 2">
-                <span></span> الاطراف الصناعية
-              </ng-container>
-              <ng-container *ngIf="dataa.MainServiceID === 3">
-                <span></span> السمع والتوازن
-              </ng-container>
-              <ng-container *ngIf="dataa.MainServiceID === 4">
-                <span></span> العيادة الخارجية
-              </ng-container>
-              <ng-container *ngIf="dataa.MainServiceID === 5">  <span></span> خدمات طبية مساندة </ng-container>
-              <ng-container *ngIf="dataa.MainServiceID === 6">  <span></span> غير مصنف </ng-container>
+              <ng-container *ngIf="dataa.MainServiceID === 1"><span>التأهيل الطبي</span> </ng-container>
+              <ng-container *ngIf="dataa.MainServiceID === 2"> <span>الاطراف الصناعية</span> </ng-container>
+              <ng-container *ngIf="dataa.MainServiceID === 3"> <span>السمع والتوازن</span> </ng-container>
+              <ng-container *ngIf="dataa.MainServiceID === 4"> <span>العيادة الخارجية</span> </ng-container>
+              <ng-container *ngIf="dataa.MainServiceID === 5"> <span></span> خدمات طبية مساندة </ng-container>
+              <ng-container *ngIf="dataa.MainServiceID === 6"> <span></span> غير مصنف </ng-container>
               <h1>{{ isEn ? dataa?.TitleEn : dataa?.TitleAr }}</h1>
             </div>
           </div>
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-md-9">
+        <div class="col-md-8">
           <ng-container *ngIf="ImageSection$ | async as data">
             <p-galleria [numVisible]="3" [value]="data" >
               <ng-template pTemplate="item" let-item>
@@ -33,17 +25,10 @@
                 [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
                   [alt]="item.alt"
                   [title]="item.title"
-                  style="width: 90%; height: 450px; object-fit: cover ; border-radius: 6px;"
+                  style="width: 100%; height: 450px; object-fit: cover ; border-radius: 6px;"
                 />
               </ng-template>
-             <!--  <ng-template pTemplate="item" let-item>
-                <img
-                  [src]=" 'http://hamad_api.accessline.ps'+ dataa?.ImagePath"
-                  [alt]="item.alt"
-                  [title]="item.title"
-                  style="width: 90%; height: 450px; object-fit: cover ; border-radius: 6px;"
-                />
-              </ng-template> -->
+
 
               <ng-template pTemplate="thumbnail" let-item>
                 <div class="grid grid-nogutter justify-content-center">

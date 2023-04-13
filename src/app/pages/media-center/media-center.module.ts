@@ -61,6 +61,13 @@ import { RouterModule } from '@angular/router';
                 './mix/mix.module'
               ).then((m) => m.MixModule),
           },
+          {
+            path: 'letter',
+            loadChildren: () =>
+              import(
+                './newsletter/newsletter.module'
+              ).then((m) => m.NewsletterModule),
+          },
         ],
       },
     ]),

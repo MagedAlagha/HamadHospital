@@ -7,13 +7,14 @@
       <div class="col-md-8">
         <div class="section-title">
           <ng-container *ngIf="data.MainServiceID === 1">  <span></span> التأهيل الطبي </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
-          <ng-container *ngIf="data.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
+              <ng-container *ngIf="data.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
+              <ng-container *ngIf="data.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
+              <ng-container *ngIf="data.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
+              <ng-container *ngIf="data.MainServiceID === 5">  <span></span> خدمات طبية مساندة </ng-container>
+              <ng-container *ngIf="data.MainServiceID === 6">  <span></span> غير مصنف </ng-container>
           <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
         </div>
         <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
-
       </div>
     </div>
 
@@ -63,8 +64,11 @@
           <span class="post-date">{{data2?.CreatedDate | date}} </span>
         </div>
         <h3 class="post-title">{{ isEn ? item?.TitleEn : item?.TitleAr   | slice:0:50 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 50 ? '...' : '' }}  </h3>
-        <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
-         <a routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
+        <div class="medical-articaels">
+          <p  [innerHTML]="isEn ? item?.DescEn : item?.DescAr  | slice:0:100"></p>
+        </div>
+<!--         <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
+ -->         <a routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
              المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
          </a>
       </div>

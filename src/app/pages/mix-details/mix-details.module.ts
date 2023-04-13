@@ -4,6 +4,8 @@ import { MixDetailsComponent } from './mix-details.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { RouterModule } from '@angular/router';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 
@@ -20,7 +22,9 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
         component: MixDetailsComponent,
       },
     ]),
-    LazyLoadImageModule
+    LazyLoadImageModule ,
+    YouTubePlayerModule,
+    TooltipModule ,
   ],
 })
 export class MixDetailsModule { }
