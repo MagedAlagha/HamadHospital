@@ -10,9 +10,11 @@ import { MediaCenterService } from '../media-center.service';
 export class NewsComponent implements OnInit {
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-  constructor(private _mediaCenterService:MediaCenterService) { }
+  constructor(private _mediaCenterService:MediaCenterService, private _mediaSectionsItems:MediaCenterService) { }
 
   ngOnInit(): void {
+    this._mediaSectionsItems.getMediaSectionsItems(3);
+
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {

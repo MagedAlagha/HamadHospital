@@ -50,8 +50,8 @@ export class MediaCenterService {
   }
 
     /*  *******  MediaSectionsItems - API ******* */
-  getMediaSectionsItems() {
-      this.getFormApi('MediaSectionsItems/MediaSectionsItemsSearch', 'MediaSectionsItems');
+  getMediaSectionsItems(ID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItems',{ MediaSectionID:ID });
   }
   getImageSection(ID?:any) {
     this.getFormApi(

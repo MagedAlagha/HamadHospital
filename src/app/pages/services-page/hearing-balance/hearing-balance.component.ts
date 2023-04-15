@@ -69,5 +69,4 @@ export class HearingBalanceComponent implements OnInit {
     }
   }
 
-
 }

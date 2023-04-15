@@ -60,9 +60,9 @@
     <div class="col-md-4">
       <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
         <ng-container *ngFor="let item of data">
-               <div class="py-2 body-box">
-                <h3 routerLink="/sections/hearing-balance/services-content" (click)="storeData(item)" [ngClass]="{ active: active == item.ID }">{{isEn ? item.NameEn : item.NameAr}}</h3>
-               </div>
+
+            <h3 routerLink="/sections/hearing-balance/services-content" class=" py-2 body-box" (click)="storeData(item)" [ngClass]="{ active: active == item.ID }">{{isEn ? item.NameEn : item.NameAr}}</h3>
+
         </ng-container>
       </ng-container>
     </div>
