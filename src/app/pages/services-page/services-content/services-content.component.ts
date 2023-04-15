@@ -14,7 +14,6 @@ export class ServicesContentComponent implements OnInit {
   constructor(private _outpatientClinicsService:OutpatientClinicsService) { }
 
   ngOnInit(): void {
-    this._outpatientClinicsService.getOutpatientClinicsDepartmentsServices();
 
     this.dataShow$ = this._outpatientClinicsService
       .Selector$('dataShow')
@@ -31,11 +30,6 @@ export class ServicesContentComponent implements OnInit {
         map((val) => {
           return val?.filter((item: any) => {
             return item.IsActive;
-          });
-        }),
-        map((val) => {
-          return val?.filter((item: any) => {
-            return item.TypeID == 3;
           });
         })
       );

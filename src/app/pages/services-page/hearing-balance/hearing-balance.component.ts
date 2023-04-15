@@ -45,6 +45,11 @@ export class HearingBalanceComponent implements OnInit {
         return val?.filter((item: any) => {
           return item.IsActive;
         });
+      }),
+      map((val) => {
+        return val?.filter((item: any) => {
+          return item.OutpatientClinicsDepartmentID ;
+        });
       })
     );
 

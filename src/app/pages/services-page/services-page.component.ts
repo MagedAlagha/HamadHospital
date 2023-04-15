@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { HomeService } from '../home/home.service';
 import { ServicesPageService } from './services-page.service';
+import { OutpatientClinicsService } from './outpatient-clinics/outpatient-clinics.service';
 
 @Component({
   selector: 'app-services-page',
@@ -17,10 +18,13 @@ export class ServicesPageComponent implements OnInit {
   bg:any;
   constructor(
     private _homeService: HomeService,
-    private _servicesPageService: ServicesPageService
+    private _servicesPageService: ServicesPageService ,
+    private _outpatientClinicsService:OutpatientClinicsService
   ) {}
   Services: any;
   ngOnInit(): void {
+    this._outpatientClinicsService.getOutpatientClinicsDepartmentsServices();
+
    ;
    /*  this.bgSection$ = this._servicesPageService.Selector$('bgSection').pipe(tap(value=>{
       console.log('value 111111111111' , value) ;

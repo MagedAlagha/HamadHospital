@@ -1,8 +1,8 @@
 
 <ng-container *ngIf="dataShow$ | async as data">
   <ng-container  *ngFor="let item of OutpatientClinicsDepartmentsServices$ |async as data2">
-    <ng-container *ngIf="data.ID === item.OutpatientClinicsDepartmentID">
-      <div [innerHTML]="data?.DescAr"></div>
+    <ng-container *ngIf="data.ID == item.OutpatientClinicsDepartmentID">
+      <div [innerHTML]="item?.DescAr"></div>
     </ng-container>
   </ng-container>
 

@@ -13,7 +13,6 @@
         </div>
       </div>
     </div>
-
     <!--  -->
     <div class="row d-flex justify-content-center ">
       <div class="col-md-9 my-4">
@@ -54,7 +53,7 @@
 </div> -->
 
 <!-- -------------------------------------------------- -->
-
+ <hr/>
 <div class="container main-body-box">
   <div class="row">
     <div class="col-md-3">
@@ -65,32 +64,13 @@
       </ng-container>
     </div>
     <div class="col-md-9">
-      <router-outlet></router-outlet>
+      <div class="content-box">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>
-<ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
-  <ng-container *ngFor="let item of data">
-    <hr/>
-         <div class="py-2 content-page">
-          <h3>{{isEn ? item.NameEn : item.NameAr}}</h3>
-          <div class="row"  >
-            <ng-container *ngFor="let serivce of OutpatientClinicsDepartmentsServices$ | async">
-              <ng-container *ngIf="item.ID == serivce.OutpatientClinicsDepartmentID">
-                <div class="col-md-4"> <!--  [pTooltip]="isEn ? serivce?.DescEn : serivce?.DescAr"  tooltipPosition="top" [positionStyle]	="widthToolTip" -->
-                  <div class="body-box"  >
-                    {{ isEn ? serivce?.NameEn : serivce?.NameAr }}
-                    <p class="text-center p-hide" style="font-size: 13px; padding-top: 8px;">{{isEn ? serivce?.DescEn : serivce?.DescAr}}</p>
-                  </div>
-                </div>
-              </ng-container>
-            </ng-container>
-          </div>
-         </div>
-  </ng-container>
-</ng-container>
 
-<hr/>
 
 
 <!-- -------------------------------------------------- -->
