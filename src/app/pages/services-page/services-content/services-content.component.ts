@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OutpatientClinicsService } from '../outpatient-clinics/outpatient-clinics.service';
+import { Observable, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-services-content',
@@ -7,10 +8,37 @@ import { OutpatientClinicsService } from '../outpatient-clinics/outpatient-clini
   styleUrls: ['./services-content.component.scss']
 })
 export class ServicesContentComponent implements OnInit {
+  dataShow$!:Observable<any>;
+  OutpatientClinicsDepartmentsServices$!: Observable<any>;
 
   constructor(private _outpatientClinicsService:OutpatientClinicsService) { }
 
   ngOnInit(): void {
+    this._outpatientClinicsService.getOutpatientClinicsDepartmentsServices();
+
+    this.dataShow$ = this._outpatientClinicsService
+      .Selector$('dataShow')
+      .pipe(
+        tap((value) => {
+          console.log('value123',value);
+        })
+      );
+
+      this.OutpatientClinicsDepartmentsServices$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartmentsServices').pipe(
+        tap((value) => {
+          console.log('value123',value);
+        }),
+        map((val) => {
+          return val?.filter((item: any) => {
+            return item.IsActive;
+          });
+        }),
+        map((val) => {
+          return val?.filter((item: any) => {
+            return item.TypeID == 3;
+          });
+        })
+      );
   }
 
 

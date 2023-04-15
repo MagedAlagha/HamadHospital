@@ -133,6 +133,7 @@ margin-top: 15px;
 color: #1C1C1C;
 transition: .3s all;
 text-align: center;
+cursor: pointer;
 }
 .body-box:hover{
 border: 1px solid #8a1538;
@@ -175,10 +176,12 @@ color: #8a1538;
 .body-box {
   cursor: pointer;
  }
-.body-box h3{
-  font-size: 16px;
-}
 
 .active{
   background: #8a1538;
+  color: #fff;
+}
+
+.main-body-box h3{
+font-size: 16px;
 }

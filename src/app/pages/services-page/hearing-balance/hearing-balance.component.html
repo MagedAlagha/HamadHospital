@@ -55,18 +55,16 @@
 
 <!-- -------------------------------------------------- -->
 
-<div class="container">
+<div class="container main-body-box">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
         <ng-container *ngFor="let item of data">
-
-            <h3 routerLink="/sections/hearing-balance/services-content" class=" py-2 body-box" (click)="storeData(item)" [ngClass]="{ active: active == item.ID }">{{isEn ? item.NameEn : item.NameAr}}</h3>
-
+            <h3 routerLink="/sections/hearing-balance/services-content" class="py-2 body-box" (click)="storeData(item)" [ngClass]="{ active: active == item.ID }">{{isEn ? item.NameEn : item.NameAr}}</h3>
         </ng-container>
       </ng-container>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
       <router-outlet></router-outlet>
     </div>
   </div>
