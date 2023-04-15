@@ -1,4 +1,4 @@
-<div class="hero">
+<div class="hero" id="section0">
   <owl-carousel-o [options]="customOptions">
     <ng-container *ngIf="LandingPageData$ | async as data">
       <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
@@ -45,12 +45,12 @@
 </button>
  -->
 
-<div id="scroll-down-animation"   ngxScrollTo
+<!-- <div id="scroll-down-animation"   ngxScrollTo
 [ngxScrollToOffset]="770">
   <span class="mouse">
     <span class="move"></span>
   </span>
-</div>
+</div> -->
 
 
 <!-- <button><i class="pi pi-chevron-up"></i></button>
@@ -221,7 +221,7 @@
 
 </section>
 
- <div class="section" style="padding: 80px 0;">
+ <div class="section" style="padding: 80px 0;"id="section3">
   <div class="container mt-4">
     <div class="section-header text-center">
       <h3 class="px-md-5 px-2  mb-0"> قصص صحفية </h3>
@@ -284,7 +284,7 @@
 
 <!-- -------------------------------------------------------------------------------------------------- -->
 
-<section class="news" id="section3" >
+<section class="news" id="section4" >
   <div class="container">
       <div class="row gy-4">
         <ng-container *ngIf="LastNews$ | async as data">
@@ -419,7 +419,7 @@
 </section>
 
 <!-- employment-Ad -->
-<div class="employment-ad" id="section4">
+<div class="employment-ad" id="section5">
   <div class="container background">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-md-9">

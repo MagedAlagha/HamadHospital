@@ -1,5 +1,11 @@
 import { Location } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit  , Renderer2 } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
 import { filter, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -25,14 +31,15 @@ export class HomeComponent implements OnInit {
   MediaCenterServiceNews$!: Observable<any>;
   MediaCenterService$!: Observable<any>;
   MediaCenterService2$!: Observable<any>;
-
+  currentSection = 0;
   constructor(
     private _homeService: HomeService,
     private _mediaCenterService: MediaCenterService,
     private el: ElementRef,
     private location: Location,
     private elementRef: ElementRef,
-     private renderer: Renderer2
+    private renderer: Renderer2,
+    private _mediaSectionsItems:MediaCenterService
   ) {}
   dominUrl: any;
   ngOnInit(): void {
@@ -41,6 +48,7 @@ export class HomeComponent implements OnInit {
     /*    ;
      */
 
+    this._mediaSectionsItems.getMediaSectionsItems();
     this._homeService.getSliderData();
     this._homeService.getAdvertisements();
     this._homeService.getMainInfo();
@@ -49,7 +57,6 @@ export class HomeComponent implements OnInit {
         return {
           ...value,
           HeaderSlider: value?.HeaderSlider?.map((item: any) => {
-
             /* console.log('this.dominUrl', this.dominUrl);
             console.log(
               'item',
@@ -78,10 +85,9 @@ export class HomeComponent implements OnInit {
     this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID == 7 ||item.ShowVarious ;
+          return item.MediaSectionID == 7 || item.ShowVarious;
         });
-      }) ,
-
+      })
     );
 
     /* ******************************************************************************************* */
@@ -120,13 +126,7 @@ export class HomeComponent implements OnInit {
       );
 
     /* **************************************************************************************** */
-
-
-
   }
-
-
-
 
   /* ************************************************************************* */
 
@@ -152,11 +152,10 @@ export class HomeComponent implements OnInit {
   showmix(item: any) {
     this._mediaCenterService.updateStore({ PostInfo: item });
     console.log(item);
-
   }
-  addAvtiveNaveBar(){
+  addAvtiveNaveBar() {
     this._mediaCenterService.updateStore({ activeNave: 3 });
-    console.log('activeNave : 3')
+    console.log('activeNave : 3');
   }
 
   customOptions: OwlOptions = {
@@ -220,4 +219,23 @@ export class HomeComponent implements OnInit {
       },
     },
   };
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const currentSectionElement = this.elementRef.nativeElement.querySelector(
+      '#section' + this.currentSection
+    );
+    const currentSectionPosition = currentSectionElement.offsetTop;
+    const nextSectionElement = this.elementRef.nativeElement.querySelector(
+      '#section' + (this.currentSection + 1)
+    );
+    const nextSectionPosition = nextSectionElement.offsetTop;
+    if (window.pageYOffset >= currentSectionPosition) {
+      this.currentSection++;
+      this.renderer.setProperty(
+        document.documentElement,
+        'scrollTop',
+        nextSectionPosition
+      );
+    }
+  }
 }
