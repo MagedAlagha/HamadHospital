@@ -11,6 +11,7 @@ export class MedicalArticlesComponent implements OnInit {
 
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
+  items!:any [] ;
   constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
@@ -18,7 +19,7 @@ export class MedicalArticlesComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 4;
+          return !item.MediaSectionID.includes("3")
         });
       })
     );

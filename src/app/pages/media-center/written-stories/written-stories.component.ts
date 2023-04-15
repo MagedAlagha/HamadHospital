@@ -19,7 +19,7 @@ export class WrittenStoriesComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 6;
+          return !item.MediaSectionID.includes("3")
         });
       }), tap(value=>{
         console.log("value" , value)

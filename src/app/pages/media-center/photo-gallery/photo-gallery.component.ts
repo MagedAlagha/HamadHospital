@@ -19,7 +19,7 @@ export class PhotoGalleryComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 2;
+          return item.MediaSectionID.includes("3")
         });
       })
     );

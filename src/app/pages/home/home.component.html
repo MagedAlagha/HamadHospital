@@ -218,58 +218,10 @@
     </div>
   </ng-container>
   </div>
-  <!-- <div class="container">
-    <div class="section-title">
-      <h4>قصص صحفية</h4>
-      <div class="line"></div>
-       <div class="d-flex justify-content-end mb-3" style="margin-top: -40px;">
-        <a  routerLink="/media-center/press-stories" (click)="addAvtiveNaveBar()">شاهد المزيد</a>
-      </div>
-    </div>
 
-    <ng-container *ngIf="MediaCenterService2$ |async as data ">
-    <div class="row align-items-stretch">
-      <div class="col-md-8 d-flex align-items-stretch img "  (click)="showVideoPreview(data[0])" >
-        <div >
-            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid main-img"
-            class="img-fluid" alt="">
-           <img src="../../../assets/img/video.mp4" class="video-icon" alt="">
-           <p style="color: #fff;">{{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr  | slice:0:80 }} {{  isEn ? data[0]?.TitleEn.length : data[0]?.TitleAr.length > 80 ? '...' : '' }} </p>
-        </div>
-        <a class=" icon_video play-btn mb-4"></a>
-
-      </div>
-      <div class="col-md-4 d-flex align-items-stretch">
-        <div class="row">
-          <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[1])">
-            <figure >
-              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 90%;" class="img-fluid"
-           class="img-fluid" alt="">
-              <figcaption>{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:35 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
-            </figure>
-            <a class=" icon_video play-btn mb-4"></a>
-
-          </div>
-          <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[2])">
-            <figure>
-              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%;height: 90%;" class="img-fluid"
-              class="img-fluid" alt="">
-              <figcaption>{{ isEn ? data[2]?.TitleEn : data[2]?.TitleAr  | slice:0:35 }} {{  isEn ? data[2]?.TitleEn.length : data[2]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
-            </figure>
-                    <a class=" icon_video play-btn mb-4"></a>
-
-          </div>
-        </div>
-        <div>
-        </div>
-      </div>
-    </div>
-  </ng-container>
-  </div> -->
-  <!-- قصص مكتوبة -->
 </section>
 
- <div class="section" style="margin-top: 60px;">
+ <div class="section" style="padding: 80px 0;">
   <div class="container mt-4">
     <div class="section-header text-center">
       <h3 class="px-md-5 px-2  mb-0"> قصص صحفية </h3>
@@ -280,10 +232,38 @@
         <a  routerLink="/media-center/visual-stories" style="color:#8a1538;" >اقرا المزيد</a>
       </div>
     </div>
-
-    <ng-container *ngIf="MediaCenterService2$ |async as data">
+    <ng-container *ngIf="MediaCenterService2$ | async as data">
       <div class="row align-items-stretch">
-        <div class="col-md-8 d-flex align-items-stretch"  (click)="showVideoPreview(data[1])" >
+          <div
+            class="col-md-4 img pb-3" *ngFor="let item of data.slice(-3)"
+            (click)="showPhotosDetails(item)"
+          >
+            <div style="width: 100%">
+              <img
+                [lazyLoad]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+                style="width: 100%; height: 80% ; border-radius: 6px;"
+                class="img-fluid"
+                alt=""
+                routerLink="/photo-details/{{item?.ID}}"
+              />
+              <p style="color: #fff ; margin-bottom: 4px;">
+                {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 40) }}
+                {{
+                  isEn
+                    ? item?.TitleEn.length
+                    : item?.TitleAr.length > 40
+                    ? "..."
+                    : ""
+                }}
+              </p>
+            </div>
+          </div>
+      </div>
+    </ng-container>
+
+    <!-- <ng-container *ngIf="MediaCenterService2$ |async as data">
+      <div class="row align-items-stretch">
+        <div class="col-md-4 d-flex align-items-stretch"  (click)="showVideoPreview(data[1])" >
           <div style="width: 100%;">
           <img  [lazyLoad]="'http://hamad_api.accessline.ps'+ data[1]?.ImagePath"  style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid" routerLink="/written-stories-details/{{data[1]?.ID}}"
              class="img-fluid" alt="">
@@ -291,28 +271,9 @@
           </div>
         </div>
 
-        <div class="col-md-4 d-flex align-items-stretch">
-          <div class="row">
-            <div class="col-md-12 col-6" (click)="showVideoPreview(data[0])">
-              <figure routerLink="/written-stories-details">
-                <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/written-stories-details/{{data[0]?.ID}}"
-             class="img-fluid" alt="">
-                <figcaption>{{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr  | slice:0:35 }} {{  isEn ? data[0]?.TitleEn.length : data[0]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
-              </figure>
-            </div>
-            <div class="col-md-12 col-6" (click)="showVideoPreview(data[2])">
-              <figure>
-                <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%; height: 100%;" class="img-fluid" routerLink="/written-stories-details/{{data[2]?.ID}}"
-                class="img-fluid" alt="">
-                <figcaption>{{ isEn ? data[2]?.TitleEn : data[2]?.TitleAr  | slice:0:35 }} {{  isEn ? data[2]?.TitleEn.length : data[2]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
-              </figure>
-            </div>
-          </div>
-          <div>
-          </div>
-        </div>
+
       </div>
-    </ng-container>
+    </ng-container> -->
   </div>
  </div>
 
@@ -325,12 +286,11 @@
 
 <section class="news" id="section3" >
   <div class="container">
-
       <div class="row gy-4">
         <ng-container *ngIf="LastNews$ | async as data">
         <div class="col-md-8"><!--  d-flex align-items-stretch -->
           <div class="section-title">
-            <h4 routerLink="/media-center/news/news-main" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >الاخبار</h4>
+            <h4 routerLink="/media-center/news/news-main" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >الأخبار</h4>
         </div>
           <div class="row box">
             <!--  <ng-container *ngFor="let item of data">  </ng-container> -->

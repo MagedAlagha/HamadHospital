@@ -51,7 +51,7 @@ export class MixDetailsComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 7;
+            return item.MediaSectionID == 7;
           });
         })
       );

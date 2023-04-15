@@ -41,7 +41,7 @@ export class StoriesHomeComponent implements OnInit {
 
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 3;
+          return item.MediaSectionID == 3;
         });
       }),
       map((val) => {
@@ -54,7 +54,7 @@ export class StoriesHomeComponent implements OnInit {
 
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 5;
+          return item.MediaSectionID == 5;
         });
       }),
       map((val) => {

@@ -23,7 +23,7 @@ export class VisualStoriesComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 5;
+          return !item.MediaSectionID.includes("3")
         });
       }), tap(value=>{
         console.log("value" , value)

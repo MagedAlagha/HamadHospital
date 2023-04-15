@@ -16,7 +16,8 @@ export class HearingBalanceComponent implements OnInit {
   HearingServices$!: Observable<any>;
   getOutpatientClinicsDepartments$!: Observable<any>;
   OutpatientClinicsDepartmentsServices$!: Observable<any>;
-
+  data:any
+  active: any;
   constructor(private _homeService:HomeService , private _hearingBalanceService:HearingBalanceService , private _outpatientClinicsService:OutpatientClinicsService) {
   }
 
@@ -58,7 +59,15 @@ export class HearingBalanceComponent implements OnInit {
       })
     ); */
 
-
   }
+
+  storeData(item: any) {
+    this._outpatientClinicsService.updateStore({ dataShow: item });
+    this.data = item;
+    if (this.data) {
+      this.active = this.data.ID;
+    }
+  }
+
 
 }

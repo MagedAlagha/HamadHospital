@@ -29,7 +29,7 @@ MedicalArticles$!:Observable<any>;
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 4;
+          return item.MediaSectionID == 4;
         });
       }) , map(value=>{
         return value.slice(-3)

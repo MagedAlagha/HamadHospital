@@ -33,7 +33,7 @@ export class VisualStoriesDetailsComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 3;
+            return item.MediaSectionID == 3;
           });
         })
       );

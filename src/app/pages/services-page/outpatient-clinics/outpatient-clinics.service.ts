@@ -18,6 +18,7 @@ export class OutpatientClinicsService {
     OutpatientClinicsDepartmentsServices: undefined,
     OutpatientClinicsDepartments: undefined,
     Services: undefined,
+    dataShow: undefined,
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -68,8 +69,9 @@ getServices() {
 }
 
 export interface StoreInterface {
-  OutpatientClinicsDepartmentsServices: any;
-  OutpatientClinicsDepartments: any;
-  Services: any;
+  OutpatientClinicsDepartmentsServices?: any;
+  OutpatientClinicsDepartments?: any;
+  Services?: any;
+  dataShow?: any;
 }
 export type selectorsType = keyof StoreInterface;

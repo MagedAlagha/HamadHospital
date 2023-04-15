@@ -30,7 +30,7 @@ export class DigitalStoryDetailsComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 6;
+          return item.MediaSectionID == 6;
         });
       })
     );

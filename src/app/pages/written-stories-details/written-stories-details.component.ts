@@ -34,7 +34,7 @@ export class WrittenStoriesDetailsComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 2;
+            return item.MediaSectionID == 2;
           });
         })
       );

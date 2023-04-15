@@ -20,8 +20,6 @@ export class FooterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.MainInfo$ = this._homeService.Selector$('mainInfo');
-    this.Stats$ = this._footerService.Selector$('Stats');
 
     this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo').pipe(map(value=>value));
   }

@@ -11,6 +11,7 @@ import { StoriesHomeComponent } from '../stories-home/stories-home.component';
 import {TooltipModule} from 'primeng/tooltip';
 import { StoriesHomeModule } from '../stories-home/stories-home.module';
 import { SupportiveMedicalComponent } from './supportive-medical/supportive-medical.component';
+import { ServicesContentComponent } from './services-content/services-content.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SupportiveMedicalComponent } from './supportive-medical/supportive-medi
     HearingBalanceComponent,
     OutpatientClinicsComponent,
     MedicalRehabilitationComponent,
-    SupportiveMedicalComponent
+    SupportiveMedicalComponent,
+    ServicesContentComponent
   ],
   imports: [
     CommonModule,
@@ -54,6 +56,10 @@ import { SupportiveMedicalComponent } from './supportive-medical/supportive-medi
           {
             path: 'supportive',
             component: SupportiveMedicalComponent,
+          },
+          {
+            path: 'services-content',
+            component: ServicesContentComponent,
           },
         ],
       },

@@ -16,7 +16,7 @@ export class NewsComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID === 1;
+          return !item.MediaSectionID.includes("3")
         });
       })
     );

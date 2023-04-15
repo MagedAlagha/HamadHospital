@@ -49,7 +49,7 @@ export class MediaCenterService {
     );
   }
 
-    /*  *******   MediaSectionsItems - API ******* */
+    /*  *******  MediaSectionsItems - API ******* */
   getMediaSectionsItems() {
       this.getFormApi('MediaSectionsItems/MediaSectionsItemsSearch', 'MediaSectionsItems');
   }

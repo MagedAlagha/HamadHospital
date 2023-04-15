@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
         return {
           ...value,
           HeaderSlider: value?.HeaderSlider?.map((item: any) => {
+
             /* console.log('this.dominUrl', this.dominUrl);
             console.log(
               'item',
@@ -69,7 +70,7 @@ export class HomeComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 1;
+            return item.MediaSectionID == 1;
           });
         })
       );
@@ -89,7 +90,7 @@ export class HomeComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 1;
+            return item.MediaSectionID == 1;
           });
         })
       );
@@ -97,7 +98,6 @@ export class HomeComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService
       .Selector$('MediaSectionsItems')
       .pipe(
-
         map((val) => {
           return val?.filter((item: any) => {
             return item.ShowHome == true;
@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit {
         }),
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 3;
+            return item.MediaSectionID == 3;
           });
         })
       );
@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID === 5;
+            return item.MediaSectionID == 5;
           });
         })
       );
