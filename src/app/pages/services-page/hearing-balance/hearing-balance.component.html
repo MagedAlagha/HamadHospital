@@ -54,9 +54,9 @@
     <!-- -------------------------------------------------- -->
     <hr />
     <div class="container main-body-box">
-      <div class="row">
-        <div class="col-md-3">
-          <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
+      <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
+        <div class="row">
+          <div class="col-md-3">
             <ng-container *ngFor="let item of data">
               <h3
                 routerLink="/sections/hearing-balance/services-content"
@@ -64,18 +64,17 @@
                 (click)="storeData(item)"
                 [ngClass]="{ active: active == item.ID }"
               >
-              {{item.ID+' '}}  {{ isEn ? item.NameEn : item.NameAr }}
-              ({{active|json}})
+                {{ isEn ? item.NameEn : item.NameAr }}
               </h3>
             </ng-container>
-          </ng-container>
-        </div>
-        <div class="col-md-9">
-          <div class="content-box">
-            <router-outlet></router-outlet>
+          </div>
+          <div class="col-md-9">
+            <div class="content-box">
+              <app-services-content></app-services-content>
+            </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </div>
 
     <!-- -------------------------------------------------- -->
