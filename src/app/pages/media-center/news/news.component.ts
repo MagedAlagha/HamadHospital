@@ -11,9 +11,9 @@ export class NewsComponent implements OnInit {
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   constructor(private _mediaCenterService:MediaCenterService, private _mediaSectionsItems:MediaCenterService) { }
-
   ngOnInit(): void {
-
+    this._mediaCenterService.getMediaSectionsItemsPhoto(1)
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
@@ -24,8 +24,7 @@ export class NewsComponent implements OnInit {
 }
 
 showNews(item:any){
-  this._mediaCenterService.updateStore({ PostInfo: item });
+  this._mediaCenterService.updateStore({ NewsInfo: item });
   console.log(item)
 }
-
 }

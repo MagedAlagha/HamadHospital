@@ -28,17 +28,20 @@ export class HomeComponent implements OnInit {
   avatar = environment?.avatar;
 
   VideoDialog$!: Observable<any>;
+  MediaSectionsItemsVideo$!: Observable<any>;
   MediaCenterServiceNews$!: Observable<any>;
+  MediaSectionsItemsStory$!: Observable<any>;
+  MediaSectionsItemsLastVarious$!: Observable<any>;
   MediaCenterService$!: Observable<any>;
   MediaCenterService2$!: Observable<any>;
-  currentSection = 0;
+  currentSection:number = 0;
   constructor(
     private _homeService: HomeService,
     private _mediaCenterService: MediaCenterService,
     private el: ElementRef,
     private location: Location,
     private elementRef: ElementRef,
-     private renderer: Renderer2
+    private renderer: Renderer2
   ) {}
   dominUrl: any;
   ngOnInit(): void {
@@ -46,8 +49,10 @@ export class HomeComponent implements OnInit {
     console.log('this.dominUrl', this.dominUrl);
     /*    ;
      */
-
-    this._homeService.getSliderData();
+    this._mediaCenterService.getMediaSectionsItemsVideo(3);
+    this._mediaCenterService.getMediaSectionsItemsStory(5);
+    this._mediaCenterService.getMediaSectionsItemsLastNews(1);
+    this._mediaCenterService.getMediaSectionsItemsVarious(7);
     this._homeService.getAdvertisements();
     this._homeService.getMainInfo();
     this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo').pipe(
@@ -70,15 +75,19 @@ export class HomeComponent implements OnInit {
     );
     this.Services$ = this._homeService.Selector$('Services');
 
+    this.MediaSectionsItemsVideo$ = this._mediaCenterService
+      .Selector$('MediaSectionsItemsVideo')
+      .pipe(map((val) => val.reverse()));
+    this.MediaSectionsItemsStory$ = this._mediaCenterService
+      .Selector$('MediaSectionsItemsStory')
+      .pipe(map((val) => val.reverse()));
+
     this.LastNews$ = this._mediaCenterService
-      .Selector$('MediaSectionsItems')
-      .pipe(
-        map((val) => {
-          return val?.filter((item: any) => {
-            return item.MediaSectionID == 1;
-          });
-        })
-      );
+      .Selector$('MediaSectionsItemsLastNews')
+      .pipe(map((val) => val.reverse()));
+    this.MediaSectionsItemsLastVarious$ = this._mediaCenterService
+      .Selector$('MediaSectionsItemsLastVarious')
+      .pipe(map((val) => val.reverse()));
 
     this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
@@ -89,9 +98,8 @@ export class HomeComponent implements OnInit {
     );
 
     /* ******************************************************************************************* */
-    this.MediaCenterServiceNews$ = this._mediaCenterService
-      .Selector$('MediaSectionsItems')
-
+    this.MediaCenterServiceNews$ =
+      this._mediaCenterService.Selector$('MediaSectionsItems');
 
     this.MediaCenterService$ = this._mediaCenterService
       .Selector$('MediaSectionsItems')
@@ -100,12 +108,12 @@ export class HomeComponent implements OnInit {
           return val?.filter((item: any) => {
             return item.ShowHome == true;
           });
-        }),
+        }) /* ,
         map((val) => {
           return val?.filter((item: any) => {
             return item.MediaSectionID == 3;
           });
-        })
+        }) */
       );
     this.MediaCenterService2$ = this._mediaCenterService
       .Selector$('MediaSectionsItems')
@@ -216,12 +224,20 @@ export class HomeComponent implements OnInit {
     const currentSectionElement = this.elementRef.nativeElement.querySelector(
       '#section' + this.currentSection
     );
-    const currentSectionPosition = currentSectionElement.offsetTop;
+    console.log('#section' + this.currentSection);
+    console.log('currentSectionElement633336633', currentSectionElement);
+    const currentSectionPosition = currentSectionElement?.offsetTop;
+    console.log('currentSectionElement633336633', currentSectionPosition);
+
     const nextSectionElement = this.elementRef.nativeElement.querySelector(
       '#section' + (this.currentSection + 1)
     );
     const nextSectionPosition = nextSectionElement.offsetTop;
-    if (window.pageYOffset >= currentSectionPosition) {
+
+    if (
+      window.pageYOffset >= currentSectionPosition &&
+      this.currentSection < 4
+    ) {
       this.currentSection++;
       this.renderer.setProperty(
         document.documentElement,
@@ -229,5 +245,10 @@ export class HomeComponent implements OnInit {
         nextSectionPosition
       );
     }
+    // else if (
+    //   currentSectionPosition &&
+    //   window.pageYOffset <= currentSectionPosition
+    // ) {
+    // }
   }
 }

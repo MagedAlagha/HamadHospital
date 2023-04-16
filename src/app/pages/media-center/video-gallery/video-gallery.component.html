@@ -1,4 +1,8 @@
 <div class="row">
+  <input  [formControl]="Search" type="text" pInputText>
+  <button pButton type="button" class=""  (click)="serchVideo()" > بحث</button>
+
+
 <ng-container *ngIf="MediaCenterService$ |async as data">
 
   <div class="col-md-6 mb-4"  *ngFor="let item of data">

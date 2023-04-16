@@ -178,14 +178,14 @@
       </div>
     </div>
     <!-- row -->
-    <ng-container *ngIf="MediaCenterService$ |async as data ">
-    <div class="row align-items-stretch">
+    <ng-container *ngIf="MediaSectionsItemsVideo$ |async as data ">
+      <div class="row align-items-stretch">
       <div class="col-md-8 d-flex align-items-stretch img "  (click)="showVideoPreview(data[0])" >
         <div >
             <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid main-img"
             class="img-fluid" alt="">
            <img src="../../../assets/img/video.mp4" class="video-icon" alt="">
-           <p style="color: #fff;">{{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr  | slice:0:80 }} {{  isEn ? data[0]?.TitleEn.length : data[0]?.TitleAr.length > 80 ? '...' : '' }} </p>
+           <p style="color: #fff;">{{ isEn ? data[0]?.Title : data[0]?.Title  | slice:0:80 }} {{  isEn ? data[0]?.Title.length : data[0]?.Title.length > 80 ? '...' : '' }} </p>
         </div>
         <a class=" icon_video play-btn mb-4"></a>
 
@@ -196,7 +196,7 @@
             <figure >
               <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 90%;" class="img-fluid"
            class="img-fluid" alt="">
-              <figcaption>{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:35 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
+              <figcaption>{{ isEn ? data[1]?.Title : data[1]?.Title  | slice:0:35 }} {{  isEn ? data[1]?.Title.length : data[1]?.Title.length > 35 ? '...' : '' }}</figcaption>
             </figure>
             <a class=" icon_video play-btn mb-4"></a>
 
@@ -205,7 +205,7 @@
             <figure>
               <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%;height: 90%;" class="img-fluid"
               class="img-fluid" alt="">
-              <figcaption>{{ isEn ? data[2]?.TitleEn : data[2]?.TitleAr  | slice:0:35 }} {{  isEn ? data[2]?.TitleEn.length : data[2]?.TitleAr.length > 35 ? '...' : '' }}</figcaption>
+              <figcaption>{{ isEn ? data[2]?.Title : data[2]?.Title  | slice:0:35 }} {{  isEn ? data[2]?.Title.length : data[2]?.Title.length > 35 ? '...' : '' }}</figcaption>
             </figure>
                     <a class=" icon_video play-btn mb-4"></a>
           </div>
@@ -214,7 +214,7 @@
         </div>
       </div>
     </div>
-  </ng-container>
+    </ng-container>
   </div>
 
 </section>
@@ -227,14 +227,14 @@
     <div class="section-title">
       <div class="line" style="height: 3px;"></div>
       <div class="d-flex justify-content-end mb-3" >
-        <a routerLink="/media-center/press-stories" style="color:#8a1538;" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >اقرا المزيد</a>
+        <a routerLink="/media-center/press-stories" style="cursor: pointer; color:#8a1538;" >اقرأ المزيد</a>
       </div>
     </div>
-    <ng-container *ngIf="MediaCenterService2$ | async as data">
+    <ng-container *ngIf="MediaSectionsItemsStory$ | async as data">
       <div class="row align-items-stretch">
           <div
             class="col-md-4 img pb-3" *ngFor="let item of data.slice(-3)"
-            (click)="showPhotosDetails(item)"
+            (click)="showPhotosDetails(item) ; addAvtiveNaveBar()"
           >
             <div style="width: 100%">
               <img
@@ -242,14 +242,14 @@
                 style="width: 100%; height: 80% ; border-radius: 6px;"
                 class="img-fluid"
                 alt=""
-                routerLink="/photo-details/{{item?.ID}}"
+                routerLink="/written-stories-details/{{item?.ID}}"
               />
-              <p style="color: #fff ; margin-bottom: 4px;">
-                {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 40) }}
+              <p style=" margin-bottom: 4px;">
+                {{ isEn ? item?.Title : (item?.Title | slice : 0 : 40) }}
                 {{
                   isEn
-                    ? item?.TitleEn.length
-                    : item?.TitleAr.length > 40
+                    ? item?.Title.length
+                    : item?.Title.length > 40
                     ? "..."
                     : ""
                 }}
@@ -324,8 +324,8 @@
                 <h3 class="post-title">
                   {{
                     isEn
-                      ? data[data?.length - 1]?.TitleEn
-                      : data[data?.length - 1]?.TitleAr
+                      ? data[data?.length - 1]?.Title
+                      : data[data?.length - 1]?.Title
                   }}
                 </h3>
                 <a href="#" class="readmore mt-auto d-flex align-items-baseline"><span>إقراء المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
@@ -341,9 +341,8 @@
                     routerLink="/news-details/{{ item.ID }}"
                     (click)="showNews(item) ; addAvtiveNaveBar()"
                     class="title"
-                    >{{item.TitleAr}}
+                    >{{item.Title}}
                     <i class="fa-solid fa-arrow-left-long ps-1"></i>
-
                   </a>
                 </ng-container>
               </div>
@@ -361,7 +360,7 @@
           </div>
           <div class="news-box2">
             <owl-carousel-o [options]="mix">
-              <ng-container *ngIf="mix$ | async as data">
+              <ng-container *ngIf="MediaSectionsItemsLastVarious$ | async as data">
                 <ng-template
                   carouselSlide
                   *ngFor="let item of data"
@@ -376,8 +375,9 @@
                   />
 
                   <div class="news-box2-xontent" routerLink="/mix-details/{{ item?.ID }}" (click)="addAvtiveNaveBar()" >
+                    <span style="font-size: 12px;">نشر بتاريخ : {{item.CreatedDate | date}}</span>
                     <h3 class="post-title">
-                      {{ isEn ? item?.TitleEn : item?.TitleAr }}
+                      {{ isEn ? item?.Title : item?.Title }}
                     </h3>
                     <a
                     (click)="showmix(item)"

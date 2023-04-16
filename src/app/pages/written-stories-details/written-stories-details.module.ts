@@ -4,6 +4,7 @@ import { WrittenStoriesDetailsComponent } from './written-stories-details.compon
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { GalleriaModule } from 'primeng/galleria';
 
 @NgModule({
   declarations: [WrittenStoriesDetailsComponent],
@@ -16,7 +17,8 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
         component: WrittenStoriesDetailsComponent,
       },
     ]),
-    LazyLoadImageModule
+    LazyLoadImageModule ,
+    GalleriaModule,
   ],
 })
 export class WrittenStoriesDetailsModule {}

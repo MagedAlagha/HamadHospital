@@ -23,12 +23,14 @@ export class PhotoDetailsComponent implements OnInit {
     console.log(this.ID);
   }
   ngOnInit(): void {
+
+    this._mediaCenterService.getMediaSectionsItemsPhoto(2)
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
     this._mediaCenterService.getPostId(this.ID);
-    this.ImageSection$ =
-      this._mediaCenterService.Selector$('ImageSection');
+    this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
     this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('PostInfo')
+      .Selector$('PhotoGalaryInfo')
       .pipe(
         tap((value) => {
           console.log('value', value);
@@ -36,20 +38,10 @@ export class PhotoDetailsComponent implements OnInit {
         })
       );
 
-
-    this.MediaCenterService$ = this._mediaCenterService
-      .Selector$('MediaSectionsItems')
-      .pipe(
-        map((val) => {
-          return val?.filter((item: any) => {
-            return item.MediaSectionID == 2;
-          });
-        })
-      );
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PostInfo: item });
+    this._mediaCenterService.updateStore({ PhotoGalaryInfo: item });
    ;
   }
 

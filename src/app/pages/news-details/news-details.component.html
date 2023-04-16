@@ -5,15 +5,15 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
         <div class="section-title">
-             <ng-container *ngIf="item.MainServiceID === 1">  <span></span> التأهيل الطبي </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 5">  <span></span> خدمات طبية مساندة </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 6">  <span></span> غير مصنف </ng-container>
+             <ng-container *ngIf="item.MainServiceID === 1">  <span>التأهيل الطبي</span>  </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 2">  <span>الاطراف الصناعية</span>  </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 3">  <span>السمع والتوازن</span>  </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 4">  <span>العيادة الخارجية</span>  </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 5">  <span>خدمات طبية مساندة</span>  </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 6">  <span>غير مصنف</span>  </ng-container>
           <div class="title">
-            <p class="mb-1">{{  item?.SubTitleAr }}  </p>
-              <h1>{{ isEn ? item?.TitleEn : item?.TitleAr }}  </h1>
+            <p class="mb-1">{{  item?.SubTitle }}  </p>
+              <h1>{{ isEn ? item?.Title : item?.Title }}  </h1>
           </div>
 
         </div>
@@ -46,23 +46,21 @@
             <div class="line"> </div>
             <h2 class="d-inline-block ps-2">اخر الأخبار</h2>
           </div>
-          <ng-container *ngIf="MediaCenterService$ |async as data">
+          <ng-container *ngIf="MediaSectionsItemsLastNews$ |async as data">
               <ng-container *ngFor="let item2 of data.slice(-3) ">
                 <ng-container *ngIf="item.ID !== item2.ID">
                 <div class="row align-items-center mt-4" routerLink="/news-details/{{item2.ID}}" (click)="showNews(item2)" style="cursor: pointer;"  >
-                <!--   <a href=""  routerLink="/news-details/{{item2.ID}}" ></a> -->
                   <div class="col-md-3 px-0">
                     <img [src]=" 'http://hamad_api.accessline.ps'+ item2?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
                   </div>
                   <div class="col-md-8">
                     <div class="last-news-title">
-                      <h3> {{ isEn ? item2?.TitleEn : item2?.TitleAr }} </h3>
+                      <h3> {{ isEn ? item2?.Title : item2?.Title }} </h3>
                       <div class="post-pp">
-                        <p  [innerHTML]="isEn ? item?.DescEn : item?.DescAr  | slice:0:100"></p>
+                        <p  [innerHTML]=" item2?.Desc  | slice:0:100"></p>
+                        <span style="font-size: 12px;"> تاريخ النشر : {{item2?.CreatedDate | date}} </span>
                       </div>
-
-<!--                       <p>{{ isEn ? item2?.DescEn : item2?.DescAr | slice:0:100 }} {{  isEn ? item2?.DescEn.length : item2?.DescAr.length > 100 ? '...' : '' }} </p>
- -->                    </div>
+                    </div>
                   </div>
                 </div>
               </ng-container>

@@ -11,7 +11,7 @@ import { MediaCenterService } from '../media-center/media-center.service';
 })
 export class MedicalArticleDetailsComponent implements OnInit {
 
-  MediaCenterService$!:Observable<any>;
+  MediaSectionsItemsMedicalArticle$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
 ID:any;
 text:any = 'نسخ';
@@ -26,15 +26,9 @@ MedicalArticles$!:Observable<any>;
     this.location = window.location.href;
 
     this._mediaCenterService.getPostId(this.ID);
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID == 4;
-        });
-      }) , map(value=>{
-        return value.slice(-3)
-      })
-    );
+    this._mediaCenterService.getMediaSectionsItemsMedicalArticle(4)
+    this.MediaSectionsItemsMedicalArticle$ = this._mediaCenterService.Selector$('MediaSectionsItemsMedicalArticle')
+
 
     this.MedicalArticles$ = this._mediaCenterService.Selector$('PostInfo')
     const data  = this._mediaCenterService.dataStore.MedicalArticles

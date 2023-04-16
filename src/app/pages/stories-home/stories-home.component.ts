@@ -19,6 +19,8 @@ export class StoriesHomeComponent implements OnInit {
   VideoDialog$!:Observable<any>;
   MediaCenterService$!:Observable<any>;
   MediaCenterService2$!:Observable<any>;
+  MediaSectionsItemsVideo$!:Observable<any>;
+  MediaSectionsItemsStory$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   active:any = 1;
   constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) { }
@@ -26,19 +28,37 @@ export class StoriesHomeComponent implements OnInit {
   ngOnInit(): void {
     const url = window.location.href;
     if (url.includes('medical-rehabilitation')) {
+      this._mediaCenterService.getMediaSectionsItemsVideo(3 , 1 );
+      this._mediaCenterService.getMediaSectionsItemsStory(5 , 1);
+
       this.active = 1;
     }else if(url.includes('prosthetics')){
       this.active = 2;
     }else if(url.includes('hearing-balance')){
       this.active = 3;
+      this._mediaCenterService.getMediaSectionsItemsVideo(3 , 3 );
+      this._mediaCenterService.getMediaSectionsItemsStory(5 , 3);
+
+
     }else if(url.includes('outpatient-clinics')){
       this.active = 4;
+      this._mediaCenterService.getMediaSectionsItemsVideo(3 , 4 );
+      this._mediaCenterService.getMediaSectionsItemsStory(5 , 4);
+
+
     }else if(url.includes('supportive')){
       this.active = 5;
+      this._mediaCenterService.getMediaSectionsItemsVideo(3 , 5 );
+      this._mediaCenterService.getMediaSectionsItemsStory(5 , 5);
     }
 
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+    this.MediaSectionsItemsVideo$ = this._mediaCenterService.Selector$('MediaSectionsItemsVideo').pipe(
+      map((val) => val.reverse()));
+    this.MediaSectionsItemsStory$ = this._mediaCenterService.Selector$('MediaSectionsItemsStory').pipe(
+      map((val) => val.reverse()));
 
+
+   /*  this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID == 3;
@@ -62,7 +82,7 @@ export class StoriesHomeComponent implements OnInit {
           return item.MainServiceID === this.active;
         });
       })
-    );
+    ); */
 
 
 

@@ -19,14 +19,14 @@ export class PhotoGalleryComponent implements OnInit {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.MediaSectionID.includes("3")
+          return item.MediaSectionID.includes("2")
         });
       })
     );
 }
 
 showPhotosDetails(item:any){
-  this._mediaCenterService.updateStore({ PostInfo: item });
+  this._mediaCenterService.updateStore({ PhotoGalaryInfo: item });
   console.log(item , "itemitemitemitem")
 }
 

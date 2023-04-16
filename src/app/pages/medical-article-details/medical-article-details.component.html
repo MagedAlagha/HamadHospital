@@ -12,7 +12,7 @@
               <ng-container *ngIf="data.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
               <ng-container *ngIf="data.MainServiceID === 5">  <span></span> خدمات طبية مساندة </ng-container>
               <ng-container *ngIf="data.MainServiceID === 6">  <span></span> غير مصنف </ng-container>
-          <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
+          <h1>{{ isEn ? data?.Title : data?.Title }}  </h1>
         </div>
         <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
       </div>
@@ -33,7 +33,7 @@
       </div>
       <div class="col-md-8 post-p">
         <!--  -->
-        <p  [innerHTML]="isEn ? data?.DescEn : data?.DescAr "></p>
+        <p  [innerHTML]="isEn ? data?.Desc: data?.Desc "></p>
       </div>
     </div>
 
@@ -47,7 +47,7 @@
 
 
   <div class="row">
-    <ng-container *ngIf="MediaCenterService$ |async as data2">
+    <ng-container *ngIf="MediaSectionsItemsMedicalArticle$ |async as data2">
       <ng-container *ngFor="let item of data2.slice(-3) ">
 
     <div class="col-md-4"  *ngIf="item.ID !== data.ID">
@@ -55,7 +55,7 @@
         <div class="post-img"> <img [lazyLoad]="'http://hamad_api.accessline.ps'+ item?.ImagePath" style="object-fit: cover; width: 100%; max-height: 300px;" class="img-fluid" alt="">
         </div>
         <div class="d-flex justify-content-between align-items-baseline mb-1 ">
-          <h1>{{ isEn ? data2?.TitleEn : data2?.TitleAr }}  </h1>
+          <h1>{{ isEn ? data2?.Title: data2?.Title }}  </h1>
 
           <ng-container *ngIf="data2.MainServiceID === 1">  <span class="categories">التأهيل الطبي</span>  </ng-container>
           <ng-container *ngIf="data2.MainServiceID === 2">  <span class="categories">الاطراف الصناعية</span>  </ng-container>
@@ -63,9 +63,9 @@
           <ng-container *ngIf="data2.MainServiceID === 4">  <span class="categories">العيادة الخارجية</span>  </ng-container>
           <span class="post-date">{{data2?.CreatedDate | date}} </span>
         </div>
-        <h3 class="post-title">{{ isEn ? item?.TitleEn : item?.TitleAr   | slice:0:50 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 50 ? '...' : '' }}  </h3>
+        <h3 class="post-title">{{ isEn ? item?.Title : item?.Title   | slice:0:50 }} {{  isEn ? item?.Desc.length : item?.Desc.length > 50 ? '...' : '' }}  </h3>
         <div class="medical-articaels">
-          <p  [innerHTML]="isEn ? item?.DescEn : item?.DescAr  | slice:0:100"></p>
+          <p  [innerHTML]="isEn ? item?.Desc : item?.Desc  | slice:0:100"></p>
         </div>
 <!--         <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
  -->         <a routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء

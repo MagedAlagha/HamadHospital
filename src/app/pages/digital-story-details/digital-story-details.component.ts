@@ -35,7 +35,7 @@ export class DigitalStoryDetailsComponent implements OnInit {
       })
     );
 
-     this.VisualStories$ = this._mediaCenterService.Selector$('PostInfo').pipe(tap(value=>{
+     this.VisualStories$ = this._mediaCenterService.Selector$('tecStoryInfo').pipe(tap(value=>{
       this.postID = value.ID;
       console.log('value' , value)
       this._mediaCenterService.getImageSection(value?.ID);
@@ -43,7 +43,7 @@ export class DigitalStoryDetailsComponent implements OnInit {
 
   }
   showVisualStories(item:any) {
-    this._mediaCenterService.updateStore({ PostInfo: item });
+    this._mediaCenterService.updateStore({ tecStoryInfo: item });
    ;
   }
   responsiveOptions: any[] = [

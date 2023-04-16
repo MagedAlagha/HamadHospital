@@ -33,13 +33,15 @@ export class VisualStoriesComponent implements OnInit {
   }
 
   display: boolean = false;
-
+/*
   showVideoPreview(item:any) {
     this.display = true;
     this._mediaCenterService.updateStore({ VideoDetails: item });
     console.log(item)
+  } */
+  showPhotosDetails(item:any) {
+    this._mediaCenterService.updateStore({ ProsessStoryInfo: item });
+    console.log(item)
   }
-  openModal(item?:any){
-    this._visualStoriesService.displayDialogs('VideoDialog', true, item);
-  }
+
 }

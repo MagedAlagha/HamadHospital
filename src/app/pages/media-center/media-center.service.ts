@@ -26,7 +26,18 @@ export class MediaCenterService {
     PhotoGalaryDetails:undefined,
     MixDetails:undefined,
     PostInfo: undefined,
+    NewsInfo: undefined,
+    PhotoGalaryInfo: undefined,
+    ProsessStoryInfo: undefined,
+    tecStoryInfo: undefined,
     activeNave: undefined,
+    MediaSectionsItemsVideo: undefined,
+    MediaSectionsItemsStory: undefined,
+    MediaSectionsItemsLastNews: undefined,
+    MediaSectionsItemsLastVarious: undefined,
+    MediaSectionsItemsSahafiStories: undefined,
+    MediaSectionsItemsPhoto: undefined,
+    MediaSectionsItemsMedicalArticle: undefined,
 
 
   });
@@ -52,6 +63,27 @@ export class MediaCenterService {
     /*  *******  MediaSectionsItems - API ******* */
   getMediaSectionsItems(ID?:any) {
       this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItems',{ MediaSectionID:ID });
+  }
+  getMediaSectionsItemsVideo(ID?:any ,MainServiceID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsVideo',{ MediaSectionID:ID , ShowHome:true  , MainServiceID:MainServiceID });
+  }
+  getMediaSectionsItemsStory(ID?:any , MainServiceID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsStory',{ MediaSectionID:ID , ShowHome:true , MainServiceID:MainServiceID});
+  }
+  getMediaSectionsItemsLastNews(ID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsLastNews',{ MediaSectionID:ID });
+  }
+  getMediaSectionsItemsVarious(ID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsLastVarious',{ MediaSectionID:ID });
+  }
+  getMediaSectionsItemsSahafiStories(ID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsSahafiStories',{ MediaSectionID:ID });
+  }
+  getMediaSectionsItemsPhoto(ID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsPhoto',{ MediaSectionID:ID });
+  }
+  getMediaSectionsItemsMedicalArticle(ID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsMedicalArticle',{ MediaSectionID:ID });
   }
   getImageSection(ID?:any) {
     this.getFormApi(
@@ -98,6 +130,17 @@ export interface StoreInterface {
   MixDetails?: any;
   PostInfo?: any;
   activeNave?: any;
+  MediaSectionsItemsVideo?: any;
+  MediaSectionsItemsStory?: any;
+  MediaSectionsItemsLastNews?: any;
+  MediaSectionsItemsLastVarious?: any;
+  MediaSectionsItemsSahafiStories?: any;
+  MediaSectionsItemsPhoto?: any;
+  MediaSectionsItemsMedicalArticle?: any;
+  NewsInfo?: any;
+  PhotoGalaryInfo?: any;
+  ProsessStoryInfo?: any;
+  tecStoryInfo?: any;
 
 
 }

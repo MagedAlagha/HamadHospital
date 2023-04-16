@@ -9,13 +9,14 @@ import { MediaCenterService } from './media-center.service';
 })
 export class MediaCenterComponent implements OnInit {
   /* isActive = false; */
+
   active: any = 1;
   constructor(public router: Router , private _mediaSectionsItems:MediaCenterService) {
 
   }
 
   ngOnInit(): void {
-    this._mediaSectionsItems.getMediaSectionsItems();
+
 
     const url = window.location.href;
     if (url.includes('news')) {

@@ -7,6 +7,7 @@ import { DialogModule } from 'primeng/dialog';
 import { VideoPreviewModalComponent } from './modal/video-preview-modal/video-preview-modal.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [VideoGalleryComponent, VideoPreviewModalComponent   ],
@@ -21,7 +22,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
         component: VideoGalleryComponent,
       },
     ]),
-    LazyLoadImageModule
+    LazyLoadImageModule,ReactiveFormsModule
   ],
 })
 export class VideoGalleryModule {}

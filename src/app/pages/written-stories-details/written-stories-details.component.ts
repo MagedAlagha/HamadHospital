@@ -34,13 +34,14 @@ export class WrittenStoriesDetailsComponent implements OnInit {
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID == 2;
+            console.log(item.MediaSectionID  , "item.MediaSectionID == 5")
+            return item.MediaSectionID == 5;
           });
         })
       );
 
     this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('PostInfo')
+      .Selector$('ProsessStoryInfo')
       .pipe(
         tap((value) => {
           console.log('PhotosDetails', value);
@@ -50,8 +51,7 @@ export class WrittenStoriesDetailsComponent implements OnInit {
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PostInfo: item });
-   ;
+    this._mediaCenterService.updateStore({ ProsessStoryInfo: item });
   }
 
   customOptions: OwlOptions = {

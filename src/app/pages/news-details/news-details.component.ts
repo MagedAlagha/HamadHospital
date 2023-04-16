@@ -10,7 +10,7 @@ import { MediaCenterService } from '../media-center/media-center.service';
   styleUrls: ['./news-details.component.scss']
 })
 export class NewsDetailsComponent implements OnInit {
-  MediaCenterService$!:Observable<any>;
+  MediaSectionsItemsLastNews$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
 ID:any;
 text:any = 'نسخ';
@@ -29,7 +29,11 @@ location:any
     this.location = window.location.href;
 
     this._mediaCenterService.getPostId(this.ID);
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+
+    this._mediaCenterService.getMediaSectionsItemsLastNews(1)
+    this.MediaSectionsItemsLastNews$ = this._mediaCenterService.Selector$('MediaSectionsItemsLastNews')
+
+    /* this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID == 1;
@@ -37,8 +41,8 @@ location:any
       }), map(value=>{
         return value.slice(-3)
       })
-    );
-    this.showNews$ = this._mediaCenterService.Selector$('PostInfo')
+    ); */
+    this.showNews$ = this._mediaCenterService.Selector$('NewsInfo')
   }
 
   copy(){
@@ -47,7 +51,7 @@ location:any
   }
 
   showNews(item:any){
-    this._mediaCenterService.updateStore({ PostInfo: item });
+    this._mediaCenterService.updateStore({ NewsInfo: item });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

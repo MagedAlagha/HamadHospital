@@ -28,7 +28,7 @@ export class WrittenStoriesComponent implements OnInit {
   }
 
   showVisualStories(item:any) {
-    this._mediaCenterService.updateStore({ PostInfo: item });
+    this._mediaCenterService.updateStore({ tecStoryInfo: item });
   }
 
 }

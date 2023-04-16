@@ -14,7 +14,7 @@
             <ng-container *ngIf="item.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
             <ng-container *ngIf="item.MainServiceID === 5">  <span></span> خدمات طبية مساندة </ng-container>
             <ng-container *ngIf="item.MainServiceID === 6">  <span></span> غير مصنف </ng-container>
-            <h1>{{ isEn ? item?.TitleEn : item?.TitleAr }}  </h1>
+            <h1>{{ isEn ? item?.Title : item?.Title }}  </h1>
           </div>
         </div>
 
@@ -67,7 +67,7 @@
           alt=""
         />
         <div class="d-flex justify-content-between img-title">
-          <p> {{ isEn ? item2?.TitleEn : item2?.TitleAr  | slice:0:30 }} {{  isEn ? item2?.TitleEn.length : item2?.TitleAr.length > 30 ? '...' : '' }}</p>
+          <p> {{ isEn ? item2?.Title : item2?.Title  | slice:0:30 }} {{  isEn ? item2?.Title.length : item2?.Title.length > 30 ? '...' : '' }}</p>
           <div>
            <!--  <span>{{data.length}}</span> -->
             <img src="../../../../assets/img/photo.svg" alt="" />

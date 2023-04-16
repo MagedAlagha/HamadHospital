@@ -12,10 +12,9 @@
       <div class="d-flex justify-content-end " style="margin-top: -12px;">
         <a routerLink="/media-center/video/video-main">شاهد المزيد</a>
       </div>
-
     </div>
     <!-- row -->
-    <ng-container *ngIf="MediaCenterService$ | async as data">
+    <ng-container *ngIf="MediaSectionsItemsVideo$ | async as data">
       <div class="row align-items-stretch">
           <div
             class="col-md-3 img pb-3" *ngFor="let item of data.slice(-4)"
@@ -33,8 +32,8 @@
                 {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 40) }}
                 {{
                   isEn
-                    ? item?.TitleEn?.length
-                    : item?.TitleAr?.length > 40
+                    ? item?.Title?.length
+                    : item?.Title?.length > 40
                     ? "..."
                     : ""
                 }}
@@ -51,15 +50,15 @@
       <h4>قصص صحفية</h4>
       <div class="line"></div>
       <div class="d-flex justify-content-end "style="margin-top: -12px;">
-        <a routerLink="/media-center/press-stories">شاهد المزيد</a>
+        <a routerLink="/media-center/press-stories">اقرأ المزيد</a>
       </div>
     </div>
     <!-- row  -->
-    <ng-container *ngIf="MediaCenterService2$ | async as data">
+    <ng-container *ngIf="MediaSectionsItemsStory$ | async as data">
       <div class="row align-items-stretch">
           <div
             class="col-md-3 img pb-3" *ngFor="let item of data.slice(-4)"
-            (click)="showVideoPreview(item)"
+            (click)="showPhotosDetails(item)"
           >
             <div style="width: 100%">
               <img
@@ -67,19 +66,19 @@
                 style="width: 100%; height: 80% ; border-radius: 6px;"
                 class="img-fluid"
                 alt=""
+                routerLink="/written-stories-details/{{item?.ID}}"
               />
-              <p style="color: #fff ; margin-bottom: 4px;">
-                {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 40) }}
+              <p style=" color: #fff; margin-bottom: 4px;">
+                {{ isEn ? item?.Title : (item?.Title | slice : 0 : 40) }}
                 {{
                   isEn
-                    ? item?.TitleEn?.length
-                    : item?.TitleAr?.length > 40
+                    ? item?.Title.length
+                    : item?.Title.length > 40
                     ? "..."
                     : ""
                 }}
               </p>
             </div>
-            <a class=" icon_video play-btn mb-4"></a>
           </div>
       </div>
     </ng-container>

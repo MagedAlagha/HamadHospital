@@ -3,6 +3,7 @@ import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MediaCenterService } from '../media-center.service';
 import { VideoGalleryService } from './video-gallery.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-video-gallery',
@@ -17,6 +18,7 @@ export class VideoGalleryComponent implements OnInit {
   constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) { }
 
   Avatar=environment.FileUrl;
+  Search= new FormControl();
   ngOnInit(): void {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
@@ -35,5 +37,9 @@ export class VideoGalleryComponent implements OnInit {
     this._mediaCenterService.updateStore({ VideoDetails: item });
     console.log( "itemi temitem" ,  item  )
   }
+
+  serchVideo(){
+    console.log(this.Search.value)
+  };
 
 }
