@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { HomeService } from '../../home/home.service';
 import { OutpatientClinicsService } from '../outpatient-clinics/outpatient-clinics.service';
 import { HearingBalanceService } from './hearing-balance.service';
@@ -7,7 +7,7 @@ import { HearingBalanceService } from './hearing-balance.service';
 @Component({
   selector: 'app-hearing-balance',
   templateUrl: './hearing-balance.component.html',
-  styleUrls: ['./hearing-balance.component.scss']
+  styleUrls: ['./hearing-balance.component.scss'],
 })
 export class HearingBalanceComponent implements OnInit {
   isEn = document.dir == 'ltr' ? true : false;
@@ -16,10 +16,13 @@ export class HearingBalanceComponent implements OnInit {
   HearingServices$!: Observable<any>;
   getOutpatientClinicsDepartments$!: Observable<any>;
   OutpatientClinicsDepartmentsServices$!: Observable<any>;
-  data:any
   active: any;
-  constructor(private _homeService:HomeService , private _hearingBalanceService:HearingBalanceService , private _outpatientClinicsService:OutpatientClinicsService) {
-  }
+  value1: any;
+  constructor(
+    private _homeService: HomeService,
+    private _hearingBalanceService: HearingBalanceService,
+    private _outpatientClinicsService: OutpatientClinicsService
+  ) {}
 
   ngOnInit(): void {
     this._outpatientClinicsService.getOutpatientClinicsDepartments();
@@ -27,35 +30,34 @@ export class HearingBalanceComponent implements OnInit {
     this.Services$ = this._homeService.Selector$('Services');
     this._hearingBalanceService.getServices();
 
-    this.getOutpatientClinicsDepartments$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartments').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.IsActive;
-        });
-      }),
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.TypeID === 3;
-        });
-      })
-    );
+    this.getOutpatientClinicsDepartments$ = this._outpatientClinicsService
+      .Selector$('OutpatientClinicsDepartments')
+      .pipe(
+        map((val) => {
+          return val?.filter((item: any) => {
+            return item.IsActive && item.TypeID === 3;
+          });
+        }),
+        tap((value) => {
+          const firstItem = Array.isArray(value) && value?.length? value?.[0] : undefined;
+          this.storeData(firstItem);
+          // this.OutpatientClinicsDepartmentsServices$ =
+          //   this._outpatientClinicsService
+          //     .Selector$('OutpatientClinicsDepartmentsServices')
+          //     .pipe(
+          //       map((val) => {
+          //         console.log("before filter:", val)
+          //         return val?.filter((item: any) => item.IsActive && item.TypeID === 3);
+          //       }), tap( filteredValue => {
+          //         console.log("after filter:", filteredValue)
 
-    this.OutpatientClinicsDepartmentsServices$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartmentsServices').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.IsActive;
-        });
-      }),
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.OutpatientClinicsDepartmentID ;
-        });
-      })
-    );
+          //       })
+          //     );
+        })
+      );
 
-
-   /*  this.HearingServices$ = this._hearingBalanceService.Selector$('Services'); */
-   /*  this._hearingBalanceService.getHearingDepartemt();
+    /*  this.HearingServices$ = this._hearingBalanceService.Selector$('Services'); */
+    /*  this._hearingBalanceService.getHearingDepartemt();
     this.HearingDepartemt$ = this._hearingBalanceService.Selector$('HearingDepartemt').pipe(
       map((val) => {
         return val?.filter((item: any) => {
@@ -63,15 +65,14 @@ export class HearingBalanceComponent implements OnInit {
         });
       })
     ); */
-
   }
 
   storeData(item: any) {
+    console.log('storeData', item);
+
     this._outpatientClinicsService.updateStore({ dataShow: item });
-    this.data = item;
-    if (this.data) {
-      this.active = this.data.ID;
+    if (item) {
+      this.active = item.ID;
     }
   }
-
 }

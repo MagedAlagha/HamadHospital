@@ -13,7 +13,6 @@ export class NewsComponent implements OnInit {
   constructor(private _mediaCenterService:MediaCenterService, private _mediaSectionsItems:MediaCenterService) { }
 
   ngOnInit(): void {
-    this._mediaSectionsItems.getMediaSectionsItems(3);
 
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {

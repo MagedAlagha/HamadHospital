@@ -6,7 +6,7 @@
           <span class="line"></span>
         </div>
         <div class="col-md-4 col-6">
-          <h3 class="px-md-5 px-2"> السمع والتوازن</h3>
+          <h3 class="px-md-5 px-2">السمع والتوازن</h3>
         </div>
         <div class="col-md-4 col-3">
           <span class="line"></span>
@@ -14,9 +14,9 @@
       </div>
     </div>
     <!--  -->
-    <div class="row d-flex justify-content-center ">
+    <div class="row d-flex justify-content-center">
       <div class="col-md-9 my-4">
-        <ng-container *ngIf="Services$ |async as data">
+        <ng-container *ngIf="Services$ | async as data">
           <p>
             {{
               isEn
@@ -28,9 +28,8 @@
       </div>
     </div>
 
-
     <!-- ------------------------------------ -->
-<!-- <div class="row mb-5 justify-content-center">
+    <!-- <div class="row mb-5 justify-content-center">
   <div
     class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mt-4 mt-md-3"
     *ngFor="let item of HearingDepartemt$ | async"
@@ -52,31 +51,37 @@
   </div>
 </div> -->
 
-<!-- -------------------------------------------------- -->
- <hr/>
-<div class="container main-body-box">
-  <div class="row">
-    <div class="col-md-3">
-      <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
-        <ng-container *ngFor="let item of data">
-            <h3 routerLink="/sections/hearing-balance/services-content" class="py-2 body-box" (click)="storeData(item)" [ngClass]="{ active: active == item.ID }">{{isEn ? item.NameEn : item.NameAr}}</h3>
-        </ng-container>
-      </ng-container>
-    </div>
-    <div class="col-md-9">
-      <div class="content-box">
-        <router-outlet></router-outlet>
+    <!-- -------------------------------------------------- -->
+    <hr />
+    <div class="container main-body-box">
+      <div class="row">
+        <div class="col-md-3">
+          <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
+            <ng-container *ngFor="let item of data">
+              <h3
+                routerLink="/sections/hearing-balance/services-content"
+                class="py-2 body-box"
+                (click)="storeData(item)"
+                [ngClass]="{ active: active == item.ID }"
+              >
+              {{item.ID+' '}}  {{ isEn ? item.NameEn : item.NameAr }}
+              ({{active|json}})
+              </h3>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div class="col-md-9">
+          <div class="content-box">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
+    <!-- -------------------------------------------------- -->
 
-
-<!-- -------------------------------------------------- -->
-
-<!-------------------------------------- -->
-     <!--
+    <!-------------------------------------- -->
+    <!--
      delete
     <div class="row py-5 section-2" *ngIf="HearingServices$ | async as data">
       <div class="col-md-6">
@@ -86,11 +91,9 @@
       <div  [innerHTML]="isEn ? data?.HearingSectionEn : data?.HearingSectionAr "></div>
     </div>
     </div> -->
-
   </div>
 </section>
 
 <app-stories-home></app-stories-home>
 <br />
 <br />
-

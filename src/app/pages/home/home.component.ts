@@ -32,7 +32,8 @@ export class HomeComponent implements OnInit {
     private el: ElementRef,
     private location: Location,
     private elementRef: ElementRef,
-     private renderer: Renderer2
+     private renderer: Renderer2 ,
+     private _mediaSectionsItems:MediaCenterService
   ) {}
   dominUrl: any;
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class HomeComponent implements OnInit {
     console.log('this.dominUrl', this.dominUrl);
     /*    ;
      */
-
+    this._mediaSectionsItems.getMediaSectionsItems();
     this._homeService.getSliderData();
     this._homeService.getAdvertisements();
     this._homeService.getMainInfo();
@@ -87,13 +88,7 @@ export class HomeComponent implements OnInit {
     /* ******************************************************************************************* */
     this.MediaCenterServiceNews$ = this._mediaCenterService
       .Selector$('MediaSectionsItems')
-      .pipe(
-        map((val) => {
-          return val?.filter((item: any) => {
-            return item.MediaSectionID == 1;
-          });
-        })
-      );
+
 
     this.MediaCenterService$ = this._mediaCenterService
       .Selector$('MediaSectionsItems')

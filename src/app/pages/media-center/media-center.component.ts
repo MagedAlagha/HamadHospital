@@ -15,30 +15,37 @@ export class MediaCenterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._mediaSectionsItems.getMediaSectionsItems();
-
     const url = window.location.href;
     if (url.includes('news')) {
       this.active = 1;
+      this.getMediaSectionsItemsByID(1);
     }else if(url.includes('photo')){
       this.active = 2;
+      this.getMediaSectionsItemsByID(2);
     }else if(url.includes('video')){
       this.active = 3;
+      this.getMediaSectionsItemsByID(3);
     }else if(url.includes('medical-articles')){
       this.active = 4;
+      this.getMediaSectionsItemsByID(4);
     }else if(url.includes('press-stories')){
       this.active = 5;
+      this.getMediaSectionsItemsByID(5);
     }else if(url.includes('visual-stories')){
       this.active = 6;
+      this.getMediaSectionsItemsByID(6);
     }else if(url.includes('mix')){
       this.active = 7;
+      this.getMediaSectionsItemsByID(7);
     }else if(url.includes('letter')){
       this.active = 8;
+      this.getMediaSectionsItemsByID(8);
+    }else{
+      this.getMediaSectionsItemsByID(this.active)
     }
   }
-}
 
-/* ||
-      url.includes('news-main') ||
-      url.includes('video-main') ||
-      url.includes('medical-articles-main') */
+  getMediaSectionsItemsByID(id?:any){
+    this._mediaSectionsItems.getMediaSectionsItems(id);
+  }
+}

@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   ) {}
   ngOnInit(): void {
 
-
     this._footerService.getStats();
     this._homeService.getServicesInHome();
     this._homeService.getLandingPageInfo(this.isEn_LandingPage);

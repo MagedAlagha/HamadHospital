@@ -19,14 +19,11 @@ export class ServicesContentComponent implements OnInit {
       .Selector$('dataShow')
       .pipe(
         tap((value) => {
-          console.log('value123',value);
+          console.log('dataShow in content',value);
         })
       );
 
       this.OutpatientClinicsDepartmentsServices$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartmentsServices').pipe(
-        tap((value) => {
-          console.log('value123',value);
-        }),
         map((val) => {
           return val?.filter((item: any) => {
             return item.IsActive;

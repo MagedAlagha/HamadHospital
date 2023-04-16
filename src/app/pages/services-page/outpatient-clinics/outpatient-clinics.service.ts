@@ -39,6 +39,12 @@ export class OutpatientClinicsService {
     );
   }
 
+  updateSelectedItemDataShow(data: any){
+    this.updateStore({
+      dataShow: data
+    });
+  }
+
   getOutpatientClinicsDepartments() {
     this.getFormApi('OutpatientClinicsDepartments/OutpatientClinicsDepartmentsSearch', 'OutpatientClinicsDepartments');
   }

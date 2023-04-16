@@ -32,8 +32,8 @@
                 {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 40) }}
                 {{
                   isEn
-                    ? item?.TitleEn.length
-                    : item?.TitleAr.length > 40
+                    ? item?.TitleEn?.length
+                    : item?.TitleAr?.length > 40
                     ? "..."
                     : ""
                 }}
@@ -71,8 +71,8 @@
                 {{ isEn ? item?.TitleEn : (item?.TitleAr | slice : 0 : 40) }}
                 {{
                   isEn
-                    ? item?.TitleEn.length
-                    : item?.TitleAr.length > 40
+                    ? item?.TitleEn?.length
+                    : item?.TitleAr?.length > 40
                     ? "..."
                     : ""
                 }}

@@ -10,7 +10,7 @@
         style=" object-fit: cover; height: 300px; border-radius: 6px;"
       />
       <div class="d-flex justify-content-between img-title">
-        <p>{{ isEn ? item?.TitleEn : item?.TitleAr | slice:0:35 }} {{  isEn ? item?.TitleEn.length : item?.TitleAr.length > 35 ? '...' : '' }}</p>
+        <p>{{ item?.Title | slice:0:35 }} {{   item?.Title.length > 35 ? '...' : '' }}</p>
       </div>
      <a class=" icon_video play-btn mb-4"></a>
     </div>

@@ -15,13 +15,11 @@
             <div class="row justify-content-center">
               <div class="col-md-7 col-10">
                 <div class="content" [routerLink]="item?.Link">
-                <!--   <a  routerLink="{{item?.Link.substring(21)}}" (click)="showNews(item)" > <p>{{ item.Title }} </p></a> -->
-<!-- *ngIf="item_2.ID  == item.Link " -->
-                <!--  <p>{{ item.Title }} </p>  --><!--  [href]="item?.Link" -->
+
                  <ng-container *ngIf="MediaCenterServiceNews$ | async as news">
                   <p class="mb-1">{{ item.Title }} </p>
                   <ng-container *ngFor="let item_2 of news">
-                     <ng-container *ngIf="item_2.ID  === 0 ">
+                     <ng-container *ngIf="item_2.ID  == 0 ">
                    <a   (click)="showNews(item_2)" > </a>
                    </ng-container>
                   </ng-container>
@@ -221,7 +219,7 @@
 
 </section>
 
- <div class="section" style="padding: 80px 0;">
+ <!-- <div class="section" style="padding: 80px 0;">
   <div class="container mt-4">
     <div class="section-header text-center">
       <h3 class="px-md-5 px-2  mb-0"> قصص صحفية </h3>
@@ -261,26 +259,8 @@
       </div>
     </ng-container>
 
-    <!-- <ng-container *ngIf="MediaCenterService2$ |async as data">
-      <div class="row align-items-stretch">
-        <div class="col-md-4 d-flex align-items-stretch"  (click)="showVideoPreview(data[1])" >
-          <div style="width: 100%;">
-          <img  [lazyLoad]="'http://hamad_api.accessline.ps'+ data[1]?.ImagePath"  style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid" routerLink="/written-stories-details/{{data[1]?.ID}}"
-             class="img-fluid" alt="">
-             <p style="color: #fff;">{{ isEn ? data[1]?.TitleEn : data[1]?.TitleAr  | slice:0:40 }} {{  isEn ? data[1]?.TitleEn.length : data[1]?.TitleAr.length > 40 ? '...' : '' }} </p>
-          </div>
-        </div>
-
-
-      </div>
-    </ng-container> -->
   </div>
- </div>
-
-
-
-
-
+ </div> -->
 
 <!-- -------------------------------------------------------------------------------------------------- -->
 
@@ -303,9 +283,7 @@
                   <img
                     [lazyLoad]="
                       'http://hamad_api.accessline.ps' +
-                      data[data?.length - 1]?.ImagePath
-                    "
-                  />
+                      data[data?.length - 1]?.ImagePath "/>
                 </div>
                 <div
                   class="d-flex justify-content-between align-items-baseline mb-1">

@@ -4,9 +4,9 @@
       <div class="col-md-8 d-flex align-items-stretch ">
         <div>
           <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
-          <h2  routerLink="/news-details/{{item.ID}}" (click)="showNews(item)"  > {{ isEn ? item?.TitleEn : item?.TitleAr }} </h2>
+          <h2  routerLink="/news-details/{{item.ID}}" (click)="showNews(item)"  > {{ isEn ? item?.Title : item?.Title }} </h2>
          <div class="post-pp">
-          <p  [innerHTML]="isEn ? item?.DescEn : item?.DescAr | slice:0:100 "></p>
+          <p  [innerHTML]="item?.Desc | slice:0:100 "></p>
          </div>
          <!--  <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p> -->
           <a routerLink="/news-details/{{item.ID}}" (click)="showNews(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
