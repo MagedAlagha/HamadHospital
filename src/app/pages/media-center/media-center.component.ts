@@ -15,6 +15,8 @@ export class MediaCenterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._mediaSectionsItems.getMediaSectionsItems();
+
     const url = window.location.href;
     if (url.includes('news')) {
       this.active = 1;
