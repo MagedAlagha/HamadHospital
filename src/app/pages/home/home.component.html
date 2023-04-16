@@ -227,7 +227,7 @@
     <div class="section-title">
       <div class="line" style="height: 3px;"></div>
       <div class="d-flex justify-content-end mb-3" >
-        <a  routerLink="/media-center/visual-stories" style="color:#8a1538;" >اقرا المزيد</a>
+        <a routerLink="/media-center/press-stories" style="color:#8a1538;" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >اقرا المزيد</a>
       </div>
     </div>
     <ng-container *ngIf="MediaCenterService2$ | async as data">
@@ -260,7 +260,7 @@
     </ng-container>
 
   </div>
- </div> -->
+ </div>
 
 <!-- -------------------------------------------------------------------------------------------------- -->
 
