@@ -19,7 +19,7 @@ export class ServicesContentComponent implements OnInit {
       .Selector$('dataShow')
       .pipe(
         tap((value) => {
-          console.log('dataShow in content',value);
+
         })
       );
 

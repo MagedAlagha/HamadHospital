@@ -48,12 +48,12 @@ import { ServicesContentComponent } from './services-content/services-content.co
           {
             path: 'hearing-balance',
             component: HearingBalanceComponent,
-            children: [
-              {
-                path: 'services-content',
-                component: ServicesContentComponent,
-              },
-            ]
+            // children: [
+            //   {
+            //     path: 'services-content',
+            //     component: ServicesContentComponent,
+            //   },
+            // ]
           },
           {
             path: 'outpatient-clinics',
