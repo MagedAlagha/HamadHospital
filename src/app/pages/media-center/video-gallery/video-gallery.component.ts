@@ -14,7 +14,7 @@ export class VideoGalleryComponent implements OnInit {
   VideoDialog$!:Observable<any>;
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-
+  active:any = 1 ;
   constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) { }
 
   Avatar=environment.FileUrl;
