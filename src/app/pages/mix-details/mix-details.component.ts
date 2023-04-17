@@ -35,13 +35,21 @@ export class MixDetailsComponent implements OnInit {
     this.location = window.location.href;
     this._mediaCenterService.getMixInfo(this.ID);
 
-    this.ImageSection$ =
-      this._mediaCenterService.Selector$('ImageSection');
+    this.ImageSection$ =this._mediaCenterService.Selector$('ImageSection');
 
-
+    this.MixDetails$ = this._mediaCenterService
+      .Selector$('MixInfo')
+      .pipe(
+        tap((value) => {
+          console.log('value222222222', value);
+          this._mediaCenterService.getImageSection(value?.ID);
+        })
+      );
 
       this.MediaSectionsMix$ = this._mediaCenterService.Selector$('MediaSectionsItemsMix')
-      this.MixInfo$ = this._mediaCenterService.Selector$('MixInfo')
+      this.MixInfo$ = this._mediaCenterService.Selector$('MixInfo').pipe(map(value=>{
+        console.log("value" , value)
+      }))
   }
 
   showMixDetails(item: any) {
