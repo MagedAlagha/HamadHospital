@@ -1,5 +1,5 @@
 
-<ng-container *ngIf="MixDetails$ |async as data">
+<ng-container *ngIf="MixInfo$ |async as data">
 
   <section class="news mt-5">
     <div class="container">
@@ -13,22 +13,22 @@
               <ng-container *ngIf="data.MainServiceID === 4">  <span>العيادة الخارجية</span>  </ng-container>
               <ng-container *ngIf="data.MainServiceID === 5">  <span>خدمات طبية مساندة</span>  </ng-container>
               <ng-container *ngIf="data.MainServiceID === 6">  <span>غير مصنف</span>  </ng-container>
-              <h1>{{ isEn ? data?.TitleEn : data?.TitleAr }}  </h1>
+              <h1>{{ isEn ? data?.TitleAr : data?.TitleAr }}  </h1>
             </div>
           </div>
 
           <!--  -->
-          <ng-container *ngIf="data.MediaSectionID === 1 || data.MediaSectionID === 4  ">
+          <ng-container *ngIf="data.MediaSectionID == 1 || data.MediaSectionID == 4  ">
           <img [src]=" 'http://hamad_api.accessline.ps'+ data?.ImagePath" style="object-fit: cover; width: 100%; max-height: 450px; border-radius: 8px;" class="img-fluid" alt="">
           </ng-container>
 
-          <ng-container *ngIf="data.MediaSectionID === 3 || data.MediaSectionID === 5 ">
+          <ng-container *ngIf="data.MediaSectionID == 3 || data.MediaSectionID == 5 ">
             <div>
               <youtube-player videoId="{{data?.VideoPath.substring(32)}}" [height]="height" [width]="width"> </youtube-player>
             </div>
           </ng-container>
 
-          <ng-container *ngIf="data.MediaSectionID === 2 || data.MediaSectionID === 6 ">
+          <ng-container *ngIf="data.MediaSectionID == 2 || data.MediaSectionID == 6 ">
             <ng-container *ngIf="ImageSection$ | async as data">
               <p-galleria [numVisible]="3" [value]="data" >
                 <ng-template pTemplate="item" let-item>
@@ -52,7 +52,7 @@
           </ng-container>
 
 
-          <ng-container *ngIf="data.MediaSectionID === 7 ">
+          <ng-container *ngIf="data.MediaSectionID == 7 ">
 
             <ng-container *ngIf="data.VideoPath">
               <div>
@@ -111,12 +111,12 @@
       </div>
     </div>
   </section>
-  <!-- <div class="container mb-4">
+   <div class="container mb-4">
     <div class="section-2 d-flex align-items-center mb-2">
       <div class="line"></div>
       <h2 class="d-inline-block ps-2">منوعات اخرى</h2>
     </div>
-    <ng-container *ngIf="MediaCenterService$ |async as data2">
+    <ng-container *ngIf="MediaSectionsMix$ |async as data2">
     <div class="row">
       <ng-container *ngFor="let item of data2.slice(-3)">
       <div class="col-md-4 mt-md-0 mt-3"   *ngIf="item.ID !== data.ID">
@@ -139,5 +139,5 @@
     </ng-container>
     </div>
   </ng-container>
-  </div> -->
+  </div>
 </ng-container>

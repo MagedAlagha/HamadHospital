@@ -2,7 +2,9 @@
 <ng-container *ngIf="dataShow$ | async as data">
   <ng-container  *ngFor="let item of OutpatientClinicsDepartmentsServices$ |async as data2">
     <ng-container *ngIf="data?.ID == item?.OutpatientClinicsDepartmentID">
+      <div class="img-fluid-cover">
       <div [innerHTML]="item?.DescAr"></div>
+    </div>
     </ng-container>
   </ng-container>
 

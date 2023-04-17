@@ -26,12 +26,14 @@ export class MediaCenterService {
     PhotoGalaryDetails:undefined,
     MixDetails:undefined,
     PostInfo: undefined,
+    MixInfo: undefined,
     medicalArticleInfo: undefined,
 
     NewsInfo: undefined,
     PhotoGalaryInfo: undefined,
     ProsessStoryInfo: undefined,
     tecStoryInfo: undefined,
+    NewsLaterInfo: undefined,
 
     activeNave: undefined,
 
@@ -43,6 +45,10 @@ export class MediaCenterService {
     MediaSectionsItemsPhoto: undefined,
     MediaSectionsItemsMedicalArticle: undefined,
     MediaSectionsItemsTecStories: undefined,
+    MediaSectionsItemsMix: undefined,
+
+
+    FilterVideo: undefined,
 
 
   });
@@ -93,6 +99,12 @@ export class MediaCenterService {
   getMediaSectionsItemsMedicalArticle(ID?:any) {
       this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsMedicalArticle',{ MediaSectionID:ID });
   }
+  getMediaSectionsItemsMix(ID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsMix',{ MediaSectionID:ID });
+  }
+  getFilterVideo(ID?:any) {
+      this.getFormApi('MediaSectionsItems/MediaSectionsItemsSearch', 'FilterVideo',{ MainServiceID:ID , MediaSectionID:3 });
+  }
   getImageSection(ID?:any) {
     this.getFormApi(
         'MediaSectionsItemsImages/MediaSectionsItemsImagesSearch',
@@ -131,6 +143,16 @@ getTecStoryInfo(ID:any) {
     `LandingPage/MediaSectionsItems/${ID}`,'tecStoryInfo',
   );
   }
+getMixInfo(ID:any) {
+  this.getFormApi(
+    `LandingPage/MediaSectionsItems/${ID}`,'MixInfo',
+  );
+  }
+getNewsLaterInfo(ID:any) {
+  this.getFormApi(
+    `LandingPage/MediaSectionsItems/${ID}`,'NewsLaterInfo',
+  );
+  }
 
   getFormApi(
     api: string,
@@ -162,6 +184,8 @@ export interface StoreInterface {
   MixDetails?: any;
   PostInfo?: any;
   medicalArticleInfo?: any;
+  NewsLaterInfo?: any;
+  MixInfo?: any;
   activeNave?: any;
 
 
@@ -173,12 +197,17 @@ export interface StoreInterface {
   MediaSectionsItemsPhoto?: any;
   MediaSectionsItemsMedicalArticle?: any;
   MediaSectionsItemsTecStories?: any;
+  MediaSectionsItemsMix?: any;
 
 
   NewsInfo?: any;
   PhotoGalaryInfo?: any;
   ProsessStoryInfo?: any;
   tecStoryInfo?: any;
+
+
+
+  FilterVideo?: any;
 
 
 }

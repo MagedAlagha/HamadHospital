@@ -17,6 +17,8 @@ export class MixDetailsComponent implements OnInit {
   ID: any;
   MixDetails$!: Observable<any>;
   ImageSection$!: Observable<any>;
+  MediaSectionsMix$!: Observable<any>;
+  MixInfo$!: Observable<any>;
   text:any = 'نسخ';
   location:any
 
@@ -31,34 +33,19 @@ export class MixDetailsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.location = window.location.href;
-    this._mediaCenterService.getPostId(this.ID);
+    this._mediaCenterService.getMixInfo(this.ID);
 
     this.ImageSection$ =
       this._mediaCenterService.Selector$('ImageSection');
 
-    this.MixDetails$ = this._mediaCenterService
-      .Selector$('PostInfo')
-      .pipe(
-        tap((value) => {
-          console.log('value222222222', value);
-          this._mediaCenterService.getImageSection(value?.ID);
-        })
-      );
 
 
-    this.MediaCenterService$ = this._mediaCenterService
-      .Selector$('MediaSectionsItems')
-      .pipe(
-        map((val) => {
-          return val?.filter((item: any) => {
-            return item.MediaSectionID == 7;
-          });
-        })
-      );
+      this.MediaSectionsMix$ = this._mediaCenterService.Selector$('MediaSectionsItemsMix')
+      this.MixInfo$ = this._mediaCenterService.Selector$('MixInfo')
   }
 
   showMixDetails(item: any) {
-    this._mediaCenterService.updateStore({ PostInfo: item });
+    this._mediaCenterService.updateStore({ MixInfo: item });
   }
 
   copy(){
@@ -70,21 +57,5 @@ export class MixDetailsComponent implements OnInit {
 
   }
 
-  title = 'GFG';
-
-  responsiveOptions: any[] = [
-    {
-      breakpoint: '1024px',
-      numVisible: 5,
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 3,
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1,
-    },
-  ];
 }
 

@@ -24,7 +24,7 @@ export class MixComponent implements OnInit {
 }
 
 showNews(item:any){
-  this._mediaCenterService.updateStore({ PostInfo: item });
+  this._mediaCenterService.updateStore({ MixInfo: item });
   console.log(item);
 }
 

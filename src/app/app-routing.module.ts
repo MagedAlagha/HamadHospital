@@ -98,6 +98,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'letter-details/:id',
+    loadChildren: () =>
+      import('./pages/newsletter-details/newsletter-details.module').then(
+        (m) => m.NewsletterDetailsModule
+      ),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

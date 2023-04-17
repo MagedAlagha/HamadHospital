@@ -36,7 +36,8 @@ export class WrittenStoriesDetailsComponent implements OnInit {
         return !item.ImagePath.includes("pdf") ;
       });
     }))
-     this._mediaCenterService.getImageSection(this.ID)
+
+    this._mediaCenterService.getImageSection(this.ID)
     this._mediaCenterService.getMediaSectionsItemsSahafiStories(5)
     this.MediaSectionsItemsSahafiStories$ = this._mediaCenterService.Selector$('MediaSectionsItemsSahafiStories')
     this.ProsessStoryInfo$ = this._mediaCenterService.Selector$('ProsessStoryInfo')

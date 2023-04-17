@@ -24,7 +24,7 @@ export class NewsletterComponent implements OnInit {
 }
 
 showNews(item:any){
-  this._mediaCenterService.updateStore({ PostInfo: item });
+  this._mediaCenterService.updateStore({ NewsLaterInfo: item });
   console.log(item);
 }
 

@@ -13,13 +13,18 @@ import { FormControl } from '@angular/forms';
 export class VideoGalleryComponent implements OnInit {
   VideoDialog$!:Observable<any>;
   MediaCenterService$!:Observable<any>;
+  filterVideo$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-  active:any = 1 ;
+  active:any = 0 ;
   constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) { }
 
   Avatar=environment.FileUrl;
   Search= new FormControl();
   ngOnInit(): void {
+
+    this.filterVideo(' ');
+
+
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
@@ -28,6 +33,7 @@ export class VideoGalleryComponent implements OnInit {
       })
     );
     this.VideoDialog$ = this._videoGalleryService.Selector$('VideoDialog')
+    this.filterVideo$  =this._mediaCenterService.Selector$('FilterVideo');
   }
 
   display: boolean = false;
@@ -41,5 +47,10 @@ export class VideoGalleryComponent implements OnInit {
   serchVideo(){
     console.log(this.Search.value)
   };
+
+  filterVideo(id?:any){
+    this.active = id
+   this._mediaCenterService.getFilterVideo(id)
+  }
 
 }
