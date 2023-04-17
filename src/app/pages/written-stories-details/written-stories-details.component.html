@@ -1,5 +1,5 @@
 
-<ng-container *ngIf="PhotosDetails$ |async as item">
+<ng-container *ngIf="ProsessStoryInfo$ |async as item">
 
 
   <section class="news mt-5">
@@ -18,9 +18,7 @@
                 <h1>{{ isEn ? item?.Title : item?.Title }}  </h1>
             </div>
           </div>
-
           <!--  -->
-
           <ng-container *ngIf="ImageSection$ | async as data">
             <p-galleria [numVisible]="3" [value]="data" >
               <ng-template pTemplate="item" let-item>
@@ -41,12 +39,9 @@
               </ng-template>
             </p-galleria>
           </ng-container>
-
           <!--  -->
-
         </div>
       </div>
-
     </div>
   </section>
 
@@ -58,7 +53,7 @@
     </div>
     <div class="row">
 
-    <ng-container *ngIf="MediaCenterService$ |async as data">
+    <ng-container *ngIf="MediaSectionsItemsSahafiStories$ |async as data">
       <ng-container *ngFor="let item2 of data.slice(-3)">
       <div class="col-md-4 mt-md-0 mt-3" *ngIf="item2.ID !== item.ID" >
         <div class="img" routerLink="/photo-details/{{item2.ID}}" (click)="showPhotosDetails(item2)"  >

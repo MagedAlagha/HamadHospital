@@ -25,24 +25,27 @@ MedicalArticles$!:Observable<any>;
   ngOnInit(): void {
     this.location = window.location.href;
 
-    this._mediaCenterService.getPostId(this.ID);
-    this._mediaCenterService.getMediaSectionsItemsMedicalArticle(4)
-    this.MediaSectionsItemsMedicalArticle$ = this._mediaCenterService.Selector$('MediaSectionsItemsMedicalArticle')
+    this._mediaCenterService.getMedicalArticleInfoID(this.ID);
 
 
-    this.MedicalArticles$ = this._mediaCenterService.Selector$('PostInfo')
+    this.MedicalArticles$ = this._mediaCenterService.Selector$('medicalArticleInfo')
     const data  = this._mediaCenterService.dataStore.MedicalArticles
     if(data){
     console.log(data , "gege")
     }
+
+    this._mediaCenterService.getMediaSectionsItemsMedicalArticle(4)
+    this.MediaSectionsItemsMedicalArticle$ = this._mediaCenterService.Selector$('MediaSectionsItemsMedicalArticle')
+
   }
   copy(){
     this._clipboardService.copy(this.location);
     this.text = "تم النسخ"
   }
   showMedicalArticles(item:any){
-    this._mediaCenterService.updateStore({ PostInfo: item });
-   ;
+    this._mediaCenterService.updateStore({ medicalArticleInfo: item });
+    console.log("item89898989" , item)
+
   }
 
 }

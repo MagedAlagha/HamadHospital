@@ -34,15 +34,6 @@ location:any
     this._mediaCenterService.getMediaSectionsItemsLastNews(1)
     this.MediaSectionsItemsLastNews$ = this._mediaCenterService.Selector$('MediaSectionsItemsLastNews')
 
-    /* this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID == 1;
-        });
-      }), map(value=>{
-        return value.slice(-3)
-      })
-    ); */
     this.showNews$ = this._mediaCenterService.Selector$('NewsInfo')
   }
 

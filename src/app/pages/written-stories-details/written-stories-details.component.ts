@@ -15,6 +15,9 @@ export class WrittenStoriesDetailsComponent implements OnInit {
   ID: any;
   PhotosDetails$!: Observable<any>;
   ImageSection$!: Observable<any>;
+  MediaSectionsItemsSahafiStories$!: Observable<any>;
+  ProsessStoryInfo$!: Observable<any>;
+  location:any
   constructor(
     private route: ActivatedRoute,
     private _mediaCenterService: MediaCenterService ,
@@ -24,69 +27,25 @@ export class WrittenStoriesDetailsComponent implements OnInit {
     console.log(this.ID);
   }
   ngOnInit(): void {
-
-    this._mediaCenterService.getMediaSectionsItemsPhoto(5)
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
-    this._mediaCenterService.getPhotoGalaryInfo(this.ID);
-    this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
-
-    this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('PhotoGalaryInfo')
-      .pipe(
-        tap((value) => {
-          console.log('value', value);
-          this._mediaCenterService.getImageSection(value?.ID);
-        })
-      );
-
+    this.location = window.location.href;
+    this._mediaCenterService.getProsessStoryInfo(this.ID);
+    this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection').pipe( map((val) => {
+      console.log(val, "9898889898989898998988")
+      return val?.filter((item: any) => {
+        console.log("item.ImagePath" , item)
+        return !item.ImagePath.includes("pdf") ;
+      });
+    }))
+     this._mediaCenterService.getImageSection(this.ID)
+    this._mediaCenterService.getMediaSectionsItemsSahafiStories(5)
+    this.MediaSectionsItemsSahafiStories$ = this._mediaCenterService.Selector$('MediaSectionsItemsSahafiStories')
+    this.ProsessStoryInfo$ = this._mediaCenterService.Selector$('ProsessStoryInfo')
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PhotoGalaryInfo: item });
+    this._mediaCenterService.updateStore({ ProsessStoryInfo: item });
     this._mediaCenterService.getImageSection(item.ID)
   }
 
-  title = 'GFG';
 
-  images: any[] = [
-    {
-      previewImageSrc: '../../../assets/img/news-details.webp',
-      thumbnailImageSrc: '../../../assets/img/news-details.webp',
-      alt: 'Description for Image 1',
-      title: 'Title 1',
-    },
-    {
-      previewImageSrc: '../../../assets/img/image.webp',
-      thumbnailImageSrc: '../../../assets/img/image.webp',
-      alt: 'Description for Image 2',
-      title: 'Title 2',
-    },
-    {
-      previewImageSrc: '../../../assets/img/story.webp',
-      thumbnailImageSrc: '../../../assets/img/story.webp',
-      alt: 'Description for Image 3',
-      title: 'Title 3',
-    },
-    {
-      previewImageSrc: '../../../assets/img/video.webp',
-      thumbnailImageSrc: '../../../assets/img/video.webp',
-      alt: 'Description for Image 4',
-      title: 'Title 4',
-    },
-  ];
-
-  responsiveOptions: any[] = [
-    {
-      breakpoint: '1024px',
-      numVisible: 5,
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 3,
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1,
-    },
-  ];
 }

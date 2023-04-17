@@ -1,5 +1,5 @@
 
-<ng-container *ngIf="PhotosDetails$ |async as item">
+<ng-container *ngIf="tecStoryInfo$ |async as item">
 
 
   <section class="news mt-5">
@@ -54,11 +54,11 @@
   <div class="container mb-4">
     <div class="section-2 d-flex align-items-center mb-2">
       <div class="line"></div>
-      <h2 class="d-inline-block ps-2">اخر الصور</h2>
+      <h2 class="d-inline-block ps-2">قصص رقمية اخرى</h2>
     </div>
     <div class="row">
 
-    <ng-container *ngIf="MediaCenterService$ |async as data">
+    <ng-container *ngIf="MediaSectionsItemsTecStories$ |async as data">
       <ng-container *ngFor="let item2 of data.slice(-3)">
       <div class="col-md-4 mt-md-0 mt-3" *ngIf="item2.ID !== item.ID" >
         <div class="img" routerLink="/photo-details/{{item2.ID}}" (click)="showPhotosDetails(item2)"  >

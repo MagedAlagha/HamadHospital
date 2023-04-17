@@ -26,7 +26,7 @@ export class MedicalArticlesComponent implements OnInit {
 }
 
 showMedicalArticles(item:any){
-  this._mediaCenterService.updateStore({ PostInfo: item });
+  this._mediaCenterService.updateStore({ medicalArticleInfo: item });
 }
 
 }

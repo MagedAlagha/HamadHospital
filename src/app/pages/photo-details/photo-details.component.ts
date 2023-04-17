@@ -12,8 +12,11 @@ export class PhotoDetailsComponent implements OnInit {
   MediaCenterService$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   ID: any;
-  PhotosDetails$!: Observable<any>;
   ImageSection$!: Observable<any>;
+  MediaSectionsItemsPhoto$!: Observable<any>;
+  PhotoGalaryInfo$!: Observable<any>;
+
+  location:any
   constructor(
     private route: ActivatedRoute,
     private _mediaCenterService: MediaCenterService ,
@@ -24,68 +27,19 @@ export class PhotoDetailsComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    this._mediaCenterService.getMediaSectionsItemsPhoto(2)
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
+    this.location = window.location.href;
     this._mediaCenterService.getPhotoGalaryInfo(this.ID);
-    this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
-
-    this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('PhotoGalaryInfo')
-      .pipe(
-        tap((value) => {
-          console.log('value', value);
-          this._mediaCenterService.getImageSection(value?.ID);
-        })
-      );
-
+    this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection')
+     this._mediaCenterService.getImageSection(this.ID)
+    this._mediaCenterService.getMediaSectionsItemsPhoto(2)
+    this.MediaSectionsItemsPhoto$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
+    this.PhotoGalaryInfo$ = this._mediaCenterService.Selector$('PhotoGalaryInfo')
   }
 
   showPhotosDetails(item: any) {
     this._mediaCenterService.updateStore({ PhotoGalaryInfo: item });
-    this._mediaCenterService.getImageSection(item.ID)
+    this._mediaCenterService.getImageSection(item.ID);
   }
 
-  title = 'GFG';
 
-  images: any[] = [
-    {
-      previewImageSrc: '../../../assets/img/news-details.webp',
-      thumbnailImageSrc: '../../../assets/img/news-details.webp',
-      alt: 'Description for Image 1',
-      title: 'Title 1',
-    },
-    {
-      previewImageSrc: '../../../assets/img/image.webp',
-      thumbnailImageSrc: '../../../assets/img/image.webp',
-      alt: 'Description for Image 2',
-      title: 'Title 2',
-    },
-    {
-      previewImageSrc: '../../../assets/img/story.webp',
-      thumbnailImageSrc: '../../../assets/img/story.webp',
-      alt: 'Description for Image 3',
-      title: 'Title 3',
-    },
-    {
-      previewImageSrc: '../../../assets/img/video.webp',
-      thumbnailImageSrc: '../../../assets/img/video.webp',
-      alt: 'Description for Image 4',
-      title: 'Title 4',
-    },
-  ];
-
-  responsiveOptions: any[] = [
-    {
-      breakpoint: '1024px',
-      numVisible: 5,
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 3,
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1,
-    },
-  ];
 }

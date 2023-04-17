@@ -26,11 +26,15 @@ export class MediaCenterService {
     PhotoGalaryDetails:undefined,
     MixDetails:undefined,
     PostInfo: undefined,
+    medicalArticleInfo: undefined,
+
     NewsInfo: undefined,
     PhotoGalaryInfo: undefined,
     ProsessStoryInfo: undefined,
     tecStoryInfo: undefined,
+
     activeNave: undefined,
+
     MediaSectionsItemsVideo: undefined,
     MediaSectionsItemsStory: undefined,
     MediaSectionsItemsLastNews: undefined,
@@ -38,6 +42,7 @@ export class MediaCenterService {
     MediaSectionsItemsSahafiStories: undefined,
     MediaSectionsItemsPhoto: undefined,
     MediaSectionsItemsMedicalArticle: undefined,
+    MediaSectionsItemsTecStories: undefined,
 
 
   });
@@ -79,6 +84,9 @@ export class MediaCenterService {
   getMediaSectionsItemsSahafiStories(ID?:any) {
       this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsSahafiStories',{ MediaSectionID:ID });
   }
+  getMediaSectionsItemsTecStories(ID?:any) {
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsTecStories',{ MediaSectionID:ID });
+  }
   getMediaSectionsItemsPhoto(ID?:any) {
       this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsPhoto',{ MediaSectionID:ID });
   }
@@ -96,6 +104,11 @@ export class MediaCenterService {
  getPostId(ID:any) {
   this.getFormApi(
     `LandingPage/MediaSectionsItems/${ID}`,'PostInfo',
+  );
+ }
+ getMedicalArticleInfoID(ID:any) {
+  this.getFormApi(
+    `LandingPage/MediaSectionsItems/${ID}`,'medicalArticleInfo',
   );
  }
 getNewsInfo(ID:any) {
@@ -148,7 +161,10 @@ export interface StoreInterface {
   PhotoGalaryDetails?: any;
   MixDetails?: any;
   PostInfo?: any;
+  medicalArticleInfo?: any;
   activeNave?: any;
+
+
   MediaSectionsItemsVideo?: any;
   MediaSectionsItemsStory?: any;
   MediaSectionsItemsLastNews?: any;
@@ -156,6 +172,9 @@ export interface StoreInterface {
   MediaSectionsItemsSahafiStories?: any;
   MediaSectionsItemsPhoto?: any;
   MediaSectionsItemsMedicalArticle?: any;
+  MediaSectionsItemsTecStories?: any;
+
+
   NewsInfo?: any;
   PhotoGalaryInfo?: any;
   ProsessStoryInfo?: any;
