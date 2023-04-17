@@ -26,7 +26,7 @@ export class PhotoDetailsComponent implements OnInit {
 
     this._mediaCenterService.getMediaSectionsItemsPhoto(2)
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
-    this._mediaCenterService.getPostId(this.ID);
+    this._mediaCenterService.getPhotoGalaryInfo(this.ID);
     this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
     this.PhotosDetails$ = this._mediaCenterService
@@ -42,7 +42,7 @@ export class PhotoDetailsComponent implements OnInit {
 
   showPhotosDetails(item: any) {
     this._mediaCenterService.updateStore({ PhotoGalaryInfo: item });
-   ;
+    this._mediaCenterService.getImageSection(item.ID)
   }
 
   title = 'GFG';

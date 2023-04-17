@@ -4,6 +4,8 @@ import { NewsDetailsComponent } from './news-details.component';
 import { RouterModule } from '@angular/router';
 import { ClipboardModule } from 'ngx-clipboard';
 import { TooltipModule } from 'primeng/tooltip';
+import { GalleriaModule } from 'primeng/galleria';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [NewsDetailsComponent],
@@ -17,6 +19,8 @@ import { TooltipModule } from 'primeng/tooltip';
         component: NewsDetailsComponent,
       },
     ]),
+    GalleriaModule,
+    LazyLoadImageModule
   ],
 })
 export class NewsDetailsModule {}

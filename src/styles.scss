@@ -142,12 +142,12 @@ a{
 }
 @media(max-width:768px) {
   .owl-theme .owl-dots{
-    transform: translateY(-90px);
+    transform: translateY(-30px);
   }
 }
-@media(max-width:768px) {
+@media(max-width:600px) {
   .owl-theme .owl-dots{
-    transform: translateY(-70px);
+    transform: translateY(-30px);
   }
 }
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{

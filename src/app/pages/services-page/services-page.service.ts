@@ -14,6 +14,7 @@ export class ServicesPageService {
 
     private store = new BehaviorSubject<StoreInterface>({
       bgSection: undefined,
+      successStory: undefined,
     });
 
     store$: Observable<StoreInterface> = this.store.asObservable();
@@ -35,6 +36,7 @@ export class ServicesPageService {
     }
 }
 export interface StoreInterface {
-  bgSection: any;
+  bgSection?: any;
+  successStory?: any;
 }
 export type selectorsType = keyof StoreInterface;

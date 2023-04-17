@@ -17,71 +17,76 @@ export class WrittenStoriesDetailsComponent implements OnInit {
   ImageSection$!: Observable<any>;
   constructor(
     private route: ActivatedRoute,
-    private _mediaCenterService: MediaCenterService
+    private _mediaCenterService: MediaCenterService ,
+
   ) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID);
   }
-
   ngOnInit(): void {
 
-    this._mediaCenterService.getPostId(this.ID);
-
+    this._mediaCenterService.getMediaSectionsItemsPhoto(5)
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
+    this._mediaCenterService.getPhotoGalaryInfo(this.ID);
     this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
-    this.MediaCenterService$ = this._mediaCenterService
-      .Selector$('MediaSectionsItems')
-      .pipe(
-        map((val) => {
-          return val?.filter((item: any) => {
-            console.log(item.MediaSectionID  , "item.MediaSectionID == 5")
-            return item.MediaSectionID == 5;
-          });
-        })
-      );
-
     this.PhotosDetails$ = this._mediaCenterService
-      .Selector$('ProsessStoryInfo')
+      .Selector$('PhotoGalaryInfo')
       .pipe(
         tap((value) => {
-          console.log('PhotosDetails', value);
+          console.log('value', value);
           this._mediaCenterService.getImageSection(value?.ID);
         })
       );
+
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ ProsessStoryInfo: item });
+    this._mediaCenterService.updateStore({ PhotoGalaryInfo: item });
+    this._mediaCenterService.getImageSection(item.ID)
   }
 
-  customOptions: OwlOptions = {
-    loop: true,
-    rtl: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    autoplay: true,
-    nav: true,
-    dots: true,
-    navSpeed: 400,
-    navText: [
-      '<i class="fa-solid fa-chevron-left"></i>',
-      '<i class="fa-solid fa-chevron-right"></i>',
-    ],
+  title = 'GFG';
 
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-      740: {
-        items: 1,
-      },
-      1400: {
-        items: 1,
-      },
+  images: any[] = [
+    {
+      previewImageSrc: '../../../assets/img/news-details.webp',
+      thumbnailImageSrc: '../../../assets/img/news-details.webp',
+      alt: 'Description for Image 1',
+      title: 'Title 1',
     },
-  };
+    {
+      previewImageSrc: '../../../assets/img/image.webp',
+      thumbnailImageSrc: '../../../assets/img/image.webp',
+      alt: 'Description for Image 2',
+      title: 'Title 2',
+    },
+    {
+      previewImageSrc: '../../../assets/img/story.webp',
+      thumbnailImageSrc: '../../../assets/img/story.webp',
+      alt: 'Description for Image 3',
+      title: 'Title 3',
+    },
+    {
+      previewImageSrc: '../../../assets/img/video.webp',
+      thumbnailImageSrc: '../../../assets/img/video.webp',
+      alt: 'Description for Image 4',
+      title: 'Title 4',
+    },
+  ];
+
+  responsiveOptions: any[] = [
+    {
+      breakpoint: '1024px',
+      numVisible: 5,
+    },
+    {
+      breakpoint: '768px',
+      numVisible: 3,
+    },
+    {
+      breakpoint: '560px',
+      numVisible: 1,
+    },
+  ];
 }

@@ -29,65 +29,34 @@
       </div>
     </div>
 
-   <!--   <div class="row mb-5 justify-content-center">
-      <div
-        class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mt-4 mt-md-3"
-        *ngFor="let item of getOutpatientClinicsDepartments$ | async"
-      >
-        <div class="icon-box">
-          <div class="icon">
-            <img
-              [src]="'http://hamad_api.accessline.ps' + item?.IconPath"
-              alt=""
-            />
+
+
+       <!-- -------------------------------------------------- -->
+    <hr />
+    <div class="container main-body-box">
+      <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
+        <div class="row">
+          <div class="col-md-3">
+            <ng-container *ngFor="let item of data">
+              <h3
+                class="py-2 body-box"
+                (click)="storeData(item)"
+                [ngClass]="{ active: active == item.ID }"
+              >
+                {{ isEn ? item.NameEn : item.NameAr }}
+              </h3>
+            </ng-container>
           </div>
-          <div>
-            <h4>{{ isEn ? item?.NameEn : item?.NameAr }}</h4>
-            <p>
-              {{ isEn ? item?.DescEn : item?.DescAr }}
-            </p>
+          <div class="col-md-9">
+            <div class="content-box">
+              <app-services-content></app-services-content>
+            </div>
           </div>
         </div>
-      </div>
-    </div> -->
-
-      <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data; else m">
-        <ng-container *ngFor="let item of data">
-          <hr />
-               <div class="py-2 content-page">
-                <h3>{{isEn ? item.NameEn : item.NameAr}}</h3>
-                <div class="row"  >
-                  <ng-container *ngFor="let serivce of OutpatientClinicsDepartmentsServices$ | async">
-                    <ng-container *ngIf="item.ID == serivce.OutpatientClinicsDepartmentID">
-                      <div class="col-md-4"> <!--  [pTooltip]="isEn ? serivce?.DescEn : serivce?.DescAr"  tooltipPosition="top" [positionStyle]	="widthToolTip" -->
-                        <div class="body-box"  >
-                          {{ isEn ? serivce?.NameEn : serivce?.NameAr }}
-                          <p class="text-center p-hide" style="font-size: 13px; padding-top: 8px;">{{isEn ? serivce?.DescEn : serivce?.DescAr}}</p>
-                        </div>
-                      </div>
-                    </ng-container>
-                  </ng-container>
-                </div>
-               </div>
-        </ng-container>
       </ng-container>
-
-    <hr />
-    <!--  -->
-
-
-    <!--
-
-      delete
-
-      <div class="row py-5 section-2" *ngIf="HearingServices$ | async as data">
-      <div class="col-md-6">
-        <img [src]=" 'http://hamad_api.accessline.ps'+ data?.OutpatientClinicsSectionImagePath" class="img-fluid" >
-      </div>
-    <div class="col-md-6">
-      <div  [innerHTML]="isEn ? data?.OutpatientClinicsSectionEn : data?.OutpatientClinicsSectionAr "></div>
     </div>
-    </div> -->
+
+
 
 
   </div>

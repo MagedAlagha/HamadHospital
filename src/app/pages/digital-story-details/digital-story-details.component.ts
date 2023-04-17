@@ -9,43 +9,71 @@ import { MediaCenterService } from '../media-center/media-center.service';
   styleUrls: ['./digital-story-details.component.scss']
 })
 export class DigitalStoryDetailsComponent implements OnInit {
-
-  MediaCenterService$!:Observable<any>;
-  ImageSection$!:Observable<any>;
+  MediaCenterService$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-  ID:any;
-  postID:any;
-  VisualStories$!:Observable<any>;
-  constructor(private route:ActivatedRoute , private _mediaCenterService:MediaCenterService) {
+  ID: any;
+  PhotosDetails$!: Observable<any>;
+  ImageSection$!: Observable<any>;
+  constructor(
+    private route: ActivatedRoute,
+    private _mediaCenterService: MediaCenterService ,
+
+  ) {
     this.ID = this.route.snapshot.paramMap.get('id');
-    console.log(this.ID)
-   }
+    console.log(this.ID);
+  }
+  ngOnInit(): void {
 
-
-   ngOnInit(): void {
-
-    this._mediaCenterService.getPostId(this.ID);
+    this._mediaCenterService.getMediaSectionsItemsPhoto(6)
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
+    this._mediaCenterService.getTecStoryInfo(this.ID);
     this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
 
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID == 6;
-        });
-      })
-    );
-
-     this.VisualStories$ = this._mediaCenterService.Selector$('tecStoryInfo').pipe(tap(value=>{
-      this.postID = value.ID;
-      console.log('value' , value)
-      this._mediaCenterService.getImageSection(value?.ID);
-    }))
+    this.PhotosDetails$ = this._mediaCenterService
+      .Selector$('PhotoGalaryInfo')
+      .pipe(
+        tap((value) => {
+          console.log('value', value);
+          this._mediaCenterService.getImageSection(value?.ID);
+        })
+      );
 
   }
-  showVisualStories(item:any) {
-    this._mediaCenterService.updateStore({ tecStoryInfo: item });
-   ;
+
+  showPhotosDetails(item: any) {
+    this._mediaCenterService.updateStore({ PhotoGalaryInfo: item });
+    this._mediaCenterService.getImageSection(item.ID)
   }
+
+  title = 'GFG';
+
+  images: any[] = [
+    {
+      previewImageSrc: '../../../assets/img/news-details.webp',
+      thumbnailImageSrc: '../../../assets/img/news-details.webp',
+      alt: 'Description for Image 1',
+      title: 'Title 1',
+    },
+    {
+      previewImageSrc: '../../../assets/img/image.webp',
+      thumbnailImageSrc: '../../../assets/img/image.webp',
+      alt: 'Description for Image 2',
+      title: 'Title 2',
+    },
+    {
+      previewImageSrc: '../../../assets/img/story.webp',
+      thumbnailImageSrc: '../../../assets/img/story.webp',
+      alt: 'Description for Image 3',
+      title: 'Title 3',
+    },
+    {
+      previewImageSrc: '../../../assets/img/video.webp',
+      thumbnailImageSrc: '../../../assets/img/video.webp',
+      alt: 'Description for Image 4',
+      title: 'Title 4',
+    },
+  ];
+
   responsiveOptions: any[] = [
     {
       breakpoint: '1024px',
@@ -60,5 +88,4 @@ export class DigitalStoryDetailsComponent implements OnInit {
       numVisible: 1,
     },
   ];
-
 }

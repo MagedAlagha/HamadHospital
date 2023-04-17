@@ -43,40 +43,57 @@ export class ServicesPageComponent implements OnInit {
     if (url.includes('rehabilitation')) {
       this.active = 1;
       this._servicesPageService.updateStore({ bgSection: this.Services.MedicalRehabilitationBackgroundPath });
+      this.successStory(1)
     } else if (url.includes('prosthetics')) {
       this.active = 2;
+      this.successStory(2)
+
     } else if (url.includes('hearing-balance')) {
       this.active = 3;
+      this.successStory(3)
+
     } else if (url.includes('outpatient-clinics')) {
       this.active = 4;
+      this.successStory(4)
+
     } else if (url.includes('supportive')) {
       this.active = 5;
+      this.successStory(5)
     }
   }
   setBackGround(active: any) {
     switch (active) {
       case 1:
         this.background = this.Services.MedicalRehabilitationBackgroundPath;
+        this.successStory(1)
         break;
       case 2:
         this.background = this.Services.ProstheticsBackgroundPath
+        this.successStory(2)
         break;
       case 3:
-        this.background = this.Services.HearingBackgroundPath
+        this.background = this.Services.HearingBackgroundPath;
+        this.successStory(3)
         break;
       case 4:
         this.background = this.Services.OutpatientClinicsBackgroundPath;
+        this.successStory(4)
         break;
       case 5:
-        this.background = this.Services.SupportiveMedicalBackgroundPath
+        this.background = this.Services.SupportiveMedicalBackgroundPath;
+        this.successStory(5)
         break;
     }
   }
 
+  successStory(id:any){
+    this._servicesPageService.updateStore({successStory:id})
+  }
 
-/*   changeBackgroundImage(id:any){
+
+/* changeBackgroundImage(id:any){
     console.log(this.background , "this.background")
-  } */
+  }*/
 
 
 }

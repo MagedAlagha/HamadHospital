@@ -65,10 +65,10 @@ export class MediaCenterService {
       this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItems',{ MediaSectionID:ID });
   }
   getMediaSectionsItemsVideo(ID?:any ,MainServiceID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsVideo',{ MediaSectionID:ID , ShowHome:true  , MainServiceID:MainServiceID });
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsVideo',{ MediaSectionID:ID , ShowHome:true });
   }
   getMediaSectionsItemsStory(ID?:any , MainServiceID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsStory',{ MediaSectionID:ID , ShowHome:true , MainServiceID:MainServiceID});
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsStory',{ MediaSectionID:ID , ShowHome:true});
   }
   getMediaSectionsItemsLastNews(ID?:any) {
       this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsLastNews',{ MediaSectionID:ID });
@@ -97,8 +97,27 @@ export class MediaCenterService {
   this.getFormApi(
     `LandingPage/MediaSectionsItems/${ID}`,'PostInfo',
   );
-}
-
+ }
+getNewsInfo(ID:any) {
+  this.getFormApi(
+    `LandingPage/MediaSectionsItems/${ID}`,'NewsInfo',
+  );
+  }
+getPhotoGalaryInfo(ID:any) {
+  this.getFormApi(
+    `LandingPage/MediaSectionsItems/${ID}`,'PhotoGalaryInfo',
+  );
+  }
+getProsessStoryInfo(ID:any) {
+  this.getFormApi(
+    `LandingPage/MediaSectionsItems/${ID}`,'ProsessStoryInfo',
+  );
+  }
+getTecStoryInfo(ID:any) {
+  this.getFormApi(
+    `LandingPage/MediaSectionsItems/${ID}`,'tecStoryInfo',
+  );
+  }
 
   getFormApi(
     api: string,

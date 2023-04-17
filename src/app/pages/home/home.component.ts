@@ -49,6 +49,8 @@ export class HomeComponent implements OnInit {
     console.log('this.dominUrl', this.dominUrl);
     /*    ;
      */
+
+    this._mediaCenterService.getMediaSectionsItems();
     this._mediaCenterService.getMediaSectionsItemsVideo(3);
     this._mediaCenterService.getMediaSectionsItemsStory(5);
     this._mediaCenterService.getMediaSectionsItemsLastNews(1);
@@ -77,10 +79,8 @@ export class HomeComponent implements OnInit {
 
     this.MediaSectionsItemsVideo$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsVideo')
-      .pipe(map((val) => val.reverse()));
     this.MediaSectionsItemsStory$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsStory')
-      .pipe(map((val) => val.reverse()));
 
     this.LastNews$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsLastNews')
@@ -89,13 +89,13 @@ export class HomeComponent implements OnInit {
       .Selector$('MediaSectionsItemsLastVarious')
       .pipe(map((val) => val.reverse()));
 
-    this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+/*     this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID == 7 || item.ShowVarious;
         });
       })
-    );
+    ); */
 
     /* ******************************************************************************************* */
     this.MediaCenterServiceNews$ =
@@ -108,12 +108,7 @@ export class HomeComponent implements OnInit {
           return val?.filter((item: any) => {
             return item.ShowHome == true;
           });
-        }) /* ,
-        map((val) => {
-          return val?.filter((item: any) => {
-            return item.MediaSectionID == 3;
-          });
-        }) */
+        })
       );
     this.MediaCenterService2$ = this._mediaCenterService
       .Selector$('MediaSectionsItems')

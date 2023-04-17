@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { HomeService } from '../../home/home.service';
 import { OutpatientClinicsService } from './outpatient-clinics.service';
 
@@ -15,6 +15,7 @@ export class OutpatientClinicsComponent implements OnInit {
   OutpatientClinicsDepartmentsServices$!: Observable<any>;
   HearingServices$!: Observable<any>;
   m:any;
+  active: any;
   widthToolTip:any = '100%';
   constructor(private _homeService:HomeService , private _outpatientClinicsService:OutpatientClinicsService) {
   }
@@ -26,27 +27,31 @@ export class OutpatientClinicsComponent implements OnInit {
     this.Services$ = this._homeService.Selector$('Services');
     this.HearingServices$ = this._outpatientClinicsService.Selector$('Services');
 
-      this.getOutpatientClinicsDepartments$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartments').pipe(
+    this.getOutpatientClinicsDepartments$ = this._outpatientClinicsService
+    .Selector$('OutpatientClinicsDepartments')
+    .pipe(
       map((val) => {
         return val?.filter((item: any) => {
-          return item.IsActive;
+          return item.IsActive && item.TypeID === 4;
         });
       }),
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.TypeID === 4;
-        });
-      })
-    );
+      tap((value) => {
+        const firstItem = Array.isArray(value) && value?.length? value?.[0] : undefined;
+        this.storeData(firstItem);
 
-    this.OutpatientClinicsDepartmentsServices$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartmentsServices').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.IsActive;
-        });
       })
     );
 
   }
+
+  storeData(item: any) {
+    console.log('storeData', item);
+
+    this._outpatientClinicsService.updateStore({ dataShow: item });
+    if (item) {
+      this.active = item.ID;
+    }
+  }
+
 
 }

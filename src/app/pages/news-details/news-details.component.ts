@@ -11,6 +11,7 @@ import { MediaCenterService } from '../media-center/media-center.service';
 })
 export class NewsDetailsComponent implements OnInit {
   MediaSectionsItemsLastNews$!:Observable<any>;
+  ImageSection$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
 ID:any;
 text:any = 'نسخ';
@@ -27,9 +28,9 @@ location:any
 
   ngOnInit(): void {
     this.location = window.location.href;
-
-    this._mediaCenterService.getPostId(this.ID);
-
+    this._mediaCenterService.getNewsInfo(this.ID);
+    this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection')
+     this._mediaCenterService.getImageSection(this.ID)
     this._mediaCenterService.getMediaSectionsItemsLastNews(1)
     this.MediaSectionsItemsLastNews$ = this._mediaCenterService.Selector$('MediaSectionsItemsLastNews')
 
@@ -53,6 +54,7 @@ location:any
   showNews(item:any){
     this._mediaCenterService.updateStore({ NewsInfo: item });
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    this._mediaCenterService.getImageSection(item.ID)
   }
 
 }

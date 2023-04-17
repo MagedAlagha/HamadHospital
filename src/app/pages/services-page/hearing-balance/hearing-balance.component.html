@@ -28,29 +28,6 @@
       </div>
     </div>
 
-    <!-- ------------------------------------ -->
-    <!-- <div class="row mb-5 justify-content-center">
-  <div
-    class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mt-4 mt-md-3"
-    *ngFor="let item of HearingDepartemt$ | async"
-  >
-    <div class="icon-box">
-      <div class="icon">
-        <img
-          [src]="'http://hamad_api.accessline.ps' + item?.IconPath"
-          alt=""
-        />
-      </div>
-      <div>
-        <h4>{{ isEn ? item?.NameEn : item?.NameAr }}</h4>
-        <p class="p-hide">
-          {{ isEn ? item?.DescEn : item?.DescAr }}
-        </p>
-      </div>
-    </div>
-  </div>
-</div> -->
-
     <!-- -------------------------------------------------- -->
     <hr />
     <div class="container main-body-box">
@@ -59,7 +36,6 @@
           <div class="col-md-3">
             <ng-container *ngFor="let item of data">
               <h3
-                routerLink="/sections/hearing-balance/services-content"
                 class="py-2 body-box"
                 (click)="storeData(item)"
                 [ngClass]="{ active: active == item.ID }"
@@ -77,19 +53,7 @@
       </ng-container>
     </div>
 
-    <!-- -------------------------------------------------- -->
 
-    <!-------------------------------------- -->
-    <!--
-     delete
-    <div class="row py-5 section-2" *ngIf="HearingServices$ | async as data">
-      <div class="col-md-6">
-        <img [src]=" 'http://hamad_api.accessline.ps'+ data?.HearingSectionImagePath" >
-      </div>
-    <div class="col-md-6">
-      <div  [innerHTML]="isEn ? data?.HearingSectionEn : data?.HearingSectionAr "></div>
-    </div>
-    </div> -->
   </div>
 </section>
 

@@ -41,30 +41,8 @@ export class HearingBalanceComponent implements OnInit {
         tap((value) => {
           const firstItem = Array.isArray(value) && value?.length? value?.[0] : undefined;
           this.storeData(firstItem);
-          // this.OutpatientClinicsDepartmentsServices$ =
-          //   this._outpatientClinicsService
-          //     .Selector$('OutpatientClinicsDepartmentsServices')
-          //     .pipe(
-          //       map((val) => {
-          //         console.log("before filter:", val)
-          //         return val?.filter((item: any) => item.IsActive && item.TypeID === 3);
-          //       }), tap( filteredValue => {
-          //         console.log("after filter:", filteredValue)
-
-          //       })
-          //     );
         })
       );
-
-    /*  this.HearingServices$ = this._hearingBalanceService.Selector$('Services'); */
-    /*  this._hearingBalanceService.getHearingDepartemt();
-    this.HearingDepartemt$ = this._hearingBalanceService.Selector$('HearingDepartemt').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.IsActive;
-        });
-      })
-    ); */
   }
 
   storeData(item: any) {

@@ -134,3 +134,24 @@ hr{
   font-weight: 700;
   color: #8a1538;
 }
+.body-box {
+  cursor: pointer;
+ }
+
+.active{
+  background: #8a1538;
+  color: #fff;
+}
+
+.main-body-box h3{
+font-size: 16px;
+}
+
+.content-box{
+padding: 20px;
+background: #fff;
+border: 1px solid rgba(138, 21, 56, 0.1411764706);
+border-radius: 8px;
+margin-top: 15px;
+}
+

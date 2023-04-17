@@ -1,30 +1,26 @@
-<ng-container *ngIf="PhotosDetails$ | async as data">
-  <section class="news">
+
+<ng-container *ngIf="PhotosDetails$ |async as item">
+
+
+  <section class="news mt-5">
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">
           <div class="section-title">
-            <ng-container *ngIf="data.MainServiceID === 1">
-              <span>التأهيل الطبي</span>
-            </ng-container>
-            <ng-container *ngIf="data.MainServiceID === 2">
-              <span>الاطراف الصناعية</span>
-            </ng-container>
-            <ng-container *ngIf="data.MainServiceID === 3">
-              <span>السمع والتوازن</span>
-            </ng-container>
-            <ng-container *ngIf="data.MainServiceID === 4">
-              <span>العيادة الخارجية</span>
-            </ng-container>
-            <ng-container *ngIf="data.MainServiceID === 5">  <span></span> خدمات طبية مساندة </ng-container>
-            <ng-container *ngIf="data.MainServiceID === 6">  <span></span> غير مصنف </ng-container>
-            <h1>{{ isEn ? data?.Title : data?.Title }}</h1>
+            <div class="section-title">
+              <ng-container *ngIf="item.MainServiceID === 1">  <span></span> التأهيل الطبي </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 2">  <span></span> الاطراف الصناعية </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 3">  <span></span> السمع والتوازن </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 4">  <span></span> العيادة الخارجية </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 5">  <span></span> خدمات طبية مساندة </ng-container>
+              <ng-container *ngIf="item.MainServiceID === 6">  <span></span> غير مصنف </ng-container>
+              <h1>{{ isEn ? item?.TitleAr : item?.TitleAr }}  </h1>
+                <h1>{{ isEn ? item?.Title : item?.Title }}  </h1>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row justify-content-center">
-        <div class="col-md-8">
+          <!--  -->
+
           <ng-container *ngIf="ImageSection$ | async as data">
             <p-galleria [numVisible]="3" [value]="data" >
               <ng-template pTemplate="item" let-item>
@@ -45,48 +41,44 @@
               </ng-template>
             </p-galleria>
           </ng-container>
-        </div>
-        <div class="col-md-8">
-          <p>{{ isEn ? data?.Desc: data?.Desc }}</p>
+
+          <!--  -->
+
         </div>
       </div>
+
     </div>
   </section>
-</ng-container>
-<div class="container py-5">
-  <div class="section-2 d-flex align-items-center mb-2">
-    <div class="line"></div>
-    <h2 class="d-inline-block ps-2">قصص صحفية</h2>
-  </div>
-  <ng-container *ngIf="MediaCenterService$ | async as data">
+
+
+  <div class="container mb-4">
+    <div class="section-2 d-flex align-items-center mb-2">
+      <div class="line"></div>
+      <h2 class="d-inline-block ps-2">اخر الصور</h2>
+    </div>
     <div class="row">
-      <div class="col-md-4 mt-md-0 mt-3" *ngFor="let item of data.slice(-3)">
-        <div
-          class="img"
-          routerLink="/written-stories-details/{{ item.ID }}"
-          (click)="showPhotosDetails(item)"
-        >
+
+    <ng-container *ngIf="MediaCenterService$ |async as data">
+      <ng-container *ngFor="let item2 of data.slice(-3)">
+      <div class="col-md-4 mt-md-0 mt-3" *ngIf="item2.ID !== item.ID" >
+        <div class="img" routerLink="/photo-details/{{item2.ID}}" (click)="showPhotosDetails(item2)"  >
           <img
-            [lazyLoad]="'http://hamad_api.accessline.ps' + item?.ImagePath"
-            style="
-              width: 100%;
-              object-fit: cover;
-              height: 260px;
-              border-radius: 6px;
-            "
+          [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item2?.ImagePath" style="width: 100%; object-fit: cover; height: 260px; border-radius: 6px;"
             class="img-fluid main-img"
             alt=""
           />
           <div class="d-flex justify-content-between img-title">
-            <p [innerHTML]="item?.Title | slice : 0 : 30">
-            </p>
+            <p> {{ isEn ? item2?.Title : item2?.Title  | slice:0:30 }} {{  isEn ? item2?.Title.length : item2?.Title.length > 30 ? '...' : '' }}</p>
             <div>
-              <!--  <span>{{data.length}}</span> -->
+             <!--  <span>{{data.length}}</span> -->
               <img src="../../../../assets/img/photo.svg" alt="" />
             </div>
           </div>
         </div>
       </div>
-    </div>
+
   </ng-container>
-</div>
+  </ng-container>
+  </div>
+  </div>
+  </ng-container>
