@@ -17,7 +17,7 @@ export class MixDetailsComponent implements OnInit {
   ID: any;
   MixDetails$!: Observable<any>;
   ImageSection$!: Observable<any>;
-  MediaSectionsMix$!: Observable<any>;
+  MediaSectionsItemsMix$!: Observable<any>;
   MixInfo$!: Observable<any>;
   text:any = 'نسخ';
   location:any
@@ -34,7 +34,6 @@ export class MixDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.location = window.location.href;
     this._mediaCenterService.getMixInfo(this.ID);
-
     this.ImageSection$ =this._mediaCenterService.Selector$('ImageSection');
 
     this.MixDetails$ = this._mediaCenterService
@@ -45,15 +44,18 @@ export class MixDetailsComponent implements OnInit {
           this._mediaCenterService.getImageSection(value?.ID);
         })
       );
-
-      this.MediaSectionsMix$ = this._mediaCenterService.Selector$('MediaSectionsItemsMix')
-      this.MixInfo$ = this._mediaCenterService.Selector$('MixInfo').pipe(map(value=>{
-        console.log("value" , value)
+      this._mediaCenterService.getMediaSectionsItemsMix(7)
+      this.MediaSectionsItemsMix$ = this._mediaCenterService.Selector$('MediaSectionsItemsMix').pipe(tap(value=>{
+        console.log("value66666666666666"  , value)
       }))
+    /*   this.MixInfo$ = this._mediaCenterService.Selector$('MixInfo').pipe(map(value=>{
+        console.log("value" , value)
+      })) */
   }
 
   showMixDetails(item: any) {
     this._mediaCenterService.updateStore({ MixInfo: item });
+    this._mediaCenterService.getImageSection(item.ID)
   }
 
   copy(){
@@ -61,9 +63,6 @@ export class MixDetailsComponent implements OnInit {
     this.text = "تم النسخ"
   }
 
-  getImage(value:any){
-
-  }
 
 }
 

@@ -21,7 +21,6 @@ export class DigitalStoryDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private _mediaCenterService: MediaCenterService ,
-
   ) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID);
@@ -30,7 +29,7 @@ export class DigitalStoryDetailsComponent implements OnInit {
     this.location = window.location.href;
     this._mediaCenterService.getTecStoryInfo(this.ID);
     this.ImageSection$ = this._mediaCenterService.Selector$('ImageSection');
-     this._mediaCenterService.getImageSection(this.ID)
+    this._mediaCenterService.getImageSection(this.ID)
     this._mediaCenterService.getMediaSectionsItemsTecStories(6)
     this.MediaSectionsItemsTecStories$ = this._mediaCenterService.Selector$('MediaSectionsItemsTecStories')
     this.tecStoryInfo$ = this._mediaCenterService.Selector$('tecStoryInfo')
