@@ -49,7 +49,9 @@ export class NewsDetailsComponent implements OnInit {
       'MediaSectionsItemsLastNews'
     );
 
-    this.showNews$ = this._mediaCenterService.Selector$('NewsInfo');
+    this.showNews$ = this._mediaCenterService.Selector$('NewsInfo').pipe(tap(value=>{
+      console.log("majeddf7777777"  , value)
+    }));
   }
 
   copy() {
