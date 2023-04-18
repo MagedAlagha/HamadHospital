@@ -3,15 +3,16 @@ import { ActivatedRoute } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../media-center/media-center.service';
 import { ClipboardService } from 'ngx-clipboard';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-mix-details',
   templateUrl: './mix-details.component.html',
-  styleUrls: ['./mix-details.component.scss']
+  styleUrls: ['./mix-details.component.scss'],
 })
 export class MixDetailsComponent implements OnInit {
-  width:any = '100% ';
-  height:any = '420px ';
+  width: any = '100% ';
+  height: any = '420px ';
   MediaCenterService$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   ID: any;
@@ -19,14 +20,13 @@ export class MixDetailsComponent implements OnInit {
   ImageSection$!: Observable<any>;
   MediaSectionsItemsMix$!: Observable<any>;
   MixInfo$!: Observable<any>;
-  text:any = 'نسخ';
-  location:any
-
+  text: any = 'نسخ';
+  location: any;
+  pdfFile: any;
   constructor(
     private route: ActivatedRoute,
-    private _mediaCenterService: MediaCenterService ,
+    private _mediaCenterService: MediaCenterService,
     private _clipboardService: ClipboardService
-
   ) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID);
@@ -34,20 +34,30 @@ export class MixDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.location = window.location.href;
     this._mediaCenterService.getMixInfo(this.ID);
-    this.ImageSection$ =this._mediaCenterService.Selector$('ImageSection');
-
-    this.MixDetails$ = this._mediaCenterService
-      .Selector$('MixInfo')
+    this.ImageSection$ = this._mediaCenterService
+      .Selector$('ImageSection')
       .pipe(
         tap((value) => {
-          console.log('value222222222', value);
-          this._mediaCenterService.getImageSection(value?.ID);
-        })
+          let pdf = value.find((item: any) => item?.ImagePath?.includes('pdf'));
+          this.pdfFile = pdf ? environment.FileUrl + pdf?.ImagePath : null;
+          console.log('pdfFile', this.pdfFile);
+        }),
+        map((value) =>
+          value.filter((item: any) => !item?.ImagePath?.includes('pdf'))
+        )
       );
-      this._mediaCenterService.getMediaSectionsItemsMix(7)
-      this.MediaSectionsItemsMix$ = this._mediaCenterService.Selector$('MediaSectionsItemsMix').pipe(tap(value=>{
-        console.log("value66666666666666"  , value)
-      }))
+
+    this.MixDetails$ = this._mediaCenterService.Selector$('MixInfo').pipe(
+      tap((value) => {
+        console.log('value222222222', value);
+        this._mediaCenterService.getImageSection(value?.ID);
+      })
+    );
+    this._mediaCenterService.getMediaSectionsItemsMix(7);
+    this.MediaSectionsItemsMix$ = this._mediaCenterService.Selector$(
+      'MediaSectionsItemsMix'
+    );
+
     /*   this.MixInfo$ = this._mediaCenterService.Selector$('MixInfo').pipe(map(value=>{
         console.log("value" , value)
       })) */
@@ -55,14 +65,11 @@ export class MixDetailsComponent implements OnInit {
 
   showMixDetails(item: any) {
     this._mediaCenterService.updateStore({ MixInfo: item });
-    this._mediaCenterService.getImageSection(item.ID)
+    this._mediaCenterService.getImageSection(item.ID);
   }
 
-  copy(){
+  copy() {
     this._clipboardService.copy(this.location);
-    this.text = "تم النسخ"
+    this.text = 'تم النسخ';
   }
-
-
 }
-
