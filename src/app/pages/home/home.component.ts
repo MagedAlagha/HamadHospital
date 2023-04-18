@@ -133,18 +133,18 @@ export class HomeComponent implements OnInit {
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PostInfo: item });
+    this._mediaCenterService.updateStore({ MixInfo: item });
     console.log(item);
   }
 
   /* ************************************************************************* */
 
   showNews(item: any) {
-    this._mediaCenterService.updateStore({ PostInfo: item });
+    this._mediaCenterService.updateStore({ MixInfo: item });
     console.log(item, 'itemitemitem');
   }
   showmix(item: any) {
-    this._mediaCenterService.updateStore({ PostInfo: item });
+    this._mediaCenterService.updateStore({ MixInfo: item });
     console.log(item);
   }
   addAvtiveNaveBar() {
@@ -213,36 +213,5 @@ export class HomeComponent implements OnInit {
       },
     },
   };
-  @HostListener('window:scroll', [])
-  onScroll(): void {
-    const currentSectionElement = this.elementRef.nativeElement.querySelector(
-      '#section' + this.currentSection
-    );
-    console.log('#section' + this.currentSection);
-    console.log('currentSectionElement633336633', currentSectionElement);
-    const currentSectionPosition = currentSectionElement?.offsetTop;
-    console.log('currentSectionElement633336633', currentSectionPosition);
 
-    const nextSectionElement = this.elementRef.nativeElement.querySelector(
-      '#section' + (this.currentSection + 1)
-    );
-    const nextSectionPosition = nextSectionElement.offsetTop;
-
-    if (
-      window.pageYOffset >= currentSectionPosition &&
-      this.currentSection < 4
-    ) {
-      this.currentSection++;
-      this.renderer.setProperty(
-        document.documentElement,
-        'scrollTop',
-        nextSectionPosition
-      );
-    }
-    // else if (
-    //   currentSectionPosition &&
-    //   window.pageYOffset <= currentSectionPosition
-    // ) {
-    // }
-  }
 }

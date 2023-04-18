@@ -71,31 +71,6 @@ export class StoriesHomeComponent implements OnInit {
         // })
       );
 
-    /*  this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID == 3;
-        });
-      }),
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MainServiceID === this.active;
-        });
-      })
-    );
-    this.MediaCenterService2$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID == 5;
-        });
-      }),
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MainServiceID === this.active;
-        });
-      })
-    ); */
   }
 
   display: boolean = false;
@@ -106,7 +81,7 @@ export class StoriesHomeComponent implements OnInit {
   }
 
   showPhotosDetails(item: any) {
-    this._mediaCenterService.updateStore({ PhotosDetails: item });
+    this._mediaCenterService.updateStore({ MixInfo: item });
     console.log(item);
   }
 }

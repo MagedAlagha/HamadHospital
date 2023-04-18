@@ -43,12 +43,12 @@
 </button>
  -->
 
-<!-- <div id="scroll-down-animation"   ngxScrollTo
-[ngxScrollToOffset]="770">
+ <div id="scroll-down-animation"   ngxScrollTo
+[ngxScrollToOffset]="700">
   <span class="mouse">
     <span class="move"></span>
   </span>
-</div> -->
+</div>
 
 
 <!-- <button><i class="pi pi-chevron-up"></i></button>
@@ -242,7 +242,7 @@
                 style="width: 100%; height: 80% ; border-radius: 6px; cursor: pointer;"
                 class="img-fluid"
                 alt=""
-                routerLink="/written-stories-details/{{item?.ID}}"
+                routerLink="/mix-details/{{item.ID}}"
 
               />
               <p style=" margin-bottom: 4px;">
@@ -279,7 +279,7 @@
               <div
                 class="post-box"
                 (click)="showNews(data[data.length - 1]) ; addAvtiveNaveBar()"
-                routerLink="/news-details/{{ data[data.length - 1]?.ID }}">
+                routerLink="/mix-details/{{ data[data.length - 1]?.ID }}">
                 <div class="post-img">
                   <img
                     [lazyLoad]="
@@ -339,7 +339,7 @@
                 <p><strong>إقراء المزيد</strong></p>
                 <ng-container *ngFor="let item of data.slice(-4, -1)">
                   <a
-                    routerLink="/news-details/{{ item.ID }}"
+                    routerLink="/mix-details/{{ item.ID }}"
                     (click)="showNews(item) ; addAvtiveNaveBar()"
                     class="title"
                     >{{item.Title}}
@@ -352,9 +352,7 @@
         </div>
 
       </ng-container>
-
       <!-- قسم منوعات -->
-
         <div class="col-md-4  flex-column"><!--  d-flex align-items-stretch -->
           <div class="section-title mb-2">
             <h4  routerLink="/media-center/mix" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >منوعات</h4>
