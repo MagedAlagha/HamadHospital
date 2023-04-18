@@ -15,7 +15,6 @@ export class NewsletterComponent implements OnInit {
 
   ngOnInit(): void {
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems')
-
 }
 
 showNews(item:any){

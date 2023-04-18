@@ -193,8 +193,8 @@
       <div class="col-md-4 d-flex align-items-stretch">
         <div class="row">
           <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[1])">
-            <figure >
-              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 90%;" class="img-fluid"
+            <figure style="width: 100%;" >
+              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 270px;" class="img-fluid"
            class="img-fluid" alt="">
               <figcaption>{{ isEn ? data[1]?.Title : data[1]?.Title  | slice:0:35 }} {{  isEn ? data[1]?.Title.length : data[1]?.Title.length > 35 ? '...' : '' }}</figcaption>
             </figure>
@@ -202,8 +202,8 @@
 
           </div>
           <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[2])">
-            <figure>
-              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%;height: 90%;" class="img-fluid"
+            <figure style="width: 100%;">
+              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%;height: 270px;" class="img-fluid"
               class="img-fluid" alt="">
               <figcaption>{{ isEn ? data[2]?.Title : data[2]?.Title  | slice:0:35 }} {{  isEn ? data[2]?.Title.length : data[2]?.Title.length > 35 ? '...' : '' }}</figcaption>
             </figure>
