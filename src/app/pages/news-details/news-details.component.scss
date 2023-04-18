@@ -84,5 +84,22 @@ line-height: 30px;
   object-fit: cover;
   width: 100%;
   border-radius: 8px;
+}
 
+
+.pdf {
+  padding: 8px;
+  border-radius: 10px;
+  background:#8a15381d ;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: .3s;
+  display: inline-block;
+  color: #5e5e5f;
+}
+
+.pdf.active ,.pdf:hover,.active{
+  background: #8a1538;
+  color: #fff;
 }

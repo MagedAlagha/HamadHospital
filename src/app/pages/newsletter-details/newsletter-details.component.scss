@@ -131,3 +131,20 @@ line-height: 30px;
 } .post-box:hover .post-img img {
   transform: rotate(6deg) scale(1.2);
 }
+
+.pdf {
+  padding: 8px;
+  border-radius: 10px;
+  background:#8a15381d ;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: .3s;
+  display: inline-block;
+  color: #5e5e5f;
+}
+
+.pdf.active ,.pdf:hover,.active{
+  background: #8a1538;
+  color: #fff;
+}

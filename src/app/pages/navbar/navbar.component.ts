@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this._mediaCenterService.Selector$('activeNave').pipe(map(value=> this.active = value )).subscribe()
+    this.active = 1
 
     const url = window.location.href;
     if (url.includes('home')) {
