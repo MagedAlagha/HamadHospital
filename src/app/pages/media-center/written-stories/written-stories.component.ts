@@ -20,7 +20,7 @@ export class WrittenStoriesComponent implements OnInit {
   }
 
   showVisualStories(item:any) {
-    this._mediaCenterService.updateStore({ tecStoryInfo: item });
+    this._mediaCenterService.updateStore({ MixInfo: item });
   }
 
 }

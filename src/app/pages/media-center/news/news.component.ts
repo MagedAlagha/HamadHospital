@@ -18,7 +18,7 @@ export class NewsComponent implements OnInit {
 }
 
 showNews(item:any){
-  this._mediaCenterService.updateStore({ NewsInfo: item });
+  this._mediaCenterService.updateStore({ MixInfo: item });
   console.log(item)
 }
 }

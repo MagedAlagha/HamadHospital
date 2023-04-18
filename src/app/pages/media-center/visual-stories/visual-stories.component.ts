@@ -27,7 +27,7 @@ export class VisualStoriesComponent implements OnInit {
   display: boolean = false;
 
   showPhotosDetails(item:any) {
-    this._mediaCenterService.updateStore({ ProsessStoryInfo: item });
+    this._mediaCenterService.updateStore({ MixInfo: item });
     console.log(item)
   }
 

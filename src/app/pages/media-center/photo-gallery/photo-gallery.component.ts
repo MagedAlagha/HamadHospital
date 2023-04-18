@@ -19,7 +19,7 @@ export class PhotoGalleryComponent implements OnInit {
 }
 
 showPhotosDetails(item:any){
-  this._mediaCenterService.updateStore({ PhotoGalaryInfo: item });
+  this._mediaCenterService.updateStore({ MixInfo: item });
   console.log(item , "itemitemitemitem")
 }
 

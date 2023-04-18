@@ -19,7 +19,7 @@ export class MedicalArticlesComponent implements OnInit {
 }
 
 showMedicalArticles(item:any){
-  this._mediaCenterService.updateStore({ medicalArticleInfo: item });
+  this._mediaCenterService.updateStore({ MixInfo: item });
 }
 
 }
