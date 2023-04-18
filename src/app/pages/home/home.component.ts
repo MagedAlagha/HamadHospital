@@ -87,7 +87,6 @@ export class HomeComponent implements OnInit {
       .pipe(map((val) => val.reverse()));
     this.MediaSectionsItemsLastVarious$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsLastVarious')
-      .pipe(map((val) => val.reverse()));
 
 /*     this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
