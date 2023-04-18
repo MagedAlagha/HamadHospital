@@ -15,14 +15,7 @@ export class PhotoGalleryComponent implements OnInit {
   constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
-   ;
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID.includes("2")
-        });
-      })
-    );
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems')
 }
 
 showPhotosDetails(item:any){

@@ -16,15 +16,7 @@ export class WrittenStoriesComponent implements OnInit {
      private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return !item.MediaSectionID.includes("3")
-        });
-      }), tap(value=>{
-        console.log("value" , value)
-      })
-    );
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems')
   }
 
   showVisualStories(item:any) {

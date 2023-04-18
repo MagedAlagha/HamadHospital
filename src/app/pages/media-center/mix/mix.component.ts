@@ -14,13 +14,7 @@ export class MixComponent implements OnInit {
   constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID == 7;
-        });
-      })
-    );
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems')
 }
 
 showNews(item:any){

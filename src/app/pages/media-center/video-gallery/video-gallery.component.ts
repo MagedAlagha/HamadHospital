@@ -25,13 +25,8 @@ export class VideoGalleryComponent implements OnInit {
     this.filterVideo(' ');
 
 
-    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return item.MediaSectionID.includes("3")
-        });
-      })
-    );
+    this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems')
+
     this.VideoDialog$ = this._videoGalleryService.Selector$('VideoDialog')
     this.filterVideo$  =this._mediaCenterService.Selector$('FilterVideo');
   }

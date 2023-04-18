@@ -1,39 +1,57 @@
-<ng-container *ngIf="showNews$ |async as item">
-
-<section class="news mt-5">
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-8">
-        <div class="section-title">
-              <ng-container *ngIf="item.MainServiceID === 1">  <span>التأهيل الطبي</span>  </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 2">  <span>الاطراف الصناعية</span>  </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 3">  <span>السمع والتوازن</span>  </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 4">  <span>العيادة الخارجية</span>  </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 5">  <span>خدمات طبية مساندة</span>  </ng-container>
-              <ng-container *ngIf="item.MainServiceID === 6">  <span>غير مصنف</span>  </ng-container>
-          <div class="title">
-            <p class="mb-1">{{  item?.SubTitle }}  </p>
-              <h1>{{ isEn ? item?.TitleAr : item?.TitleAr }}  </h1>
-              <h1>{{ isEn ? item?.Title : item?.Title }}  </h1>
-
+<ng-container *ngIf="showNews$ | async as item">
+  <section class="news mt-5">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+          <div class="section-title">
+            <ng-container *ngIf="item.MainServiceID === 1">
+              <span>التأهيل الطبي</span>
+            </ng-container>
+            <ng-container *ngIf="item.MainServiceID === 2">
+              <span>الاطراف الصناعية</span>
+            </ng-container>
+            <ng-container *ngIf="item.MainServiceID === 3">
+              <span>السمع والتوازن</span>
+            </ng-container>
+            <ng-container *ngIf="item.MainServiceID === 4">
+              <span>العيادة الخارجية</span>
+            </ng-container>
+            <ng-container *ngIf="item.MainServiceID === 5">
+              <span>خدمات طبية مساندة</span>
+            </ng-container>
+            <ng-container *ngIf="item.MainServiceID === 6">
+              <span>غير مصنف</span>
+            </ng-container>
+            <div class="title">
+              <p class="mb-1">{{ item?.SubTitle }}</p>
+              <h1>{{ isEn ? item?.TitleAr : item?.TitleAr }}</h1>
+              <h1>{{ isEn ? item?.Title : item?.Title }}</h1>
+            </div>
           </div>
-        </div>
 
-         <!--  -->
+          <!--  -->
           <ng-container *ngIf="ImageSection$ | async as data">
-            <p-galleria [numVisible]="3" [value]="data" >
+            <p-galleria [numVisible]="3" [value]="data">
               <ng-template pTemplate="item" let-item>
                 <img
-                [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
-
-                  style="width: 100%; height: 567px; object-fit: cover; border-radius: 4px;"
+                  [lazyLoad]="
+                    'http://hamad_api.accessline.ps' + item?.ImagePath
+                  "
+                  style="
+                    width: 100%;
+                    height: 567px;
+                    object-fit: cover;
+                    border-radius: 4px;
+                  "
                 />
               </ng-template>
 
               <ng-template pTemplate="thumbnail" let-item>
                 <div class="grid grid-nogutter justify-content-center">
                   <img
-                  [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+                    [lazyLoad]="
+                      'http://hamad_api.accessline.ps' + item?.ImagePath
+                    "
                     width="80%"
                   />
                 </div>
@@ -42,70 +60,87 @@
           </ng-container>
 
           <!--  -->
-
-      </div>
-    </div>
-
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-8 d-flex justify-content-between align-items-center my-4">
-        <div class="entry-meta">
-         <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
-          <span>نشر بتاريخ: <span>{{item?.CreatedDate | date}} </span> </span>
-        </div>
-        <div class="share-post">
-       <!--    <span> <i class="fa-brands fa-whatsapp"></i></span> -->
-       <a href="" class="pdf">PDF</a>
-          <span ngxClipboard  (click)="copy()"   [pTooltip]="text"  tooltipPosition="top" ><i class="fa-regular fa-clone ps-3"></i></span>
         </div>
       </div>
-      <div class="col-md-8 post-p">
-        <!--  -->
-          <p  [innerHTML]="isEn ? item?.DescEn : item?.DescAr "></p>
-      </div>
-    </div>
-    <div class="last-news mt-5">
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="section-2 d-flex align-items-center mb-2">
-            <div class="line"> </div>
-            <h2 class="d-inline-block ps-2">اخر الأخبار</h2>
+      <div class="row d-flex justify-content-center">
+        <div
+          class="col-md-8 d-flex justify-content-between align-items-center my-4"
+        >
+          <div class="entry-meta">
+            <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
+            <span
+              >نشر بتاريخ: <span>{{ item?.CreatedDate | date }} </span>
+            </span>
           </div>
-          <ng-container *ngIf="MediaSectionsItemsLastNews$ |async as data">
-              <ng-container *ngFor="let item2 of data.slice(-3) ">
-                <ng-container *ngIf="item.ID !== item2.ID">
-                <div class="row align-items-center mt-4" routerLink="/news-details/{{item2.ID}}" (click)="showNews(item2)" style="cursor: pointer;"  >
-                  <div class="col-md-3 px-0">
-                    <img [src]=" 'http://hamad_api.accessline.ps'+ item2?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="last-news-title">
-                      <h3> {{ isEn ? item2?.Title : item2?.Title }} </h3>
-                      <div class="post-pp">
-                        <p  [innerHTML]=" item2?.Desc  | slice:0:100"></p>
-                        <span style="font-size: 12px;"> تاريخ النشر : {{item2?.CreatedDate | date}} </span>
+          <div class="share-post">
+            <!--    <span> <i class="fa-brands fa-whatsapp"></i></span> -->
+            <a [href]="pdfFile" target="_blank" class="pdf" *ngIf="pdfFile">PDF</a>
+            <span
+              ngxClipboard
+              (click)="copy()"
+              [pTooltip]="text"
+              tooltipPosition="top"
+              ><i class="fa-regular fa-clone ps-3"></i
+            ></span>
+          </div>
+        </div>
+        <div class="col-md-8 post-p">
+          <!--  -->
+          <p [innerHTML]="isEn ? item?.DescEn : item?.DescAr"></p>
+        </div>
+      </div>
+      <div class="last-news mt-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="section-2 d-flex align-items-center mb-2">
+                <div class="line"></div>
+                <h2 class="d-inline-block ps-2">اخر الأخبار</h2>
+              </div>
+              <ng-container *ngIf="MediaSectionsItemsLastNews$ | async as data">
+                <ng-container *ngFor="let item2 of data.slice(-3)">
+                  <ng-container *ngIf="item.ID !== item2.ID">
+                    <div
+                      class="row align-items-center mt-4"
+                      routerLink="/news-details/{{ item2.ID }}"
+                      (click)="showNews(item2)"
+                      style="cursor: pointer"
+                    >
+                      <div class="col-md-3 px-0">
+                        <img
+                          [src]="
+                            'http://hamad_api.accessline.ps' + item2?.ImagePath
+                          "
+                          style="
+                            width: 100%;
+                            object-fit: cover;
+                            height: 180px;
+                            border-radius: 6px;
+                          "
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-md-8">
+                        <div class="last-news-title">
+                          <h3>{{ isEn ? item2?.Title : item2?.Title }}</h3>
+                          <div class="post-pp">
+                            <p [innerHTML]="item2?.Desc | slice : 0 : 100"></p>
+                            <span style="font-size: 12px">
+                              تاريخ النشر : {{ item2?.CreatedDate | date }}
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </ng-container>
+                </ng-container>
               </ng-container>
-            </ng-container>
-
-            </ng-container>
-
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-
-    </div>
-
-
-
-  </div>
-</section>
+  </section>
 </ng-container>
-
-
-

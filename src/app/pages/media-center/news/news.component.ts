@@ -15,11 +15,11 @@ export class NewsComponent implements OnInit {
     this._mediaCenterService.getMediaSectionsItemsPhoto(1)
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItemsPhoto')
     this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          return !item.MediaSectionID.includes("3")
-        });
-      })
+      // map((val) => {
+      //   return val?.filter((item: any) => {
+      //     return !item.MediaSectionID.includes("3")
+      //   });
+      // })
     );
 }
 

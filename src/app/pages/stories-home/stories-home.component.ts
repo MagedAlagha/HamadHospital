@@ -17,65 +17,61 @@ import { ServicesPageService } from '../services-page/services-page.service';
   styleUrls: ['./stories-home.component.scss'],
 })
 export class StoriesHomeComponent implements OnInit {
-  VideoDialog$!:Observable<any>;
-  MediaCenterService$!:Observable<any>;
-  MediaCenterService2$!:Observable<any>;
-  MediaSectionsItemsVideo$!:Observable<any>;
-  MediaSectionsItemsStory$!:Observable<any>;
+  VideoDialog$!: Observable<any>;
+  MediaCenterService$!: Observable<any>;
+  MediaCenterService2$!: Observable<any>;
+  MediaSectionsItemsVideo$!: Observable<any>;
+  MediaSectionsItemsStory$!: Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-  active:any = 1;
-  constructor(private _servicesPageService:ServicesPageService , private _mediaCenterService:MediaCenterService) { }
-  Avatar=environment.FileUrl;
+  active: any = 1;
+  constructor(
+    private _servicesPageService: ServicesPageService,
+    private _mediaCenterService: MediaCenterService
+  ) {}
+  Avatar = environment.FileUrl;
   ngOnInit(): void {
-  const successStoryID =   this._servicesPageService.dataStore.successStory
-  if(successStoryID) {
-    console.log("successStory : " , successStoryID)
-  }
+    const successStoryID = this._servicesPageService.dataStore.successStory;
+    if (successStoryID) {
+      console.log('successStory : ', successStoryID);
+    }
     const url = window.location.href;
+    this._mediaCenterService.getMediaSectionsItemsVideo(3);
+    this._mediaCenterService.getMediaSectionsItemsStory(5);
     if (url.includes('medical-rehabilitation')) {
-      this._mediaCenterService.getMediaSectionsItemsVideo(3);
-      this._mediaCenterService.getMediaSectionsItemsStory(5);
-
       this.active = 1;
-    }else if(url.includes('prosthetics')){
+    } else if (url.includes('prosthetics')) {
       this.active = 2;
-    }else if(url.includes('hearing-balance')){
+    } else if (url.includes('hearing-balance')) {
       this.active = 3;
-      this._mediaCenterService.getMediaSectionsItemsVideo(3);
-      this._mediaCenterService.getMediaSectionsItemsStory(5);
-
-
-    }else if(url.includes('outpatient-clinics')){
+    } else if (url.includes('outpatient-clinics')) {
       this.active = 4;
-      this._mediaCenterService.getMediaSectionsItemsVideo(3);
-      this._mediaCenterService.getMediaSectionsItemsStory(5);
-
-
-    }else if(url.includes('supportive')){
+    } else if (url.includes('supportive')) {
       this.active = 5;
-      this._mediaCenterService.getMediaSectionsItemsVideo(3);
-      this._mediaCenterService.getMediaSectionsItemsStory(5);
     }
 
-    this.MediaSectionsItemsVideo$ = this._mediaCenterService.Selector$('MediaSectionsItemsVideo').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          console.log("item" , successStoryID)
-           return item?.MainServiceID == successStoryID ;
-        });
-      }) ,
-     );
+    this.MediaSectionsItemsVideo$ = this._mediaCenterService
+      .Selector$('MediaSectionsItemsVideo')
+      .pipe(
+        // map((val) => {
+        //   return val?.filter((item: any) => {
+        //     console.log('item', successStoryID);
+        //     return item?.MainServiceID == successStoryID;
+        //   });
+        // })
+      );
 
-     this.MediaSectionsItemsStory$ = this._mediaCenterService.Selector$('MediaSectionsItemsStory').pipe(
-      map((val) => {
-        return val?.filter((item: any) => {
-          console.log("item" , successStoryID)
-           return item?.MainServiceID == successStoryID ;
-        });
-     }) ,
-     );
+    this.MediaSectionsItemsStory$ = this._mediaCenterService
+      .Selector$('MediaSectionsItemsStory')
+      .pipe(
+        // map((val) => {
+        //   return val?.filter((item: any) => {
+        //     console.log('item', successStoryID);
+        //     return item?.MainServiceID == successStoryID;
+        //   });
+        // })
+      );
 
-   /*  this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+    /*  this.MediaCenterService$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID == 3;
@@ -100,19 +96,17 @@ export class StoriesHomeComponent implements OnInit {
         });
       })
     ); */
-
   }
 
   display: boolean = false;
-  showVideoPreview(item:any) {
+  showVideoPreview(item: any) {
     this.display = true;
     this._mediaCenterService.updateStore({ VideoDetails: item });
-    console.log( 'item item item' , item );
-   ;
+    console.log('item item item', item);
   }
 
-  showPhotosDetails(item:any){
+  showPhotosDetails(item: any) {
     this._mediaCenterService.updateStore({ PhotosDetails: item });
-    console.log(item)
+    console.log(item);
   }
 }
