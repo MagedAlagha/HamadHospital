@@ -9,7 +9,10 @@
   background-color: #8a1538;
   color: #fff;
 }
-
+.logo{
+  width: 130px;
+  transition: .3s all;
+}
 .nav-link{
   position: relative;
   transition: .3s all;
@@ -86,6 +89,7 @@ position: absolute;
   color: #fff;
   position: relative;
   cursor: pointer;
+  transition: .3s all;
 }
 .arrow1 , .arrow2{
   transition: .5s all ;
@@ -225,4 +229,11 @@ box-shadow: none !important;
 .navbar.header-scrolled {
   padding: 0px 0 !important;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+.navbar.header-scrolled .logo{
+  width: 116px !important;
+}
+.navbar.header-scrolled .drop-down{
+  padding: 8px 15px;
+ font-size: 15px;
 }
