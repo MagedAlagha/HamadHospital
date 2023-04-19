@@ -3,15 +3,13 @@
  <!-- [ngClass]="{'fixed-top': previousScrollPosition === 0}"  -->
 <nav class="navbar py-1 navbar-expand-lg navbar-light show fixed-top bg-white"   >
   <div class="container d-flex justify-content-between">
-
     <a class="navbar-brand" routerLink="/home">
       <img
         src="../assets/img/logo.svg"
         alt=""
         class="d-inline-block align-text-top logo"
         [ngClass]="{ active: active == 1 }"
-            (click)="active = 1"
-      />
+        (click)="active = 1"/>
     </a>
     <button
       class="navbar-toggler"
