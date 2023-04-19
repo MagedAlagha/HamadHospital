@@ -44,7 +44,7 @@
  -->
 
  <div id="scroll-down-animation"   ngxScrollTo
-[ngxScrollToOffset]="700">
+[ngxScrollToOffset]="680">
   <span class="mouse">
     <span class="move"></span>
   </span>
@@ -173,16 +173,16 @@
   <div class="container">
     <div class="section-title">
       <div class="line"></div>
-       <div class="d-flex justify-content-end mb-3">
+       <div class="d-flex justify-content-end mb-2">
         <a  routerLink="/media-center/video/video-main" (click)="addAvtiveNaveBar()" >شاهد المزيد</a>
       </div>
     </div>
     <!-- row -->
     <ng-container *ngIf="MediaSectionsItemsVideo$ |async as data ">
-      <div class="row align-items-stretch">
-      <div class="col-md-8 d-flex align-items-stretch img "  (click)="showVideoPreview(data[0])" >
-        <div >
-            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; height: 94%; border-radius: 6px;" class="img-fluid main-img"
+      <div class="row ">
+      <div class="col-md-8  img "  (click)="showVideoPreview(data[0])" >
+        <div style="width: 100%; object-fit: cover;" >
+            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; max-height: 533px; border-radius: 6px;" class="img-fluid main-img"
             class="img-fluid" alt="">
            <img src="../../../assets/img/video.mp4" class="video-icon" alt="">
            <p style="color: #fff;">{{ isEn ? data[0]?.Title : data[0]?.Title  | slice:0:80 }} {{  isEn ? data[0]?.Title.length : data[0]?.Title.length > 80 ? '...' : '' }} </p>
@@ -190,11 +190,11 @@
         <a class=" icon_video play-btn mb-4"></a>
 
       </div>
-      <div class="col-md-4 d-flex align-items-stretch">
+      <div class="col-md-4 ">
         <div class="row">
           <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[1])">
             <figure style="width: 100%;" >
-              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 270px;" class="img-fluid"
+              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath" style="width: 100%; height: 248px;" class="img-fluid"
            class="img-fluid" alt="">
               <figcaption>{{ isEn ? data[1]?.Title : data[1]?.Title  | slice:0:35 }} {{  isEn ? data[1]?.Title.length : data[1]?.Title.length > 35 ? '...' : '' }}</figcaption>
             </figure>
@@ -203,7 +203,7 @@
           </div>
           <div class="col-md-12 col-6 img" (click)="showVideoPreview(data[2])">
             <figure style="width: 100%;">
-              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%;height: 270px;" class="img-fluid"
+              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath" style="width: 100%;height: 248px;" class="img-fluid"
               class="img-fluid" alt="">
               <figcaption>{{ isEn ? data[2]?.Title : data[2]?.Title  | slice:0:35 }} {{  isEn ? data[2]?.Title.length : data[2]?.Title.length > 35 ? '...' : '' }}</figcaption>
             </figure>
@@ -226,7 +226,7 @@
     </div>
     <div class="section-title">
       <div class="line" style="height: 3px;"></div>
-      <div class="d-flex justify-content-end mb-3" >
+      <div class="d-flex justify-content-end mb-2" >
         <a routerLink="/media-center/press-stories" style="cursor: pointer; color:#8a1538;" >اقرأ المزيد</a>
       </div>
     </div>
