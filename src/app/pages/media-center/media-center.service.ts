@@ -112,7 +112,9 @@ export class MediaCenterService {
         { MediaSectionsItemID:ID },
     );
  }
-
+ clearImageSectionAndMixInfo(){
+  this.updateStore({ImageSection:[],MixInfo:undefined})
+}
  getPostId(ID:any) {
   this.getFormApi(
     `LandingPage/MediaSectionsItems/${ID}`,'PostInfo',

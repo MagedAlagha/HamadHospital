@@ -103,9 +103,6 @@
             </ng-container>
           </ng-container>
 
-          <a [href]="pdfFile" target="_blank" class="pdf" *ngIf="pdfFile"
-            >PDF</a
-          >
           <!-- <ng-container *ngIf="data.MediaSectionID?.includes(7)">
             <ng-container *ngIf="data.VideoPath">
               <div>
@@ -173,6 +170,8 @@
             </div>
             <div class="share-post">
               <!--    <span> <i class="fa-brands fa-whatsapp"></i></span> -->
+              <a [href]="pdfFile" target="_blank" class="pdf" *ngIf="pdfFile">PDF</a>
+
               <span
                 ngxClipboard
                 (click)="copy()"
@@ -180,11 +179,12 @@
                 tooltipPosition="top"
                 ><i class="fa-regular fa-clone ps-3"></i
               ></span>
+
             </div>
           </div>
 
           <div class="post-p">
-            <p [innerHTML]="isEn ? data?.DescEn : data?.DescAr"></p>
+            <p [innerHTML]="data?.DescEn ? data?.DescEn : data?.Desc"></p>
           </div>
 
           <!--  -->
@@ -195,7 +195,7 @@
   <div class="container mb-4">
     <div class="section-2 d-flex align-items-center mb-2">
       <div class="line"></div>
-      <h2 class="d-inline-block ps-2">منوعات اخرى</h2>
+      <h2 class="d-inline-block ps-2">منوعات</h2>
     </div>
     <ng-container *ngIf="MediaSectionsItemsMix$ | async as data2">
       <div class="row">

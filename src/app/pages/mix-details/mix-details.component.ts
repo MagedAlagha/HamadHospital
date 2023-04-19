@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../media-center/media-center.service';
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './mix-details.component.html',
   styleUrls: ['./mix-details.component.scss'],
 })
-export class MixDetailsComponent implements OnInit {
+export class MixDetailsComponent implements OnInit,OnDestroy {
   width: any = '100% ';
   height: any = '420px ';
   MediaCenterService$!: Observable<any>;
@@ -31,9 +31,13 @@ export class MixDetailsComponent implements OnInit {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID);
   }
+  ngOnDestroy(): void {
+    this._mediaCenterService.clearImageSectionAndMixInfo()
+  }
   ngOnInit(): void {
     this.location = window.location.href;
     this._mediaCenterService.getMixInfo(this.ID);
+
     this.ImageSection$ = this._mediaCenterService
       .Selector$('ImageSection')
       .pipe(
@@ -46,11 +50,12 @@ export class MixDetailsComponent implements OnInit {
           value.filter((item: any) => !item?.ImagePath?.includes('pdf'))
         )
       );
-
     this.MixDetails$ = this._mediaCenterService.Selector$('MixInfo').pipe(
       tap((value) => {
-        console.log('value222222222', value);
-        this._mediaCenterService.getImageSection(value?.ID);
+        if(value?.ID){
+          this._mediaCenterService.getImageSection(value.ID);
+
+        }
       })
     );
     this._mediaCenterService.getMediaSectionsItemsMix(7);

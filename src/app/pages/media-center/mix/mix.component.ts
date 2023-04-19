@@ -22,5 +22,4 @@ showNews(item:any){
   console.log(item);
 }
 
-
 }
