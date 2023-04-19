@@ -25,6 +25,7 @@ export class ServicesContentComponent implements OnInit {
 
       this.OutpatientClinicsDepartmentsServices$ = this._outpatientClinicsService.Selector$('OutpatientClinicsDepartmentsServices').pipe(
         map((val) => {
+          console.log('val',val)
           return val?.filter((item: any) => {
             return item.IsActive;
           });

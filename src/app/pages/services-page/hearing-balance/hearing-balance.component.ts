@@ -40,7 +40,9 @@ export class HearingBalanceComponent implements OnInit {
         }),
         tap((value) => {
           const firstItem = Array.isArray(value) && value?.length? value?.[0] : undefined;
-          this.storeData(firstItem);
+          if (firstItem) {
+            this.storeData(firstItem);
+          }
         })
       );
   }

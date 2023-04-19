@@ -14,7 +14,7 @@ export class MedicalRehabilitationComponent implements OnInit {
   active: any;
 
   constructor(
-    private _homeService: HomeService ,
+    private _homeService: HomeService,
     private _hearingBalanceService: HearingBalanceService,
     private _outpatientClinicsService: OutpatientClinicsService
   ) {}
@@ -40,8 +40,11 @@ export class MedicalRehabilitationComponent implements OnInit {
           });
         }),
         tap((value) => {
-          const firstItem = Array.isArray(value) && value?.length? value?.[0] : undefined;
-          this.storeData(firstItem);
+          const firstItem =
+            Array.isArray(value) && value?.length ? value?.[0] : undefined;
+          if (firstItem) {
+            this.storeData(firstItem);
+          }
         })
       );
   }

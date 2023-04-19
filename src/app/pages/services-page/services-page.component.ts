@@ -42,7 +42,7 @@ export class ServicesPageComponent implements OnInit {
 
     if (url.includes('rehabilitation')) {
       this.active = 1;
-      this._servicesPageService.updateStore({ bgSection: this.Services.MedicalRehabilitationBackgroundPath });
+      this._servicesPageService.updateStore({ bgSection: this.Services?.MedicalRehabilitationBackgroundPath });
       this.successStory(1)
     } else if (url.includes('prosthetics')) {
       this.active = 2;
