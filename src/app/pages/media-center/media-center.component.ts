@@ -8,11 +8,8 @@ import { MediaCenterService } from './media-center.service';
   styleUrls: ['./media-center.component.scss'],
 })
 export class MediaCenterComponent implements OnInit {
-  /* isActive = false; */
-
   active: any = 1;
   constructor(public router: Router , private _mediaSectionsItems:MediaCenterService) {
-
   }
 
   ngOnInit(): void {

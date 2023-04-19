@@ -30,9 +30,9 @@ export class StoriesHomeComponent implements OnInit {
   ) {}
   Avatar = environment.FileUrl;
   ngOnInit(): void {
-    const successStoryID = this._servicesPageService.dataStore.successStory;
-    if (successStoryID) {
-      console.log('successStory : ', successStoryID);
+    const MainSectionID = this._servicesPageService.dataStore.successStory;
+    if (MainSectionID) {
+      console.log('successStory : ', MainSectionID);
     }
     const url = window.location.href;
     this._mediaCenterService.getMediaSectionsItemsVideo(3);
@@ -52,25 +52,24 @@ export class StoriesHomeComponent implements OnInit {
     this.MediaSectionsItemsVideo$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsVideo')
       .pipe(
-        // map((val) => {
-        //   return val?.filter((item: any) => {
-        //     console.log('item', successStoryID);
-        //     return item?.MainServiceID == successStoryID;
-        //   });
-        // })
+        map((val) => {
+           return val?.filter((item: any) => {
+             console.log('item', MainSectionID);
+           return item?.MainServiceID == MainSectionID;
+           });
+         })
       );
 
     this.MediaSectionsItemsStory$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsStory')
       .pipe(
-        // map((val) => {
-        //   return val?.filter((item: any) => {
-        //     console.log('item', successStoryID);
-        //     return item?.MainServiceID == successStoryID;
-        //   });
-        // })
+         map((val) => {
+           return val?.filter((item: any) => {
+            console.log('item', MainSectionID);
+           return item?.MainServiceID == MainSectionID;
+         });
+        })
       );
-
   }
 
   display: boolean = false;
