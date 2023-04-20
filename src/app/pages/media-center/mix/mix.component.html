@@ -5,7 +5,9 @@
         <div>
           <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
           <h2  routerLink="/mix-details/{{item.ID}}" (click)="showNews(item)"  > {{ isEn ? item?.Title : item?.Title }} </h2>
-          <p  [innerHTML]=" item?.Desc | slice:0:100 "></p>
+          <div class="post-pp">
+            <p  [innerHTML]=" item?.Desc | slice:0:100 "></p>
+          </div>
           <a routerLink="/mix-details/{{item.ID}}" (click)="showNews(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
               المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
           </a>
