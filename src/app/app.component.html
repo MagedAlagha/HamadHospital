@@ -3,8 +3,8 @@
 <app-footer></app-footer>
 <p-toast></p-toast>
 
-<ng-container *ngIf="LandingPageData$ |async as data">
-  <div class="social-links  " [ngClass]="{'social-links-scroll':isScroll ==true}" ><!--  d-md-block d-none -->
+ <ng-container *ngIf="LandingPageData$ |async as data">
+  <div class="social-links" [ngClass]="{'social-links-scroll':isScroll ==true}" >
     <a [href]="data?.MainInfo?.FacebookLink" target="_blank" pTooltip="Facebook" tooltipPosition="right"><img src="../../../assets/img/brand-facebook.svg" alt="" /></a>
     <a [href]="data?.MainInfo?.YoutubeLink" class="mt-1" target="_blank" pTooltip="Youtube" tooltipPosition="right"
       ><img src="../../../assets/img/brand-youtube.svg" alt=""

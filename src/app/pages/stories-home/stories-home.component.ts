@@ -54,7 +54,7 @@ export class StoriesHomeComponent implements OnInit {
       .pipe(
         map((val) => {
            return val?.filter((item: any) => {
-             console.log('item', MainSectionID);
+             console.log('item777777777', val);
            return item?.MainServiceID == MainSectionID;
            });
          })

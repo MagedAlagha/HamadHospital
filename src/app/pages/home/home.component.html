@@ -172,17 +172,17 @@
   </div>
   <div class="container">
     <div class="section-title">
-      <div class="line"></div>
-       <div class="d-flex justify-content-end mb-2">
+      <div class="d-flex justify-content-end mb-0">
         <a  routerLink="/media-center/video/video-main" (click)="addAvtiveNaveBar()" >شاهد المزيد</a>
       </div>
+      <div class="line d-block mb-2"></div>
     </div>
     <!-- row -->
     <ng-container *ngIf="MediaSectionsItemsVideo$ |async as data ">
       <div class="row ">
       <div class="col-lg-8  img "  (click)="showVideoPreview(data[0])" >
         <div style="width: 100%; object-fit: cover;" >
-            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath" style="width: 100%; max-height: 533px; border-radius: 6px;" class="img-fluid main-img"
+            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath"  class="img-fluid main-img"
             class="img-fluid" alt="">
            <img src="../../../assets/img/video.mp4" class="video-icon" alt="">
            <p style="color: #fff;">{{ isEn ? data[0]?.Title : data[0]?.Title  | slice:0:80 }} {{  isEn ? data[0]?.Title.length : data[0]?.Title.length > 80 ? '...' : '' }} </p>
@@ -224,25 +224,24 @@
       <h3 class="px-md-5 px-2  mb-0"> قصص صحفية </h3>
     </div>
     <div class="section-title">
-      <div class="line" style="height: 3px;"></div>
       <div class="d-flex justify-content-end mb-2" >
-        <a routerLink="/media-center/press-stories" style="cursor: pointer; color:#8a1538;" >اقرأ المزيد</a>
+        <a routerLink="/media-center/press-stories" style="cursor: pointer; color:#8a1538;" (click)="addAvtiveNaveBar()" >اقرأ المزيد</a>
       </div>
+      <div class="line d-block mb-3" style="height: 3px;"></div>
+
     </div>
     <ng-container *ngIf="MediaSectionsItemsStory$ | async as data">
-      <div class="row align-items-stretch">
+      <div class="row ">
           <div
-            class="col-md-4 img pb-3" *ngFor="let item of data.slice(-3)"
+            class="col-md-4 img pb-3 d-flex align-items-stretch " *ngFor="let item of data.slice(-3)"
             (click)="showPhotosDetails(item) ; addAvtiveNaveBar()"
           >
             <div style="width: 100% ; cursor: pointer;" routerLink="/mix-details/{{item.ID}}"   >
               <img
                 [lazyLoad]="'http://hamad_api.accessline.ps' + item?.ImagePath"
-                style="width: 100%; height: 80% ; border-radius: 6px; "
+                style="width: 100%; height: 277px ; border-radius: 6px; object-fit: cover;  "
                 class="img-fluid"
-                alt=""
-
-              />
+                alt=""/>
               <p style=" margin-bottom: 4px;">
                 {{ isEn ? item?.Title : (item?.Title | slice : 0 : 58) }}
                 {{
@@ -257,7 +256,6 @@
           </div>
       </div>
     </ng-container>
-
   </div>
  </div>
 

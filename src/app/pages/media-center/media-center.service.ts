@@ -76,7 +76,7 @@ export class MediaCenterService {
       this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItems',{ MediaSectionID:ID });
   }
   getMediaSectionsItemsVideo(ID?:any ,MainServiceID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsVideo',{ MediaSectionID:ID , ShowHome:true });
+      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsVideo',{ MediaSectionID:ID , ShowVarious:true });
   }
   getMediaSectionsItemsStory(ID?:any , MainServiceID?:any) {
       this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsStory',{ MediaSectionID:ID , ShowHome:true});

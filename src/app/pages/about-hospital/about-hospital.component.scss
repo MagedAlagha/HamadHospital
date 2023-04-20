@@ -12,7 +12,7 @@ section{
   color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 10vh;
+  margin-top: 9.5vh;
 }
 
 
@@ -60,4 +60,7 @@ li a.active , a:hover , .active{
 }
 .remove-rotate{
   /* transform: rotate(0); */
+}
+.editor-img > .col-md-10 {
+  width:100% !important ;
 }
