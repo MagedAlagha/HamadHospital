@@ -4,7 +4,7 @@ import { MediaCenterComponent } from './media-center.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [MediaCenterComponent ],
+  declarations: [MediaCenterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -57,16 +57,14 @@ import { RouterModule } from '@angular/router';
           {
             path: 'mix',
             loadChildren: () =>
-              import(
-                './mix/mix.module'
-              ).then((m) => m.MixModule),
+              import('./mix/mix.module').then((m) => m.MixModule),
           },
           {
             path: 'letter',
             loadChildren: () =>
-              import(
-                './newsletter/newsletter.module'
-              ).then((m) => m.NewsletterModule),
+              import('./newsletter/newsletter.module').then(
+                (m) => m.NewsletterModule
+              ),
           },
         ],
       },

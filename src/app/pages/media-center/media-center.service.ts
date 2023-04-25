@@ -5,10 +5,9 @@ import { HttpService } from 'src/app/shared/services/http.service';
 import { getFormApiGonfig } from 'src/app/shared/services/models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MediaCenterService {
-
   constructor(
     private _http: HttpService,
     private _getFormApiService: GetFormApiService
@@ -16,15 +15,15 @@ export class MediaCenterService {
 
   private store = new BehaviorSubject<StoreInterface>({
     MediaSectionsItems: undefined,
-    showNews:undefined,
-    PhotosDetails:undefined,
-    VideoDetails:undefined,
-    MedicalArticles:undefined,
-    PressStories:undefined,
-    ImageSection:undefined,
-    VisualStories:undefined,
-    PhotoGalaryDetails:undefined,
-    MixDetails:undefined,
+    showNews: undefined,
+    PhotosDetails: undefined,
+    VideoDetails: undefined,
+    MedicalArticles: undefined,
+    PressStories: undefined,
+    ImageSection: undefined,
+    VisualStories: undefined,
+    PhotoGalaryDetails: undefined,
+    MixDetails: undefined,
     PostInfo: undefined,
     MixInfo: undefined,
     medicalArticleInfo: undefined,
@@ -47,10 +46,7 @@ export class MediaCenterService {
     MediaSectionsItemsTecStories: undefined,
     MediaSectionsItemsMix: undefined,
 
-
     FilterVideo: undefined,
-
-
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -70,90 +66,136 @@ export class MediaCenterService {
       distinctUntilChanged()
     );
   }
-
-    /*  *******  MediaSectionsItems - API ******* */
-  getMediaSectionsItems(ID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItems',{ MediaSectionID:ID });
+  index=1
+  /*  *******  MediaSectionsItems - API ******* */
+  getMediaSectionsItems(ID: any) {
+    this.updateStore({
+      MediaSectionsItems: undefined,
+    });
+    this.index=1
+    this.FungetMediaSectionsItems(ID);
   }
-  getMediaSectionsItemsVideo(ID?:any ,MainServiceID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsVideo',{ MediaSectionID:ID , ShowVarious:true });
+  FungetMediaSectionsItems(ID: any) {
+    this._http
+      .getData('LandingPage/MediaSectionsItems', {
+        MediaSectionID: ID,
+        pageSize: 4,
+        pageCount: this.index,
+      })
+      .subscribe((value) => {
+        this.updateStore({
+          MediaSectionsItems: [...(this.dataStore.MediaSectionsItems||[]), ...value],
+        });
+        if (value?.length) {
+          this.index=this.index+1
+          this.FungetMediaSectionsItems(ID);
+        }
+      });
   }
-  getMediaSectionsItemsStory(ID?:any , MainServiceID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsStory',{ MediaSectionID:ID , ShowHome:true});
-  }
-  getMediaSectionsItemsLastNews(ID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsLastNews',{ MediaSectionID:ID });
-  }
-  getMediaSectionsItemsVarious(ID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsLastVarious',{ MediaSectionID:ID });
-  }
-  getMediaSectionsItemsSahafiStories(ID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsSahafiStories',{ MediaSectionID:ID });
-  }
-  getMediaSectionsItemsTecStories(ID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsTecStories',{ MediaSectionID:ID });
-  }
-  getMediaSectionsItemsPhoto(ID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsPhoto',{ MediaSectionID:ID });
-  }
-  getMediaSectionsItemsMedicalArticle(ID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsMedicalArticle',{ MediaSectionID:ID });
-  }
-  getMediaSectionsItemsMix(ID?:any) {
-      this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsMix',{ MediaSectionID:ID });
-  }
-  getFilterVideo(ID?:any) {
-      this.getFormApi('MediaSectionsItems/MediaSectionsItemsSearch', 'FilterVideo',{ MainServiceID:ID , MediaSectionID:3 });
-  }
-  getImageSection(ID?:any) {
+  getMediaSectionsItemsVideo(ID?: any, MainServiceID?: any) {
     this.getFormApi(
-        'MediaSectionsItemsImages/MediaSectionsItemsImagesSearch',
-        'ImageSection',
-        { MediaSectionsItemID:ID },
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsItemsVideo',
+      { MediaSectionID: ID, ShowVarious: true }
     );
- }
- clearImageSectionAndMixInfo(){
-  this.updateStore({ImageSection:[],MixInfo:undefined})
-}
- getPostId(ID:any) {
-  this.getFormApi(
-    `LandingPage/MediaSectionsItems/${ID}`,'PostInfo',
-  );
- }
- getMedicalArticleInfoID(ID:any) {
-  this.getFormApi(
-    `LandingPage/MediaSectionsItems/${ID}`,'medicalArticleInfo',
-  );
- }
-getNewsInfo(ID:any) {
-  this.getFormApi(
-    `LandingPage/MediaSectionsItems/${ID}`,'NewsInfo',
-  );
   }
-getPhotoGalaryInfo(ID:any) {
-  this.getFormApi(
-    `LandingPage/MediaSectionsItems/${ID}`,'PhotoGalaryInfo',
-  );
+  getMediaSectionsItemsStory(ID?: any, MainServiceID?: any) {
+    this.getFormApi(
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsItemsStory',
+      { MediaSectionID: ID, ShowHome: true }
+    );
   }
-getProsessStoryInfo(ID:any) {
-  this.getFormApi(
-    `LandingPage/MediaSectionsItems/${ID}`,'ProsessStoryInfo',
-  );
+  getMediaSectionsItemsLastNews(ID?: any) {
+    this.getFormApi(
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsItemsLastNews',
+      { MediaSectionID: ID }
+    );
   }
-getTecStoryInfo(ID:any) {
-  this.getFormApi(
-    `LandingPage/MediaSectionsItems/${ID}`,'tecStoryInfo',
-  );
+  getMediaSectionsItemsVarious(ID?: any) {
+    this.getFormApi(
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsItemsLastVarious',
+      { MediaSectionID: ID }
+    );
   }
-getMixInfo(ID:any) {
-  this.getFormApi(
-    `LandingPage/MediaSectionsItems/${ID}`,'MixInfo',
-  );
+  getMediaSectionsItemsSahafiStories(ID?: any) {
+    this.getFormApi(
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsItemsSahafiStories',
+      { MediaSectionID: ID }
+    );
   }
-getNewsLaterInfo(ID:any) {
-  this.getFormApi(
-    `LandingPage/MediaSectionsItems/${ID}`,'NewsLaterInfo',
-  );
+  getMediaSectionsItemsTecStories(ID?: any) {
+    this.getFormApi(
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsItemsTecStories',
+      { MediaSectionID: ID }
+    );
+  }
+  getMediaSectionsItemsPhoto(ID?: any) {
+    this.getFormApi(
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsItemsPhoto',
+      { MediaSectionID: ID }
+    );
+  }
+  getMediaSectionsItemsMedicalArticle(ID?: any) {
+    this.getFormApi(
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsItemsMedicalArticle',
+      { MediaSectionID: ID }
+    );
+  }
+  getMediaSectionsItemsMix(ID?: any) {
+    this.getFormApi('LandingPage/MediaSectionsItems', 'MediaSectionsItemsMix', {
+      MediaSectionID: ID,
+    });
+  }
+  getFilterVideo(ID?: any) {
+    this.getFormApi(
+      'MediaSectionsItems/MediaSectionsItemsSearch',
+      'FilterVideo',
+      { MainServiceID: ID, MediaSectionID: 3 }
+    );
+  }
+  getImageSection(ID?: any) {
+    this.getFormApi(
+      'MediaSectionsItemsImages/MediaSectionsItemsImagesSearch',
+      'ImageSection',
+      { MediaSectionsItemID: ID }
+    );
+  }
+  clearImageSectionAndMixInfo() {
+    this.updateStore({ ImageSection: [], MixInfo: undefined });
+  }
+  getPostId(ID: any) {
+    this.getFormApi(`LandingPage/MediaSectionsItems/${ID}`, 'PostInfo');
+  }
+  getMedicalArticleInfoID(ID: any) {
+    this.getFormApi(
+      `LandingPage/MediaSectionsItems/${ID}`,
+      'medicalArticleInfo'
+    );
+  }
+  getNewsInfo(ID: any) {
+    this.getFormApi(`LandingPage/MediaSectionsItems/${ID}`, 'NewsInfo');
+  }
+  getPhotoGalaryInfo(ID: any) {
+    this.getFormApi(`LandingPage/MediaSectionsItems/${ID}`, 'PhotoGalaryInfo');
+  }
+  getProsessStoryInfo(ID: any) {
+    this.getFormApi(`LandingPage/MediaSectionsItems/${ID}`, 'ProsessStoryInfo');
+  }
+  getTecStoryInfo(ID: any) {
+    this.getFormApi(`LandingPage/MediaSectionsItems/${ID}`, 'tecStoryInfo');
+  }
+  getMixInfo(ID: any) {
+    this.getFormApi(`LandingPage/MediaSectionsItems/${ID}`, 'MixInfo');
+  }
+  getNewsLaterInfo(ID: any) {
+    this.getFormApi(`LandingPage/MediaSectionsItems/${ID}`, 'NewsLaterInfo');
   }
 
   getFormApi(
@@ -170,7 +212,6 @@ getNewsLaterInfo(ID:any) {
       config
     );
   }
-
 }
 
 export interface StoreInterface {
@@ -190,7 +231,6 @@ export interface StoreInterface {
   MixInfo?: any;
   activeNave?: any;
 
-
   MediaSectionsItemsVideo?: any;
   MediaSectionsItemsStory?: any;
   MediaSectionsItemsLastNews?: any;
@@ -201,16 +241,11 @@ export interface StoreInterface {
   MediaSectionsItemsTecStories?: any;
   MediaSectionsItemsMix?: any;
 
-
   NewsInfo?: any;
   PhotoGalaryInfo?: any;
   ProsessStoryInfo?: any;
   tecStoryInfo?: any;
 
-
-
   FilterVideo?: any;
-
-
 }
 export type selectorsType = keyof StoreInterface;

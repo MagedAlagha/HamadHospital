@@ -32,7 +32,7 @@ apiLoaded = false;
     }
   }
    getIDFromVideo(link:any){
-   return link.split("?v=")[1]
+   return link.split("be/")[1]
    }
 
 }

@@ -4,55 +4,93 @@
   </div>
 </section>
 
-<section class=" pt-4">
+<section class="pt-4">
   <div class="container">
     <div class="row">
       <div class="col-md-3 pb-3">
         <ul class="nav flex-column py-4">
           <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/media-center/news/news-main" [ngClass]="{'active':active==1}"
-              (click)="active=1 ;getMediaSectionsItemsByID(1)">الأخبار</a>
+            <a
+              class="nav-link"
+              routerLink="/media-center/news/news-main"
+              [ngClass]="{ active: active == 1 }"
+              (click)="active = 1; getMediaSectionsItemsByID(1)"
+              >الأخبار</a
+            >
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/media-center/photo/photo-main" [ngClass]="{'active':active==2}"
-              (click)="active=2 ; getMediaSectionsItemsByID(2)">معرض
-              الصور</a>
+            <a
+              class="nav-link"
+              routerLink="/media-center/photo/photo-main"
+              [ngClass]="{ active: active == 2 }"
+              (click)="active = 2; getMediaSectionsItemsByID(2)"
+              >معرض الصور</a
+            >
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/media-center/video/video-main" [ngClass]="{'active':active==3}"
-              (click)="active=3 ; getMediaSectionsItemsByID(3)">معرض
-              الفيديو</a>
+            <a
+              class="nav-link"
+              routerLink="/media-center/video/video-main"
+              [ngClass]="{ active: active == 3 }"
+              (click)="active = 3; getMediaSectionsItemsByID(3)"
+              >معرض الفيديو</a
+            >
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/media-center/medical-articles/medical-articles-main"
-              [ngClass]="{'active':active==4}" (click)="active=4 ; getMediaSectionsItemsByID(4)">تثقيف صحي وتوعية</a>
+            <a
+              class="nav-link"
+              routerLink="/media-center/medical-articles/medical-articles-main"
+              [ngClass]="{ active: active == 4 }"
+              (click)="active = 4; getMediaSectionsItemsByID(4)"
+              >تثقيف صحي وتوعية</a
+            >
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/media-center/press-stories"
-              [ngClass]="{'active':active==5}" (click)="active=5 ; getMediaSectionsItemsByID(5)">قصص صحفية
-              </a>
+            <a
+              class="nav-link"
+              routerLink="/media-center/press-stories"
+              [ngClass]="{ active: active == 5 }"
+              (click)="active = 5; getMediaSectionsItemsByID(5)"
+              >قصص صحفية
+            </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/media-center/visual-stories"
-              [ngClass]="{'active':active==6}" (click)="active=6 ; getMediaSectionsItemsByID(6)">قصص رقمية
-              </a>
+            <a
+              class="nav-link"
+              routerLink="/media-center/visual-stories"
+              [ngClass]="{ active: active == 6 }"
+              (click)="active = 6; getMediaSectionsItemsByID(6)"
+              >قصص رقمية
+            </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/media-center/mix"
-              [ngClass]="{'active':active==7}" (click)="active=7 ; getMediaSectionsItemsByID(7)">منوعات
-              </a>
+            <a
+              class="nav-link"
+              routerLink="/media-center/mix"
+              [ngClass]="{ active: active == 7 }"
+              (click)="active = 7; getMediaSectionsItemsByID(7)"
+              >منوعات
+            </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link" routerLink="/media-center/letter"
-              [ngClass]="{'active':active==8}" (click)="active=8 ;getMediaSectionsItemsByID(8)">نشرة اخبارية
-              </a>
+            <a
+              class="nav-link"
+              routerLink="/media-center/letter"
+              [ngClass]="{ active: active == 8 }"
+              (click)="active = 8; getMediaSectionsItemsByID(8)"
+              >نشرة اخبارية
+            </a>
           </li>
         </ul>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9" >
+        <ng-container *ngIf="MediaCenterService$ |async as data ; else loading"></ng-container>
         <router-outlet></router-outlet>
       </div>
 
     </div>
   </div>
 </section>
+  <ng-template #loading>
+    <img src="../../../../assets/img/loading.gif" class="text-center" alt="">
+  </ng-template>

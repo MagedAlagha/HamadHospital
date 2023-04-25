@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     /*    ;
      */
 
-    this._mediaCenterService.getMediaSectionsItems();
+    this._mediaCenterService.getMediaSectionsItems(null);
     this._mediaCenterService.getMediaSectionsItemsVideo(3);
     this._mediaCenterService.getMediaSectionsItemsStory(5);
     this._mediaCenterService.getMediaSectionsItemsLastNews(1);
@@ -83,7 +83,6 @@ export class HomeComponent implements OnInit {
 
     this.LastNews$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsLastNews')
-      .pipe(map((val) => val.reverse()));
     this.MediaSectionsItemsLastVarious$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsLastVarious')
 

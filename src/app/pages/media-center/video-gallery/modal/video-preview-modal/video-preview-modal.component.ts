@@ -26,7 +26,7 @@ video$!:Observable<any>;
   }
 
   getIDFromVideo(link:any){
-    return link.split("?v=")[1]
+    return link.split("be/")[1]
     }
 
   /* closeDialog() {

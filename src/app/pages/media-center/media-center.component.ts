@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MediaCenterService } from './media-center.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-media-center',
@@ -9,10 +10,13 @@ import { MediaCenterService } from './media-center.service';
 })
 export class MediaCenterComponent implements OnInit {
   active: any = 1;
+  MediaCenterService$!:Observable<any>;
+
   constructor(public router: Router , private _mediaSectionsItems:MediaCenterService) {
   }
 
   ngOnInit(): void {
+    this.MediaCenterService$ = this._mediaSectionsItems.Selector$('MediaSectionsItems')
 
 
     const url = window.location.href;
