@@ -25,7 +25,9 @@ video$!:Observable<any>;
 
   }
 
-
+  getIDFromVideo(link:any){
+    return link.split("?v=")[1]
+    }
 
   /* closeDialog() {
     this._videoGalleryService.displayDialogs('VideoDialog', false);

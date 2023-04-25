@@ -16,7 +16,6 @@ width:any = '100% ';
 video$!:Observable<any>;
 apiLoaded = false;
   ngOnInit(): void {
-
      this.data = this._mediaCenterService.dataStore.VideoDetails ;
     if(this.data){
       console.log('datadatadatadata' , this.data)
@@ -32,6 +31,8 @@ apiLoaded = false;
       this.apiLoaded = true;
     }
   }
-
+   getIDFromVideo(link:any){
+   return link.split("?v=")[1]
+   }
 
 }

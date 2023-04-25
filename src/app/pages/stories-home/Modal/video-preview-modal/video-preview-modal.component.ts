@@ -30,4 +30,8 @@ width:any = '100%';
     this._videoGalleryService.displayDialogs('VideoDialog', false);
 } */
 
+getIDFromVideo(link:any){
+  return link.split("?v=")[1]
+  }
+
 }

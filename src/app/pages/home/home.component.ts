@@ -76,7 +76,6 @@ export class HomeComponent implements OnInit {
       })
     );
     this.Services$ = this._homeService.Selector$('Services');
-
     this.MediaSectionsItemsVideo$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsVideo')
     this.MediaSectionsItemsStory$ = this._mediaCenterService

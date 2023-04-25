@@ -133,22 +133,13 @@ a{
   color: #8a1538;
 }
 .owl-theme .owl-dots{
-  transform: translateY(-130px);
+  transform: translateY(-45px);
 }
-@media(max-width:992px) {
-  .owl-theme .owl-dots{
-    transform: translateY(-90px);
-  }
-}
-@media(max-width:768px) {
-  .owl-theme .owl-dots{
-    transform: translateY(-30px);
-  }
-}
+
 @media(max-width:600px) {
-  .owl-theme .owl-dots{
-    transform: translateY(-30px);
-  }
+ .owl-theme .owl-dots{
+  transform: translateY(-35px);
+}
 }
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
   background: #8a1538 !important;
@@ -191,6 +182,7 @@ a{
 }
 .employment-ad .owl-theme .owl-dots {
   transform: translateY(0);
+  padding-top: 15px !important;
 }
 .editor-img img{
   width: 100%;
@@ -464,3 +456,4 @@ color: #76102e;
   line-height: 28px;
   cursor: pointer;
 }
+

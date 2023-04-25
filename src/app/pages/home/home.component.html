@@ -218,7 +218,7 @@
 
 </section>
 
- <div class="section" style="padding: 80px 0 10px 0 ; ">
+ <div class="section text-start" style="padding: 80px 0 10px 0 ; ">
   <div class="container mt-4">
     <div class="section-header text-center">
       <h3 class="px-md-5 px-2  mb-0"> قصص صحفية </h3>
@@ -233,21 +233,65 @@
     <ng-container *ngIf="MediaSectionsItemsStory$ | async as data">
       <div class="row ">
           <div
-            class="col-md-4 img pb-3 d-flex align-items-stretch " *ngFor="let item of data.slice(-3)"
-            (click)="showPhotosDetails(item) ; addAvtiveNaveBar()"
+            class="col-md-4 img pb-3 d-flex align-items-stretch "
+            (click)="showPhotosDetails(data[0]) ; addAvtiveNaveBar()"
           >
-            <div style="width: 100% ; cursor: pointer;" routerLink="/mix-details/{{item.ID}}"   >
+            <div style="width: 100% ; cursor: pointer;" routerLink="/mix-details/{{data[0].ID}}"   >
               <img
-                [lazyLoad]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+                [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
                 style="width: 100%; height: 277px ; border-radius: 6px; object-fit: cover;  "
                 class="img-fluid"
                 alt=""/>
               <p style=" margin-bottom: 4px;">
-                {{ isEn ? item?.Title : (item?.Title | slice : 0 : 58) }}
+                {{ isEn ? data[0]?.Title : (data[0]?.Title | slice : 0 : 58) }}
                 {{
                   isEn
-                    ? item?.Title.length
-                    : item?.Title.length > 40
+                    ? data[0]?.Title.length
+                    : data[0]?.Title.length > 40
+                    ? "..."
+                    : ""
+                }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-md-4 img pb-3 d-flex align-items-stretch "
+            (click)="showPhotosDetails(data[1]) ; addAvtiveNaveBar()"
+          >
+            <div style="width: 100% ; cursor: pointer;" routerLink="/mix-details/{{data[1].ID}}"   >
+              <img
+                [lazyLoad]="'http://hamad_api.accessline.ps' + data[1]?.ImagePath"
+                style="width: 100%; height: 277px ; border-radius: 6px; object-fit: cover;  "
+                class="img-fluid"
+                alt=""/>
+              <p style=" margin-bottom: 4px;">
+                {{ isEn ? data[1]?.Title : (data[1]?.Title | slice : 0 : 58) }}
+                {{
+                  isEn
+                    ? data[1]?.Title.length
+                    : data[1]?.Title.length > 40
+                    ? "..."
+                    : ""
+                }}
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-md-4 img pb-3 d-flex align-items-stretch "
+            (click)="showPhotosDetails(data[2]) ; addAvtiveNaveBar()"
+          >
+            <div style="width: 100% ; cursor: pointer;" routerLink="/mix-details/{{data[2].ID}}"   >
+              <img
+                [lazyLoad]="'http://hamad_api.accessline.ps' + data[2]?.ImagePath"
+                style="width: 100%; height: 277px ; border-radius: 6px; object-fit: cover;  "
+                class="img-fluid"
+                alt=""/>
+              <p style=" margin-bottom: 4px;">
+                {{ isEn ? data[2]?.Title : (data[2]?.Title | slice : 0 : 58) }}
+                {{
+                  isEn
+                    ? data[2]?.Title.length
+                    : data[2]?.Title.length > 40
                     ? "..."
                     : ""
                 }}
@@ -457,6 +501,33 @@
 <div class="employment-ad" id="section5">
   <div class="container background">
     <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-md-9 d-flex justify-content-end flex-column" *ngIf="LandingPageData$ | async as data">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template
+              carouselSlide
+              *ngFor="let item of data?.Advertisements"
+            >
+              <div>
+                    <p>
+                      {{ item?.Title }}
+                    </p>
+                    <ng-container *ngIf="item?.ButtonAdded">
+                      <a [href]="item?.ButtonLink"
+                        >{{ item?.ButtonTitle }}
+                        <i class="fa-solid fa-arrow-left-long ps-1"></i
+                      ></a>
+                    </ng-container>
+              </div>
+            </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- employment-Ad -->
+<!-- <div class="employment-ad" id="section5">
+  <div class="container background">
+    <div class="row d-flex justify-content-center align-items-center">
       <div class="col-md-9">
         <owl-carousel-o [options]="customOptions">
           <ng-container *ngIf="LandingPageData$ | async as data">
@@ -485,4 +556,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
