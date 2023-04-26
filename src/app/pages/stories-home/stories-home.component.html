@@ -17,7 +17,7 @@
     <ng-container *ngIf="MediaSectionsItemsVideo$ | async as data">
       <div class="row align-items-stretch">
           <div
-            class="col-md-3 img pb-3" *ngFor="let item of data.slice(-4)"
+            class="col-md-3 img pb-3" *ngFor="let item of data.slice( 0 , 4)"
             (click)="showVideoPreview(item)"
           >
             <div style="width: 100%">
@@ -28,14 +28,7 @@
                 alt=""
               />
               <p style="color: #fff ; margin-bottom: 4px;">
-                {{ isEn ? item?.Title : (item?.Title | slice : 0 : 40) }}
-                {{
-                  isEn
-                    ? item?.Title?.length
-                    : item?.Title?.length > 40
-                    ? "..."
-                    : ""
-                }}
+                {{ isEn ? item?.Title : item?.Title }}
               </p>
             </div>
             <a class=" icon_video play-btn mb-4"></a>
@@ -43,6 +36,15 @@
       </div>
     </ng-container> -
   </div>
+
+  <!-- {{ isEn ? item?.Title : (item?.Title | slice : 0 : 40) }}
+  {{
+    isEn
+      ? item?.Title?.length
+      : item?.Title?.length > 40
+      ? "..."
+      : ""
+  }} -->
   <!-- قصص مكتوبة -->
   <div class="container write-sory">
     <div class="section-title">
@@ -56,7 +58,7 @@
     <ng-container *ngIf="MediaSectionsItemsStory$ | async as data">
       <div class="row align-items-stretch">
           <div
-            class="col-md-3 img pb-3" *ngFor="let item of data.slice(-4)"
+            class="col-md-3 img pb-3" *ngFor="let item of data.slice(0 , 4)"
             (click)="showPhotosDetails(item)"
           >
             <div style="width: 100%">
@@ -68,14 +70,7 @@
                 routerLink="/mix-details/{{item?.ID}}"
               />
               <p style=" color: #fff; margin-bottom: 4px;">
-                {{ isEn ? item?.Title : (item?.Title | slice : 0 : 40) }}
-                {{
-                  isEn
-                    ? item?.Title.length
-                    : item?.Title.length > 40
-                    ? "..."
-                    : ""
-                }}
+                {{ isEn ? item?.Title : item?.Title}}
               </p>
             </div>
           </div>

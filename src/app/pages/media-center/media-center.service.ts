@@ -18,6 +18,7 @@ export class MediaCenterService {
     showNews: undefined,
     PhotosDetails: undefined,
     VideoDetails: undefined,
+    VideoSlider: undefined,
     MedicalArticles: undefined,
     PressStories: undefined,
     ImageSection: undefined,
@@ -219,6 +220,7 @@ export interface StoreInterface {
   showNews?: any;
   PhotosDetails?: any;
   VideoDetails?: any;
+  VideoSlider?: any;
   MedicalArticles?: any;
   PressStories?: any;
   ImageSection?: any;

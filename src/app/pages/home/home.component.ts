@@ -11,6 +11,7 @@ import { filter, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MediaCenterService } from '../media-center/media-center.service';
 import { HomeService } from './home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -41,7 +42,8 @@ export class HomeComponent implements OnInit {
     private el: ElementRef,
     private location: Location,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private router: Router
   ) {}
   dominUrl: any;
   ngOnInit(): void {
@@ -127,7 +129,7 @@ export class HomeComponent implements OnInit {
   showVideoPreview(item: any) {
     this.display = true;
     this._mediaCenterService.updateStore({ VideoDetails: item });
-    console.log(item);
+    console.log("gfffffffeg" , item);
   }
 
   showPhotosDetails(item: any) {
@@ -212,4 +214,15 @@ export class HomeComponent implements OnInit {
     },
   };
 
+  openLink(item: any){
+    item?.Link.includes('youtu')?
+    this.showVideoSlider(item) :
+    this.router.navigate([item?.Link]);
+  }
+
+  showVideoSlider(item: any) {
+    this.display = true;
+    this._mediaCenterService.updateStore({ VideoSlider: item });
+    console.log("ffff00000000000000000000000000000000" , item);
+  }
 }

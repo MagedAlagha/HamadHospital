@@ -6,23 +6,24 @@ import { VideoGalleryService } from 'src/app/pages/media-center/video-gallery/vi
 @Component({
   selector: 'app-video-preview-modal',
   templateUrl: './video-preview-modal.component.html',
-  styleUrls: ['./video-preview-modal.component.scss']
+  styleUrls: ['./video-preview-modal.component.scss'],
 })
 export class VideoPreviewModalComponent implements OnInit {
-data:any;
-width:any = '100% ';
-  constructor(private _videoGalleryService:VideoGalleryService , private _mediaCenterService:MediaCenterService) {}
+  data: any;
+  width: any = '100% ';
+  constructor(
+    private _videoGalleryService: VideoGalleryService,
+    private _mediaCenterService: MediaCenterService
+  ) {}
 
-video$!:Observable<any>;
-apiLoaded = false;
+  video$!: Observable<any>;
+  apiLoaded = false;
   ngOnInit(): void {
-     this.data = this._mediaCenterService.dataStore.VideoDetails ;
-    if(this.data){
-      console.log('datadatadatadata' , this.data)
+    this.data = this._mediaCenterService.dataStore.VideoDetails;
+    if (this.data) {
+      console.log('datadatadatadata', this.data);
     }
-    this.video$ = this._mediaCenterService.Selector$('VideoDetails').pipe(tap(value=>{
-      console.log('data3333333' , value)
-    }));
+    this.video$ = this._mediaCenterService.Selector$('VideoDetails');
 
     if (!this.apiLoaded) {
       const tag = document.createElement('script');
@@ -31,8 +32,7 @@ apiLoaded = false;
       this.apiLoaded = true;
     }
   }
-   getIDFromVideo(link:any){
-   return link.split("be/")[1]
-   }
-
+  getIDFromVideo(item?: any) {
+    return item.split('be/')[1];
+  }
 }

@@ -24,6 +24,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { NgOptimizedImage } from '@angular/common';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { VideoPreviewSliderComponent } from './pages/home/Modals/video-preview-slider/video-preview-slider.component';
 
 
 
@@ -35,7 +36,8 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     HomeComponent,
     PageNotFoundComponent,
     ParallaxComponent,
-    VideoPreviewModalComponent ,
+    VideoPreviewModalComponent,
+    VideoPreviewSliderComponent ,
   ],
   imports: [
     BrowserModule,

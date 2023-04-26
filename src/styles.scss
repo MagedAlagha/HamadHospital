@@ -236,18 +236,42 @@ a{
  .p-galleria-content{
   position: relative;
  }
- .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-prev , .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-next {
-  position: absolute;
+  .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-prev , .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-next {
+ /*  position: absolute;
   top: 39%;
-  background-color: #ffffff !important;
-
+  background-color: #ffffff !important; */
+  display: none;
  }
- .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-prev{
+ /* .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-prev{
   right: 1% !important;
  }
  .p-galleria .p-galleria-thumbnail-container .p-galleria-thumbnail-next{
    left: 1% !important;
- }
+ }  */
+
+ .p-galleria .p-galleria-item-nav .p-galleria-item-prev-icon, .p-galleria .p-galleria-item-nav .p-galleria-item-next-icon {
+  font-size: 1.2rem !important;
+}
+.p-galleria-item-nav {
+  top: 45% !important;
+}
+.p-galleria .p-galleria-item-nav:not(.p-disabled):hover {
+  background: #8a1538 !important;
+  color: #fff !important;
+}
+.p-galleria .p-galleria-item-nav {
+  background: rgb(255, 255, 255) !important;
+  color: #8a1538 !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+.p-galleria .p-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #8a153863;
+}
+
 .vv .p-dialog{
   height:57%;
 }
@@ -457,3 +481,6 @@ color: #76102e;
   cursor: pointer;
 }
 
+.p-galleria-thumbnail-item{
+  overflow: hidden !important;
+}
