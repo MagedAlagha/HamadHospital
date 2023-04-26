@@ -1,11 +1,12 @@
 <ng-container *ngIf="videoSlider$ | async as item">
-
-  {{item}}
   <div class="video-preview">
-   <youtube-player [videoId]="'8QV3XDx5aKI'" [height]="width"
-   [width]="width"> </youtube-player>
-   </div>
+    <youtube-player
+      [videoId]="getIDFromVideo(item?.Link)"
+      [height]="width"
+      [width]="width"
+    >
+    </youtube-player>
+  </div>
 
- <!-- https://www.youtube.com/embed/Se73tHMWmIU -->
-
- </ng-container>
+  <!-- https://www.youtube.com/embed/Se73tHMWmIU -->
+</ng-container>

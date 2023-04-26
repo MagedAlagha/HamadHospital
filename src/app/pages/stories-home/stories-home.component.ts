@@ -53,29 +53,33 @@ export class StoriesHomeComponent implements OnInit {
       .Selector$('MediaSectionsItemsVideo')
       .pipe(
         map((val) => {
-           return val?.filter((item: any) => {
-             console.log('item777777777', val);
-           return item?.MainServiceID == MainSectionID;
-           });
-         })
+          return val?.filter((item: any) => {
+            console.log('item777777777', val);
+            return item?.MainServiceID == MainSectionID;
+          });
+        })
       );
 
     this.MediaSectionsItemsStory$ = this._mediaCenterService
       .Selector$('MediaSectionsItemsStory')
       .pipe(
-         map((val) => {
-           return val?.filter((item: any) => {
+        map((val) => {
+          return val?.filter((item: any) => {
             console.log('item', MainSectionID);
-           return item?.MainServiceID == MainSectionID;
-         });
+            return item?.MainServiceID == MainSectionID;
+          });
         })
       );
   }
 
   display: boolean = false;
   showVideoPreview(item: any) {
+    this._mediaCenterService.updateStore({ VideoDetails: undefined });
+    setTimeout(() => {
+      this._mediaCenterService.updateStore({ VideoDetails: item });
+    }, 500);
     this.display = true;
-    this._mediaCenterService.updateStore({ VideoDetails: item });
+
     console.log('item item item', item);
   }
 

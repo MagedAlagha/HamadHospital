@@ -7,30 +7,31 @@
           style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url(http://hamad_api.accessline.ps{{
             item?.ImagePath
           }});"
-           >
+        >
           <ng-container *ngIf="item.ShowTitle">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-md-7 col-10">
-                <div class="content" (click)="openLink(item)">
-                 <ng-container *ngIf="MediaCenterServiceNews$ | async as news">
-                  <p class="mb-1">{{ item.Title }} </p>
-                  <ng-container *ngFor="let item_2 of news">
-                     <ng-container *ngIf="item_2.ID  == 0 ">
-                   <a   (click)="showNews(item_2)" > </a>
-                   </ng-container>
-                  </ng-container>
-                </ng-container>
-                 </div>
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-md-7 col-10">
+                  <div class="content" (click)="openLink(item)">
+                    <ng-container
+                      *ngIf="MediaCenterServiceNews$ | async as news"
+                    >
+                      <p class="mb-1">{{ item.Title }}</p>
+                      <ng-container *ngFor="let item_2 of news">
+                        <ng-container *ngIf="item_2.ID == 0">
+                          <a (click)="showNews(item_2)"> </a>
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </ng-container>
+          </ng-container>
         </div>
       </ng-template>
     </ng-container>
   </owl-carousel-o>
-
 </div>
 <!-- <button
 
@@ -39,18 +40,25 @@
   <i class="pi pi-chevron-down"></i>
 </button>
  -->
- <div class="video-modal">
-  <p-dialog header="هذا النص هو مثال لنص يمكن أن يستبدل ..." [(visible)]="display" *ngIf="display" [modal]="true" [dismissableMask]="true"  [draggable]="false" [resizable]="false" [style]="{width: '47vw' , height: '28vw'}">
+<div class="video-modal">
+  <p-dialog
+    header="هذا النص هو مثال لنص يمكن أن يستبدل ..."
+    [(visible)]="display"
+    [modal]="true"
+    [dismissableMask]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '47vw', height: '28vw' }"
+  >
+    test
     <app-video-preview-slider></app-video-preview-slider>
   </p-dialog>
 </div>
- <div id="scroll-down-animation"   ngxScrollTo
-[ngxScrollToOffset]="680">
+<div id="scroll-down-animation" ngxScrollTo [ngxScrollToOffset]="680">
   <span class="mouse">
     <span class="move"></span>
   </span>
 </div>
-
 
 <!-- <button><i class="pi pi-chevron-up"></i></button>
  -->
@@ -75,16 +83,18 @@
         <div class="col-md-9 col-sm-6 col-12 text-center">
           <p style="font-weight: 600; line-height: 28px">
             <!-- {{ data?.MainInfo?.About }} -->
-            أحد أكبر مستشفيات التأهيل العاملة في قطاع غزة، يقدم خدمات التأهيل والكشف المجاني لحالات (أمراض الأعصاب، العظام، العضلات، مبتوري الأطراف، انحناء العمود الفقري، مشاكل السمع وزراعة القوقعة)
-            وذلك من خلال الاقسام الرئيسية التالية
+            أحد أكبر مستشفيات التأهيل العاملة في قطاع غزة، يقدم خدمات التأهيل
+            والكشف المجاني لحالات (أمراض الأعصاب، العظام، العضلات، مبتوري
+            الأطراف، انحناء العمود الفقري، مشاكل السمع وزراعة القوقعة) وذلك من
+            خلال الاقسام الرئيسية التالية
           </p>
         </div>
       </div>
       <div class="row">
         <div
-          class="col-lg-3 col-md-4 col-sm-6 pe-md-0 col-12 d-flex align-items-stretch  mt-4 mt-lg-0"
+          class="col-lg-3 col-md-4 col-sm-6 pe-md-0 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
         >
-          <a routerLink="/sections/medical-rehabilitation" style="width: 100%;">
+          <a routerLink="/sections/medical-rehabilitation" style="width: 100%">
             <div class="icon-box border-right">
               <div class="icon">
                 <img
@@ -101,8 +111,9 @@
           </a>
         </div>
         <div
-          class="col-lg-3 col-md-4 col-sm-6 px-md-0 col-12 d-flex align-items-stretch mt-4 mt-lg-0">
-          <a routerLink="/sections/prosthetics" style="width: 100%;">
+          class="col-lg-3 col-md-4 col-sm-6 px-md-0 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+        >
+          <a routerLink="/sections/prosthetics" style="width: 100%">
             <div class="icon-box">
               <div class="icon">
                 <img
@@ -119,8 +130,9 @@
           </a>
         </div>
         <div
-          class="col-lg-3 col-md-4 col-sm-6 px-md-0 col-12 d-flex align-items-stretch mt-4 mt-lg-0">
-          <a routerLink="/sections/hearing-balance" style="width: 100%;">
+          class="col-lg-3 col-md-4 col-sm-6 px-md-0 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
+        >
+          <a routerLink="/sections/hearing-balance" style="width: 100%">
             <div class="icon-box">
               <div class="icon">
                 <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
@@ -137,8 +149,8 @@
         <div
           class="col-lg-3 col-md-4 ps-md-0 col-sm-6 col-12 d-flex align-items-stretch mt-4 mt-lg-0"
         >
-          <a routerLink="/sections/outpatient-clinics" style="width: 100%;" >
-            <div class="icon-box bordr-left" >
+          <a routerLink="/sections/outpatient-clinics" style="width: 100%">
+            <div class="icon-box bordr-left">
               <div class="icon">
                 <img
                   [src]="avatar + data?.Services?.OutpatientClinicsIconPath"
@@ -160,179 +172,242 @@
 <!-- -------------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------------------------------------------------------------------- -->
 <div class="video-modal">
-  <p-dialog header="هذا النص هو مثال لنص يمكن أن يستبدل ..." [(visible)]="display" *ngIf="display" [modal]="true" [dismissableMask]="true"  [draggable]="false" [resizable]="false" [style]="{width: '47vw' , height: '28vw'}">
+  <p-dialog
+    header="هذا النص هو مثال لنص يمكن أن يستبدل ..."
+    [(visible)]="displayCards"
+    [modal]="true"
+    [dismissableMask]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '47vw', height: '28vw' }"
+  >
     <app-video-preview-modal></app-video-preview-modal>
   </p-dialog>
 </div>
 
 <!-- Stores -->
-<section class="stores" id="section2" >
-
+<section class="stores" id="section2">
   <div class="section-header text-center">
-    <h3 class="px-md-5 px-2 text-white mb-0"> معرض الفيديو </h3>
+    <h3 class="px-md-5 px-2 text-white mb-0">معرض الفيديو</h3>
   </div>
   <div class="container">
     <div class="section-title">
       <div class="d-flex justify-content-end mb-0">
-        <a  routerLink="/media-center/video/video-main" (click)="addAvtiveNaveBar()" >شاهد المزيد</a>
+        <a
+          routerLink="/media-center/video/video-main"
+          (click)="addAvtiveNaveBar()"
+          >شاهد المزيد</a
+        >
       </div>
       <div class="line d-block mb-2"></div>
     </div>
     <!-- row -->
-    <ng-container *ngIf="MediaSectionsItemsVideo$ |async as data ">
-      <div class="row ">
-      <div class="col-lg-8  img "  (click)="showVideoPreview(data[0])" >
-        <div style="width: 100%; object-fit: cover;" >
-            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[0]?.ImagePath"  class="img-fluid main-img"
-            class="img-fluid" alt="">
-           <img src="../../../assets/img/video.mp4" class="video-icon" alt="">
-           <p style="color: #fff;">{{ isEn ? data[0]?.Title : data[0]?.Title  }}</p>
-        </div>
-        <a class=" icon_video play-btn mb-4"></a>
-
-      </div>
-      <div class="col-lg-4 ">
-        <div class="row">
-          <div class="col-12 img" (click)="showVideoPreview(data[1])">
-            <figure style="width: 100%;" >
-              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[1]?.ImagePath"  class="img-fluid Video-img"
-           class="img-fluid" alt="">
-              <figcaption>{{ isEn ? data[1]?.Title : data[1]?.Title   }}</figcaption>
-            </figure>
-            <a class=" icon_video play-btn mb-4"></a>
+    <ng-container *ngIf="MediaSectionsItemsVideo$ | async as data">
+      <div class="row">
+        <div class="col-lg-8 img" (click)="showVideoPreview(data[0])">
+          <div style="width: 100%; object-fit: cover">
+            <img
+              [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
+              class="img-fluid main-img"
+              class="img-fluid"
+              alt=""
+            />
+            <img
+              src="../../../assets/img/video.mp4"
+              class="video-icon"
+              alt=""
+            />
+            <p style="color: #fff">
+              {{ isEn ? data[0]?.Title : data[0]?.Title }}
+            </p>
           </div>
-          <div class="col-12 img" (click)="showVideoPreview(data[2])">
-            <figure style="width: 100%;">
-              <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ data[2]?.ImagePath"  class="img-fluid Video-img "
-              class="img-fluid" alt="">
-              <figcaption>{{ isEn ? data[2]?.Title : data[2]?.Title }}</figcaption>
-            </figure>
-                    <a class=" icon_video play-btn mb-4"></a>
-          </div>
+          <a class="icon_video play-btn mb-4"></a>
         </div>
-        <div>
+        <div class="col-lg-4">
+          <div class="row">
+            <div class="col-12 img" (click)="showVideoPreview(data[1])">
+              <figure style="width: 100%">
+                <img
+                  [lazyLoad]="
+                    'http://hamad_api.accessline.ps' + data[1]?.ImagePath
+                  "
+                  class="img-fluid Video-img"
+                  class="img-fluid"
+                  alt=""
+                />
+                <figcaption>
+                  {{ isEn ? data[1]?.Title : data[1]?.Title }}
+                </figcaption>
+              </figure>
+              <a class="icon_video play-btn mb-4"></a>
+            </div>
+            <div class="col-12 img" (click)="showVideoPreview(data[2])">
+              <figure style="width: 100%">
+                <img
+                  [lazyLoad]="
+                    'http://hamad_api.accessline.ps' + data[2]?.ImagePath
+                  "
+                  class="img-fluid Video-img"
+                  class="img-fluid"
+                  alt=""
+                />
+                <figcaption>
+                  {{ isEn ? data[2]?.Title : data[2]?.Title }}
+                </figcaption>
+              </figure>
+              <a class="icon_video play-btn mb-4"></a>
+            </div>
+          </div>
+          <div></div>
         </div>
       </div>
-    </div>
     </ng-container>
   </div>
-
 </section>
 
- <div class="section text-start" style="padding: 80px 0 10px 0 ; ">
+<div class="section text-start" style="padding: 80px 0 10px 0">
   <div class="container mt-4">
     <div class="section-header text-center">
-      <h3 class="px-md-5 px-2  mb-0"> قصص صحفية </h3>
+      <h3 class="px-md-5 px-2 mb-0">قصص صحفية</h3>
     </div>
     <div class="section-title">
-      <div class="d-flex justify-content-end mb-2" >
-        <a routerLink="/media-center/press-stories" style="cursor: pointer; color:#8a1538;" (click)="addAvtiveNaveBar()" >اقرأ المزيد</a>
+      <div class="d-flex justify-content-end mb-2">
+        <a
+          routerLink="/media-center/press-stories"
+          style="cursor: pointer; color: #8a1538"
+          (click)="addAvtiveNaveBar()"
+          >اقرأ المزيد</a
+        >
       </div>
-      <div class="line d-block mb-3" style="height: 3px;"></div>
-
+      <div class="line d-block mb-3" style="height: 3px"></div>
     </div>
     <ng-container *ngIf="MediaSectionsItemsStory$ | async as data">
-      <div class="row ">
+      <div class="row">
+        <div
+          class="col-md-4 img pb-3 d-flex align-items-stretch"
+          (click)="showPhotosDetails(data[0]); addAvtiveNaveBar()"
+        >
           <div
-            class="col-md-4 img pb-3 d-flex align-items-stretch "
-            (click)="showPhotosDetails(data[0]) ; addAvtiveNaveBar()"
+            style="width: 100%; cursor: pointer"
+            routerLink="/mix-details/{{ data[0]?.ID }}"
           >
-            <div style="width: 100% ; cursor: pointer;" routerLink="/mix-details/{{data[0]?.ID}}"   >
-              <img
-                [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
-                style="width: 100%; height: 277px ; border-radius: 6px; object-fit: cover;  "
-                class="img-fluid"
-                alt=""/>
-              <p style=" margin-bottom: 4px;">
-                {{ isEn ? data[0]?.Title : data[0]?.Title  }}
-
-              </p>
-            </div>
+            <img
+              [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
+              style="
+                width: 100%;
+                height: 277px;
+                border-radius: 6px;
+                object-fit: cover;
+              "
+              class="img-fluid"
+              alt=""
+            />
+            <p style="margin-bottom: 4px">
+              {{ isEn ? data[0]?.Title : data[0]?.Title }}
+            </p>
           </div>
+        </div>
+        <div
+          class="col-md-4 img pb-3 d-flex align-items-stretch"
+          (click)="showPhotosDetails(data[1]); addAvtiveNaveBar()"
+        >
           <div
-            class="col-md-4 img pb-3 d-flex align-items-stretch "
-            (click)="showPhotosDetails(data[1]) ; addAvtiveNaveBar()"
+            style="width: 100%; cursor: pointer"
+            routerLink="/mix-details/{{ data[1]?.ID }}"
           >
-            <div style="width: 100% ; cursor: pointer;" routerLink="/mix-details/{{data[1]?.ID}}"   >
-              <img
-                [lazyLoad]="'http://hamad_api.accessline.ps' + data[1]?.ImagePath"
-                style="width: 100%; height: 277px ; border-radius: 6px; object-fit: cover;  "
-                class="img-fluid"
-                alt=""/>
-              <p style=" margin-bottom: 4px;">
-                {{ isEn ? data[1]?.Title : data[1]?.Title  }}
-
-              </p>
-            </div>
+            <img
+              [lazyLoad]="'http://hamad_api.accessline.ps' + data[1]?.ImagePath"
+              style="
+                width: 100%;
+                height: 277px;
+                border-radius: 6px;
+                object-fit: cover;
+              "
+              class="img-fluid"
+              alt=""
+            />
+            <p style="margin-bottom: 4px">
+              {{ isEn ? data[1]?.Title : data[1]?.Title }}
+            </p>
           </div>
+        </div>
+        <div
+          class="col-md-4 img pb-3 d-flex align-items-stretch"
+          (click)="showPhotosDetails(data[2]); addAvtiveNaveBar()"
+        >
           <div
-            class="col-md-4 img pb-3 d-flex align-items-stretch "
-            (click)="showPhotosDetails(data[2]) ; addAvtiveNaveBar()"
+            style="width: 100%; cursor: pointer"
+            routerLink="/mix-details/{{ data[2]?.ID }}"
           >
-            <div style="width: 100% ; cursor: pointer;" routerLink="/mix-details/{{data[2]?.ID}}"   >
-              <img
-                [lazyLoad]="'http://hamad_api.accessline.ps' + data[2]?.ImagePath"
-                style="width: 100%; height: 277px ; border-radius: 6px; object-fit: cover;  "
-                class="img-fluid"
-                alt=""/>
-              <p style=" margin-bottom: 4px;">
-                {{ isEn ? data[2]?.Title : data[2]?.Title  }}
-
-              </p>
-            </div>
+            <img
+              [lazyLoad]="'http://hamad_api.accessline.ps' + data[2]?.ImagePath"
+              style="
+                width: 100%;
+                height: 277px;
+                border-radius: 6px;
+                object-fit: cover;
+              "
+              class="img-fluid"
+              alt=""
+            />
+            <p style="margin-bottom: 4px">
+              {{ isEn ? data[2]?.Title : data[2]?.Title }}
+            </p>
           </div>
+        </div>
       </div>
     </ng-container>
   </div>
- </div>
+</div>
 
 <!------------------------------------------------------------------------------------------------------>
 
-<section class="news" id="section4" style="padding: 55px 0 80px 0 ; " >
+<section class="news" id="section4" style="padding: 55px 0 80px 0">
   <div class="container">
-      <div class="row gy-4">
-        <ng-container *ngIf="LastNews$ | async as data">
-        <div class="col-md-8"><!--  d-flex align-items-stretch -->
+    <div class="row gy-4">
+      <ng-container *ngIf="LastNews$ | async as data">
+        <div class="col-md-8">
+          <!--  d-flex align-items-stretch -->
           <div class="section-title">
-            <h4 routerLink="/media-center/news/news-main" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >الأخبار</h4>
-        </div>
+            <h4
+              routerLink="/media-center/news/news-main"
+              style="cursor: pointer"
+              (click)="addAvtiveNaveBar()"
+            >
+              الأخبار
+            </h4>
+          </div>
           <div class="row box">
             <!--  <ng-container *ngFor="let item of data">  </ng-container> -->
             <div class="col-md-6">
               <div
                 class="post-box"
-                (click)="showNews(data[0]) ; addAvtiveNaveBar()"
-                routerLink="/mix-details/{{ data[0]?.ID }}">
+                (click)="showNews(data[0]); addAvtiveNaveBar()"
+                routerLink="/mix-details/{{ data[0]?.ID }}"
+              >
                 <div class="post-img">
                   <img
                     [lazyLoad]="
-                      'http://hamad_api.accessline.ps' +
-                      data[0]?.ImagePath "/>
+                      'http://hamad_api.accessline.ps' + data[0]?.ImagePath
+                    "
+                  />
                 </div>
                 <div
-                  class="d-flex justify-content-between align-items-baseline mb-1">
-                  <ng-container
-                    *ngIf="data[0]?.MainServiceID === 1">
+                  class="d-flex justify-content-between align-items-baseline mb-1"
+                >
+                  <ng-container *ngIf="data[0]?.MainServiceID === 1">
                     <span class="categories">التأهيل الطبي</span>
                   </ng-container>
-                  <ng-container
-                    *ngIf="data[0]?.MainServiceID === 2"
-                  >
+                  <ng-container *ngIf="data[0]?.MainServiceID === 2">
                     <span class="categories">الاطراف الصناعية</span>
                   </ng-container>
-                  <ng-container
-                    *ngIf="data[0]?.MainServiceID === 3"
-                  >
+                  <ng-container *ngIf="data[0]?.MainServiceID === 3">
                     <span class="categories">السمع والتوازن</span>
                   </ng-container>
-                  <ng-container
-                    *ngIf="data[0]?.MainServiceID === 4"
-                  >
+                  <ng-container *ngIf="data[0]?.MainServiceID === 4">
                     <span class="categories">العيادة الخارجية</span>
                   </ng-container>
-                  <ng-container
-                    *ngIf="data[0]?.MainServiceID === 5"
-                  >
+                  <ng-container *ngIf="data[0]?.MainServiceID === 5">
                     <span class="categories">الأخبار</span>
                   </ng-container>
 
@@ -341,26 +416,31 @@
                   }}</span>
                 </div>
                 <h3 class="post-title">
-                  {{
-                    isEn
-                      ? data[0]?.Title
-                      : data[0]?.Title
-                  }}
+                  {{ isEn ? data[0]?.Title : data[0]?.Title }}
                 </h3>
-                <a routerLink="/mix-details/{{ data[0]?.ID }}" class="readmore mt-auto d-flex align-items-baseline"><span>إقراء المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
+                <a
+                  routerLink="/mix-details/{{ data[0]?.ID }}"
+                  class="readmore mt-auto d-flex align-items-baseline"
+                  ><span>إقراء المزيد</span
+                  ><i class="fa-solid fa-arrow-left-long ps-1"></i>
                 </a>
               </div>
             </div>
 
             <div class="col-md-6 mt-md-0 mt-3">
               <div class="titlis-box">
-                <p style="cursor: pointer;" routerLink="/media-center/news/news-main"><strong>إقراء المزيد</strong></p>
+                <p
+                  style="cursor: pointer"
+                  routerLink="/media-center/news/news-main"
+                >
+                  <strong>إقراء المزيد</strong>
+                </p>
                 <ng-container *ngFor="let item of data.slice(1, 4)">
                   <a
                     routerLink="/mix-details/{{ item.ID }}"
-                    (click)="showNews(item) ; addAvtiveNaveBar()"
+                    (click)="showNews(item); addAvtiveNaveBar()"
                     class="title"
-                    >{{item.Title}}
+                    >{{ item.Title }}
                     <i class="fa-solid fa-arrow-left-long ps-1"></i>
                   </a>
                 </ng-container>
@@ -368,72 +448,69 @@
             </div>
           </div>
         </div>
-
       </ng-container>
       <!-- قسم منوعات -->
-        <div class="col-md-4  flex-column"><!--  d-flex align-items-stretch -->
-          <div class="section-title mb-2">
-            <h4  routerLink="/media-center/mix" style="cursor: pointer;" (click)="addAvtiveNaveBar()" >منوعات</h4>
-          </div>
+      <div class="col-md-4 flex-column">
+        <!--  d-flex align-items-stretch -->
+        <div class="section-title mb-2">
+          <h4
+            routerLink="/media-center/mix"
+            style="cursor: pointer"
+            (click)="addAvtiveNaveBar()"
+          >
+            منوعات
+          </h4>
+        </div>
 
-          <div class="news-box2">
-            <ng-container *ngIf="MediaSectionsItemsLastVarious$ | async as data">
-              <div
+        <div class="news-box2">
+          <ng-container *ngIf="MediaSectionsItemsLastVarious$ | async as data">
+            <div
               class="post-box"
-              style=" border-radius: 8px;"
-              (click)="showNews(data[0]) ; addAvtiveNaveBar()"
-              routerLink="/mix-details/{{ data[0]?.ID }}">
+              style="border-radius: 8px"
+              (click)="showNews(data[0]); addAvtiveNaveBar()"
+              routerLink="/mix-details/{{ data[0]?.ID }}"
+            >
               <div class="post-img">
                 <img
-                style="height: auto;"
+                  style="height: auto"
                   [lazyLoad]="
-                    'http://hamad_api.accessline.ps' +
-                    data[0]?.ImagePath "/>
-
+                    'http://hamad_api.accessline.ps' + data[0]?.ImagePath
+                  "
+                />
               </div>
               <div
-                class="d-flex justify-content-between align-items-baseline mb-1">
-                <ng-container
-                  *ngIf="data[0]?.MainServiceID === 1">
+                class="d-flex justify-content-between align-items-baseline mb-1"
+              >
+                <ng-container *ngIf="data[0]?.MainServiceID === 1">
                   <span class="categories">التأهيل الطبي</span>
                 </ng-container>
-                <ng-container
-                  *ngIf="data[0]?.MainServiceID === 2"
-                >
+                <ng-container *ngIf="data[0]?.MainServiceID === 2">
                   <span class="categories">الاطراف الصناعية</span>
                 </ng-container>
-                <ng-container
-                  *ngIf="data[0]?.MainServiceID === 3"
-                >
+                <ng-container *ngIf="data[0]?.MainServiceID === 3">
                   <span class="categories">السمع والتوازن</span>
                 </ng-container>
-                <ng-container
-                  *ngIf="data[0]?.MainServiceID === 4"
-                >
+                <ng-container *ngIf="data[0]?.MainServiceID === 4">
                   <span class="categories">العيادة الخارجية</span>
                 </ng-container>
-                <ng-container
-                  *ngIf="data[0]?.MainServiceID === 5"
-                >
+                <ng-container *ngIf="data[0]?.MainServiceID === 5">
                   <span class="categories">الأخبار</span>
                 </ng-container>
-                <span class="post-date">{{
-                  data[0]?.CreatedDate | date
-                }}</span>
+                <span class="post-date">{{ data[0]?.CreatedDate | date }}</span>
               </div>
               <h3 class="post-title">
-                {{
-                  isEn
-                    ? data[0]?.Title
-                    : data[0]?.Title
-                }}
+                {{ isEn ? data[0]?.Title : data[0]?.Title }}
               </h3>
-              <a routerLink="/mix-details/{{ data[0]?.ID }}" class="readmore mt-auto d-flex align-items-baseline"><span>إقراء المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
+              <a
+                routerLink="/mix-details/{{ data[0]?.ID }}"
+                class="readmore mt-auto d-flex align-items-baseline"
+                ><span>إقراء المزيد</span
+                ><i class="fa-solid fa-arrow-left-long ps-1"></i>
               </a>
             </div>
-            </ng-container>
+          </ng-container>
 
-           <!--  <owl-carousel-o [options]="mix">
+          <!--  <owl-carousel-o [options]="mix">
               <ng-container *ngIf="MediaSectionsItemsLastVarious$ | async as data">
                  <ng-template carouselSlide *ngFor="let item of data">
                   <img
@@ -461,11 +538,9 @@
                 </ng-template>
               </ng-container>
             </owl-carousel-o> -->
-
-
-          </div>
         </div>
       </div>
+    </div>
   </div>
 </section>
 
@@ -473,24 +548,24 @@
 <div class="employment-ad" id="section5">
   <div class="container background">
     <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-md-9 d-flex justify-content-end flex-column" *ngIf="LandingPageData$ | async as data">
+      <div
+        class="col-md-9 d-flex justify-content-end flex-column"
+        *ngIf="LandingPageData$ | async as data"
+      >
         <owl-carousel-o [options]="customOptions">
-            <ng-template
-              carouselSlide
-              *ngFor="let item of data?.Advertisements"
-            >
-              <div>
-                    <p>
-                      {{ item?.Title }}
-                    </p>
-                    <ng-container *ngIf="item?.ButtonAdded">
-                      <a [href]="item?.ButtonLink"
-                        >{{ item?.ButtonTitle }}
-                        <i class="fa-solid fa-arrow-left-long ps-1"></i
-                      ></a>
-                    </ng-container>
-              </div>
-            </ng-template>
+          <ng-template carouselSlide *ngFor="let item of data?.Advertisements">
+            <div>
+              <p>
+                {{ item?.Title }}
+              </p>
+              <ng-container *ngIf="item?.ButtonAdded">
+                <a [href]="item?.ButtonLink"
+                  >{{ item?.ButtonTitle }}
+                  <i class="fa-solid fa-arrow-left-long ps-1"></i
+                ></a>
+              </ng-container>
+            </div>
+          </ng-template>
         </owl-carousel-o>
       </div>
     </div>

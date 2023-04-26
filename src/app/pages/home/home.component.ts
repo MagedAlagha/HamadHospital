@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   MediaSectionsItemsLastVarious$!: Observable<any>;
   MediaCenterService$!: Observable<any>;
   MediaCenterService2$!: Observable<any>;
-  currentSection:number = 0;
+  currentSection: number = 0;
   constructor(
     private _homeService: HomeService,
     private _mediaCenterService: MediaCenterService,
@@ -78,17 +78,21 @@ export class HomeComponent implements OnInit {
       })
     );
     this.Services$ = this._homeService.Selector$('Services');
-    this.MediaSectionsItemsVideo$ = this._mediaCenterService
-      .Selector$('MediaSectionsItemsVideo')
-    this.MediaSectionsItemsStory$ = this._mediaCenterService
-      .Selector$('MediaSectionsItemsStory')
+    this.MediaSectionsItemsVideo$ = this._mediaCenterService.Selector$(
+      'MediaSectionsItemsVideo'
+    );
+    this.MediaSectionsItemsStory$ = this._mediaCenterService.Selector$(
+      'MediaSectionsItemsStory'
+    );
 
-    this.LastNews$ = this._mediaCenterService
-      .Selector$('MediaSectionsItemsLastNews')
-    this.MediaSectionsItemsLastVarious$ = this._mediaCenterService
-      .Selector$('MediaSectionsItemsLastVarious')
+    this.LastNews$ = this._mediaCenterService.Selector$(
+      'MediaSectionsItemsLastNews'
+    );
+    this.MediaSectionsItemsLastVarious$ = this._mediaCenterService.Selector$(
+      'MediaSectionsItemsLastVarious'
+    );
 
-/*     this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
+    /*     this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
       map((val) => {
         return val?.filter((item: any) => {
           return item.MediaSectionID == 7 || item.ShowVarious;
@@ -125,11 +129,15 @@ export class HomeComponent implements OnInit {
   /* ************************************************************************* */
 
   display: boolean = false;
-
+  displayCards: boolean = false;
   showVideoPreview(item: any) {
-    this.display = true;
-    this._mediaCenterService.updateStore({ VideoDetails: item });
-    console.log("gfffffffeg" , item);
+    this.displayCards = true;
+    this._mediaCenterService.updateStore({ VideoDetails: undefined });
+    setTimeout(() => {
+      this._mediaCenterService.updateStore({ VideoDetails: item });
+    }, 500);
+
+    console.log('gfffffffeg', item);
   }
 
   showPhotosDetails(item: any) {
@@ -214,15 +222,19 @@ export class HomeComponent implements OnInit {
     },
   };
 
-  openLink(item: any){
-    item?.Link.includes('youtu')?
-    this.showVideoSlider(item) :
-    this.router.navigate([item?.Link]);
+  openLink(item: any) {
+    if (item?.Link.includes('youtu')) {
+      this.showVideoSlider(item);
+    } else {
+      this.router.navigate([item?.Link]);
+    }
   }
 
   showVideoSlider(item: any) {
+    this._mediaCenterService.updateStore({ VideoSlider: undefined });
+    setTimeout(() => {
+      this._mediaCenterService.updateStore({ VideoSlider: item });
+    }, 500);
     this.display = true;
-    this._mediaCenterService.updateStore({ VideoSlider: item });
-    console.log("ffff00000000000000000000000000000000" , item);
   }
 }

@@ -11,10 +11,7 @@ import { VideoGalleryService } from 'src/app/pages/media-center/video-gallery/vi
 export class VideoPreviewSliderComponent implements OnInit {
   data: any;
   width: any = '100% ';
-  constructor(
-    private _videoGalleryService: VideoGalleryService,
-    private _mediaCenterService: MediaCenterService
-  ) {}
+  constructor(private _mediaCenterService: MediaCenterService) {}
 
   videoSlider$!: Observable<any>;
   apiLoaded = false;
@@ -33,9 +30,7 @@ export class VideoPreviewSliderComponent implements OnInit {
     }
   }
   getIDFromVideo(link: any) {
-    const splited = link.split('be/')[1];
-    console.log('splited:', splited);
-
+    const splited = link?.split('be/')[1];
     return splited;
   }
 }
