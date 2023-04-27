@@ -29,16 +29,16 @@
 
 
         <ng-container
-            *ngIf="!data.Images"
+            *ngIf="data.Images?.length == 1"
           >
             <img
               [src]="'http://hamad_api.accessline.ps' + data?.ImagePath"
-              style="
-                object-fit: cover;
-                width: 100%;
-                height: auto;
-                border-radius: 8px;
-              "
+               [ngStyle]="{
+                'height': 'auto',
+                'object-fit': 'cover',
+                'border-radius':'8px',
+                'width':'100%'
+            }"
               class="img-fluid"
               alt=""
             />
@@ -79,28 +79,28 @@
                <ng-container *ngIf="data?.length == 1 ">
                 <img
                   [src]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
-                  style="
-                    object-fit: cover;
-                    width: 100%;
-                    height: auto;
-                    border-radius: 8px;
-                  "
+                  [ngStyle]="{
+                    'height': 'auto',
+                    'object-fit': 'cover',
+                    'border-radius':'8px',
+                    'width':'100%'
+                }"
                   class="img-fluid"
                   alt=""/>
               </ng-container>
               <ng-container *ngIf="data?.length > 1 ">
-                <p-galleria [numVisible]="3" [value]="data" [showItemNavigators]="true"  > <!-- [ngClass]="{'onePHoto': data?.length >= 1}" -->
+                <p-galleria [numVisible]="data?.length" [value]="data" [showItemNavigators]="true"  > <!-- [ngClass]="{'onePHoto': data?.length >= 1}" -->
                   <ng-template pTemplate="item" let-item >
                     <img
                       [lazyLoad]="
                         'http://hamad_api.accessline.ps' + item?.ImagePath
                       "
-                      style="
-                        width: 100%;
-                        height: auto;
-                        object-fit: cover;
-                        border-radius: 4px;
-                      "
+                      [ngStyle]="{
+                        'height': 'auto',
+                        'object-fit': 'cover',
+                        'border-radius':'8px',
+                        'width':'100%'
+                    }"
                     />
                   </ng-template>
 
@@ -191,7 +191,7 @@
             </div>
             <div class="share-post">
               <!--    <span> <i class="fa-brands fa-whatsapp"></i></span> -->
-              <a [href]="pdfFile" target="_blank" class="pdf" *ngIf="pdfFile">PDF</a>
+              <a [href]="pdfFile" target="_blank" class="pdf" *ngIf="pdfFile">لتحميل النشرة الإخبارية PDF إضغط هنا</a>
 
               <span
                 ngxClipboard
