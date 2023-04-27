@@ -29,7 +29,7 @@
 
 
         <ng-container
-            *ngIf="data.Images?.length == 1"
+            *ngIf="data.Images === null"
           >
             <img
               [src]="'http://hamad_api.accessline.ps' + data?.ImagePath"
