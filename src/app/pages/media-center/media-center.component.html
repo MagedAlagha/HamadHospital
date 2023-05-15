@@ -83,7 +83,18 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-9" >
+      <div class="col-md-9">
+
+        <div class="row mb-3">
+          <div class=" col-12 col-md-6">
+            <span class="p-float-label p-input-icon-left w-100">
+                <i class="pi pi-search"></i>
+                <input type="text" id="inputtext-left" pInputText [(ngModel)]="valueIconLeft" class="py-2" >
+                <label for="inputtext-left">البحث</label>
+            </span>
+          </div>
+        </div>
+
         <ng-container *ngIf="MediaCenterService$ |async as data ; else loading"></ng-container>
         <router-outlet></router-outlet>
       </div>

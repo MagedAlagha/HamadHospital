@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   MediaSectionsItemsStory$!: Observable<any>;
   MediaSectionsItemsLastVarious$!: Observable<any>;
   MediaCenterService$!: Observable<any>;
-  MediaCenterService2$!: Observable<any>;
+  MediaCenterStories$!: Observable<any>;
   currentSection: number = 0;
   constructor(
     private _homeService: HomeService,
@@ -113,12 +113,13 @@ export class HomeComponent implements OnInit {
           });
         })
       );
-    this.MediaCenterService2$ = this._mediaCenterService
+
+    this.MediaCenterStories$ = this._mediaCenterService
       .Selector$('MediaSectionsItems')
       .pipe(
         map((val) => {
           return val?.filter((item: any) => {
-            return item.MediaSectionID == 5;
+            return item.MediaSectionID == 5 || item.MediaSectionID == 6;
           });
         })
       );

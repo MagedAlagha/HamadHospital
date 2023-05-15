@@ -280,6 +280,7 @@ a{
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: overlay;
 }
 label span{
   font-size: 13px;
@@ -469,9 +470,6 @@ color: #76102e;
   max-width: 100%;
 }
 
- html{
-  overflow-x: overlay;
-}
 
 
 .post-pp h2{

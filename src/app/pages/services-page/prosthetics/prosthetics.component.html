@@ -29,40 +29,33 @@
       </div>
     </div>
 
-    <div class="row d-flex justify-content-center">
-      <!-- Test 552 78585 -->
-
-      <ng-container *ngIf="Prosthetics$ | async "></ng-container>
-      <ng-container *ngIf="ProstheticsTypes$ | async as data">
-        <div class="col-md-9 mb-5" *ngFor="let item of data">
-          <div class="tabel">
-            <div
-              class="header-tabel d-flex justify-content-center align-items-baseline text-center"
-
+  <!-- -------------------------------------------------- -->
+  <hr />
+  <div class="container main-body-box">
+    <ng-container *ngIf="getOutpatientClinicsDepartments$ | async as data">
+      <div class="row">
+        <div class="col-md-3">
+          <ng-container *ngFor="let item of data">
+            <h3
+              class="py-2 body-box"
+              (click)="storeData(item)"
+              [ngClass]="{ active: active == item.ID }"
             >
-              <h5 class="ps-1">
-                {{ item.NameAr }}
-              </h5>
-            </div>
-            <div class="row text-center"  *ngFor="let child of item?.children">
-              <div class="col-6 pt-3">
-                <div class="body-title">{{child.NameAr}}</div>
-
-                <div class="body-box " *ngFor="let child2 of child?.children">{{child2.NameAr}}</div>
-
-              </div>
-              <div class="col-6 pt-3" >
-               <div class="body-title">العمر</div>
-                 <div class="body-box" *ngFor="let child2 of child?.children">{{child2.AgeAr}}</div>
-
-              </div>
-            </div>
+              {{ isEn ? item.NameEn : item.NameAr }}
+            </h3>
+          </ng-container>
+        </div>
+        <div class="col-md-9">
+          <div class="content-box">
+            <app-services-content></app-services-content>
           </div>
         </div>
-      </ng-container>
-      <br />
+      </div>
+    </ng-container>
+  </div>
 
-    </div>
+
+
   </div>
 </section>
 

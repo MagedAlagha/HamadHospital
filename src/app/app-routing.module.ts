@@ -105,6 +105,20 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'ads',
+    loadChildren: () =>
+      import('./pages/ads/ads.module').then(
+        (m) => m.AdsModule
+      ),
+  },
+  {
+    path: 'ads-details',
+    loadChildren: () =>
+      import('./pages/ads-details/ads-details.module').then(
+        (m) => m.AdsDetailsModule
+      ),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

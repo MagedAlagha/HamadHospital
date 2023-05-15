@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class MediaCenterComponent implements OnInit {
   active: any = 1;
   MediaCenterService$!:Observable<any>;
-
+  valueIconLeft:any;
   constructor(public router: Router , private _mediaSectionsItems:MediaCenterService) {
   }
 
@@ -52,4 +52,6 @@ export class MediaCenterComponent implements OnInit {
   getMediaSectionsItemsByID(id?:any){
     this._mediaSectionsItems.getMediaSectionsItems(id);
   }
+
+
 }

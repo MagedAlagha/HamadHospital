@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MediaCenterComponent } from './media-center.component';
 import { RouterModule } from '@angular/router';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [MediaCenterComponent],
   imports: [
     CommonModule,
+    InputTextModule,
+    FormsModule,
     RouterModule.forChild([
       {
         path: '',

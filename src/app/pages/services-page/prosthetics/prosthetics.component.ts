@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, tap, map, switchMap, filter, concat } from 'rxjs';
 import { HomeService } from '../../home/home.service';
 import { ProstheticsService } from './prosthetics.service';
+import { HearingBalanceService } from '../hearing-balance/hearing-balance.service';
+import { OutpatientClinicsService } from '../outpatient-clinics/outpatient-clinics.service';
 
 @Component({
   selector: 'app-prosthetics',
@@ -11,86 +13,48 @@ import { ProstheticsService } from './prosthetics.service';
 export class ProstheticsComponent implements OnInit {
   isEn = document.dir == 'ltr' ? true : false;
   Services$!: Observable<any>;
-  ProstheticsTypes$!: Observable<any>;
-  Prosthetics$!: Observable<any>;
-  prosthetics: any[] = [];
+  HearingDepartemt$!: Observable<any>;
+  HearingServices$!: Observable<any>;
+  getOutpatientClinicsDepartments$!: Observable<any>;
+  OutpatientClinicsDepartmentsServices$!: Observable<any>;
+  active: any;
+  value1: any;
   constructor(
     private _homeService: HomeService,
-    private _prostheticsService: ProstheticsService
+    private _hearingBalanceService: HearingBalanceService,
+    private _outpatientClinicsService: OutpatientClinicsService
   ) {}
 
   ngOnInit(): void {
-
+    this._outpatientClinicsService.getOutpatientClinicsDepartments();
+    this._outpatientClinicsService.getOutpatientClinicsDepartmentsServices();
     this.Services$ = this._homeService.Selector$('Services');
-    this._prostheticsService.getProstheticsTypes();
-    this._prostheticsService.getProsthetics();
-    this.Prosthetics$ = this._prostheticsService.Selector$('prosthetics').pipe(
-      map((val: any) => {
-        return val?.filter((item: any) => {
-          return item.IsActive;
-        });
-      }),
-      filter((val:any)=>val.length),
-      map((val: any) => {
-        return (
-          val.map((res: any) => {
-            return {
-              ...res,
-              ID: 0,
-              ParentID: res.ProstheticsTypeID,
-            };
-          })
+    this._hearingBalanceService.getServices();
 
-        );
-      }),
-      switchMap((prosthetic: any) => {
-        return (this.ProstheticsTypes$ = this._prostheticsService
-          .Selector$('prostheticsTypes')
-          .pipe(
-            map((val: any) => {
-              return val?.filter((item: any) => {
-                return item.IsActive;
-              });
-            }),
-            map((prostheticsType: any) => {
-              return this.convertToTree(prostheticsType.concat(prosthetic));
-            }),
-
-
-          ));
-      })
-    );
+    this.getOutpatientClinicsDepartments$ = this._outpatientClinicsService
+      .Selector$('OutpatientClinicsDepartments')
+      .pipe(
+        map((val) => {
+          return val?.filter((item: any) => {
+            return item.IsActive && item.TypeID === 2;
+          });
+        }),
+        tap((value) => {
+          const firstItem = Array.isArray(value) && value?.length? value?.[0] : undefined;
+          if (firstItem) {
+            this.storeData(firstItem);
+          }
+        })
+      );
   }
 
+  storeData(item: any) {
+    console.log('storeData', item);
 
-
-
-
-  convertToTree(list: any[]) {
-    // });
-    var map = [],
-      node,
-      roots = [],
-      i;
-    for (i = 0; i < list.length; i += 1) {
-      map[list[i]['ID']] = i; // initialize the map
-      list[i].key = list[i]['ID'];
-      list[i].children = []; // initialize the children
+    this._outpatientClinicsService.updateStore({ dataShow: item });
+    if (item) {
+      this.active = item.ID;
     }
-    for (i = 0; i < list.length; i += 1) {
-      node = list[i];
-      if (
-        ((node['ParentID'] && node['ParentID'] != '0') ||
-          node['ParentID'] == 0) &&
-        node['ParentID'] !== '#'
-      ) {
-        // if you have dangling branches check that map[node.parentId] exists
-        list[map[node['ParentID']]]?.children.push(node);
-      } else {
-        roots.push(node);
-      }
-    }
-
-    return roots;
   }
+
 }
