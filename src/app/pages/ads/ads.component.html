@@ -5,23 +5,37 @@
   </div>
 </section>
 
-
 <div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-3 ">
+      <ng-container *ngIf="codes$ |async as code">
+       <label for="" class="mb-2">التصنيفات</label>
+        <p-dropdown [placeholder]="'اختيار'" (onChange)="onChange($event)"
+         [options]="code" [optionLabel]="'Name'"
+        [optionValue]="'ID'" ></p-dropdown>
+      </ng-container>
+    </div>
+  </div>
 
-  <ng-container *ngIf="LandingPageData$ | async as data">
-    <div class="box-blog py-4" *ngFor="let item of data.Advertisements"  >
+<hr>
+  <ng-container *ngIf="Advertisements$ | async as data ; else loading">
+    <div class="box-blog py-4" *ngFor="let item of data"  >
       <div class="row align-items-center">
         <div class="col-md-8 d-flex align-items-stretch ">
           <div>
             <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
-            <h2  routerLink="/mix-details/{{item.ID}}"> {{item?.Title }} </h2>
-           <div class="post-pp">
-            <p  [innerHTML]="item?.Desc | slice:0:200 "></p>
-           </div>
-           <!--  <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p> -->
-            <a routerLink="/mix-details/{{item.ID}}"   class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-                المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
-            </a>
+            <h2> {{item?.TitleAr }} </h2>
+         <!--   <div class="post-pp">
+            <p  [innerHTML]="item?.TitleAr | slice:0:200 "></p>
+           </div> -->
+
+           <ng-container *ngIf="item?.ButtonAdded">
+            <a class="btn-ad" target="_blank" [href]="item?.ButtonLink"
+              >{{ item?.ButtonTitleAr }}
+              <i class="fa-solid fa-arrow-left-long ps-1"></i
+            ></a>
+           </ng-container>
+
           </div>
         </div>
       </div>
@@ -34,3 +48,6 @@
 
 
 
+<ng-template #loading>
+  <img src="../../../assets/img/loading.gif" class="text-center" alt="">
+</ng-template>

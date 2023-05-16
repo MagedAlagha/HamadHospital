@@ -76,7 +76,7 @@ export class ServicesHospitalService {
               isLoading: true,
           }
       );
-  }
+    }
     getCodes2() {
       this.getFormApi(
           'Codes/CodesSelect',

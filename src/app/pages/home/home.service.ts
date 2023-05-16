@@ -19,6 +19,8 @@ export class HomeService {
     LandingPageInfo: undefined,
     Advertisements: undefined,
     MedicalRehabilitationFeatures: undefined,
+    codes: undefined,
+
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -51,10 +53,11 @@ export class HomeService {
       'MedicalRehabilitationFeatures'
     );
   }
-  getAdvertisements() {
+  getAdvertisements(ID?:any) {
     this.getFormApi(
       'Advertisements/AdvertisementsSearch',
-      'Advertisements'
+      'Advertisements',
+      { CategoryID: ID },
     );
   }
   getMainInfo() {
@@ -70,6 +73,17 @@ export class HomeService {
       { Lang: lang },
     );
   }
+
+  getCodes(id:any) {
+    this.getFormApi(
+        'Codes/CodesSelect',
+        'codes',
+        {
+            ParentID:id
+        }
+
+    );
+}
 
   getFormApi(
     api: string,
@@ -94,5 +108,7 @@ export interface StoreInterface {
   LandingPageInfo: any;
   Advertisements: any;
   MedicalRehabilitationFeatures: any;
+  codes:any
+
 }
 export type selectorsType = keyof StoreInterface;

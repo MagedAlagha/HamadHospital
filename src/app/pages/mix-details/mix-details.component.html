@@ -158,6 +158,21 @@
             </ng-container>
           </ng-container>
 
+          <ng-container *ngIf="data.MediaSectionID?.includes(8)">
+            <img
+              [src]="'http://hamad_api.accessline.ps' + data?.ImagePath"
+               [ngStyle]="{
+                'height': 'auto',
+                'object-fit': 'contain',
+                'border-radius':'8px',
+                'width':'40%'
+            }"
+              class="img-fluid"
+              alt=""
+            />
+          </ng-container>
+
+
           <div class="d-flex justify-content-between align-items-center my-4">
             <div class="entry-meta">
               <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
@@ -165,11 +180,12 @@
                 >نشر بتاريخ: <span>{{ data?.CreatedDate | date }} </span>
               </span>
             </div>
-            <div class="share-post">
 
-              <ng-container *ngIf="data.MediaSectionID?.includes(8)" >
-                <a [href]="pdfFile" target="_blank" class="pdf" *ngIf="pdfFile">لتحميل النشرة الإخبارية PDF إضغط هنا</a>
-              </ng-container>
+            <ng-container *ngIf="data.MediaSectionID?.includes(8)" >
+              <a [href]="pdfFile" target="_blank" class="pdf" *ngIf="pdfFile"> <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">  لتحميل النشرة الإخبارية PDF</a>
+            </ng-container>
+
+            <div class="share-post">
 
               <span
                 ngxClipboard

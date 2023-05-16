@@ -56,15 +56,23 @@ section {
 @media(max-width:600px) {
   .content p {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
   }
   .hero .img {
-    height: 75vh;
+    height: 50vh;
   }
+
 /*   .content {
     margin-bottom: 80px;
   } */
 }
+
+@media(max-width:600px) {
+  .hero .img {
+    height: 40vh;
+  }
+}
+
 
 .social-links {
   position: absolute;

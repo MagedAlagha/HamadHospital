@@ -112,13 +112,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'ads-details',
-    loadChildren: () =>
-      import('./pages/ads-details/ads-details.module').then(
-        (m) => m.AdsDetailsModule
-      ),
-  },
-  {
     path: '**',
     component: PageNotFoundComponent,
   },

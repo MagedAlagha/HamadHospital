@@ -634,13 +634,12 @@
       <!-- قسم منوعات -->
       <div class="col-md-4 flex-column">
         <!--  d-flex align-items-stretch -->
-        <div class="section-title mb-2">
+        <div class="section-title mb-2"  *ngIf="LandingPageData$ | async as data">
           <h4
             routerLink="/media-center/mix"
             style="cursor: pointer"
-            (click)="addAvtiveNaveBar()"
-          >
-            منوعات
+            (click)="addAvtiveNaveBar()">
+          {{data.MainInfo.HomeVariousTitle}}
           </h4>
         </div>
 

@@ -23,7 +23,9 @@ export class NavbarComponent implements OnInit {
   previousScrollPosition = 0;
   fisrt:any = 0 ;
   activeNave$!:Observable<any>;
-  constructor(public router: Router , private _mediaCenterService:MediaCenterService) {}
+  LandingPageData$!: Observable<any>;
+
+  constructor(public router: Router , private _mediaCenterService:MediaCenterService , private _homeService:HomeService) {}
 
   ngOnInit(): void {
     this._mediaCenterService.Selector$('activeNave').pipe(map(value=> this.active = value )).subscribe()
@@ -41,7 +43,7 @@ export class NavbarComponent implements OnInit {
     }else if(url.includes('beneficiaries')){
       this.active = 6;
     }
-
+    this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo');
 
     /*   if (window.scrollY > 100) {
       selectHeader.classList.add('header-scrolled')

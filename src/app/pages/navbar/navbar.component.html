@@ -68,9 +68,7 @@
           <i class="fa-solid fa-chevron-down ps-2 arrow2"></i>
           <ul>
             <li>
-              <a routerLink="/services-form/beneficiaries"
-                >خدمة مستفيدين</a
-              >
+              <a routerLink="/services-form/beneficiaries">خدمة مستفيدين</a>
             </li>
             <li>
               <a routerLink="/services-form/visitor">خدمة زائرين</a>
@@ -94,8 +92,9 @@
       </ul>
 
       <div
-        routerLink="/services-form/beneficiaries" class="drop-down d-inline-block">
-        <a style="color: #fff;">حجز موعد</a>
+        *ngIf="LandingPageData$ | async as data"
+        class="drop-down d-inline-block">
+        <a style="color: #fff;" target="_blank" [href]="data?.MainInfo?.BookAppointment">حجز موعد</a>
       </div>
 
     </div>
