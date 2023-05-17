@@ -54,23 +54,29 @@ section {
 }
 
 @media(max-width:600px) {
+  .content{
+    padding: 8px;
+  }
   .content p {
-    font-weight: 700;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 12px;
   }
   .hero .img {
     height: 50vh;
+  }
+  #scroll-down-animation{
+    display: none;
+  }
+  .hero .img {
+    height: 40vh;
+  }
+  .content {
+    margin-bottom: 80px;
   }
 
 /*   .content {
     margin-bottom: 80px;
   } */
-}
-
-@media(max-width:600px) {
-  .hero .img {
-    height: 40vh;
-  }
 }
 
 
