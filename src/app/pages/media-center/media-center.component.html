@@ -98,10 +98,13 @@
               <label for="inputtext-left">البحث</label>
             </span>
           </div>
-          <div class="col-12 col-md-2">
-            <button pButton type="button" (click)="search()">بحث</button>
+          <div class="col-12 col-md-4 mt-md-0 mt-2">
+            <button pButton type="button"class="add mx-2" (click)="search()">بحث</button>
+            <button pButton type="button" class="clear" (click)="clear()">مسح</button>
           </div>
         </div>
+
+        <hr>
 
         <ng-container
           *ngIf="MediaCenterService$ | async as data; else loading"

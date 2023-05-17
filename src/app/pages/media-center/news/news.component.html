@@ -1,7 +1,7 @@
 <ng-container *ngIf="MediaCenterService$ |async as data">
   <div class="box-blog py-4" *ngFor="let item of data"  >
     <div class="row align-items-center">
-      <div class="col-md-8 d-flex align-items-stretch ">
+      <div class="col-md-8 d-flex align-items-stretch order-md-0 order-1 mb-mt-0 mt-3  ">
         <div>
           <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
           <h2  routerLink="/mix-details/{{item.ID}}"  (click)="showNews(item)"  > {{ isEn ? item?.Title : item?.Title }} </h2>
@@ -14,7 +14,7 @@
           </a>
         </div>
       </div>
-      <div class="col-md-4 d-flex align-items-stretch ">
+      <div class="col-md-4 d-flex align-items-stretch order-md-1 order-0  ">
         <img  [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
       </div>
     </div>

@@ -57,5 +57,10 @@ export class MediaCenterComponent implements OnInit {
     this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft})
     this._mediaSectionsItems.getMediaSectionsItems()
   }
+  clear(){
+    this.valueIconLeft = null;
+    this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft})
+    this._mediaSectionsItems.getMediaSectionsItems()
+  }
 
 }

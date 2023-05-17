@@ -75,14 +75,22 @@ li a.active , a:hover , .active{
 }
 }
 button{
-  background-color: #8a1538;
-  border-color: #8a1538;
-  padding: 8px 35px;
+  padding: 9px 25px;
   color: #fff;
+  font-size: .9rem;
   border-radius: 6px;
   border: none;
   outline: none;
   border-bottom: transparent !important;
+}
+.add{
+  background-color: #8a1538;
+  border-color: #8a1538;
+
+}
+.clear{
+  background-color: #282828;
+  border-color: #282828;
 }
 .p-button:enabled:hover , .p-button:enabled:active{
   background-color: #76102e;
