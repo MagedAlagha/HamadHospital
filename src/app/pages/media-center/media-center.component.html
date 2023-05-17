@@ -84,23 +84,33 @@
         </ul>
       </div>
       <div class="col-md-9">
-
         <div class="row mb-3">
-          <div class=" col-12 col-md-6">
+          <div class="col-12 col-md-6">
             <span class="p-float-label p-input-icon-left w-100">
-                <i class="pi pi-search"></i>
-                <input type="text" id="inputtext-left" pInputText [(ngModel)]="valueIconLeft" class="py-2" >
-                <label for="inputtext-left">البحث</label>
+              <i class="pi pi-search"></i>
+              <input
+                type="text"
+                id="inputtext-left"
+                pInputText
+                [(ngModel)]="valueIconLeft"
+                class="py-2"
+              />
+              <label for="inputtext-left">البحث</label>
             </span>
+          </div>
+          <div class="col-12 col-md-2">
+            <button (click)="search()"></button>
           </div>
         </div>
 
-        <ng-container *ngIf="MediaCenterService$ |async as data ; else loading"></ng-container>
+        <ng-container
+          *ngIf="MediaCenterService$ | async as data; else loading"
+        ></ng-container>
         <router-outlet></router-outlet>
       </div>
     </div>
   </div>
 </section>
-  <ng-template #loading>
-    <img src="../../../../assets/img/loading.gif" class="text-center" alt="">
-  </ng-template>
+<ng-template #loading>
+  <img src="../../../../assets/img/loading.gif" class="text-center" alt="" />
+</ng-template>

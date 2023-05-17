@@ -52,6 +52,9 @@ export class MediaCenterComponent implements OnInit {
   getMediaSectionsItemsByID(id?:any){
     this._mediaSectionsItems.getMediaSectionsItems(id);
   }
-
+  search(){
+    this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft})
+    this._mediaSectionsItems.getMediaSectionsItems()
+  }
 
 }

@@ -24,7 +24,7 @@
 <ng-container *ngIf="filterVideo$ |async as data">
 
   <div class="col-md-6 mb-4"  *ngFor="let item of data">
-    <div class="img"  (click)="showVideoPreview(item)">
+    <div class="img"  (click)="updateQueryParams(item?.VideoPath)">
       <img
       [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
         class="img-fluid main-img"

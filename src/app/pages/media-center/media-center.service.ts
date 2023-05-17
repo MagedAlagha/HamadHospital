@@ -48,6 +48,7 @@ export class MediaCenterService {
     MediaSectionsItemsMix: undefined,
 
     FilterVideo: undefined,
+    FilterTitle: undefined,
   });
 
   store$: Observable<StoreInterface> = this.store.asObservable();
@@ -67,14 +68,18 @@ export class MediaCenterService {
       distinctUntilChanged()
     );
   }
-  index=1
+  index = 1;
   /*  *******  MediaSectionsItems - API ******* */
-  getMediaSectionsItems(ID: any) {
+  ID: any;
+  getMediaSectionsItems(ID?: any) {
+    if (ID) {
+      this.ID = ID;
+    }
     this.updateStore({
       MediaSectionsItems: undefined,
     });
-    this.index=1
-    this.FungetMediaSectionsItems(ID);
+    this.index = 1;
+    this.FungetMediaSectionsItems(this.ID);
   }
   FungetMediaSectionsItems(ID: any) {
     this._http
@@ -82,13 +87,17 @@ export class MediaCenterService {
         MediaSectionID: ID,
         pageSize: 4,
         pageCount: this.index,
+        title: this.dataStore.FilterTitle,
       })
       .subscribe((value) => {
         this.updateStore({
-          MediaSectionsItems: [...(this.dataStore.MediaSectionsItems||[]), ...value],
+          MediaSectionsItems: [
+            ...(this.dataStore.MediaSectionsItems || []),
+            ...value,
+          ],
         });
         if (value?.length) {
-          this.index=this.index+1
+          this.index = this.index + 1;
           this.FungetMediaSectionsItems(ID);
         }
       });
@@ -249,5 +258,6 @@ export interface StoreInterface {
   tecStoryInfo?: any;
 
   FilterVideo?: any;
+  FilterTitle?: any;
 }
 export type selectorsType = keyof StoreInterface;
