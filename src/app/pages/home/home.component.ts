@@ -224,7 +224,11 @@ export class HomeComponent implements OnInit {
   };
 
   openLink(item: any) {
-      this.router.navigate([item?.Link]);
+      this.router.navigate(['/media-center/video/video-main'],{
+        queryParams:{
+        path: item?.Link
+        }
+      });
   }
 
   showVideoSlider(item: any) {

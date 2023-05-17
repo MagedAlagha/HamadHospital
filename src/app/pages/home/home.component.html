@@ -13,7 +13,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-7 col-9">
 
-                    <div class="content" [ngStyle]="{'background-color': item.TitleBackgroundColor ? item.TitleBackgroundColor : 'transparent'}" [routerLink]="item?.Link">
+                    <div class="content" [ngStyle]="{'background-color': item.TitleBackgroundColor ? item.TitleBackgroundColor : 'transparent'}" (click)="openLink(item)">
                       <ng-container
                         *ngIf="MediaCenterServiceNews$ | async as news">
                         <p class="mb-1">{{ item.Title }}</p>
