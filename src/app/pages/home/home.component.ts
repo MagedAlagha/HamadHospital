@@ -224,11 +224,7 @@ export class HomeComponent implements OnInit {
   };
 
   openLink(item: any) {
-    if (item?.Link.includes('youtu')) {
-      this.showVideoSlider(item);
-    } else {
       this.router.navigate([item?.Link]);
-    }
   }
 
   showVideoSlider(item: any) {

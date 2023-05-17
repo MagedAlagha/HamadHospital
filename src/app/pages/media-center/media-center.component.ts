@@ -22,6 +22,7 @@ export class MediaCenterComponent implements OnInit {
     const url = window.location.href;
     if (url.includes('news')) {
       this.active = 1;
+      this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft})
       this.getMediaSectionsItemsByID(1);
     }else if(url.includes('photo')){
       this.active = 2;

@@ -12,18 +12,19 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-md-7 col-9">
-                  <div class="content" (click)="openLink(item)">
-                    <ng-container
-                      *ngIf="MediaCenterServiceNews$ | async as news"
-                    >
-                      <p class="mb-1">{{ item.Title }}</p>
-                      <ng-container *ngFor="let item_2 of news">
-                        <ng-container *ngIf="item_2.ID == 0">
-                          <a (click)="showNews(item_2)"> </a>
+
+                    <div class="content" [ngStyle]="{'background-color': item.TitleBackgroundColor ? item.TitleBackgroundColor : 'transparent'}" [routerLink]="item?.Link">
+                      <ng-container
+                        *ngIf="MediaCenterServiceNews$ | async as news">
+                        <p class="mb-1">{{ item.Title }}</p>
+                        <ng-container *ngFor="let item_2 of news">
+                          <ng-container *ngIf="item_2.ID == 0">
+                            <a (click)="showNews(item_2)"> </a>
+                          </ng-container>
                         </ng-container>
                       </ng-container>
-                    </ng-container>
-                  </div>
+                    </div>
+
                 </div>
               </div>
             </div>
