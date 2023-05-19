@@ -1,8 +1,17 @@
-p{
+.content{
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 35px;
   padding: 38vh 0;
+  flex-direction: column;
+
+  p{
+    font-size: 3rem;
+  }
+
+  a{
+    color: #8a1538;
+    font-size: 1rem;
+  }
 }

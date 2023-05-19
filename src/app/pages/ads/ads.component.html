@@ -21,13 +21,14 @@
   <ng-container *ngIf="Advertisements$ | async as data ; else loading">
     <div class="box-blog py-4" *ngFor="let item of data"  >
       <div class="row align-items-center">
-        <div class="col-md-8 d-flex align-items-stretch ">
+        <div class="col-12 d-flex align-items-stretch ">
           <div>
             <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
             <h2> {{item?.TitleAr }} </h2>
-         <!--   <div class="post-pp">
-            <p  [innerHTML]="item?.TitleAr | slice:0:200 "></p>
-           </div> -->
+
+            <div class="post-pp">
+            <p  [innerHTML]="item?.DescriptionAr"></p>
+           </div>
 
            <ng-container *ngIf="item?.ButtonAdded">
             <a class="btn-ad" target="_blank" [href]="item?.ButtonLink"

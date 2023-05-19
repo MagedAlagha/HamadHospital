@@ -223,12 +223,27 @@ export class HomeComponent implements OnInit {
     },
   };
 
+
+  /* if (item?.Link.includes('youtu')) {
+    this.showVideoSlider(item);
+  } else {
+    this.router.navigate([item?.Link]);
+  }
+} */
+
+
   openLink(item: any) {
+
+    if (item?.Link.includes('youtu')) {
       this.router.navigate(['/media-center/video/video-main'],{
         queryParams:{
         path: item?.Link
         }
       });
+    } else {
+      this.router.navigate([item?.Link]);
+    }
+
   }
 
   showVideoSlider(item: any) {
