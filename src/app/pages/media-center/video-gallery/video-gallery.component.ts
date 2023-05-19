@@ -55,7 +55,7 @@ export class VideoGalleryComponent implements OnInit {
 
   filterVideo(id?: any) {
     this.active = id;
-    this._mediaCenterService.getFilterVideo(id);
+    this._mediaCenterService.getMediaSectionsItems(3, id);
   }
   updateQueryParams(VideoPath:any) {
     this.router.navigate([], {

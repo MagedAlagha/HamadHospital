@@ -71,7 +71,7 @@ export class MediaCenterService {
   index = 1;
   /*  *******  MediaSectionsItems - API ******* */
   ID: any;
-  getMediaSectionsItems(ID?: any) {
+  getMediaSectionsItems(ID?: any , MainServiceID?: any  ) {
     if (ID) {
       this.ID = ID;
     }
@@ -79,7 +79,11 @@ export class MediaCenterService {
       MediaSectionsItems: undefined,
     });
     this.index = 1;
-    this.FungetMediaSectionsItems(this.ID);
+    if(!MainServiceID){
+      this.FungetMediaSectionsItems(this.ID);
+    }else{
+      this.FungetMediaSectionsItemsForVideo(ID , MainServiceID )
+    }
   }
   FungetMediaSectionsItems(ID: any) {
     this._http
@@ -88,6 +92,25 @@ export class MediaCenterService {
         pageSize: 4,
         pageCount: this.index,
         title: this.dataStore.FilterTitle,
+      })
+      .subscribe((value) => {
+        this.updateStore({
+          MediaSectionsItems: [
+            ...(this.dataStore.MediaSectionsItems || []),
+            ...value,
+          ],
+        });
+        if (value?.length) {
+          this.index = this.index + 1;
+          this.FungetMediaSectionsItems(ID);
+        }
+      });
+  }
+  FungetMediaSectionsItemsForVideo(ID: any , MainServiceID?: any ) {
+    this._http
+      .getData('MediaSectionsItems/MediaSectionsItemsSearch', {
+        MediaSectionID: ID,
+        MainServiceID:MainServiceID
       })
       .subscribe((value) => {
         this.updateStore({
