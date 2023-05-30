@@ -18,6 +18,8 @@ export class ServicesHospitalService {
       codes1: undefined,
       codes2: undefined,
       codes3: undefined,
+      complaintID:undefined,
+      beneficiariesID:undefined,
     });
 
     store$: Observable<StoreInterface> = this.store.asObservable();
@@ -120,8 +122,10 @@ export class ServicesHospitalService {
 }
 
 export interface StoreInterface {
-  codes1: any;
-  codes2: any;
-  codes3: any;
+  codes1?: any;
+  codes2?: any;
+  codes3?: any;
+  complaintID?: any;
+  beneficiariesID?: any;
 }
 export type selectorsType = keyof StoreInterface;

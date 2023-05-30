@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   MediaSectionsItemsLastVarious$!: Observable<any>;
   MediaCenterService$!: Observable<any>;
   MediaCenterStories$!: Observable<any>;
+  MediaSectionsSuceessStoryHome$!: Observable<any>;
   currentSection: number = 0;
   constructor(
     private _homeService: HomeService,
@@ -51,10 +52,11 @@ export class HomeComponent implements OnInit {
     console.log('this.dominUrl', this.dominUrl);
     /*    ;
      */
-
-    this._mediaCenterService.getMediaSectionsItems(null);
+this._mediaCenterService.getMediaSectionsItems()
+    this._mediaCenterService.getMediaSectionsSuceessStoryHome('5,6');
     this._mediaCenterService.getMediaSectionsItemsVideo(3);
     this._mediaCenterService.getMediaSectionsItemsStory(5);
+    this._mediaCenterService.getMediaSectionsItemsStory(6);
     this._mediaCenterService.getMediaSectionsItemsLastNews(1);
     this._mediaCenterService.getMediaSectionsItemsVarious(7);
     this._homeService.getAdvertisements();
@@ -114,15 +116,7 @@ export class HomeComponent implements OnInit {
         })
       );
 
-    this.MediaCenterStories$ = this._mediaCenterService
-      .Selector$('MediaSectionsItems')
-      .pipe(
-        map((val) => {
-          return val?.filter((item: any) => {
-            return item.MediaSectionID == 5 || item.MediaSectionID == 6;
-          });
-        })
-      );
+    this.MediaSectionsSuceessStoryHome$ = this._mediaCenterService.Selector$('MediaSectionsSuceessStoryHome')
 
     /* **************************************************************************************** */
   }
@@ -163,13 +157,13 @@ export class HomeComponent implements OnInit {
 
   customOptions: OwlOptions = {
     loop: true,
-    rtl: true,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
     autoplay: true,
     nav: true,
     dots: true,
+    rtl: true,
     navSpeed: 400,
     navText: [
       '<i class="fa-solid fa-chevron-left"></i>',
@@ -194,13 +188,13 @@ export class HomeComponent implements OnInit {
 
   mix: OwlOptions = {
     loop: true,
-    rtl: true,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
     autoplay: true,
     nav: false,
     dots: false,
+    rtl: true,
     navSpeed: 400,
     navText: [
       '<i class="fa-solid fa-chevron-left"></i>',
@@ -240,8 +234,10 @@ export class HomeComponent implements OnInit {
         path: item?.Link
         }
       });
-    } else {
+    } else if(item?.Link.includes('media-center') || item?.Link.includes('mix-details') ) {
       this.router.navigate([item?.Link]);
+    }else{
+      window.open(item?.Link, '_blank');
     }
 
   }

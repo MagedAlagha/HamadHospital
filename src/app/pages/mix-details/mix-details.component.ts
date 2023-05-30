@@ -42,9 +42,22 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
       .Selector$('ImageSection')
       .pipe(
         tap((value) => {
-          let pdf = value.find((item: any) => item?.ImagePath?.includes('pdf'));
+         /*  let pdf = value.find((item: any) => item?.ImagePath?.includes('pdf'));
           this.pdfFile = pdf ? environment.FileUrl + pdf?.ImagePath : null;
-          console.log('pdfFile', this.pdfFile);
+          ;
+           value.filter((item: any) => console.log('pdfFile', item) ) */
+
+
+           this.pdfFile  = value
+
+           /*  if(value?.ImagePath?.includes('pdf')){
+              console.log("value : " , value)
+
+            }else{
+              console.log("majed : " )
+
+            } */
+
         }),
         map((value) =>
           value.filter((item: any) => !item?.ImagePath?.includes('pdf'))
@@ -54,7 +67,6 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
       tap((value) => {
         if(value?.ID){
           this._mediaCenterService.getImageSection(value.ID);
-
         }
       })
     );

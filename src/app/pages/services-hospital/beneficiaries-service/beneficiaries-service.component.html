@@ -1,9 +1,9 @@
 <h3>خدمة مستفيدين</h3>
 <p-tabView styleClass="tabview-custom">
-  <p-tabPanel header="حجز موعد" [selected]="true">
+  <p-tabPanel header="حجز موعد" [selected]="selecetd1">
    <app-appointment-booking></app-appointment-booking>
   </p-tabPanel>
-  <p-tabPanel header="اقتراح / شكوى">
+  <p-tabPanel header="اقتراح / شكوى" [selected]="selecetd2">
    <app-suggestion></app-suggestion>
   </p-tabPanel>
   <p-tabPanel header="تقييم أداء">

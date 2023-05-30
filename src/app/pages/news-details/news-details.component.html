@@ -70,7 +70,7 @@
           <div class="entry-meta">
             <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
             <span
-              >نشر بتاريخ: <span>{{ item?.CreatedDate | date }} </span>
+              >نشر بتاريخ: <span>{{ item?.ItemDate | date }} </span>
             </span>
           </div>
           <div class="share-post">
@@ -128,7 +128,7 @@
                           <div class="post-pp">
                             <p [innerHTML]="item2?.Desc | slice : 0 : 100"></p>
                             <span style="font-size: 12px">
-                              تاريخ النشر : {{ item2?.CreatedDate | date }}
+                              تاريخ النشر : {{ item2?.ItemDate | date }}
                             </span>
                           </div>
                         </div>

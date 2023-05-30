@@ -11,11 +11,20 @@ import { ServicesHospitalService } from '../services-hospital.service';
   styleUrls: ['./beneficiaries-service.component.scss'],
 })
 export class BeneficiariesServiceComponent implements OnInit {
+  selecetd1:boolean = true;
+  selecetd2!:boolean;
 
-  constructor( ) {
+  constructor(private _servicesHospitalService:ServicesHospitalService  ) {
   }
-
   ngOnInit(): void {
-   ;
+     const data =  this._servicesHospitalService.dataStore.complaintID
+     if(data == 2){
+     this.selecetd1 = false
+     this.selecetd2 = true
+     }
+     else{
+      this.selecetd1 = true
+     this.selecetd2 = false
+     }
   }
 }

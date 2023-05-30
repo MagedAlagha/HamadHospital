@@ -36,24 +36,6 @@
         </li>
         <li class="nav-item">
           <a
-            routerLink="/sections"
-            class="nav-link"
-            [ngClass]="{ active: active == 2 }"
-            (click)="active = 2"
-            >الخدمات
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/media-center/news/news-main"
-            [ngClass]="{ active: active == 3 }"
-            (click)="active = 3"
-            >المركز الاعلامي
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
             routerLink="/about-us"
             class="nav-link"
             [ngClass]="{ active: active == 4 }"
@@ -61,6 +43,25 @@
             >حول المستشفى
           </a>
         </li>
+        <li class="nav-item">
+          <a
+            routerLink="/sections"
+            class="nav-link"
+            [ngClass]="{ active: active == 2 }"
+            (click)="active = 2"
+            >الخدمات
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/media-center/news/news-main"
+            [ngClass]="{ active: active == 3 }"
+            (click)="active = 3"
+            >المركز الاعلامي
+          </a>
+        </li> -->
+
         <div class="drop-down drop-down-2 d-inline-block ps-1"  >
           <a style="color: black; font-weight: 500;" [ngClass]="{ active: active == 5 }"
           (click)="active = 5" >الخدمات الالكترونية</a>
@@ -78,11 +79,17 @@
                 >خدمة مؤسسات</a
               >
             </li>
+            <li>
+              <a routerLink="/services-form/beneficiaries"
+              (click)="complaint(2)"
+                >الشكاوي</a
+              >
+            </li>
           </ul>
         </div>
         <li class="nav-item">
           <a
-            routerLink="/services-form/beneficiaries"
+            routerLink="/contact-us"
             class="nav-link"
             [ngClass]="{ active: active == 6 }"
             (click)="active = 6"
@@ -92,11 +99,9 @@
       </ul>
 
       <div
-        *ngIf="LandingPageData$ | async as data"
         class="drop-down d-inline-block">
-        <a style="color: #fff;" target="_blank" [href]="data?.MainInfo?.BookAppointment">حجز موعد</a>
+        <a style="color: #fff;" (click)="complaint(1)" routerLink="/services-form/beneficiaries">حجز موعد</a>
       </div>
-
     </div>
   </div>
 </nav>

@@ -11,7 +11,7 @@ export class AdsComponent implements OnInit {
   Advertisements$!: Observable<any>;
   codes$!: Observable<any>;
 
-  constructor(private _homeService: HomeService,) { }
+  constructor(private _homeService: HomeService) { }
 
   ngOnInit(): void {
     this._homeService.getCodes(4);
@@ -29,7 +29,7 @@ export class AdsComponent implements OnInit {
   }
   onChange(event:any){
    console.log("event : " , event.value);
-   this._homeService.getAdvertisements(event.value);
+   this._homeService.getAdvertisements(event.value , null);
   }
 }
 

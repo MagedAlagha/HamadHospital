@@ -1,0 +1,80 @@
+
+section{
+  padding: 70px 0;
+
+  .contact-box{
+    background: linear-gradient(158.79deg, #BB1043 0%, #8C0931 46.08%, #610B25 99.42%);
+    border-radius: 5px;
+  }
+
+  .contact-box{
+    position: relative;
+    z-index: 0;
+    .patern{
+      position: absolute;
+      z-index: -1;
+      width: 80%;
+      user-select: none;
+      right: 0;
+      bottom: 0;
+      }
+  }
+
+
+  .contact-box a {
+    color: #ffff;
+  }
+  .contacts img{
+    background: #ffffff1f;
+    padding: 11px;
+    border-radius: 50%;
+  }
+  .contact-box .contacts {
+    display: flex;
+    align-items: center;
+
+  }
+.contact-box .contacts span{
+  display: block;
+  font-size: 13px;
+  color: #fff;
+  padding-bottom: 3px;
+}
+
+.social-links{
+margin-top: 80px;
+  img{
+    background: #8a1538;
+    padding: 11px;
+    border-radius: 50%;
+  }
+  p{
+    color: #fff;
+    margin-top: 5px;
+  }
+h6{
+  position: relative;
+  color: #fff;
+  font-size: 11px;
+  margin: 0 5px;
+}
+  h6:before,
+  h6:after {
+   content: "";
+   width: 33px;
+   height: 2px;
+   background: #ed9b33;
+   display: inline-block;
+   color: #fff;
+ }
+
+ h6:before {
+  margin: 0 15px 2px 5px;
+}
+
+ h6:after {
+  margin: 0 5px 2px 15px;
+}
+}
+}
+

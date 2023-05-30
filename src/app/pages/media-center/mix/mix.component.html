@@ -4,7 +4,7 @@
     <div class="row align-items-center">
       <div class="col-md-8 d-flex align-items-stretch order-md-0 order-1 mb-mt-0 mt-3  ">
         <div>
-          <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
+          <span><i class="fa-solid fa-calendar"></i> {{item?.ItemDate | date }}</span>
           <h2  routerLink="/mix-details/{{item.ID}}" (click)="showNews(item)"  > {{ isEn ? item?.Title : item?.Title }} </h2>
           <div class="post-pp">
             <p  [innerHTML]=" item?.Desc | slice:0:100 "></p>

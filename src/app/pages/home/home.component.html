@@ -7,26 +7,22 @@
           style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url(http://hamad_api.accessline.ps{{
             item?.ImagePath
           }});"
-        >
+         >
           <ng-container *ngIf="item.ShowTitle">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-md-7 col-9">
+            <div class="container d-flex justify-content-center">
 
-                    <div class="content" [ngStyle]="{'background-color': item.TitleBackgroundColor ? item.TitleBackgroundColor : 'transparent'}" (click)="openLink(item)">
-                      <ng-container
-                        *ngIf="MediaCenterServiceNews$ | async as news">
-                        <p class="mb-1">{{ item.Title }}</p>
-                        <ng-container *ngFor="let item_2 of news">
-                          <ng-container *ngIf="item_2.ID == 0">
-                            <a (click)="showNews(item_2)"> </a>
-                          </ng-container>
-                        </ng-container>
-                      </ng-container>
-                    </div>
-
-                </div>
+              <div (click)="openLink(item)" class="content" [ngStyle]="{'background-color': item.TitleBackgroundColor ? item.TitleBackgroundColor : 'transparent'}" >
+                <ng-container
+                  *ngIf="MediaCenterServiceNews$ | async as news">
+                  <p class="mb-1">{{ item.Title }}</p>
+                  <ng-container *ngFor="let item_2 of news">
+                    <ng-container *ngIf="item_2.ID == 0">
+                      <a (click)="showNews(item_2)"> </a>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
               </div>
+
             </div>
           </ng-container>
         </div>
@@ -34,8 +30,8 @@
     </ng-container>
   </owl-carousel-o>
 </div>
-<!-- <button
 
+<!-- <button
   ngxScrollTo
   [ngxScrollToOffset]="770">
   <i class="pi pi-chevron-down"></i>
@@ -82,11 +78,7 @@
       <div class="row justify-content-center mb-4">
         <div class="col-md-9 col-sm-6 col-12 text-center">
           <p style="font-weight: 600; line-height: 28px">
-            <!-- {{ data?.MainInfo?.About }} -->
-            أحد أكبر مستشفيات التأهيل العاملة في قطاع غزة، يقدم خدمات التأهيل
-            والكشف المجاني لحالات (أمراض الأعصاب، العظام، العضلات، مبتوري
-            الأطراف، انحناء العمود الفقري، مشاكل السمع وزراعة القوقعة) وذلك من
-            خلال الاقسام الرئيسية التالية
+             {{ data?.MainInfo?.About }}
           </p>
         </div>
       </div>
@@ -404,7 +396,7 @@
       </div>
       <div class="line d-block mb-3" style="height: 3px"></div>
     </div>
-    <ng-container *ngIf="MediaCenterStories$ | async as data">
+    <ng-container *ngIf="MediaSectionsSuceessStoryHome$| async as data">
       <div class="row">
         <div
           class="col-md-4 img pb-3 d-flex align-items-stretch  "
@@ -472,74 +464,7 @@
         </div>
       </div>
     </ng-container>
-   <!--  <ng-container *ngIf="MediaSectionsItemsStory$ | async as data">
-      <div class="row">
-        <div
-          class="col-md-4 img pb-3 d-flex align-items-stretch  "
-          (click)="showPhotosDetails(data[0]); addAvtiveNaveBar()"
-        >
-          <div
-            style="width: 100%; cursor: pointer"
-            routerLink="/mix-details/{{ data[0]?.ID }}"
-            class="press-stories"
-          >
-          <div class="post-img">
-            <img
-              [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
-              class="img-fluid"
-              alt=""
-            />
-            </div>
-            <p>
-              {{ isEn ? data[0]?.Title : data[0]?.Title }}
-            </p>
-          </div>
-        </div>
-        <div
-          class="col-md-4 img pb-3 d-flex align-items-stretch"
-          (click)="showPhotosDetails(data[1]); addAvtiveNaveBar()"
-        >
-          <div
-            style="width: 100%; cursor: pointer"
-            routerLink="/mix-details/{{ data[1]?.ID }}"
-            class="press-stories"
-          >
-          <div class="post-img">
-            <img
-            [lazyLoad]="'http://hamad_api.accessline.ps' + data[1]?.ImagePath"
-            class="img-fluid"
-            alt=""
-          />
-          </div>
 
-            <p>
-              {{ isEn ? data[1]?.Title : data[1]?.Title }}
-            </p>
-          </div>
-        </div>
-        <div
-          class="col-md-4 img pb-3 d-flex align-items-stretch"
-          (click)="showPhotosDetails(data[2]); addAvtiveNaveBar()"
-        >
-          <div
-            style="width: 100%; cursor: pointer"
-            routerLink="/mix-details/{{ data[2]?.ID }}"
-            class="press-stories"
-          >
-          <div class="post-img">
-            <img
-              [lazyLoad]="'http://hamad_api.accessline.ps' + data[2]?.ImagePath"
-              class="img-fluid"
-              alt=""
-            />
-            </div>
-            <p >
-              {{ isEn ? data[2]?.Title : data[2]?.Title }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </ng-container> -->
   </div>
 </div>
 
@@ -595,7 +520,7 @@
                   </ng-container>
 
                   <span class="post-date">{{
-                    data[0]?.CreatedDate | date
+                    data[0]?.ItemDate | date
                   }}</span>
                 </div>
                 <h3 class="post-title">
@@ -640,7 +565,7 @@
             routerLink="/media-center/mix"
             style="cursor: pointer"
             (click)="addAvtiveNaveBar()">
-          {{data.MainInfo.HomeVariousTitle}}
+          {{data?.MainInfo?.HomeVariousTitle}}
           </h4>
         </div>
 
@@ -678,7 +603,7 @@
                 <ng-container *ngIf="data[0]?.MainServiceID === 5">
                   <span class="categories">الأخبار</span>
                 </ng-container>
-                <span class="post-date">{{ data[0]?.CreatedDate | date }}</span>
+                <span class="post-date">{{ data[0]?.ItemDate | date }}</span>
               </div>
               <h3 class="post-title">
                 {{ isEn ? data[0]?.Title : data[0]?.Title }}
@@ -705,7 +630,7 @@
                   />
 
                   <div class="news-box2-xontent" routerLink="/mix-details/{{ item?.ID }}" (click)="addAvtiveNaveBar()" >
-                    <span style="font-size: 12px;">نشر بتاريخ : {{item.CreatedDate | date}}</span>
+                    <span style="font-size: 12px;">نشر بتاريخ : {{item.ItemDate | date}}</span>
                     <h3 class="post-title">
                       {{ isEn ? item?.Title : item?.Title }}
                     </h3>
@@ -749,12 +674,9 @@
               <p>
                 {{ item?.Title }}
               </p>
-              <ng-container *ngIf="item?.ButtonAdded">
-                <a [href]="item?.ButtonLink"
-                  >{{ item?.ButtonTitle }}
-                  <i class="fa-solid fa-arrow-left-long ps-1"></i
-                ></a>
-              </ng-container>
+                <a routerLink="/ads-details/{{item.ID}}"
+                  >عرض التفاصيل
+                 </a>
             </div>
           </ng-template>
         </owl-carousel-o>

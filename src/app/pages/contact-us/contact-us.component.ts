@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
 import { HomeService } from '../home/home.service';
-import { ServicesHospitalService } from './services-hospital.service';
+import { Observable } from 'rxjs';
+import { ServicesHospitalService } from '../services-hospital/services-hospital.service';
 
 @Component({
-  selector: 'app-services-hospital',
-  templateUrl: './services-hospital.component.html',
-  styleUrls: ['./services-hospital.component.scss']
+  selector: 'app-contact-us',
+  templateUrl: './contact-us.component.html',
+  styleUrls: ['./contact-us.component.scss']
 })
-export class ServicesHospitalComponent implements OnInit {
+export class ContactUsComponent implements OnInit {
+
   LandingPageData$!:Observable<any>;
   constructor(private _homeService:HomeService , private _servicesHospitalService:ServicesHospitalService) { }
 

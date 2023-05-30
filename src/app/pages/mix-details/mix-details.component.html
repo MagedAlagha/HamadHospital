@@ -23,7 +23,10 @@
               <ng-container *ngIf="data.MainServiceID === 6">
                 <span>غير مصنف</span>
               </ng-container>
-              <h1>{{ data?.TitleAr ? data?.TitleAr : data?.Title }}</h1>
+              <div class="title">
+                <p style="padding-right:.8rem;" class="mb-0">{{ data?.SubTitleAr }}</p>
+                <h1>{{ data?.TitleAr ? data?.TitleAr : data?.Title }}</h1>
+              </div>
             </div>
           </div>
 
@@ -103,8 +106,8 @@
                 alt=""/>
                </ng-template>
               </ng-container>
-              <ng-container *ngIf="Imagedata?.length > 1 ">
-                <p-galleria [numVisible]="Imagedata?.length" [value]="Imagedata" [showItemNavigators]="true"  > <!-- [ngClass]="{'onePHoto': Imagedata?.length >= 1}" -->
+              <ng-container *ngIf="Imagedata?.length > 1 "  >
+                <p-galleria dir="ltr" [numVisible]="Imagedata?.length" [value]="Imagedata" [showItemNavigators]="true"  > <!-- [ngClass]="{'onePHoto': Imagedata?.length >= 1}" -->
                   <ng-container *ngIf="
                   data.MediaSectionID?.includes(4) || data.MediaSectionID?.includes(6) ; else d">
 
@@ -174,16 +177,19 @@
 
 
           <div class="d-flex justify-content-between align-items-center my-4">
+            <ng-container *ngIf="data.MediaSectionID?.includes(8)" >
+              <ng-container *ngFor="let item of pdfFile">
+                <ng-container *ngIf="item?.ImagePath?.includes('pdf')">
+                  <a [href]="'http://hamad_api.accessline.ps'+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">  لتحميل النشرة الإخبارية PDF</a>
+                </ng-container>
+              </ng-container>
+            </ng-container>
             <div class="entry-meta">
               <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
               <span
-                >نشر بتاريخ: <span>{{ data?.CreatedDate | date }} </span>
+                >نشر بتاريخ: <span>{{ data?.ItemDate | date }} </span>
               </span>
             </div>
-
-            <ng-container *ngIf="data.MediaSectionID?.includes(8)" >
-              <a [href]="pdfFile" target="_blank" class="pdf" *ngIf="pdfFile"> <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">  لتحميل النشرة الإخبارية PDF</a>
-            </ng-container>
 
             <div class="share-post">
 

@@ -53,11 +53,12 @@ export class HomeService {
       'MedicalRehabilitationFeatures'
     );
   }
-  getAdvertisements(ID?:any) {
+  getAdvertisements(CategoryID?:any , ID?:any) {
     this.getFormApi(
       'Advertisements/AdvertisementsSearch',
       'Advertisements',
-      { CategoryID: ID },
+      { CategoryID: CategoryID ,
+        ID: ID },
     );
   }
   getMainInfo() {

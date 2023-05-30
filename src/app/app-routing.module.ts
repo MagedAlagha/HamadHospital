@@ -112,6 +112,20 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'ads-details/:id',
+    loadChildren: () =>
+      import('./pages/ads-details/ads-details.module').then(
+        (m) => m.AdsDetailsModule
+      ),
+  },
+  {
+    path: 'contact-us',
+    loadChildren: () =>
+      import('./pages/contact-us/contact-us.module').then(
+        (m) => m.ContactUsModule
+      ),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

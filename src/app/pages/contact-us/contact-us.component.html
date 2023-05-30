@@ -1,0 +1,49 @@
+<section class="mt-5">
+  <div class="container">
+    <div class="row justify-content-center  ">
+      <ng-container *ngIf="LandingPageData$ | async as data"  >
+      <div class="col-md-5 pe-md-0 d-flex align-items-stretch ">
+        <div class="contact-box p-5">
+          <img src="../../../assets/img/patern.png" class="img-fluid patern" alt="">
+          <div class="contacts">
+            <img src="../../../assets/img/mail.svg" alt="">
+            <div class="ms-3">
+              <span>الإيميل</span>
+              <a href="mailto:{{data?.MainInfo.Email}}">{{data?.MainInfo.Email}}</a>
+            </div>
+          </div>
+          <div class="contacts mt-4">
+            <img src="../../../assets/img/phone.svg" alt="">
+            <div class="ms-3">
+              <span>الهاتف</span>
+              <a >{{data?.MainInfo.Phone}}</a>
+            </div>
+          </div>
+          <div class="contacts my-4">
+            <img src="../../../assets/img/device-mobile.svg" alt="">
+            <div class="ms-3">
+              <span>الجوال</span>
+              <a href="tel:0562331013">{{data?.MainInfo.Mobile}}</a>
+            </div>
+          </div>
+          <div class="contacts">
+            <img src="../../../assets/img/map-pin.svg" alt="">
+            <div class="ms-3">
+              <span>العنوان</span>
+              <a>{{data?.MainInfo.Location}} </a>
+            </div>
+          </div>
+          <div class="social-links text-center">
+            <h6>مواقع التواصل الاجتماعي :</h6>
+            <p>{{data?.MainInfo.SocialMediaTag}}</p>
+            <a [href]="data?.MainInfo.FacebookLink" target="_blank"><img src="../../../assets/img/brand-facebook.svg" alt=""></a>
+            <a [href]="data?.MainInfo.YoutubeLink" class="mx-2" target="_blank"><img src="../../../assets/img/brand-youtube.svg" alt=""></a>
+            <a [href]="data?.MainInfo.InstagramLink" class="me-2" target="_blank"><img src="../../../assets/img/brand-instagram.svg" alt=""></a>
+            <a [href]="data?.MainInfo.TwitterLink" target="_blank"><img src="../../../assets/img/brand-twitter.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    </div>
+  </div>

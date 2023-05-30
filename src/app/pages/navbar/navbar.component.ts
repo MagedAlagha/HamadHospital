@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HomeService } from '../home/home.service';
 import { MediaCenterService } from '../media-center/media-center.service';
 import { Observable, map, pipe } from 'rxjs';
+import { ServicesHospitalService } from '../services-hospital/services-hospital.service';
 
 @Component({
   selector: 'app-navbar',
@@ -24,8 +25,15 @@ export class NavbarComponent implements OnInit {
   fisrt:any = 0 ;
   activeNave$!:Observable<any>;
   LandingPageData$!: Observable<any>;
+  constructor(
+     public router: Router,
+     private _mediaCenterService:MediaCenterService ,
+     private _homeService:HomeService ,
+     private _servicesHospitalService:ServicesHospitalService) {}
 
-  constructor(public router: Router , private _mediaCenterService:MediaCenterService , private _homeService:HomeService) {}
+  complaint(item:any){
+   this._servicesHospitalService.updateStore({complaintID:item});
+  }
 
   ngOnInit(): void {
     this._mediaCenterService.Selector$('activeNave').pipe(map(value=> this.active = value )).subscribe()

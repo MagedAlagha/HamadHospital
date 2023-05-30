@@ -25,6 +25,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { VideoPreviewSliderComponent } from './pages/home/Modals/video-preview-slider/video-preview-slider.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 
 
@@ -37,7 +38,7 @@ import { VideoPreviewSliderComponent } from './pages/home/Modals/video-preview-s
     PageNotFoundComponent,
     ParallaxComponent,
     VideoPreviewModalComponent,
-    VideoPreviewSliderComponent ,
+    VideoPreviewSliderComponent,
   ],
   imports: [
     BrowserModule,

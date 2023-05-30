@@ -46,6 +46,7 @@ export class MediaCenterService {
     MediaSectionsItemsMedicalArticle: undefined,
     MediaSectionsItemsTecStories: undefined,
     MediaSectionsItemsMix: undefined,
+    MediaSectionsSuceessStoryHome: undefined,
 
     FilterVideo: undefined,
     FilterTitle: undefined,
@@ -79,16 +80,13 @@ export class MediaCenterService {
       MediaSectionsItems: undefined,
     });
     this.index = 1;
-    if(!MainServiceID){
-      this.FungetMediaSectionsItems(this.ID);
-    }else{
-      this.FungetMediaSectionsItemsForVideo(ID , MainServiceID )
-    }
+    this.FungetMediaSectionsItems(this.ID , MainServiceID);
   }
-  FungetMediaSectionsItems(ID: any) {
+  FungetMediaSectionsItems(ID: any , MainServiceID?:any) {
     this._http
       .getData('LandingPage/MediaSectionsItems', {
         MediaSectionID: ID,
+        MainServiceID:MainServiceID,
         pageSize: 4,
         pageCount: this.index,
         title: this.dataStore.FilterTitle,
@@ -106,25 +104,7 @@ export class MediaCenterService {
         }
       });
   }
-  FungetMediaSectionsItemsForVideo(ID: any , MainServiceID?: any ) {
-    this._http
-      .getData('MediaSectionsItems/MediaSectionsItemsSearch', {
-        MediaSectionID: ID,
-        MainServiceID:MainServiceID
-      })
-      .subscribe((value) => {
-        this.updateStore({
-          MediaSectionsItems: [
-            ...(this.dataStore.MediaSectionsItems || []),
-            ...value,
-          ],
-        });
-        if (value?.length) {
-          this.index = this.index + 1;
-          this.FungetMediaSectionsItems(ID);
-        }
-      });
-  }
+
   getMediaSectionsItemsVideo(ID?: any, MainServiceID?: any) {
     this.getFormApi(
       'LandingPage/MediaSectionsItems',
@@ -137,6 +117,13 @@ export class MediaCenterService {
       'LandingPage/MediaSectionsItems',
       'MediaSectionsItemsStory',
       { MediaSectionID: ID, ShowHome: true }
+    );
+  }
+  getMediaSectionsSuceessStoryHome(ID:any) {
+    this.getFormApi(
+      'LandingPage/MediaSectionsItems',
+      'MediaSectionsSuceessStoryHome',
+      {MediaSectionID: ID , ShowHome: true }
     );
   }
   getMediaSectionsItemsLastNews(ID?: any) {
@@ -274,6 +261,7 @@ export interface StoreInterface {
   MediaSectionsItemsMedicalArticle?: any;
   MediaSectionsItemsTecStories?: any;
   MediaSectionsItemsMix?: any;
+  MediaSectionsSuceessStoryHome?: any;
 
   NewsInfo?: any;
   PhotoGalaryInfo?: any;

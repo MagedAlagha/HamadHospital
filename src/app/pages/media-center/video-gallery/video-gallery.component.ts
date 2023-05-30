@@ -27,7 +27,6 @@ export class VideoGalleryComponent implements OnInit {
   Avatar = environment.FileUrl;
   Search = new FormControl();
   ngOnInit(): void {
-    this.filterVideo(' ');
     this.route.queryParamMap.subscribe((params) => {
       let path = params.get('path');
       if (path) {
@@ -36,7 +35,6 @@ export class VideoGalleryComponent implements OnInit {
     });
     this.MediaCenterService$ =
       this._mediaCenterService.Selector$('MediaSectionsItems');
-
     this.VideoDialog$ = this._videoGalleryService.Selector$('VideoDialog');
     this.filterVideo$ = this._mediaCenterService.Selector$('FilterVideo');
   }

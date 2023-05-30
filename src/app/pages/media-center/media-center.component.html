@@ -84,28 +84,6 @@
         </ul>
       </div>
       <div class="col-md-9">
-        <div class="row mb-3">
-          <div class="col-12 col-md-6">
-            <span class="p-float-label p-input-icon-left w-100">
-              <i class="pi pi-search"></i>
-              <input
-                type="text"
-                id="inputtext-left"
-                pInputText
-                [(ngModel)]="valueIconLeft"
-                class="py-2"
-              />
-              <label for="inputtext-left">البحث</label>
-            </span>
-          </div>
-          <div class="col-12 col-md-4 mt-md-0 mt-2">
-            <button pButton type="button"class="add mx-2" (click)="search()">بحث</button>
-            <button pButton type="button" class="clear" (click)="clear()">مسح</button>
-          </div>
-        </div>
-
-        <hr>
-
         <ng-container
           *ngIf="MediaCenterService$ | async as data; else loading"
         ></ng-container>
@@ -117,3 +95,25 @@
 <ng-template #loading>
   <img src="../../../../assets/img/loading.gif" class="text-center" alt="" />
 </ng-template>
+
+
+
+<!-- <div class="row mb-3">
+  <div class="col-12 col-md-6">
+    <span class="p-float-label p-input-icon-left w-100">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        id="inputtext-left"
+        pInputText
+        [(ngModel)]="valueIconLeft"
+        class="py-2"
+      />
+      <label for="inputtext-left">البحث</label>
+    </span>
+  </div>
+  <div class="col-12 col-md-4 mt-md-0 mt-2">
+    <button pButton type="button"class="add mx-2" (click)="search()">بحث</button>
+    <button pButton type="button" class="clear" (click)="clear()">مسح</button>
+  </div>
+</div> -->

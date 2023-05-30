@@ -30,7 +30,7 @@
       <div class="col-md-8 d-flex justify-content-between align-items-center my-4">
         <div class="entry-meta">
          <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
-          <span>نشر بتاريخ: <span>{{data?.CreatedDate | date}} </span> </span>
+          <span>نشر بتاريخ: <span>{{data?.ItemDate | date}} </span> </span>
         </div>
         <div class="share-post">
        <!--    <span> <i class="fa-brands fa-whatsapp"></i></span> -->
@@ -74,7 +74,7 @@
           <ng-container *ngIf="data2.MainServiceID === 2">  <span class="categories">الاطراف الصناعية</span>  </ng-container>
           <ng-container *ngIf="data2.MainServiceID === 3">  <span class="categories">السمع والتوازن</span>  </ng-container>
           <ng-container *ngIf="data2.MainServiceID === 4">  <span class="categories">العيادة الخارجية</span>  </ng-container>
-          <span class="post-date">{{data2?.CreatedDate | date}} </span>
+          <span class="post-date">{{data2?.ItemDate | date}} </span>
         </div>
         <h3 class="post-title">{{ isEn ? item?.Title : item?.Title   | slice:0:50 }} {{  isEn ? item?.Desc.length : item?.Desc.length > 50 ? '...' : '' }}  </h3>
         <div class="medical-articaels">
