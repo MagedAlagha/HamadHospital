@@ -22,7 +22,7 @@ export class MediaCenterComponent implements OnInit {
     const url = window.location.href;
     if (url.includes('news')) {
       this.active = 1;
-      this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft})
+      /* this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft}) */
       this.getMediaSectionsItemsByID(1);
     }else if(url.includes('photo')){
       this.active = 2;
@@ -53,7 +53,7 @@ export class MediaCenterComponent implements OnInit {
   getMediaSectionsItemsByID(id?:any){
     this._mediaSectionsItems.getMediaSectionsItems(id);
   }
-  search(){
+/*   search(){
     this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft})
     this._mediaSectionsItems.getMediaSectionsItems()
   }
@@ -61,6 +61,6 @@ export class MediaCenterComponent implements OnInit {
     this.valueIconLeft = null;
     this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft})
     this._mediaSectionsItems.getMediaSectionsItems()
-  }
+  } */
 
 }

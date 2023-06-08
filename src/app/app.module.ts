@@ -26,6 +26,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { VideoPreviewSliderComponent } from './pages/home/Modals/video-preview-slider/video-preview-slider.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { AutoCompleteFeildComponent } from './shared/auto-complete-feild/auto-complete-feild.component';
 
 
 
@@ -51,6 +52,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
     DialogModule,
     StoriesHomeModule,
     YouTubePlayerModule,
+    AutoCompleteFeildComponent,
     SkeletonModule,
     TooltipModule ,
     LazyLoadImageModule,

@@ -179,7 +179,7 @@ export class HttpService {
         return newValue;
     }
 
-    private convartParams(params: any): any {
+    public convartParams(params: any): any {
         if (params) {
             let newParams = this.convartData(params);
             let httpParams = new HttpParams();

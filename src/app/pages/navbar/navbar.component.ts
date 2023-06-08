@@ -33,7 +33,10 @@ export class NavbarComponent implements OnInit {
 
   complaint(item:any){
    this._servicesHospitalService.updateStore({complaintID:item});
+   console.log("itemitemitemitem" , item)
   }
+
+
 
   ngOnInit(): void {
     this._mediaCenterService.Selector$('activeNave').pipe(map(value=> this.active = value )).subscribe()
@@ -83,7 +86,45 @@ export class NavbarComponent implements OnInit {
       navbar?.classList.remove('header-scrolled' );
      /*  navbar?.classList.add( 'bg-white-opacity'); */
     }
-
-
   }
+
+  getItem(item:any){
+    console.log("item", item  );
+    if(item.Type == 1){
+      if(item.MediaSectionID != 3){
+        this.router.navigate(['mix-details/'+item.ID])
+      }else{
+        this.router.navigate(['/media-center/video/video-main'],{
+          queryParams:{
+          path: item?.VideoPath
+          }
+        });
+      }
+    } else if(item.Type == 2){
+    console.log("item :" , item)
+    this.router.navigate(['ads-details/'+item.ID])
+    }else{
+         if(item.ID ==1){
+          this.router.navigate(['sections/medical-rehabilitation'])
+         }
+         else if(item.ID ==2){
+          this.router.navigate(['sections/prosthetics'])
+
+         }
+         else if(item.ID ==3){
+          this.router.navigate(['sections/hearing-balance'])
+
+         }
+         else if(item.ID ==4){
+          this.router.navigate(['sections/outpatient-clinics'])
+         }
+         else {
+          this.router.navigate(['sections/supportive'])
+         }
+         this.active = 2;
+    }
+   }
+
+
+
 }

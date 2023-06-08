@@ -52,7 +52,7 @@
             >الخدمات
           </a>
         </li>
-        <!-- <li class="nav-item">
+         <li class="nav-item">
           <a
             class="nav-link"
             routerLink="/media-center/news/news-main"
@@ -60,7 +60,7 @@
             (click)="active = 3"
             >المركز الاعلامي
           </a>
-        </li> -->
+        </li>
 
         <div class="drop-down drop-down-2 d-inline-block ps-1"  >
           <a style="color: black; font-weight: 500;" [ngClass]="{ active: active == 5 }"
@@ -69,18 +69,16 @@
           <i class="fa-solid fa-chevron-down ps-2 arrow2"></i>
           <ul>
             <li>
-              <a routerLink="/services-form/beneficiaries">خدمة مستفيدين</a>
+              <a routerLink="/services-form/beneficiaries/1">خدمة مستفيدين</a>
             </li>
             <li>
               <a routerLink="/services-form/visitor">خدمة زائرين</a>
             </li>
             <li>
-              <a routerLink="/services-form/institutions"
-                >خدمة مؤسسات</a
-              >
+              <a routerLink="/services-form/institutions">خدمة مؤسسات</a>
             </li>
             <li>
-              <a routerLink="/services-form/beneficiaries"
+              <a routerLink="/services-form/beneficiaries/1"
               (click)="complaint(2)"
                 >الشكاوي</a
               >
@@ -98,9 +96,18 @@
         </li>
       </ul>
 
-      <div
-        class="drop-down d-inline-block">
-        <a style="color: #fff;" (click)="complaint(1)" routerLink="/services-form/beneficiaries">حجز موعد</a>
+      <div class="d-flex">
+        <app-auto-complete-feild (onSelectionChange)="getItem($event)"  [isCustomSearch] = "true" [ConfigCustomSearch]="{
+          api: 'LandingPage/Search',
+          customParams: {
+              Lang: 'ar'
+          },
+          UrlEndPoint: 'http://hamad_api.accessline.ps/api/'
+      }"  ></app-auto-complete-feild>
+         <div
+        class="drop-down d-inline-block ms-3">
+        <a style="color: #fff;" routerLink="/services-form/beneficiaries/2">حجز موعد</a>
+      </div>
       </div>
     </div>
   </div>
@@ -115,4 +122,7 @@
           <li><a routerLink="/services-form/institutions-service">خدمة مؤسسات</a></li>
         </ul>
       </div> -->
+
+
+
 

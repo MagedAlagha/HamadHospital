@@ -6,7 +6,7 @@
 
 <div class="container ads-details my-3">
   <ng-container *ngIf="Advertisements$ | async as item" >
-    <span><i class="fa-solid fa-calendar"></i> {{item[0]?.ItemDate | date }}</span>
+    <span><i class="fa-solid fa-calendar"></i> {{item[0]?.CreatedDate | date }}</span>
     <h2> {{item[0]?.TitleAr }} </h2>
     <div [innerHTML]="item[0]?.DescriptionAr"></div>
     <ng-container *ngIf="item[0]?.ButtonAdded">

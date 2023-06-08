@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit {
     this.dominUrl = 'http://' + location.host;
     console.log('this.dominUrl', this.dominUrl);
     /*    ;
-     */
-this._mediaCenterService.getMediaSectionsItems()
+     *//* null , 1 */
+    this._mediaCenterService.getMediaSectionsItems()
     this._mediaCenterService.getMediaSectionsSuceessStoryHome('5,6');
     this._mediaCenterService.getMediaSectionsItemsVideo(3);
     this._mediaCenterService.getMediaSectionsItemsStory(5);

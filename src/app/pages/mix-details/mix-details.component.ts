@@ -42,13 +42,13 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
       .Selector$('ImageSection')
       .pipe(
         tap((value) => {
-         /*  let pdf = value.find((item: any) => item?.ImagePath?.includes('pdf'));
+         /*   let pdf = value.find((item: any) => item?.ImagePath?.includes('pdf'));
           this.pdfFile = pdf ? environment.FileUrl + pdf?.ImagePath : null;
           ;
            value.filter((item: any) => console.log('pdfFile', item) ) */
 
 
-           this.pdfFile  = value
+            this.pdfFile  = value
 
            /*  if(value?.ImagePath?.includes('pdf')){
               console.log("value : " , value)

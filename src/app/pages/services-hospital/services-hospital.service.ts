@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, distinctUntilChanged, map, Observable } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, map, Observable, Subject } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { GetFormApiService } from 'src/app/shared/services/functionsForHandelWithApi/getFormApi.service';
 import { HttpService } from 'src/app/shared/services/http.service';
@@ -9,6 +9,16 @@ import { getFormApiGonfig } from 'src/app/shared/services/models';
   providedIn: 'root'
 })
 export class ServicesHospitalService {
+  public appointmentBooking = new Subject<boolean>();
+  public appointmentBooking$ = this.appointmentBooking.asObservable();
+  getAppointmentBooking(): Observable<any> {
+    return this.appointmentBooking$;
+  }
+
+  updateAppointmentBooking(data: any): void {
+    this.appointmentBooking.next(data);
+    console.log("data ::" , data)
+  }
 
   constructor(  private _http: HttpService,
     private _getFormApiService: GetFormApiService,
@@ -19,6 +29,7 @@ export class ServicesHospitalService {
       codes2: undefined,
       codes3: undefined,
       complaintID:undefined,
+      appointmentBooking:false,
       beneficiariesID:undefined,
     });
 
@@ -126,6 +137,7 @@ export interface StoreInterface {
   codes2?: any;
   codes3?: any;
   complaintID?: any;
+  appointmentBooking?: boolean;
   beneficiariesID?: any;
 }
 export type selectorsType = keyof StoreInterface;

@@ -25,7 +25,7 @@
         <div class="col-12 d-flex align-items-stretch ">
           <div style="cursor: pointer;">
             <div  routerLink="/ads-details/{{item.ID}}">
-              <span><i class="fa-solid fa-calendar"></i> {{item?.ItemDate | date }}</span>
+              <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
               <h2> {{item?.TitleAr }} </h2>
 
             </div>
@@ -35,10 +35,9 @@
            </div> -->
 
            <ng-container *ngIf="item?.ButtonAdded">
-            <a class="btn-ad" target="_blank" [href]="item?.ButtonLink"
-              >{{ item?.ButtonTitleAr }}
-              <i class="fa-solid fa-arrow-left-long ps-1"></i
-            ></a>
+            <a  class="btn-ad" routerLink="/ads-details/{{item.ID}}"
+            >عرض التفاصيل
+           </a>
            </ng-container>
 
           </div>

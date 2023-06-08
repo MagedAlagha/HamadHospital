@@ -20,7 +20,7 @@ import { RouterModule } from '@angular/router';
               ).then((m) => m.BeneficiariesServiceModule),
           },
           {
-            path: 'beneficiaries',
+            path: 'beneficiaries/:id',
             loadChildren: () =>
               import(
                 '../services-hospital/beneficiaries-service/beneficiaries-service.module'
