@@ -163,7 +163,6 @@ export class HomeComponent implements OnInit {
     autoplay: true,
     nav: true,
     dots: true,
-    rtl: true,
     navSpeed: 400,
     navText: [
       '<i class="fa-solid fa-chevron-left"></i>',
@@ -194,7 +193,6 @@ export class HomeComponent implements OnInit {
     autoplay: true,
     nav: false,
     dots: false,
-    rtl: true,
     navSpeed: 400,
     navText: [
       '<i class="fa-solid fa-chevron-left"></i>',

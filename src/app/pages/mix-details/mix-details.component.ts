@@ -47,6 +47,7 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
           ;
            value.filter((item: any) => console.log('pdfFile', item) ) */
 
+           console.log("value value : , " ,  value)
 
             this.pdfFile  = value
 

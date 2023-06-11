@@ -1,4 +1,4 @@
-<div class="hero" id="section0">
+<div class="hero" id="section0" dir="ltr">
   <owl-carousel-o [options]="customOptions">
     <ng-container *ngIf="LandingPageData$ | async as data">
       <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
@@ -652,7 +652,7 @@
 </section>
 
 <!-- employment-Ad -->
-<div class="employment-ad" id="section5">
+<div class="employment-ad" id="section5" dir="ltr">
   <div class="container">
     <div class="section-title mb-2 d-flex justify-content-between align-items-center ">
       <h4

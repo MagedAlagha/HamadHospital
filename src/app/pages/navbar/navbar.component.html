@@ -97,7 +97,7 @@
       </ul>
 
       <div class="d-flex">
-        <app-auto-complete-feild (onSelectionChange)="getItem($event)"  [isCustomSearch] = "true" [ConfigCustomSearch]="{
+        <app-auto-complete-feild [deleteAfterSelect]="true" (onSelectionChange)="getItem($event)"  [isCustomSearch] = "true" [ConfigCustomSearch]="{
           api: 'LandingPage/Search',
           customParams: {
               Lang: 'ar'

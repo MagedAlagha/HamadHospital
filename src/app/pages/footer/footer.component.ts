@@ -26,7 +26,6 @@ export class FooterComponent implements OnInit {
 
   customOptions: OwlOptions = {
     loop: true,
-    rtl: true,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
