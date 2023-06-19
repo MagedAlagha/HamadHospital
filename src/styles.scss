@@ -489,4 +489,8 @@ color: #76102e;
   border-radius: 0 0 6px 6px !important;
 }
 
-
+.p-disabled, .p-disabled * {
+  cursor: pointer !important;
+  pointer-events:all  !important;
+  opacity: 1 !important;
+}

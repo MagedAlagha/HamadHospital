@@ -1,7 +1,7 @@
-<div class="hero" id="section0" dir="ltr">
+<div class="hero" id="section0" >
   <owl-carousel-o [options]="customOptions">
     <ng-container *ngIf="LandingPageData$ | async as data">
-      <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
+      <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider.reverse()">
         <div
           class="img"
           style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url(http://hamad_api.accessline.ps{{
@@ -652,7 +652,7 @@
 </section>
 
 <!-- employment-Ad -->
-<div class="employment-ad" id="section5" dir="ltr">
+<div class="employment-ad" id="section5" >
   <div class="container">
     <div class="section-title mb-2 d-flex justify-content-between align-items-center ">
       <h4

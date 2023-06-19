@@ -107,7 +107,7 @@
                </ng-template>
               </ng-container>
               <ng-container *ngIf="Imagedata?.length > 1 "  >
-                <p-galleria dir="ltr" [numVisible]="Imagedata?.length" [value]="Imagedata" [showItemNavigators]="true"  > <!-- [ngClass]="{'onePHoto': Imagedata?.length >= 1}" -->
+                <p-galleria [dir]="'rtl'" [numVisible]="Imagedata?.length" [value]="Imagedata" [showItemNavigators]="true"  > <!-- [ngClass]="{'onePHoto': Imagedata?.length >= 1}" -->
                   <ng-container *ngIf="
                   data.MediaSectionID?.includes(4) || data.MediaSectionID?.includes(6) ; else d">
 
@@ -142,7 +142,7 @@
                     </ng-template>
                   </ng-template>
                   <ng-template pTemplate="thumbnail" let-item>
-                    <div class="grid grid-nogutter justify-content-center">
+                    <div class="grid grid-nogutter justify-content-center"  >
                       <img
                         [lazyLoad]="
                           'http://hamad_api.accessline.ps' + item?.ImagePath
@@ -162,32 +162,62 @@
           </ng-container>
 
           <ng-container *ngIf="data.MediaSectionID?.includes(8)">
-            <img
+            <div class="d-flex align-items-center flex-column ">
+              <img
               [src]="'http://hamad_api.accessline.ps' + data?.ImagePath"
                [ngStyle]="{
                 'height': 'auto',
                 'object-fit': 'contain',
                 'border-radius':'8px',
-                'width':'40%'
-            }"
+                'width':'60%'
+             }"
               class="img-fluid"
               alt=""
             />
+
+
+            <div class="d-flex justify-content-between mt-4 " style="width: 60%;">
+              <div class="entry-meta">
+                <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
+                <span
+                  >نشر بتاريخ: <span>{{ data?.ItemDate | date }} </span>
+                </span>
+              </div>
+
+              <div class="share-post">
+
+                <span
+                  ngxClipboard
+                  (click)="copy()"
+                  [pTooltip]="text"
+                  tooltipPosition="top"
+                  ><i class="fa-regular fa-clone ps-3"></i
+                ></span>
+
+              </div>
+            </div>
+
+            </div>
           </ng-container>
 
 
-          <div class="d-flex justify-content-between align-items-center my-4">
+          <div class="d-flex justify-content-center align-items-center my-4">
             <ng-container *ngIf="data.MediaSectionID?.includes(8)" >
-              <div class="d-block">
+             <div class="d-block">
 
               <ng-container *ngFor="let item of pdfFile">
                 <ng-container *ngIf="item?.ImagePath?.includes('pdf')">
-                  <a [href]="'http://hamad_api.accessline.ps'+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">  لتحميل النشرة الإخبارية PDF</a>
+                  <a [href]="'http://hamad_api.accessline.ps'+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">  {{item?.ImagePath}} </a>
               </ng-container>
               </ng-container>
             </div>
 
             </ng-container>
+
+          </div>
+
+
+          <div class="d-flex justify-content-between mt-4 " *ngIf="!data.MediaSectionID?.includes(8)">
             <div class="entry-meta">
               <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
               <span
@@ -208,9 +238,11 @@
             </div>
           </div>
 
+
           <div class="post-p">
             <p [innerHTML]="data?.DescAr ? data?.DescAr : data?.Desc"></p>
           </div>
+
 
           <!--  -->
         </div>
