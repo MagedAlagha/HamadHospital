@@ -1,0 +1,38 @@
+
+<section class="breadcrumbs">
+  <div class="container">
+    <h2>نتائج البحث</h2>
+  </div>
+</section>
+
+<div class="container">
+
+  <ng-container *ngIf="SearchItems$ | async as data ; else loading">
+
+    <div class="box-blog py-4" *ngFor="let item of data" >
+      <div class="row align-items-center">
+        <div class="col-12 d-flex align-items-stretch ">
+          <div >
+              <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
+              <h2 > {{item?.Name }} </h2>
+
+           <ng-container >
+            <a  class="btn-ad" (click)="getItem(item)"
+            >الانتقال
+           </a>
+           </ng-container>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+</div>
+
+
+
+<ng-template #loading>
+  <img src="../../../assets/img/loading.gif" class="text-center" alt="">
+</ng-template>

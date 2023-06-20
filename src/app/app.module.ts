@@ -27,6 +27,8 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { VideoPreviewSliderComponent } from './pages/home/Modals/video-preview-slider/video-preview-slider.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { AutoCompleteFeildComponent } from './shared/auto-complete-feild/auto-complete-feild.component';
+import {InputTextModule} from 'primeng/inputtext';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -56,6 +58,8 @@ import { AutoCompleteFeildComponent } from './shared/auto-complete-feild/auto-co
     SkeletonModule,
     TooltipModule ,
     LazyLoadImageModule,
+    ReactiveFormsModule,
+    InputTextModule,
     ScrollToModule.forRoot()
   ],
 

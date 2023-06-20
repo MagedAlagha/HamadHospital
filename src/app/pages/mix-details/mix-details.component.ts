@@ -4,6 +4,7 @@ import { map, Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../media-center/media-center.service';
 import { ClipboardService } from 'ngx-clipboard';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mix-details',
@@ -26,7 +27,8 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private _mediaCenterService: MediaCenterService,
-    private _clipboardService: ClipboardService
+    private _clipboardService: ClipboardService,
+    private sanitizer: DomSanitizer
   ) {
     this.ID = this.route.snapshot.paramMap.get('id');
     console.log(this.ID);
@@ -42,6 +44,7 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
       .Selector$('ImageSection')
       .pipe(
         tap((value) => {
+
          /*   let pdf = value.find((item: any) => item?.ImagePath?.includes('pdf'));
           this.pdfFile = pdf ? environment.FileUrl + pdf?.ImagePath : null;
           ;

@@ -5,6 +5,7 @@ import { HomeService } from '../home/home.service';
 import { MediaCenterService } from '../media-center/media-center.service';
 import { Observable, map, pipe } from 'rxjs';
 import { ServicesHospitalService } from '../services-hospital/services-hospital.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -36,8 +37,20 @@ export class NavbarComponent implements OnInit {
    console.log("itemitemitemitem" , item)
   }
 
+  text:any;
+  search = new FormControl();
 
+  showSearch: boolean = false;
 
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+  }
+  saveSearch(){
+    this.router.navigate(['/search/'+this.search.value]);
+   this.toggleSearch();
+   this.search.reset();
+
+  }
   ngOnInit(): void {
     this._mediaCenterService.Selector$('activeNave').pipe(map(value=> this.active = value )).subscribe()
     this.active = 1

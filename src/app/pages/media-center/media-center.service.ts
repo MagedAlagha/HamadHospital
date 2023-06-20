@@ -47,6 +47,7 @@ export class MediaCenterService {
     MediaSectionsItemsTecStories: undefined,
     MediaSectionsItemsMix: undefined,
     MediaSectionsSuceessStoryHome: undefined,
+    pageSize: undefined,
 
     FilterVideo: undefined,
     FilterTitle: undefined,
@@ -73,6 +74,7 @@ export class MediaCenterService {
   /*  *******  MediaSectionsItems - API ******* */
   ID: any;
   getMediaSectionsItems(ID?: any , MainServiceID?: any  ) {
+
     if (ID) {
       this.ID = ID;
     }
@@ -262,6 +264,7 @@ export interface StoreInterface {
   MediaSectionsItemsTecStories?: any;
   MediaSectionsItemsMix?: any;
   MediaSectionsSuceessStoryHome?: any;
+  pageSize?: any;
 
   NewsInfo?: any;
   PhotoGalaryInfo?: any;

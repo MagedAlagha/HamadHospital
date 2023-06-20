@@ -119,6 +119,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'search/:key',
+    loadChildren: () =>
+      import('./pages/search/search.module').then(
+        (m) => m.SearchModule
+      ),
+  },
+  {
     path: 'contact-us',
     loadChildren: () =>
       import('./pages/contact-us/contact-us.module').then(

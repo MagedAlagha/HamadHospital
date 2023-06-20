@@ -1,7 +1,4 @@
-  <!-- [class]="isActive ==true ? 'hide-bg' : 'bg-light fixed-top'" -->
- <!--  [class.navbar-scrolled]="isScrolled" -->
- <!-- [ngClass]="{'fixed-top': previousScrollPosition === 0}"  -->
-<nav class="navbar py-1 navbar-expand-lg navbar-light show fixed-top bg-white"   >
+<nav class="navbar py-1 navbar-expand-lg navbar-light show fixed-top bg-white">
   <div class="container d-flex justify-content-between">
     <a class="navbar-brand" routerLink="/home">
       <img
@@ -9,7 +6,8 @@
         alt=""
         class="d-inline-block align-text-top logo"
         [ngClass]="{ active: active == 1 }"
-        (click)="active = 1"/>
+        (click)="active = 1"
+      />
     </a>
     <button
       class="navbar-toggler"
@@ -52,7 +50,7 @@
             >الخدمات
           </a>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <a
             class="nav-link"
             routerLink="/media-center/news/news-main"
@@ -62,9 +60,13 @@
           </a>
         </li>
 
-        <div class="drop-down drop-down-2 d-inline-block ps-1"  >
-          <a style="color: black; font-weight: 500;" [ngClass]="{ active: active == 5 }"
-          (click)="active = 5" >الخدمات الالكترونية</a>
+        <div class="drop-down drop-down-2 d-inline-block ps-1">
+          <a
+            style="color: black; font-weight: 500"
+            [ngClass]="{ active: active == 5 }"
+            (click)="active = 5"
+            >الخدمات الالكترونية</a
+          >
           <i class="fa-solid fa-chevron-up ps-2 arrow1"></i>
           <i class="fa-solid fa-chevron-down ps-2 arrow2"></i>
           <ul>
@@ -78,8 +80,9 @@
               <a routerLink="/services-form/institutions">خدمة مؤسسات</a>
             </li>
             <li>
-              <a routerLink="/services-form/beneficiaries/1"
-              (click)="complaint(2)"
+              <a
+                routerLink="/services-form/beneficiaries/1"
+                (click)="complaint(2)"
                 >الشكاوي</a
               >
             </li>
@@ -96,33 +99,56 @@
         </li>
       </ul>
 
-      <div class="d-flex">
-        <app-auto-complete-feild [deleteAfterSelect]="true" (onSelectionChange)="getItem($event)"  [isCustomSearch] = "true" [ConfigCustomSearch]="{
+      <div class="d-flex align-items-center">
+        <!--  <app-auto-complete-feild [deleteAfterSelect]="true" (onSelectionChange)="getItem($event)"  [isCustomSearch] = "true" [ConfigCustomSearch]="{
           api: 'LandingPage/Search',
           customParams: {
               Lang: 'ar'
           },
           UrlEndPoint: 'http://hamad_api.accessline.ps/api/'
-      }"  ></app-auto-complete-feild>
-         <div
-        class="drop-down d-inline-block ms-3">
-        <a style="color: #fff;" routerLink="/services-form/beneficiaries/2">حجز موعد</a>
-      </div>
+      }"  ></app-auto-complete-feild> -->
+
+        <div class="" id="navbarCollapse">
+          <a><i class="fas fa-search" (click)="toggleSearch()"></i></a>
+        </div>
+
+        <div class="drop-down ms-3">
+          <a style="color: #fff" routerLink="/services-form/beneficiaries/2"
+            >حجز موعد</a
+          >
+        </div>
       </div>
     </div>
   </div>
 </nav>
-
-      <!-- <div class="drop-down d-inline-block"><a>الخدمات الالكترونية</a>
-        <i class="fa-solid fa-chevron-up ps-2 arrow1"></i>
-        <i class="fa-solid fa-chevron-down ps-2 arrow2"></i>
-        <ul>
-          <li><a routerLink="/services-form/beneficiaries-service">خدمة مستفيدين</a></li>
-          <li><a routerLink="/services-form/visitor-service">خدمة زائرين</a></li>
-          <li><a routerLink="/services-form/institutions-service">خدمة مؤسسات</a></li>
-        </ul>
-      </div> -->
-
-
-
-
+<nav
+  class="py-2 navbar-expand-lg navbar-light fixed-top search-bar"
+  *ngIf="showSearch"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-9">
+        <span class="p-input-icon-right d-block">
+          <i class="pi pi-search"></i>
+          <input
+            [(ngModel)]="text"
+            [formControl]="search"
+            type="text"
+            pInputText
+            placeholder="ابحث"
+          />
+        </span>
+      </div>
+      <div class="col-md-2 col-3 ps-0">
+        <button
+          [disabled]="!text"
+          class="btn"
+          (click)="saveSearch()"
+          type="submit"
+        >
+          بحث
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
