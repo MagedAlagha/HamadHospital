@@ -240,7 +240,7 @@
 
 
           <div class="post-p">
-            <p [innerHTML]="data?.DescAr ? data?.DescAr : data?.Desc"></p>
+            <p [innerHTML]="(data?.DescAr ? data?.DescAr : data?.Desc)|safeHtml"></p>
           </div>
 
 

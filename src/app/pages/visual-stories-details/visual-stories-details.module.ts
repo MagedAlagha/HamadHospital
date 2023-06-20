@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SafePipe } from '../../shared/pipe/safe.pipe';
 
 @NgModule({
-  declarations: [VisualStoriesDetailsComponent , SafePipe],
+  declarations: [VisualStoriesDetailsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -14,7 +14,7 @@ import { SafePipe } from '../../shared/pipe/safe.pipe';
         component: VisualStoriesDetailsComponent,
       },
     ]),
-
+    SafePipe
   ],
 })
 export class VisualStoriesDetailsModule {}

@@ -29,6 +29,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { AutoCompleteFeildComponent } from './shared/auto-complete-feild/auto-complete-feild.component';
 import {InputTextModule} from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SafeHtmlPipe } from './shared/pipe/safe-html.pipe';
 
 
 

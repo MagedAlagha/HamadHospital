@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { TooltipModule } from 'primeng/tooltip';
+import { SafePipe } from 'src/app/shared/pipe/safe.pipe';
+import { SafeHtmlPipe } from 'src/app/shared/pipe/safe-html.pipe';
 
 
 
@@ -24,7 +26,7 @@ import { TooltipModule } from 'primeng/tooltip';
     ]),
     LazyLoadImageModule ,
     YouTubePlayerModule,
-    TooltipModule ,
+    TooltipModule ,SafeHtmlPipe
   ],
 })
 export class MixDetailsModule { }

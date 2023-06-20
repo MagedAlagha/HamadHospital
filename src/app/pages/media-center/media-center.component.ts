@@ -14,7 +14,9 @@ export class MediaCenterComponent implements OnInit {
   valueIconLeft:any;
   constructor(public router: Router , private _mediaSectionsItems:MediaCenterService) {
   }
-
+get hiddenShowMore(){
+  return  this._mediaSectionsItems.hiddenShowMore
+}
   ngOnInit(): void {
     this.MediaCenterService$ = this._mediaSectionsItems.Selector$('MediaSectionsItems')
 
@@ -62,5 +64,8 @@ export class MediaCenterComponent implements OnInit {
     this._mediaSectionsItems.updateStore({FilterTitle:this.valueIconLeft})
     this._mediaSectionsItems.getMediaSectionsItems()
   } */
+  showMore(){
+    this._mediaSectionsItems.FungetMediaSectionsItems(this._mediaSectionsItems.ID);
 
+  }
 }

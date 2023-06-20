@@ -84,7 +84,10 @@ export class MediaCenterService {
     this.index = 1;
     this.FungetMediaSectionsItems(this.ID , MainServiceID);
   }
+  hiddenShowMore=false
   FungetMediaSectionsItems(ID: any , MainServiceID?:any) {
+    this.hiddenShowMore=false
+
     this._http
       .getData('LandingPage/MediaSectionsItems', {
         MediaSectionID: ID,
@@ -102,7 +105,9 @@ export class MediaCenterService {
         });
         if (value?.length) {
           this.index = this.index + 1;
-          this.FungetMediaSectionsItems(ID);
+        }else{
+          this.hiddenShowMore=true
+
         }
       });
   }
