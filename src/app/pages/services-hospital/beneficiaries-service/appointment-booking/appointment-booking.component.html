@@ -74,6 +74,11 @@
     <textarea formControlName="TextMessage" [rows]="4" pInputTextarea></textarea>
   </div>
   <div class="col-12">
-    <button formControlName="" pButton type="button" class="" (click)="saveAppointmentBooking()" label="إرسال"></button>
+    <button formControlName="" pButton type="button" class="mb-2" (click)="saveAppointmentBooking()" label="إرسال"></button>
+    <p-captcha
+    siteKey="6LeeT7QmAAAAAEnHpRDr9oRQcPUNVQWv1D5_oSBv"
+    initCallback="onloadCallback"
+    (onResponse)="showResponse($event)"
+  ></p-captcha>
   </div>
 </form>

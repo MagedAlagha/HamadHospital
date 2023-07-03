@@ -9,6 +9,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ReactiveFormsModule } from '@angular/forms';
+import {CaptchaModule} from 'primeng/captcha';
 
 @NgModule({
   declarations: [InstitutionsServiceComponent],
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CalendarModule,
     ButtonModule,
     InputTextareaModule,
+    CaptchaModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       {

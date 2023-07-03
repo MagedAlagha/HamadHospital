@@ -10,6 +10,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RatingModule } from 'primeng/rating';
 import { TabViewModule } from 'primeng/tabview';
 import { ReactiveFormsModule } from '@angular/forms';
+import {CaptchaModule} from 'primeng/captcha';
 
 @NgModule({
   declarations: [VisitorServiceComponent],
@@ -23,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonModule,
     InputTextareaModule,
     RatingModule,
+    CaptchaModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       {

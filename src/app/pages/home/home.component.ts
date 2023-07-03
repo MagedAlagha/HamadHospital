@@ -5,6 +5,7 @@ import {
   HostListener,
   OnInit,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o/public_api';
 import { filter, map, Observable, tap } from 'rxjs';
@@ -12,13 +13,42 @@ import { environment } from 'src/environments/environment';
 import { MediaCenterService } from '../media-center/media-center.service';
 import { HomeService } from './home.service';
 import { Router } from '@angular/router';
+import { SwiperComponent } from 'swiper/types';
+import Swiper from "swiper/types/swiper-class";
 
+// import Swiper core and required components
+import SwiperCore , {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Virtual,
+  Zoom,
+  Autoplay,
+  Thumbs,
+  Controller,
+} from 'swiper';
+
+// install Swiper components
+SwiperCore.use([
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Virtual,
+  Zoom,
+  Autoplay,
+  Thumbs,
+  Controller
+]);
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('swiperSlideShow') swiperSlideShow!: SwiperComponent;
+
   LandingPageData$!: Observable<any>;
   Services$!: Observable<any>;
   LastNews$!: Observable<any>;
@@ -40,10 +70,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private _homeService: HomeService,
     private _mediaCenterService: MediaCenterService,
-    private el: ElementRef,
-    private location: Location,
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
     private router: Router
   ) {}
   dominUrl: any;
@@ -52,6 +78,7 @@ export class HomeComponent implements OnInit {
     console.log('this.dominUrl', this.dominUrl);
     /*    ;
      *//* null , 1 */
+    this._mediaCenterService.getLastVarious();
     this._mediaCenterService.getMediaSectionsItems()
     this._mediaCenterService.getMediaSectionsSuceessStoryHome('5,6');
     this._mediaCenterService.getMediaSectionsItemsVideo(3);
@@ -91,7 +118,7 @@ export class HomeComponent implements OnInit {
       'MediaSectionsItemsLastNews'
     );
     this.MediaSectionsItemsLastVarious$ = this._mediaCenterService.Selector$(
-      'MediaSectionsItemsLastVarious'
+      'ShowLastVarious'
     );
 
     /*     this.mix$ = this._mediaCenterService.Selector$('MediaSectionsItems').pipe(
@@ -119,6 +146,11 @@ export class HomeComponent implements OnInit {
     this.MediaSectionsSuceessStoryHome$ = this._mediaCenterService.Selector$('MediaSectionsSuceessStoryHome')
 
     /* **************************************************************************************** */
+  }
+
+  controlledSwiper: any;
+  setControlledSwiper(swiper: any) {
+    this.controlledSwiper = swiper;
   }
 
   /* ************************************************************************* */

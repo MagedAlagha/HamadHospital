@@ -35,14 +35,16 @@
             <img
               [src]="'http://hamad_api.accessline.ps' + data?.ImagePath"
                [ngStyle]="{
-                'height': 'auto',
+                'height': '70vh',
                 'object-fit': 'cover',
                 'border-radius':'8px',
-                'width':'100%'
+                'width':'90%'
             }"
               class="img-fluid"
               alt=""
             />
+
+
           </ng-container>
 
           <ng-container
@@ -176,7 +178,7 @@
             />
 
 
-            <div class="d-flex justify-content-between mt-4 " style="width: 60%;">
+            <div class="d-flex justify-content-between my-4  " style="width: 60%;">
               <div class="entry-meta">
                 <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
                 <span
@@ -200,43 +202,52 @@
             </div>
           </ng-container>
 
+          <ng-container *ngIf="data.MediaSectionID?.includes(8)" >
 
           <div class="d-flex justify-content-center align-items-center my-4">
-            <ng-container *ngIf="data.MediaSectionID?.includes(8)" >
              <div class="d-block">
 
               <ng-container *ngFor="let item of pdfFile">
                 <ng-container *ngIf="item?.ImagePath?.includes('pdf')">
-                  <a [href]="'http://hamad_api.accessline.ps'+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">  {{item?.ImagePath}} </a>
+                  <a [href]="'http://hamad_api.accessline.ps'+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">
+
+                    <ng-container *ngIf="item?.FileName ; else f"> {{item?.FileName}} </ng-container>
+                   <ng-template #f>
+                    تحميل ملف pdf
+                   </ng-template>
+                  </a>
               </ng-container>
               </ng-container>
             </div>
 
-            </ng-container>
-
           </div>
+        </ng-container>
 
 
-          <div class="d-flex justify-content-between mt-4 " *ngIf="!data.MediaSectionID?.includes(8)">
-            <div class="entry-meta">
-              <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
-              <span
-                >نشر بتاريخ: <span>{{ data?.ItemDate | date }} </span>
-              </span>
-            </div>
 
-            <div class="share-post">
+         <div class="row">
+          <div class="col-md-11">
+            <div class="d-flex justify-content-between my-3 " *ngIf="!data.MediaSectionID?.includes(8)">
+              <div class="entry-meta">
+                <!--  <p> <span> بواسطة</span> / ايبسوم هو نموذج افتراضي </p> -->
+                <span> نشر بتاريخ: <span>{{ data?.ItemDate | date }} </span>
+                </span>
+              </div>
 
-              <span
-                ngxClipboard
-                (click)="copy()"
-                [pTooltip]="text"
-                tooltipPosition="top"
-                ><i class="fa-regular fa-clone ps-3"></i
-              ></span>
+              <div class="share-post">
 
+                <span
+                  ngxClipboard
+                  (click)="copy()"
+                  [pTooltip]="text"
+                  tooltipPosition="top"
+                  ><i class="fa-regular fa-clone ps-3"></i
+                ></span>
+
+              </div>
             </div>
           </div>
+         </div>
 
 
           <div class="post-p">

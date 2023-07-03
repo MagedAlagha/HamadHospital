@@ -1,7 +1,7 @@
-<div class="hero" id="section0" >
-  <owl-carousel-o [options]="customOptions">
+<div class="hero home-carosal" id="section0">
+    <owl-carousel-o [options]="customOptions">
     <ng-container *ngIf="LandingPageData$ | async as data">
-      <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider.reverse()">
+      <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
         <div
           class="img"
           style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url(http://hamad_api.accessline.ps{{
@@ -27,6 +27,7 @@
           </ng-container>
         </div>
       </ng-template>
+
     </ng-container>
   </owl-carousel-o>
 </div>
@@ -78,7 +79,7 @@
       <div class="row justify-content-center mb-4">
         <div class="col-md-9 col-sm-6 col-12 text-center">
           <p style="font-weight: 600; line-height: 28px">
-             {{ data?.MainInfo?.About }}
+            {{ data?.MainInfo?.About }}
           </p>
         </div>
       </div>
@@ -122,7 +123,7 @@
           </a>
         </div>
         <div
-          class="col-lg-3 col-md-4 col-6 px-md-0  d-flex align-items-stretch mt-4 mt-lg-0"
+          class="col-lg-3 col-md-4 col-6 px-md-0 d-flex align-items-stretch mt-4 mt-lg-0"
         >
           <a routerLink="/sections/hearing-balance" style="width: 100%">
             <div class="icon-box">
@@ -194,10 +195,10 @@
       <div class="line d-block mb-2"></div>
     </div>
     <!-- row -->
-     <ng-container *ngIf="MediaSectionsItemsVideo$ | async as data">
+    <ng-container *ngIf="MediaSectionsItemsVideo$ | async as data">
       <div class="row">
         <div class="col-lg-8 img" (click)="showVideoPreview(data[0])">
-          <div style="width: 100%; object-fit: cover " class="post-img">
+          <div style="width: 100%; object-fit: cover" class="post-img">
             <img
               [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
               class="img-fluid"
@@ -234,7 +235,7 @@
             </div>
             <div class="col-12 img" (click)="showVideoPreview(data[2])">
               <figure style="width: 100%">
-                  <img
+                <img
                   [lazyLoad]="
                     'http://hamad_api.accessline.ps' + data[2]?.ImagePath
                   "
@@ -245,7 +246,6 @@
                 <figcaption>
                   {{ isEn ? data[2]?.Title : data[2]?.Title }}
                 </figcaption>
-
               </figure>
               <a class="icon_video play-btn mb-4"></a>
             </div>
@@ -255,8 +255,7 @@
       </div>
     </ng-container>
 
-
-  <!--    <ng-container *ngIf="MediaSectionsItemsVideo$ | async as data">
+    <!--    <ng-container *ngIf="MediaSectionsItemsVideo$ | async as data">
       <div class="row">
         <div class="col-md-8 img d-flex align-items-stretch  mb-md-0 mb-3">
           <div class="post-box w-100 "  >
@@ -374,9 +373,6 @@
         </div>
       </div>
     </ng-container> -->
-
-
-
   </div>
 </section>
 
@@ -396,10 +392,10 @@
       </div>
       <div class="line d-block mb-3" style="height: 3px"></div>
     </div>
-    <ng-container *ngIf="MediaSectionsSuceessStoryHome$| async as data">
+    <ng-container *ngIf="MediaSectionsSuceessStoryHome$ | async as data">
       <div class="row">
         <div
-          class="col-md-4 img pb-3 d-flex align-items-stretch  "
+          class="col-md-4 img pb-3 d-flex align-items-stretch"
           (click)="showPhotosDetails(data[0]); addAvtiveNaveBar()"
         >
           <div
@@ -407,12 +403,14 @@
             routerLink="/mix-details/{{ data[0]?.ID }}"
             class="press-stories"
           >
-          <div class="post-img">
-            <img
-              [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
-              class="img-fluid"
-              alt=""
-            />
+            <div class="post-img">
+              <img
+                [lazyLoad]="
+                  'http://hamad_api.accessline.ps' + data[0]?.ImagePath
+                "
+                class="img-fluid"
+                alt=""
+              />
             </div>
             <p>
               {{ isEn ? data[0]?.Title : data[0]?.Title }}
@@ -428,13 +426,15 @@
             routerLink="/mix-details/{{ data[1]?.ID }}"
             class="press-stories"
           >
-          <div class="post-img">
-            <img
-            [lazyLoad]="'http://hamad_api.accessline.ps' + data[1]?.ImagePath"
-            class="img-fluid"
-            alt=""
-          />
-          </div>
+            <div class="post-img">
+              <img
+                [lazyLoad]="
+                  'http://hamad_api.accessline.ps' + data[1]?.ImagePath
+                "
+                class="img-fluid"
+                alt=""
+              />
+            </div>
 
             <p>
               {{ isEn ? data[1]?.Title : data[1]?.Title }}
@@ -450,21 +450,22 @@
             routerLink="/mix-details/{{ data[2]?.ID }}"
             class="press-stories"
           >
-          <div class="post-img">
-            <img
-              [lazyLoad]="'http://hamad_api.accessline.ps' + data[2]?.ImagePath"
-              class="img-fluid"
-              alt=""
-            />
+            <div class="post-img">
+              <img
+                [lazyLoad]="
+                  'http://hamad_api.accessline.ps' + data[2]?.ImagePath
+                "
+                class="img-fluid"
+                alt=""
+              />
             </div>
-            <p >
+            <p>
               {{ isEn ? data[2]?.Title : data[2]?.Title }}
             </p>
           </div>
         </div>
       </div>
     </ng-container>
-
   </div>
 </div>
 
@@ -519,9 +520,7 @@
                     <span class="categories">الأخبار</span>
                   </ng-container>
 
-                  <span class="post-date">{{
-                    data[0]?.ItemDate | date
-                  }}</span>
+                  <span class="post-date">{{ data[0]?.ItemDate | date }}</span>
                 </div>
                 <h3 class="post-title">
                   {{ isEn ? data[0]?.Title : data[0]?.Title }}
@@ -560,12 +559,16 @@
       <!-- قسم منوعات -->
       <div class="col-md-4 flex-column">
         <!--  d-flex align-items-stretch -->
-        <div class="section-title mb-2"  *ngIf="LandingPageData$ | async as data">
+        <div
+          class="section-title mb-2"
+          *ngIf="LandingPageData$ | async as data"
+        >
           <h4
             routerLink="/media-center/mix"
             style="cursor: pointer"
-            (click)="addAvtiveNaveBar()">
-          {{data?.MainInfo?.HomeVariousTitle}}
+            (click)="addAvtiveNaveBar()"
+          >
+            {{ data?.MainInfo?.HomeVariousTitle }}
           </h4>
         </div>
 
@@ -606,7 +609,7 @@
                 <span class="post-date">{{ data[0]?.ItemDate | date }}</span>
               </div>
               <h3 class="post-title">
-                {{ isEn ? data[0]?.Title : data[0]?.Title }}
+                {{ isEn ? data[0]?.TitleEn : data[0]?.TitleAr }}
               </h3>
               <a
                 routerLink="/mix-details/{{ data[0]?.ID }}"
@@ -652,13 +655,12 @@
 </section>
 
 <!-- employment-Ad -->
-<div class="employment-ad" id="section5" >
+<div class="employment-ad" id="section5">
   <div class="container">
-    <div class="section-title mb-2 d-flex justify-content-between align-items-center ">
-      <h4
-      routerLink="/ads">
-        الإعلانات
-      </h4>
+    <div
+      class="section-title mb-2 d-flex justify-content-between align-items-center"
+    >
+      <h4 routerLink="/ads">الإعلانات</h4>
       <span routerLink="/ads" class="read_more">إقرأ المزيد</span>
     </div>
   </div>
@@ -674,9 +676,7 @@
               <p>
                 {{ item?.Title }}
               </p>
-                <a routerLink="/ads-details/{{item.ID}}"
-                  >عرض التفاصيل
-                 </a>
+              <a routerLink="/ads-details/{{ item.ID }}">عرض التفاصيل </a>
             </div>
           </ng-template>
         </owl-carousel-o>

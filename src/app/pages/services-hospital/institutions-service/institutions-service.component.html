@@ -42,7 +42,12 @@
         <textarea formControlName="TextMessage" [rows]="4" pInputTextarea></textarea>
       </div>
       <div class="col-12">
-        <button pButton type="button" class="" (click)="savePressCoverageRequest()" label="إرسال"></button>
+        <button pButton type="button" class="mb-2" (click)="savePressCoverageRequest()" label="إرسال"></button>
+        <p-captcha
+        siteKey="6LeeT7QmAAAAAEnHpRDr9oRQcPUNVQWv1D5_oSBv"
+        initCallback="onloadCallback"
+        (onResponse)="showResponse($event)"
+      ></p-captcha>
       </div>
     </form>
 
@@ -88,7 +93,12 @@
         <textarea formControlName="TextMessage" [rows]="4" pInputTextarea></textarea>
       </div>
       <div class="col-12">
-        <button pButton type="button" class="" (click)="saveVisitRequest()" label="إرسال"></button>
+        <button pButton type="button" class="mb-2" (click)="saveVisitRequest()" label="إرسال"></button>
+        <p-captcha
+        siteKey="6LeeT7QmAAAAAEnHpRDr9oRQcPUNVQWv1D5_oSBv"
+        initCallback="onloadCallback"
+        (onResponse)="showResponse($event)"
+      ></p-captcha>
       </div>
     </form>
 

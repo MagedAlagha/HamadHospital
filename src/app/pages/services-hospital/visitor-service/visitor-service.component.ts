@@ -76,6 +76,9 @@ export class VisitorServiceComponent implements OnInit {
     return this.Form_Visitors.get('CommunicationReason')
   }
 
-
+  disable=true;
+  showResponse(event:any) {
+    this.disable = false;
+  }
 
 }

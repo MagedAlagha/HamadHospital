@@ -10,27 +10,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { StoriesHomeComponent } from './pages/stories-home/stories-home.component';
 import { InterceptorService } from './interceptor.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { ParallaxComponent } from './pages/parallax/parallax.component';
 import { DialogModule } from 'primeng/dialog';
 import { VideoPreviewModalComponent } from './pages/home/Modals/video-preview-modal/video-preview-modal.component';
 import { StoriesHomeModule } from './pages/stories-home/stories-home.module';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TooltipModule } from 'primeng/tooltip';
-import { NgOptimizedImage } from '@angular/common';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { VideoPreviewSliderComponent } from './pages/home/Modals/video-preview-slider/video-preview-slider.component';
-import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { AutoCompleteFeildComponent } from './shared/auto-complete-feild/auto-complete-feild.component';
 import {InputTextModule} from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SafeHtmlPipe } from './shared/pipe/safe-html.pipe';
-
+import {GalleriaModule} from 'primeng/galleria';
+import { SwiperModule } from 'swiper/angular';
 
 
 @NgModule({
@@ -40,7 +36,6 @@ import { SafeHtmlPipe } from './shared/pipe/safe-html.pipe';
     FooterComponent,
     HomeComponent,
     PageNotFoundComponent,
-    ParallaxComponent,
     VideoPreviewModalComponent,
     VideoPreviewSliderComponent,
   ],
@@ -60,8 +55,11 @@ import { SafeHtmlPipe } from './shared/pipe/safe-html.pipe';
     TooltipModule ,
     LazyLoadImageModule,
     ReactiveFormsModule,
+    GalleriaModule,
+    SwiperModule,
     InputTextModule,
-    ScrollToModule.forRoot()
+    ScrollToModule.forRoot(),
+
   ],
 
   providers: [

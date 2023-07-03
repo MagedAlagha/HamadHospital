@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppointmentBookingComponent } from './appointment-booking/appointment-booking.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
 import { RatingComponent } from './rating/rating.component';
+import {CaptchaModule} from 'primeng/captcha';
 
 @NgModule({
   declarations: [BeneficiariesServiceComponent, AppointmentBookingComponent, SuggestionComponent, RatingComponent],
@@ -25,6 +26,7 @@ import { RatingComponent } from './rating/rating.component';
     ButtonModule,
     InputTextareaModule,
     RatingModule,
+    CaptchaModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       {

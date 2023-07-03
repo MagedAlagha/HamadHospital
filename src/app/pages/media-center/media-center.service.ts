@@ -28,6 +28,7 @@ export class MediaCenterService {
     PostInfo: undefined,
     MixInfo: undefined,
     medicalArticleInfo: undefined,
+    ShowLastVarious: undefined,
 
     NewsInfo: undefined,
     PhotoGalaryInfo: undefined,
@@ -112,6 +113,13 @@ export class MediaCenterService {
       });
   }
 
+  getLastVarious () {
+    this.getFormApi(
+      'MediaSectionsItems/MediaSectionsItemsSearch',
+      'ShowLastVarious',
+      { ShowLastVarious : true }
+    );
+  }
   getMediaSectionsItemsVideo(ID?: any, MainServiceID?: any) {
     this.getFormApi(
       'LandingPage/MediaSectionsItems',
@@ -258,6 +266,7 @@ export interface StoreInterface {
   NewsLaterInfo?: any;
   MixInfo?: any;
   activeNave?: any;
+  ShowLastVarious?: any;
 
   MediaSectionsItemsVideo?: any;
   MediaSectionsItemsStory?: any;

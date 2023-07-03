@@ -13,6 +13,7 @@ export class AppointmentBookingComponent implements OnInit {
   Form_AppointmentBooking: FormGroup;
   Codes1$!:Observable<any>;
   Codes2$!:Observable<any>;
+  disable=true
   constructor(    private fb: FormBuilder,
     private _servicesHospitalService: ServicesHospitalService,
     private messageService: MessageService
@@ -95,5 +96,8 @@ export class AppointmentBookingComponent implements OnInit {
   }
 
 
+  showResponse(event:any) {
+    this.disable = false;
+}
 
 }

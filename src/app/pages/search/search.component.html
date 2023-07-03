@@ -12,9 +12,9 @@
     <div class="box-blog py-4" *ngFor="let item of data" >
       <div class="row align-items-center">
         <div class="col-12 d-flex align-items-stretch ">
-          <div >
-              <span><i class="fa-solid fa-calendar"></i> {{item?.CreatedDate | date }}</span>
-              <h2 > {{item?.Name }} </h2>
+          <div (click)="getItem(item)" style="cursor: pointer;">
+             <ng-container *ngIf="item?.Date">  <span><i class="fa-solid fa-calendar"></i> {{item?.Date | date }}</span>  </ng-container>
+              <h2> {{item?.Name }} </h2>
 
            <ng-container >
             <a  class="btn-ad" (click)="getItem(item)"

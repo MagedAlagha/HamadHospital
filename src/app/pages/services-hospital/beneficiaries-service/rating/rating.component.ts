@@ -61,5 +61,8 @@ export class RatingComponent implements OnInit {
   get hospitalRating () {
     return this.Form_Rating.get('hospitalRating')
   }
-
+  disable=true;
+  showResponse(event:any) {
+    this.disable = false;
+  }
 }

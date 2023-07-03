@@ -81,4 +81,9 @@ export class SuggestionComponent implements OnInit {
     return this.Form_Suggestion.get('TextMessage')
   }
 
+  disable=true;
+  showResponse(event:any) {
+    this.disable = false;
+  }
+
 }
