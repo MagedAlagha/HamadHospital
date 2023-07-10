@@ -203,7 +203,10 @@
           </ng-container>
 
           <ng-container *ngIf="data.MediaSectionID?.includes(8)" >
+            <div class="post-p text-center" *ngIf="data.DescAr" >
+              <p [innerHTML]="(data?.DescAr ? data?.DescAr : data?.Desc)|safeHtml"></p>
 
+            </div>
           <div class="d-flex justify-content-center align-items-center my-4">
              <div class="d-block">
 
@@ -221,6 +224,8 @@
             </div>
 
           </div>
+
+
         </ng-container>
 
 
@@ -250,7 +255,7 @@
          </div>
 
 
-          <div class="post-p">
+          <div class="post-p" *ngIf="!data.MediaSectionID?.includes(8)">
             <p [innerHTML]="(data?.DescAr ? data?.DescAr : data?.Desc)|safeHtml"></p>
           </div>
 
