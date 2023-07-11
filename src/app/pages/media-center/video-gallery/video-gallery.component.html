@@ -27,13 +27,13 @@
   <div class="col-md-6 mb-4"  *ngFor="let item of data">
     <div class="img"  (click)="updateQueryParams(item?.VideoPath)">
       <img
-      [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath"
+      [lazyLoad]=" baseUrl+ item?.ImagePath"
         class="img-fluid main-img"
         alt=""
         style=" object-fit: cover; height: 300px; border-radius: 6px;"
       />
       <div class="d-flex justify-content-between img-title">
-        <p>{{ item?.Title | slice:0:35 }}</p>
+        <p>{{ item?.Title | slice:0:58 }}</p>
       </div>
      <a class=" icon_video play-btn mb-4"></a>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { MediaCenterService } from '../media-center.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-medical-articles',
@@ -12,6 +13,7 @@ export class MedicalArticlesComponent implements OnInit {
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
   items!:any [] ;
+  baseUrl = environment.FileUrl;
   constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {

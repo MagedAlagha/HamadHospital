@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { MediaCenterService } from '../media-center.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-mix',
@@ -11,6 +12,7 @@ export class MixComponent implements OnInit {
 
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
+  baseUrl = environment.FileUrl;
   constructor(private _mediaCenterService:MediaCenterService) { }
 
   ngOnInit(): void {

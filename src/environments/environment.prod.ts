@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseUrl: `http://hamad_api.accessline.ps/api/`,
-  avatar: `http://hamad_api.accessline.ps/Resources/Files/`,
-  FileUrl: 'http://hamad_api.accessline.ps',
+  baseUrl: `https://hamad_api.accessline.ps/api/`,
+  avatar: `https://hamad_api.accessline.ps/Resources/Files/`,
+  FileUrl: 'https://hamad_api.accessline.ps',
 };

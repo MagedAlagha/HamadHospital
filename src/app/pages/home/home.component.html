@@ -4,7 +4,7 @@
       <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
         <div
           class="img"
-          style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url(http://hamad_api.accessline.ps{{
+          style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url({{baseUrl}}{{
             item?.ImagePath
           }});"
          >
@@ -200,7 +200,7 @@
         <div class="col-lg-8 img" (click)="showVideoPreview(data[0])">
           <div style="width: 100%; object-fit: cover" class="post-img">
             <img
-              [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
+              [lazyLoad]="baseUrl + data[0]?.ImagePath"
               class="img-fluid"
               alt=""
             />
@@ -221,7 +221,7 @@
               <figure style="width: 100%">
                 <img
                   [lazyLoad]="
-                    'http://hamad_api.accessline.ps' + data[1]?.ImagePath
+                    baseUrl + data[1]?.ImagePath
                   "
                   class="img-fluid Video-img"
                   class="img-fluid"
@@ -237,7 +237,7 @@
               <figure style="width: 100%">
                 <img
                   [lazyLoad]="
-                    'http://hamad_api.accessline.ps' + data[2]?.ImagePath
+                    baseUrl + data[2]?.ImagePath
                   "
                   class="img-fluid Video-img"
                   class="img-fluid"
@@ -261,7 +261,7 @@
           <div class="post-box w-100 "  >
            <div>
             <img
-            [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
+            [lazyLoad]="baseUrl + data[0]?.ImagePath"
             class="img-fluid"
             alt=""
             style="height: 510px;"
@@ -285,7 +285,7 @@
             <div class="post-box">
               <img
               [lazyLoad]="
-                'http://hamad_api.accessline.ps' + data[1]?.ImagePath
+                baseUrl + data[1]?.ImagePath
               "
               class="img-fluid Video-img"
               alt=""
@@ -298,7 +298,7 @@
           <div class="col-12 img" (click)="showVideoPreview(data[2])">
             <img
               [lazyLoad]="
-                'http://hamad_api.accessline.ps' + data[2]?.ImagePath
+                baseUrl + data[2]?.ImagePath
               "
               class="img-fluid Video-img"
               alt=""
@@ -318,7 +318,7 @@
         <div class="col-lg-8 img" (click)="showVideoPreview(data[0])">
           <div style="width: 100%; object-fit: cover " class="post-img">
             <img
-              [lazyLoad]="'http://hamad_api.accessline.ps' + data[0]?.ImagePath"
+              [lazyLoad]="baseUrl + data[0]?.ImagePath"
               class="img-fluid"
               alt=""
             />
@@ -339,7 +339,7 @@
               <figure style="width: 100%">
                 <img
                   [lazyLoad]="
-                    'http://hamad_api.accessline.ps' + data[1]?.ImagePath
+                    baseUrl + data[1]?.ImagePath
                   "
                   class="img-fluid Video-img"
                   class="img-fluid"
@@ -355,7 +355,7 @@
               <figure style="width: 100%">
                   <img
                   [lazyLoad]="
-                    'http://hamad_api.accessline.ps' + data[2]?.ImagePath
+                    baseUrl + data[2]?.ImagePath
                   "
                   class="img-fluid Video-img"
                   class="img-fluid"
@@ -406,7 +406,7 @@
             <div class="post-img">
               <img
                 [lazyLoad]="
-                  'http://hamad_api.accessline.ps' + data[0]?.ImagePath
+                  baseUrl + data[0]?.ImagePath
                 "
                 class="img-fluid"
                 alt=""
@@ -429,7 +429,7 @@
             <div class="post-img">
               <img
                 [lazyLoad]="
-                  'http://hamad_api.accessline.ps' + data[1]?.ImagePath
+                  baseUrl + data[1]?.ImagePath
                 "
                 class="img-fluid"
                 alt=""
@@ -453,7 +453,7 @@
             <div class="post-img">
               <img
                 [lazyLoad]="
-                  'http://hamad_api.accessline.ps' + data[2]?.ImagePath
+                  baseUrl + data[2]?.ImagePath
                 "
                 class="img-fluid"
                 alt=""
@@ -497,7 +497,7 @@
                 <div class="post-img">
                   <img
                     [lazyLoad]="
-                      'http://hamad_api.accessline.ps' + data[0]?.ImagePath
+                      baseUrl + data[0]?.ImagePath
                     "
                   />
                 </div>
@@ -584,7 +584,7 @@
                 <img
                   style="height: auto"
                   [lazyLoad]="
-                    'http://hamad_api.accessline.ps' + data[0]?.ImagePath
+                    baseUrl + data[0]?.ImagePath
                   "
                 />
               </div>
@@ -624,7 +624,7 @@
               <ng-container *ngIf="MediaSectionsItemsLastVarious$ | async as data">
                  <ng-template carouselSlide *ngFor="let item of data">
                   <img
-                    [lazyLoad]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+                    [lazyLoad]="baseUrl + item?.ImagePath"
                     class="img-fluid"
                     style="border-radius: 8px"
                     alt=""

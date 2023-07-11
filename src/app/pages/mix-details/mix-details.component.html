@@ -33,7 +33,7 @@
 
         <ng-container *ngIf="data.Images === null">
             <img
-              [src]="'http://hamad_api.accessline.ps' + data?.ImagePath"
+              [src]="baseUrl + data?.ImagePath"
                [ngStyle]="{
                 'height': '70vh',
                 'object-fit': 'cover',
@@ -83,7 +83,7 @@
                 <ng-container *ngIf="
                 data.MediaSectionID?.includes(4) || data.MediaSectionID?.includes(6) ; else w">
                 <img
-                [src]="'http://hamad_api.accessline.ps' + Imagedata[0]?.ImagePath"
+                [src]="baseUrl + Imagedata[0]?.ImagePath"
                 [ngStyle]="{
                   'height': 'auto',
                   'object-fit': 'contain',
@@ -96,7 +96,7 @@
               </ng-container>
                <ng-template #w>
                 <img
-                [src]="'http://hamad_api.accessline.ps' + Imagedata[0]?.ImagePath"
+                [src]="baseUrl + Imagedata[0]?.ImagePath"
                 [ngStyle]="{
                   'height': 'auto',
                   'object-fit': 'cover',
@@ -116,7 +116,7 @@
                   <ng-template pTemplate="item" let-item >
                     <img
                       [lazyLoad]="
-                        'http://hamad_api.accessline.ps' + item?.ImagePath
+                        baseUrl + item?.ImagePath
                       "
                       [ngStyle]="{
                         'height': 'auto',
@@ -132,7 +132,7 @@
                     <ng-template pTemplate="item" let-item >
                       <img
                         [lazyLoad]="
-                          'http://hamad_api.accessline.ps' + item?.ImagePath
+                          baseUrl + item?.ImagePath
                         "
                         [ngStyle]="{
                           'height': 'auto',
@@ -147,7 +147,7 @@
                     <div class="grid grid-nogutter justify-content-center"  >
                       <img
                         [lazyLoad]="
-                          'http://hamad_api.accessline.ps' + item?.ImagePath
+                          baseUrl + item?.ImagePath
                         "
                         width="80%"
                         style="overflow: hidden;"
@@ -166,7 +166,7 @@
           <ng-container *ngIf="data.MediaSectionID?.includes(8)">
             <div class="d-flex align-items-center flex-column ">
               <img
-              [src]="'http://hamad_api.accessline.ps' + data?.ImagePath"
+              [src]="baseUrl + data?.ImagePath"
                [ngStyle]="{
                 'height': 'auto',
                 'object-fit': 'contain',
@@ -212,14 +212,14 @@
 
               <ng-container *ngFor="let item of pdfFile">
                 <ng-container *ngIf="item?.ImagePath?.includes('pdf')">
-                  <!-- <a [href]="'http://hamad_api.accessline.ps'+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">
+                 <a [href]="baseUrl+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">
 
                     <ng-container *ngIf="item?.FileName ; else f"> {{item?.FileName}} </ng-container>
                    <ng-template #f>
                     تحميل ملف pdf
                    </ng-template>
-                  </a> -->
-
+                  </a>
+<!--
                   <a  [routerLink]="'/pdf-preview'" [queryParams]="{
                    link: item?.ImagePath
                   }"  class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">
@@ -228,7 +228,7 @@
                    <ng-template #f>
                     تحميل ملف pdf
                    </ng-template>
-                  </a>
+                  </a> -->
 
               </ng-container>
               </ng-container>
@@ -291,7 +291,7 @@
               (click)="showMixDetails(item)"
             >
               <img
-                [lazyLoad]="'http://hamad_api.accessline.ps' + item?.ImagePath"
+                [lazyLoad]="baseUrl + item?.ImagePath"
                 style="
                   width: 100%;
                   object-fit: cover;

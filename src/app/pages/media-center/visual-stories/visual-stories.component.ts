@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { MediaCenterService } from '../media-center.service';
-import { VideoGalleryService } from '../video-gallery/video-gallery.service';
 import { VisualStoriesService } from './visual-stories.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-visual-stories',
@@ -14,7 +14,7 @@ export class VisualStoriesComponent implements OnInit {
   VideoDialog$!:Observable<any>;
   MediaCenterService$!:Observable<any>;
   isEn = document.dir == 'ltr' ? true : false;
-
+  baseUrl = environment.FileUrl;
   constructor(private _visualStoriesService:VisualStoriesService ,
      private _mediaCenterService:MediaCenterService) { }
 

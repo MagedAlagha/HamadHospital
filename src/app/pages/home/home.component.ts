@@ -67,6 +67,7 @@ export class HomeComponent implements OnInit {
   MediaCenterStories$!: Observable<any>;
   MediaSectionsSuceessStoryHome$!: Observable<any>;
   currentSection: number = 0;
+  baseUrl = environment.FileUrl;
   constructor(
     private _homeService: HomeService,
     private _mediaCenterService: MediaCenterService,

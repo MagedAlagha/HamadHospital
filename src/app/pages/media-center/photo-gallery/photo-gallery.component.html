@@ -6,7 +6,7 @@
            (click)="showPhotosDetails(item)" >
             <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;" alt="">
             <div class="d-flex justify-content-between img-title">
-              <p>{{ item?.Title | slice:0:35 }} {{ item?.Title.length > 35 ? '...' : '' }}</p>
+              <p>{{ item?.Title | slice:0:55 }} {{ item?.Title.length > 55 ? '...' : '' }}</p>
               <div>
              <!--    <span>10</span> -->
                 <img src="../../../../assets/img/photo.svg" alt="">

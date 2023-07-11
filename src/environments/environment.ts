@@ -3,11 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  baseUrl: `http://hamad_api.accessline.ps/api/`,
-  avatar: `http://hamad_api.accessline.ps/Resources/Files/`,
-  FileUrl: 'http://hamad_api.accessline.ps',
+  baseUrl: `https://hamad_api.accessline.ps/api/`,
+  avatar: `https://hamad_api.accessline.ps/Resources/Files/`,
+  FileUrl: 'https://hamad_api.accessline.ps',
   production: false,
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

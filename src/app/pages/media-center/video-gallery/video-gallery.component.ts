@@ -23,8 +23,7 @@ export class VideoGalleryComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
-
-  Avatar = environment.FileUrl;
+  baseUrl = environment.FileUrl;
   Search = new FormControl();
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {

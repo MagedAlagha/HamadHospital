@@ -3,6 +3,7 @@ import { Observable, tap } from 'rxjs';
 import { HomeService } from '../home/home.service';
 import { ServicesPageService } from './services-page.service';
 import { OutpatientClinicsService } from './outpatient-clinics/outpatient-clinics.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-services-page',
@@ -16,6 +17,7 @@ export class ServicesPageComponent implements OnInit {
   bgSection$!: Observable<any>;
   background: any;
   bg:any;
+  baseUrl = environment.FileUrl
   constructor(
     private _homeService: HomeService,
     private _servicesPageService: ServicesPageService ,

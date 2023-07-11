@@ -4,7 +4,7 @@
       <div class="post-box " routerLink="/mix-details/{{item.ID}}" (click)="showMedicalArticles(item)"  >
         <div class="post-img">
           <ng-container *ngIf="item?.ImagePath ; else f" >
-            <img [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;"  class="img-fluid" alt="">
+            <img [lazyLoad]=" baseUrl+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;"  class="img-fluid" alt="">
           </ng-container>
           <ng-template #f>
             <img src="../../../../assets/img/cover_Hamad.jpg" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;"  class="img-fluid" alt="">

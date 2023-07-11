@@ -24,7 +24,7 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
   text: any = 'نسخ';
   location: any;
   pdfFile: any;
-  basLink="http://hamad_api.accessline.ps"
+  baseUrl = environment.FileUrl;
   constructor(
     private route: ActivatedRoute,
     private _mediaCenterService: MediaCenterService,
