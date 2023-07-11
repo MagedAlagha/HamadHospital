@@ -125,6 +125,7 @@ const routes: Routes = [
         (m) => m.SearchModule
       ),
   },
+
   {
     path: 'contact-us',
     loadChildren: () =>
@@ -132,6 +133,15 @@ const routes: Routes = [
         (m) => m.ContactUsModule
       ),
   },
+
+  {
+    path: 'pdf-preview',
+    loadChildren: () =>
+      import('./pages/pdf-preview/pdf-preview.module').then(
+        (m) => m.PdfPreviewModule
+      ),
+  },
+
   {
     path: '**',
     component: PageNotFoundComponent,

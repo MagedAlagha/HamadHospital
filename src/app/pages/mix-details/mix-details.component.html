@@ -212,13 +212,24 @@
 
               <ng-container *ngFor="let item of pdfFile">
                 <ng-container *ngIf="item?.ImagePath?.includes('pdf')">
-                  <a [href]="'http://hamad_api.accessline.ps'+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">
+                  <!-- <a [href]="'http://hamad_api.accessline.ps'+ item?.ImagePath" target="_blank" class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">
+
+                    <ng-container *ngIf="item?.FileName ; else f"> {{item?.FileName}} </ng-container>
+                   <ng-template #f>
+                    تحميل ملف pdf
+                   </ng-template>
+                  </a> -->
+
+                  <a  [routerLink]="'/pdf-preview'" [queryParams]="{
+                   link: item?.ImagePath
+                  }"  class="pdf d-block" > <img src="../../../assets/img/pdf.png" style="width: 2rem;" class="mx-1" alt="">
 
                     <ng-container *ngIf="item?.FileName ; else f"> {{item?.FileName}} </ng-container>
                    <ng-template #f>
                     تحميل ملف pdf
                    </ng-template>
                   </a>
+
               </ng-container>
               </ng-container>
             </div>

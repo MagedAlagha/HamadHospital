@@ -24,6 +24,7 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
   text: any = 'نسخ';
   location: any;
   pdfFile: any;
+  basLink="http://hamad_api.accessline.ps"
   constructor(
     private route: ActivatedRoute,
     private _mediaCenterService: MediaCenterService,
@@ -61,10 +62,9 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
               console.log("majed : " )
 
             } */
-
         }),
         map((value) =>
-          value.filter((item: any) => !item?.ImagePath?.includes('pdf'))
+          value.filter((item: any) => !item?.ImagePath?.includes('pdf')).reverse(),
         )
       );
     this.MixDetails$ = this._mediaCenterService.Selector$('MixInfo').pipe(

@@ -670,20 +670,20 @@ label span {
 }
 
 
-.owl-theme .owl-dots{
+/* .owl-theme .owl-dots{
   transform: rotate(180deg) !important;
-}
+} */
 
 .hero{
 
   .owl-theme .owl-dots{
-   margin-top: -7vh;
+   margin-top: 0vh;
   }
 
 }
 @media(max-width:600px) {
   .owl-theme .owl-dots{
-    margin-top: -6vh !important;
+    margin-top: 0vh !important;
    }
 }
 .media{
