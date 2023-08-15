@@ -1,48 +1,46 @@
-<h3>خدمة مؤسسات</h3>
+<h3>{{ isEn ? 'Institutions service' : 'خدمة مؤسسات' }}</h3>
 
 <p-tabView styleClass="tabview-custom">
-  <p-tabPanel header="طلب تغطية صحفية" [selected]="true">
+  <p-tabPanel [header]=" isEn ? 'Cover request' : 'طلب تغطية' "  [selected]="true">
     <form class="row g-3" [formGroup]="Form_PressCoverageRequest">
       <div class="col-md-6">
 
-        <label>الاسم كامل <span>(مطلوب)</span></label>
+        <label>{{ isEn ? 'Full Name' : 'الاسم كامل' }} <span>{{ isEn ? '(required)' : '(مطلوب)' }}</span></label>
         <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="FullName" type="text" pInputText>
         <div *ngIf="FullName?.invalid && FullName?.touched">
-        <small class="text-danger" *ngIf="FullName?.errors?.['required']"  >الاسم مطلوب</small>
-        <small class="text-danger" *ngIf="FullName?.errors?.['minlength']" >الاسم يجب ان يكون على الاقل 5 حروف</small>
-        </div>
+          <small class="text-danger" *ngIf="FullName?.errors?.['required']"  >{{ isEn ? 'Name is required' : 'الاسم مطلوب' }}</small>
+          <small class="text-danger" *ngIf="FullName?.errors?.['minlength']" > {{ isEn ? 'The name must be at least 5 characters long' : 'الاسم يجب ان يكون على الاقل 5 حروف' }}</small>
+            </div>
       </div>
       <div class="col-md-6">
-        <label>البريد الالكتروني </label>
+        <label>{{ isEn ? 'Email' : 'البريد الالكتروني' }} </label>
         <input [class.is-invalid]="Email?.invalid && Email?.touched" formControlName="Email" type="email" pInputText>
-    <!--      <small [class.d-none]="Email?.valid || Email?.untouched"> يرجى ادخال الاميميل بشكل صحيح</small>
-     -->     <div *ngIf="Email?.invalid && Email?.touched">
-          <small class="text-danger" *ngIf="Email?.errors?.['email']" >يرجى ادخال الايميل بشكل صحيح</small>
-          </div>
+        <small class="text-danger" *ngIf="Email?.errors?.['email']" >{{ isEn ? 'Please enter the email correctly' : 'يرجى ادخال الايميل بشكل صحيح' }}</small>
+
       </div>
       <div class="col-md-6">
-        <label>رقم الموبايل <span>(مطلوب)</span></label>
+        <label>{{ isEn ? 'Mobile number' : 'رقم الموبايل ' }} <span>{{ isEn ? '(required)' : '(مطلوب)' }}</span></label>
         <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="PhoneNumber" type="text" pInputText>
         <div *ngIf="PhoneNumber?.invalid && PhoneNumber?.touched">
-          <small class="text-danger" *ngIf="PhoneNumber?.errors?.['required']"  >رقم الموبايل مطلوب</small>
-          <small class="text-danger d-block " *ngIf="PhoneNumber?.errors?.['pattern']" >يرجى ادخال موبايل بشكل صحيح </small>
-           <small class="text-danger" *ngIf="PhoneNumber?.errors?.['minlength'] ||PhoneNumber?.errors?.['maxlength']" >الرقم يجب ان يكون من 10ارقام </small>
-          </div>
+          <small class="text-danger" *ngIf="PhoneNumber?.errors?.['required']"  >{{ isEn ? 'Mobile number is required' : 'رقم الموبايل مطلوب' }}</small>
+          <small class="text-danger d-block " *ngIf="PhoneNumber?.errors?.['pattern']" >{{ isEn ? 'Please enter a valid mobile' : 'يرجى ادخال موبايل بشكل صحيح' }} </small>
+           <small class="text-danger" *ngIf="PhoneNumber?.errors?.['minlength'] ||PhoneNumber?.errors?.['maxlength']" >{{ isEn ? 'The number must be 10 digits' : 'الرقم يجب ان يكون من 10ارقام' }} </small>
+              </div>
       </div>
       <div class="col-md-6">
-        <label>العنوان بالكامل <span>(مطلوب)</span></label>
+        <label> {{ isEn ? 'The full address' : 'العنوان بالكامل ' }}  <span>{{ isEn ? '(required)' : '(مطلوب)' }}</span></label>
         <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="Address" type="text" id="inputAddress" pInputText>
         <div *ngIf="Address?.invalid && Address?.touched">
-          <small class="text-danger" *ngIf="Address?.errors?.['required']"  >العنوان مطلوب</small>
+          <small class="text-danger" *ngIf="Address?.errors?.['required']"  >{{ isEn ? 'The field is required' : 'الحقل مطلوب ' }}</small>
           </div>
       </div>
 
       <div class="col-12">
-        <label>نص الرسالة </label>
+        <label>{{ isEn ? 'Message text' : 'نص الرسالة ' }}</label>
         <textarea formControlName="TextMessage" [rows]="4" pInputTextarea></textarea>
       </div>
       <div class="col-12">
-        <button pButton type="button" class="mb-2" (click)="savePressCoverageRequest()" label="إرسال"></button>
+        <button pButton type="button" class="mb-2" (click)="savePressCoverageRequest()" [label]=" isEn ? 'Send' : 'إرسال ' "></button>
         <p-captcha
         siteKey="6LeeT7QmAAAAAEnHpRDr9oRQcPUNVQWv1D5_oSBv"
         initCallback="onloadCallback"
@@ -52,48 +50,47 @@
     </form>
 
   </p-tabPanel>
-  <p-tabPanel header="طلب زيارة">
+  <p-tabPanel [header]=" isEn ? 'Request to visit' : 'طلب زيارة' ">
     <form class="row g-3" [formGroup]="Form_VisitRequest">
       <div class="col-md-6">
 
-        <label>الاسم كامل <span>(مطلوب)</span></label>
+        <label>{{ isEn ? 'Full Name' : 'الاسم كامل' }} <span>{{ isEn ? '(required)' : '(مطلوب)' }}</span></label>
         <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="FullName" type="text" pInputText>
         <div *ngIf="FullName?.invalid && FullName?.touched">
-        <small class="text-danger" *ngIf="FullName?.errors?.['required']"  >الاسم مطلوب</small>
-        <small class="text-danger" *ngIf="FullName?.errors?.['minlength']" >الاسم يجب ان يكون على الاقل 5 حروف</small>
+          <small class="text-danger" *ngIf="FullName?.errors?.['required']"  >{{ isEn ? 'Name is required' : 'الاسم مطلوب' }}</small>
+          <small class="text-danger" *ngIf="FullName?.errors?.['minlength']" > {{ isEn ? 'The name must be at least 5 characters long' : 'الاسم يجب ان يكون على الاقل 5 حروف' }}</small>
         </div>
       </div>
       <div class="col-md-6">
-        <label>البريد الالكتروني </label>
+        <label>{{ isEn ? 'Email' : 'البريد الالكتروني' }} </label>
         <input [class.is-invalid]="Email?.invalid && Email?.touched" formControlName="Email" type="email" pInputText>
-    <!--      <small [class.d-none]="Email?.valid || Email?.untouched"> يرجى ادخال الاميميل بشكل صحيح</small>
-     -->     <div *ngIf="Email?.invalid && Email?.touched">
-          <small class="text-danger" *ngIf="Email?.errors?.['email']" >يرجى ادخال الايميل بشكل صحيح</small>
-          </div>
+         <div *ngIf="Email?.invalid && Email?.touched">
+          <small class="text-danger" *ngIf="Email?.errors?.['email']" >{{ isEn ? 'Please enter the email correctly' : 'يرجى ادخال الايميل بشكل صحيح' }}</small>
+        </div>
       </div>
       <div class="col-md-6">
-        <label>رقم الموبايل <span>(مطلوب)</span></label>
+        <label>{{ isEn ? 'Mobile number' : 'رقم الموبايل ' }} <span>{{ isEn ? '(required)' : '(مطلوب)' }}</span></label>
         <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="PhoneNumber" type="text" pInputText>
         <div *ngIf="PhoneNumber?.invalid && PhoneNumber?.touched">
-          <small class="text-danger" *ngIf="PhoneNumber?.errors?.['required']"  >رقم الموبايل مطلوب</small>
-          <small class="text-danger d-block " *ngIf="PhoneNumber?.errors?.['pattern']" >يرجى ادخال موبايل بشكل صحيح </small>
-           <small class="text-danger" *ngIf="PhoneNumber?.errors?.['minlength'] ||PhoneNumber?.errors?.['maxlength']" >الرقم يجب ان يكون من 10ارقام </small>
+          <small class="text-danger" *ngIf="PhoneNumber?.errors?.['required']"  >{{ isEn ? 'Mobile number is required' : 'رقم الموبايل مطلوب' }}</small>
+          <small class="text-danger d-block " *ngIf="PhoneNumber?.errors?.['pattern']" >{{ isEn ? 'Please enter a valid mobile' : 'يرجى ادخال موبايل بشكل صحيح' }} </small>
+           <small class="text-danger" *ngIf="PhoneNumber?.errors?.['minlength'] ||PhoneNumber?.errors?.['maxlength']" >{{ isEn ? 'The number must be 10 digits' : 'الرقم يجب ان يكون من 10ارقام' }} </small>
           </div>
       </div>
       <div class="col-md-6">
-        <label>العنوان بالكامل <span>(مطلوب)</span></label>
+        <label> {{ isEn ? 'The full address' : 'العنوان بالكامل ' }}  <span>{{ isEn ? '(required)' : '(مطلوب)' }}</span></label>
         <input [class.is-invalid]="FullName?.invalid && FullName?.touched" formControlName="Address" type="text" id="inputAddress" pInputText>
         <div *ngIf="Address?.invalid && Address?.touched">
-          <small class="text-danger" *ngIf="Address?.errors?.['required']"  >العنوان مطلوب</small>
+          <small class="text-danger" *ngIf="Address?.errors?.['required']"  >{{ isEn ? 'The field is required' : 'الحقل مطلوب ' }}</small>
           </div>
       </div>
 
       <div class="col-12">
-        <label>نص الرسالة </label>
+        <label>{{ isEn ? 'Message text' : 'نص الرسالة ' }}</label>
         <textarea formControlName="TextMessage" [rows]="4" pInputTextarea></textarea>
       </div>
       <div class="col-12">
-        <button pButton type="button" class="mb-2" (click)="saveVisitRequest()" label="إرسال"></button>
+        <button pButton type="button" class="mb-2" (click)="saveVisitRequest()" [label]=" isEn ? 'Send' : 'إرسال ' "></button>
         <p-captcha
         siteKey="6LeeT7QmAAAAAEnHpRDr9oRQcPUNVQWv1D5_oSBv"
         initCallback="onloadCallback"

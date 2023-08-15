@@ -9,54 +9,75 @@
         (click)="active = 1"
       />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fa-solid fa-bars-staggered"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="d-flex mobile">
+      <div class="d-md-none d-block pt-1" id="navbarCollapse">
+        <a><i class="fas fa-search" (click)="toggleSearch()"></i></a>
+      </div>
+
+      <div class="drop-down drop-down-beneficiaries d-md-none d-block  ">
+        <a style="color: #fff" routerLink="/services-form/beneficiaries/2">حجز موعد</a>
+      </div>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" [ngClass]="{'show' : isNavbarOpen}" id="navbarSupportedContent">
       <ul class="navbar-nav m-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a
             class="nav-link active"
             aria-current="page"
             routerLink="/home"
+            data-target="#navbarSupportedContent"
             [ngClass]="{ active: active == 1 }"
-            (click)="active = 1"
-            >الرئيسية</a
+            (click)="active = 1 ; closeNavbar()">
+            {{ isEn ? 'Home' : 'الرئيسية' }}
+            </a
           >
         </li>
         <li class="nav-item">
           <a
             routerLink="/about-us"
             class="nav-link"
+            data-target="#navbarSupportedContent"
             [ngClass]="{ active: active == 4 }"
-            (click)="active = 4"
-            >حول المستشفى
+            (click)="active = 4 ; closeNavbar()">
+            {{ isEn ? 'About hospital' : 'حول المستشفى' }}
+
           </a>
         </li>
         <li class="nav-item">
           <a
             routerLink="/sections"
             class="nav-link"
+            data-target="#navbarSupportedContent"
             [ngClass]="{ active: active == 2 }"
-            (click)="active = 2"
-            >الخدمات
+            (click)="active = 2 ; closeNavbar()">
+            {{ isEn ? 'Services' : 'الخدمات' }}
+
+
           </a>
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
             routerLink="/media-center/news/news-main"
+            data-target="#navbarSupportedContent"
             [ngClass]="{ active: active == 3 }"
-            (click)="active = 3"
-            >المركز الاعلامي
+            (click)="active = 3 ; closeNavbar()">
+            {{ isEn ? 'Media Center' : 'المركز الاعلامي' }}
+
           </a>
         </li>
 
@@ -64,27 +85,42 @@
           <a
             style="color: black; font-weight: 500"
             [ngClass]="{ active: active == 5 }"
-            (click)="active = 5"
-            >الخدمات الالكترونية</a
+            data-target="#navbarSupportedContent"
+            (click)="active = 5 ; closeNavbar()">
+            {{ isEn ? 'Electronic services' : 'الخدمات الالكترونية' }}
+
+
+            </a
           >
-          <i class="fa-solid fa-chevron-up ps-2 arrow1"></i>
-          <i class="fa-solid fa-chevron-down ps-2 arrow2"></i>
+          <i class="fa-solid fa-chevron-up  arrow1"></i>
+          <i class="fa-solid fa-chevron-down  arrow2"></i>
           <ul>
             <li>
-              <a routerLink="/services-form/beneficiaries/1">خدمة مستفيدين</a>
+              <a routerLink="/services-form/beneficiaries/1">
+                {{ isEn ? 'Beneficiary service' : 'خدمة مستفيدين' }}
+              </a>
+
             </li>
             <li>
-              <a routerLink="/services-form/visitor">خدمة زائرين</a>
+              <a routerLink="/services-form/visitor">
+                {{ isEn ? 'Visitor service' : 'خدمة زائرين' }}
+
+              </a>
+
             </li>
             <li>
-              <a routerLink="/services-form/institutions">خدمة مؤسسات</a>
+              <a routerLink="/services-form/institutions">
+                {{ isEn ? 'Institutions service' : 'خدمة مؤسسات' }}
+
+              </a>
+
             </li>
             <li>
               <a
                 routerLink="/services-form/beneficiaries/1"
-                (click)="complaint(2)"
-                >الشكاوي</a
-              >
+                (click)="complaint(2)">
+                {{ isEn ? 'Complaints' : 'شكاوى' }}
+                </a>
             </li>
           </ul>
         </div>
@@ -93,8 +129,9 @@
             routerLink="/contact-us"
             class="nav-link"
             [ngClass]="{ active: active == 6 }"
-            (click)="active = 6"
-            >اتصل بنا
+            data-target="#navbarSupportedContent"
+            (click)="active = 6 ; closeNavbar()">
+            {{ isEn ? 'Contact us' : 'اتصل بنا' }}
           </a>
         </li>
       </ul>
@@ -108,15 +145,18 @@
           UrlEndPoint: 'http://hamad_api.accessline.ps/api/'
       }"  ></app-auto-complete-feild> -->
 
-        <div class="" id="navbarCollapse">
+        <div class="d-md-block d-none" id="navbarCollapse">
           <a><i class="fas fa-search" (click)="toggleSearch()"></i></a>
         </div>
 
-        <div class="drop-down ms-3">
-          <a style="color: #fff" routerLink="/services-form/beneficiaries/2"
-            >حجز موعد</a
-          >
+        <div class="drop-down drop-down-beneficiaries d-md-block d-none ">
+          <a style="color: #fff" routerLink="/services-form/beneficiaries/2">
+            {{ isEn ? 'Appointment Booking' : 'حجز موعد' }}
+          </a>
         </div>
+
+        <a (click)="setLang()" class="lang-btn ms-2">{{Language}}</a>
+
       </div>
     </div>
   </div>

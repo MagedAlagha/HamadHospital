@@ -3,6 +3,7 @@ import { map, Observable } from 'rxjs';
 import { FooterService } from './pages/footer/footer.service';
 import { HomeService } from './pages/home/home.service';
 import { MediaCenterService } from './pages/media-center/media-center.service';
+import { TranslationService } from 'src/assets/i18n';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +17,19 @@ export class AppComponent implements OnInit {
   isEn = document.dir == 'ltr' ? true : false;
   isEn_LandingPage = document.dir == 'ltr' ? "en" : "ar";
   isScroll:boolean = false;
+  Language: string = this._translationService.getSelectedLanguage();
+
   constructor(
     private _footerService: FooterService,
     private _homeService: HomeService,
-    private _mediaSectionsItems:MediaCenterService
+    private _mediaSectionsItems:MediaCenterService,
+    private _translationService:TranslationService
   ) {}
   ngOnInit(): void {
 
     this._footerService.getStats();
     this._homeService.getServicesInHome();
-    this._homeService.getLandingPageInfo(this.isEn_LandingPage);
+    this._homeService.getLandingPageInfo(this.Language);
     this.LandingPageData$ = this._homeService.Selector$('LandingPageInfo').pipe(map(value=>value));
   }
 

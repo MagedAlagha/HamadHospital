@@ -9,6 +9,8 @@ import { ServicesHospitalService } from '../services-hospital.service';
   styleUrls: ['./institutions-service.component.scss'],
 })
 export class InstitutionsServiceComponent implements OnInit {
+  isEn = document.dir == 'ltr' ? true : false;
+
   Form_PressCoverageRequest: FormGroup;
   Form_VisitRequest: FormGroup;
   constructor(
@@ -44,7 +46,7 @@ export class InstitutionsServiceComponent implements OnInit {
     if (this.Form_PressCoverageRequest.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'يوجد حقول مطلوبة',
+        detail: this.isEn?'There are required fields':'يوجد حقول مطلوبة' ,
       });
     } else {
       this._servicesHospitalService.savePressCoverageRequest(
@@ -57,7 +59,7 @@ export class InstitutionsServiceComponent implements OnInit {
     if (this.Form_VisitRequest.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'يوجد حقول مطلوبة',
+        detail: this.isEn?'There are required fields':'يوجد حقول مطلوبة' ,
       });
     } else {
       this._servicesHospitalService.saveVisitRequest(

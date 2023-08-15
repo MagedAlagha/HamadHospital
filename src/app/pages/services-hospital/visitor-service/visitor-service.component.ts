@@ -10,6 +10,8 @@ import { ServicesHospitalService } from '../services-hospital.service';
   styleUrls: ['./visitor-service.component.scss'],
 })
 export class VisitorServiceComponent implements OnInit {
+  isEn = document.dir == 'ltr' ? true : false;
+
   Form_Visitors:FormGroup;
   cities!: any[];
   submitted = false;
@@ -49,7 +51,7 @@ export class VisitorServiceComponent implements OnInit {
     if (this.Form_Visitors.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'يوجد حقول مطلوبة',
+        detail: this.isEn?'There are required fields':'يوجد حقول مطلوبة' ,
       });
     } else {
       this._servicesHospitalService.saveVisitors(this.Form_Visitors.value );

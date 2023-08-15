@@ -1,0 +1,19 @@
+.arrow1 , .arrow2{
+  padding-left: unset !important;
+  padding-right: 5px;
+}
+.drop-down-beneficiaries{
+  margin-left: unset !important;
+  margin-right: 6px;
+}
+.text-dir{
+  text-align: right ;
+}
+.AboutHospital-beginning .title h3{
+  border-right: 4px  solid #ed9b33;
+  border-left: 0 !important;
+}
+.section-title h1{
+  border-right: 5px solid #8a1538;
+  border-left: unset;
+}

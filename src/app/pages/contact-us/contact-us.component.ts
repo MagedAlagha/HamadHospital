@@ -9,6 +9,7 @@ import { ServicesHospitalService } from '../services-hospital/services-hospital.
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
+  isEn = document.dir == 'ltr' ? true : false;
 
   LandingPageData$!:Observable<any>;
   constructor(private _homeService:HomeService , private _servicesHospitalService:ServicesHospitalService) { }

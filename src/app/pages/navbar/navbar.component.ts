@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
 import { HomeService } from '../home/home.service';
@@ -6,6 +6,7 @@ import { MediaCenterService } from '../media-center/media-center.service';
 import { Observable, map, pipe } from 'rxjs';
 import { ServicesHospitalService } from '../services-hospital/services-hospital.service';
 import { FormControl } from '@angular/forms';
+import { TranslationService } from 'src/assets/i18n';
 
 @Component({
   selector: 'app-navbar',
@@ -24,13 +25,17 @@ export class NavbarComponent implements OnInit {
   active: any  = 1;
   previousScrollPosition = 0;
   fisrt:any = 0 ;
+  isEn = document.dir == 'ltr' ? true : false;
   activeNave$!:Observable<any>;
   LandingPageData$!: Observable<any>;
   constructor(
      public router: Router,
      private _mediaCenterService:MediaCenterService ,
      private _homeService:HomeService ,
-     private _servicesHospitalService:ServicesHospitalService) {}
+     private _translationService: TranslationService,
+     private _servicesHospitalService:ServicesHospitalService ,
+     private el: ElementRef, private renderer: Renderer2
+     ) {}
 
   complaint(item:any){
    this._servicesHospitalService.updateStore({complaintID:item});
@@ -81,23 +86,11 @@ export class NavbarComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-   /*   const currentScrollPosition = window.pageYOffset;
-    const isScrollingUp = currentScrollPosition < this.previousScrollPosition; */
-
     const navbar = document.querySelector('.navbar');
-  /*   if (isScrollingUp || currentScrollPosition === 0) {
-      navbar?.classList.add( 'fixed-top' , 'show');
-    } else {
-      navbar?.classList.remove('fixed-top', 'show');
-    }
-    this.previousScrollPosition = currentScrollPosition; */
-
      if( window.scrollY > 0){
       navbar?.classList.add('header-scrolled' );
-   /*    navbar?.classList.remove( 'bg-white-opacity'); */
     }else{
       navbar?.classList.remove('header-scrolled' );
-     /*  navbar?.classList.add( 'bg-white-opacity'); */
     }
   }
 
@@ -138,6 +131,30 @@ export class NavbarComponent implements OnInit {
     }
    }
 
+   isNavbarOpen: boolean = false;
+
+   closeNavbar() {
+    const navbar = document.getElementById('navbarSupportedContent');
+    if (navbar!.classList.contains('show')) {
+      navbar!.classList.remove('show');
+    }
+   }
+
+   lang:any;
+   Language: string = this._translationService.getSelectedLanguage();
+   setLang() {
+     if (this.Language == 'en') {
+       this.Language = 'ar';
+       this.lang = 'AR'
+     } else {
+       this.Language = 'en';
+       this.lang = 'EN'
+
+     }
+     this._translationService.setLanguage(this.Language);
+     localStorage.getItem(this.Language);
+     document.location.reload();
+   }
 
 
 }

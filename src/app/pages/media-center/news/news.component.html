@@ -1,26 +1,48 @@
-<ng-container *ngIf="MediaCenterService$ |async as data">
-  <div class="box-blog py-4" *ngFor="let item of data"  >
-    <div class="row align-items-center">
-      <div class="col-md-8 d-flex align-items-stretch order-md-0 order-1 mb-mt-0 mt-3  ">
-        <div>
-          <span><i class="fa-solid fa-calendar"></i> {{item?.ItemDate | date }}</span>
-          <h2  routerLink="/mix-details/{{item.ID}}"  (click)="showNews(item)"  > {{ isEn ? item?.Title : item?.Title }} </h2>
-         <div class="post-pp">
-          <p  [innerHTML]="item?.Desc | slice:0:100 "></p>
-         </div>
-         <!--  <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p> -->
-          <a routerLink="/mix-details/{{item.ID}}"  (click)="showNews(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-              المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
-          </a>
+
+
+<div class="row">
+  <ng-container *ngIf="MediaCenterService$ | async as data">
+    <div class="col-md-6 mb-4" *ngFor="let item of data">
+      <div class="post-box " routerLink="/mix-details/{{item.ID}}">
+        <div class="post-img">
+          <ng-container *ngIf="item?.ImagePath ; else f" >
+            <img [lazyLoad]=" baseUrl+ item?.ImagePath" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;"  class="img-fluid" alt="">
+          </ng-container>
+          <ng-template #f>
+            <img src="../../../../assets/img/cover_Hamad.jpg" class="img-fluid main-img" style="height: 300px; object-fit: cover; border-radius: 4px;"  class="img-fluid" alt="">
+          </ng-template>
         </div>
-      </div>
-      <div class="col-md-4 d-flex align-items-stretch order-md-1 order-0  ">
-        <img  [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
+        <div class="d-flex justify-content-between align-items-baseline mb-1 ">
+          <ng-container *ngIf="item.MainServiceID === 1">
+            <span class="categories">{{ isEn ? 'Medical rehabilitation' : 'التأهيل الطبي' }}</span>
+          </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 2">
+            <span class="categories"> {{ isEn ? 'Prosthetics' : 'الأطراف الصناعية' }}</span>
+
+          </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 3">
+            <span class="categories">{{ isEn ? 'Hearing and balance' : 'السمع والتوازن' }}</span>
+
+          </ng-container>
+          <ng-container *ngIf="item.MainServiceID === 4">
+            <span class="categories">{{ isEn ? 'Outpatient clinic' : 'العيادة الخارجية' }}</span>
+          </ng-container>
+
+          <span class="post-date">{{item?.ItemDate | date }}</span>
+        </div>
+        <h3 class="post-title">{{ isEn ? item?.Title : item?.Title }}  </h3>
+        <div class="medical-articaels">
+          <p  [innerHTML]="item?.Desc | slice:0:100 "></p>
+        </div>
+         <a routerLink="/mix-details/{{item.ID}}" class="readmore   mt-auto d-flex align-items-baseline"><span>{{ isEn ? 'Read more' : 'إقرأ المزيد' }}
+            </span>
+            <i *ngIf="!isEn" class="fa-solid fa-arrow-left-long ps-1"></i>
+            <i *ngIf="isEn" class="fa-solid fa-arrow-right-long pe-1"></i>
+        </a>
       </div>
     </div>
-  </div>
 
-</ng-container>
+  </ng-container>
+</div>
 
-<!-- {{ descriptionText | slice:0:100 }}{{ descriptionText.length > 100 ? '...' : '' }}
- -->
+

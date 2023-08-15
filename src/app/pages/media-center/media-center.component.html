@@ -1,6 +1,7 @@
 <section class="breadcrumbs">
   <div class="container">
-    <h2>المركز الاعلامي</h2>
+    <h2>{{ isEn ? 'Media Center' : 'المركز الاعلامي' }}
+    </h2>
   </div>
 </section>
 
@@ -8,23 +9,25 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 pb-3">
-        <ul class="nav flex-column py-4">
+        <ul class="nav flex-column py-4 px-0">
           <li class="nav-item mb-2">
             <a
               class="nav-link"
               routerLink="/media-center/news/news-main"
               [ngClass]="{ active: active == 1 }"
-              (click)="active = 1; getMediaSectionsItemsByID(1)"
-              >الأخبار</a
-            >
+              (click)="active = 1; getMediaSectionsItemsByID(1)">
+              {{ isEn ? 'News' : 'الأخبار' }}
+            </a>
           </li>
           <li class="nav-item mb-2">
             <a
               class="nav-link"
               routerLink="/media-center/photo/photo-main"
               [ngClass]="{ active: active == 2 }"
-              (click)="active = 2; getMediaSectionsItemsByID(2)"
-              >معرض الصور</a
+              (click)="active = 2; getMediaSectionsItemsByID(2)">
+              {{ isEn ? 'Photo Gallery' : 'معرض الصور' }}
+
+              </a
             >
           </li>
           <li class="nav-item mb-2">
@@ -32,17 +35,16 @@
               class="nav-link"
               routerLink="/media-center/video/video-main"
               [ngClass]="{ active: active == 3 }"
-              (click)="active = 3; getMediaSectionsItemsByID(3)"
-              >معرض الفيديو</a
-            >
+              (click)="active = 3; getMediaSectionsItemsByID(3)">
+              {{ isEn ? 'Video gallery' : 'معرض الفيديو' }}</a>
           </li>
           <li class="nav-item mb-2">
             <a
               class="nav-link"
               routerLink="/media-center/medical-articles/medical-articles-main"
               [ngClass]="{ active: active == 4 }"
-              (click)="active = 4; getMediaSectionsItemsByID(4)"
-              >تثقيف صحي وتوعية</a
+              (click)="active = 4; getMediaSectionsItemsByID(4)">
+              {{ isEn ? 'Health education and awareness' : 'تثقيف صحي وتوعية' }}</a
             >
           </li>
           <li class="nav-item mb-2">
@@ -50,8 +52,9 @@
               class="nav-link"
               routerLink="/media-center/press-stories"
               [ngClass]="{ active: active == 5 }"
-              (click)="active = 5; getMediaSectionsItemsByID(5)"
-              >قصص صحفية
+              (click)="active = 5; getMediaSectionsItemsByID(5)">
+              {{ isEn ? 'Press stories' : 'قصص صحفية' }}
+
             </a>
           </li>
           <li class="nav-item mb-2">
@@ -59,8 +62,8 @@
               class="nav-link"
               routerLink="/media-center/visual-stories"
               [ngClass]="{ active: active == 6 }"
-              (click)="active = 6; getMediaSectionsItemsByID(6)"
-              >قصص رقمية
+              (click)="active = 6; getMediaSectionsItemsByID(6)">
+              {{ isEn ? 'Digital stories' : 'قصص رقمية' }}
             </a>
           </li>
           <li class="nav-item mb-2">
@@ -68,8 +71,9 @@
               class="nav-link"
               routerLink="/media-center/mix"
               [ngClass]="{ active: active == 7 }"
-              (click)="active = 7; getMediaSectionsItemsByID(7)"
-              >منوعات
+              (click)="active = 7; getMediaSectionsItemsByID(7)">
+              {{ isEn ? 'Mix' : 'منوعات' }}
+
             </a>
           </li>
           <li class="nav-item mb-2">
@@ -77,8 +81,9 @@
               class="nav-link"
               routerLink="/media-center/letter"
               [ngClass]="{ active: active == 8 }"
-              (click)="active = 8; getMediaSectionsItemsByID(8)"
-              >نشرة اخبارية
+              (click)="active = 8; getMediaSectionsItemsByID(8)">
+              {{ isEn ? 'Newsletter' : 'نشرة اخبارية' }}
+
             </a>
           </li>
         </ul>
@@ -89,7 +94,7 @@
         ></ng-container>
         <router-outlet></router-outlet>
         <div class="text-center mt-4" *ngIf="!hiddenShowMore">
-          <a  class="show-more"(click)='showMore()'>عرض المزيد</a>
+          <a  class="show-more"(click)='showMore()'> {{ isEn ? 'Show More' : 'عرض المزيد' }}</a>
         </div>
       </div>
     </div>

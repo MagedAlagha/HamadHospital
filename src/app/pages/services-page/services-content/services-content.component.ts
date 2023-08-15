@@ -10,6 +10,7 @@ import { Observable, map, tap } from 'rxjs';
 export class ServicesContentComponent implements OnInit {
   dataShow$!:Observable<any>;
   OutpatientClinicsDepartmentsServices$!: Observable<any>;
+  isEn = document.dir == 'ltr' ? true : false;
 
   constructor(private _outpatientClinicsService:OutpatientClinicsService) { }
 

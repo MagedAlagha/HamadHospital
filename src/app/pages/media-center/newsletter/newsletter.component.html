@@ -8,13 +8,16 @@
           <div class="post-pp">
             <p  [innerHTML]=" item?.Desc | slice:0:100 "></p>
           </div>
-          <a routerLink="/mix-details/{{item.ID}}"  (click)="showNews(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
-              المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
+          <a routerLink="/mix-details/{{item.ID}}"  (click)="showNews(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>
+            {{ isEn ? 'Read more' : 'إقرأ المزيد' }}</span>
+            <i *ngIf="!isEn" class="fa-solid fa-arrow-left-long ps-1"></i>
+            <i *ngIf="isEn" class="fa-solid fa-arrow-right-long pe-1"></i>
+
           </a>
         </div>
       </div>
       <div class="col-md-4 d-flex align-items-stretch order-md-1 order-0  ">
-        <img  [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; height: 180px; border-radius: 6px;" class="img-fluid" alt="">
+        <img  [lazyLoad]=" 'http://hamad_api.accessline.ps'+ item?.ImagePath" style="width: 100%; object-fit: cover; border-radius: 6px;" class=" main-img-sec" alt="">
       </div>
     </div>
   </div>

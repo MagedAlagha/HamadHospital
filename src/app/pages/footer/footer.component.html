@@ -37,17 +37,17 @@
         </div>
 
         <div class="col-md-2 col-6 footer-links">
-          <h4>القائمة</h4>
+          <h4>{{ isEn ? 'List' : 'القائمة' }}</h4>
           <ul>
-            <li><a routerLink="/about-us">حول المستشفى</a></li>
-            <li><a routerLink="/media-center/news/news-main">المركز الاعلامي</a></li>
-            <li><a routerLink="/sections">الخدمات</a></li>
-            <li><a routerLink="/contact-us">اتصل بنا </a></li>
+            <li><a routerLink="/about-us"> {{ isEn ? 'About hospital' : 'حول المستشفى' }}</a></li>
+            <li><a routerLink="/media-center/news/news-main">{{ isEn ? 'Media center' : 'المركز الاعلامي' }}</a></li>
+            <li><a routerLink="/sections"> {{ isEn ? 'Services' : 'الخدمات' }}</a></li>
+            <li><a routerLink="/contact-us">{{ isEn ? 'Contact us' : 'إتصل بنا' }}</a></li>
           </ul>
         </div>
 
         <div class="col-md-3 col-6 footer-contact">
-          <h4>إتصل بنا</h4>
+          <h4>{{ isEn ? 'Contact us' : 'إتصل بنا' }}</h4>
           <div class="footer-contacts">
             <p><img src="../../../assets/img/map-pin.svg" alt=""> <a>
               {{data?.MainInfo?.Location}}
@@ -64,7 +64,8 @@
 </ng-container>
   <div class="container">
     <div class="copyright">
-      جميع الحقوق محفوظة <strong> © 2023 مستشفى حمد</strong>
+      {{ isEn ? 'All Rights Reserved' : 'جميع الحقوق محفوظة' }} <strong> {{ isEn ? '© 2023 Hamad Hospital' : '© 2023 مستشفى حمد' }}</strong>
+
     </div>
   </div>
 </footer>

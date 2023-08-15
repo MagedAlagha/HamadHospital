@@ -308,7 +308,6 @@
   color: #fff;
   background: #8a1538;
   padding: 5px 30px;
-
   height: 97%;
   transition: .3s all;
   border-radius: 5px;
@@ -318,3 +317,27 @@
 border: 1px solid #ED9B33;
 background: #ED9B33;
 } */
+.mobile .drop-down{
+  padding: 7px 12px;
+  font-size: .9rem;
+}
+.mobile #navbarCollapse i {
+  font-size: 1.1rem !important;
+}
+.drop-down ul{
+left: unset !important ;
+right: 0 !important;
+}
+
+.lang-btn{
+  border: 1px solid #8a1538;
+  border-radius: 3px;
+  color: #8a1538;
+  padding: 6px 8px ;
+  cursor: pointer;
+  transition: .3s all;
+}
+.lang-btn:hover{
+  color: #fff;
+  background: #8a1538;
+}

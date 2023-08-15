@@ -27,6 +27,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import {GalleriaModule} from 'primeng/galleria';
 import { SwiperModule } from 'swiper/angular';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -59,7 +60,7 @@ import { SwiperModule } from 'swiper/angular';
     SwiperModule,
     InputTextModule,
     ScrollToModule.forRoot(),
-
+    TranslateModule.forRoot(),
   ],
 
   providers: [

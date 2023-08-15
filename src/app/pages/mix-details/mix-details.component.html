@@ -6,22 +6,22 @@
           <div class="section-title">
             <div class="section-title">
               <ng-container *ngIf="data.MainServiceID === 1">
-                <span>التأهيل الطبي</span>
+                <span>{{ isEn ? 'Medical rehabilitation' : 'التأهيل الطبي' }}</span>
               </ng-container>
               <ng-container *ngIf="data.MainServiceID === 2">
-                <span>الاطراف الصناعية</span>
+                <span>{{ isEn ? 'Prosthetics' : 'الأطراف الصناعية' }}</span>
               </ng-container>
               <ng-container *ngIf="data.MainServiceID === 3">
-                <span>السمع والتوازن</span>
+                <span>{{ isEn ? 'Hearing and balance' : 'السمع والتوازن' }}</span>
               </ng-container>
               <ng-container *ngIf="data.MainServiceID === 4">
-                <span>العيادة الخارجية</span>
+                <span>{{ isEn ? 'Outpatient clinic' : 'العيادة الخارجية' }}</span>
               </ng-container>
               <ng-container *ngIf="data.MainServiceID === 5">
-                <span>خدمات طبية مساندة</span>
+                <span>{{ isEn ? 'Supportive medical services' : 'خدمات طبية مساندة' }}</span>
               </ng-container>
               <ng-container *ngIf="data.MainServiceID === 6">
-                <span>غير مصنف</span>
+                <span>{{ isEn ? 'unclassified' : 'غير مصنف' }}</span>
               </ng-container>
               <div class="title">
                 <p style="padding-right:.8rem;" class="mb-0">{{ data?.SubTitleAr }}</p>
@@ -35,7 +35,7 @@
             <img
               [src]="baseUrl + data?.ImagePath"
                [ngStyle]="{
-                'height': '70vh',
+                'height': 'auto',
                 'object-fit': 'cover',
                 'border-radius':'8px',
                 'width':'90%'
@@ -278,7 +278,6 @@
   </section>
   <div class="container mb-4">
     <div class="section-2 d-flex align-items-center mb-2">
-      <div class="line"></div>
       <h2 class="d-inline-block ps-2">منوعات</h2>
     </div>
     <ng-container *ngIf="MediaSectionsItemsMix$ | async as data2">

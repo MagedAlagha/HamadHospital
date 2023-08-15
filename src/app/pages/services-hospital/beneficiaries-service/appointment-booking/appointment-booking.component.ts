@@ -10,6 +10,7 @@ import { ServicesHospitalService } from '../../services-hospital.service';
   styleUrls: ['./appointment-booking.component.scss']
 })
 export class AppointmentBookingComponent implements OnInit {
+  isEn = document.dir == 'ltr' ? true : false;
   Form_AppointmentBooking: FormGroup;
   Codes1$!:Observable<any>;
   Codes2$!:Observable<any>;
@@ -57,7 +58,7 @@ export class AppointmentBookingComponent implements OnInit {
     if (this.Form_AppointmentBooking.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'يوجد حقول مطلوبة',
+        detail: this.isEn?'There are required fields':'يوجد حقول مطلوبة' ,
       });
     } else {
       this._servicesHospitalService.saveAppointmentBooking({

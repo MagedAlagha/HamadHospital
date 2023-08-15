@@ -9,6 +9,7 @@ import { ServicesHospitalService } from '../../services-hospital.service';
   styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent implements OnInit {
+  isEn = document.dir == 'ltr' ? true : false;
   Form_Rating: FormGroup;
     constructor(
       private fb: FormBuilder,
@@ -38,7 +39,7 @@ export class RatingComponent implements OnInit {
     if (this.Form_Rating.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'يوجد حقول مطلوبة',
+        detail: this.isEn?'There are required fields':'يوجد حقول مطلوبة' ,
       });
     } else {
       this._servicesHospitalService.saveRating(this.Form_Rating.value);

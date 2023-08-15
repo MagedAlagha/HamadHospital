@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./media-center.component.scss'],
 })
 export class MediaCenterComponent implements OnInit {
+  isEn = document.dir == 'ltr' ? true : false;
   active: any = 1;
   MediaCenterService$!:Observable<any>;
   valueIconLeft:any;

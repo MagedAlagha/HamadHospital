@@ -10,6 +10,7 @@ import { ServicesHospitalService } from '../../services-hospital.service';
   styleUrls: ['./suggestion.component.scss']
 })
 export class SuggestionComponent implements OnInit {
+  isEn = document.dir == 'ltr' ? true : false;
   Form_Suggestion: FormGroup;
   Codes1$!:Observable<any>;
   Codes2$!:Observable<any>;
@@ -53,7 +54,7 @@ export class SuggestionComponent implements OnInit {
     if (this.Form_Suggestion.invalid) {
       this.messageService.add({
         severity: 'error',
-        detail: 'يوجد حقول مطلوبة',
+        detail: this.isEn?'There are required fields':'يوجد حقول مطلوبة' ,
       });
     } else {
       this._servicesHospitalService.saveSuggestion(this.Form_Suggestion.value);

@@ -1,7 +1,7 @@
 
 <section class="breadcrumbs">
   <div class="container">
-    <h2>حول المستشفى</h2>
+    <h2>{{ isEn ? 'About hospital' : 'حول المستشفى' }}</h2>
   </div>
 </section>
 
@@ -9,7 +9,7 @@
   <div class="container">
     <div class="row ">
       <div class="col-md-3">
-        <ul class="nav flex-column py-4">
+        <ul class="nav flex-column py-4 p-0">
           <ng-container *ngIf="AboutHospital$ | async as data">
             <li class="nav-item mb-2" *ngFor="let item of data" >
               <a class="nav-link" routerLink="/about-us/beginning" (click)="storeData(item)" [ngClass]="{ active: active == item.ID }"  >  {{ isEn ? item?.NameEn : item?.NameAr }}</a>

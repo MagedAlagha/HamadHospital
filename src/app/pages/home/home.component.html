@@ -68,7 +68,7 @@
           <span class="line"></span>
         </div>
         <div class="col-md-4 col-8">
-          <h3 class="px-md-5 px-2">عن المستشفى</h3>
+          <h3 class="px-md-5 px-2">  {{ isEn ? 'About hospital' : 'عن المستشفى' }}</h3>
         </div>
         <div class="col-md-4 col-2">
           <span class="line"></span>
@@ -96,7 +96,7 @@
                 />
                 <img src="../../../assets/img/04.svg" alt="" />
               </div>
-              <h4>التأهيل الطبي</h4>
+              <h4> {{ isEn ? 'Medical rehabilitation' : 'التأهيل الطبي' }}</h4>
               <p class="p-hide">
                 {{ data?.Services?.MedicalRehabilitationDesc }}
               </p>
@@ -115,7 +115,7 @@
                 />
                 <img src="../../../assets/img/03.svg" alt="" />
               </div>
-              <h4>الاطراف الصناعية</h4>
+              <h4> {{ isEn ? 'Prosthetics' : 'الأطراف الصناعية' }}   </h4>
               <p class="p-hide">
                 {{ data?.Services?.ProstheticsDesc }}
               </p>
@@ -131,7 +131,7 @@
                 <img [src]="avatar + data?.Services?.HearingIconPath" alt="" />
                 <img src="../../../assets/img/02.svg" alt="" />
               </div>
-              <h4>السمع والتوازن</h4>
+              <h4>   {{ isEn ? 'Hearing and balance' : 'السمع والتوازن' }} </h4>
               <p class="p-hide">
                 {{ data?.Services?.HearingDesc }}
               </p>
@@ -151,7 +151,7 @@
                 />
                 <img src="../../../assets/img/01.svg" alt="" />
               </div>
-              <h4>العيادة الخارجية</h4>
+              <h4>  {{ isEn ? 'Outpatient clinic' : 'العيادة الخارجية' }}   </h4>
               <p class="p-hide">
                 {{ data?.Services?.OutpatientClinicsDesc }}
               </p>
@@ -181,16 +181,15 @@
 <!-- Stores -->
 <section class="stores" id="section2">
   <div class="section-header text-center">
-    <h3 class="px-md-5 px-2 text-white mb-0">معرض الفيديو</h3>
+    <h3 class="px-md-5 px-2 text-white mb-0">{{ isEn ? 'video gallery' : 'معرض الفيديو' }} </h3>
   </div>
   <div class="container">
     <div class="section-title">
       <div class="d-flex justify-content-end mb-0">
         <a
           routerLink="/media-center/video/video-main"
-          (click)="addAvtiveNaveBar()"
-          >شاهد المزيد</a
-        >
+          (click)="addAvtiveNaveBar()">
+          {{ isEn ? 'See more' : 'شاهد المزيد' }} </a>
       </div>
       <div class="line d-block mb-2"></div>
     </div>
@@ -255,139 +254,23 @@
       </div>
     </ng-container>
 
-    <!--    <ng-container *ngIf="MediaSectionsItemsVideo$ | async as data">
-      <div class="row">
-        <div class="col-md-8 img d-flex align-items-stretch  mb-md-0 mb-3">
-          <div class="post-box w-100 "  >
-           <div>
-            <img
-            [lazyLoad]="baseUrl + data[0]?.ImagePath"
-            class="img-fluid"
-            alt=""
-            style="height: 510px;"
-          />
-          <img
-            src="../../../assets/img/video.mp4"
-            class="video-icon"
-            alt=""
-          />
-          <p style="color: #fff">
-            {{ isEn ? data[0]?.Title : data[0]?.Title }}
-          </p>
 
-           </div>
-
-          </div>
-        </div>
-        <div class="col-md-4 d-flex align-items-stretch">
-        <div class="row">
-          <div class="col-12 img" (click)="showVideoPreview(data[1])">
-            <div class="post-box">
-              <img
-              [lazyLoad]="
-                baseUrl + data[1]?.ImagePath
-              "
-              class="img-fluid Video-img"
-              alt=""
-            />
-              {{ isEn ? data[1]?.Title : data[1]?.Title }}
-            <a class="icon_video play-btn mb-4"></a>
-            </div>
-
-        </div>
-          <div class="col-12 img" (click)="showVideoPreview(data[2])">
-            <img
-              [lazyLoad]="
-                baseUrl + data[2]?.ImagePath
-              "
-              class="img-fluid Video-img"
-              alt=""
-            />
-              {{ isEn ? data[2]?.Title : data[2]?.Title }}
-          <a class="icon_video play-btn mb-4"></a>
-        </div>
-
-        </div>
-        </div>
-      </div>
-
-
-
-
-       <div class="row">
-        <div class="col-lg-8 img" (click)="showVideoPreview(data[0])">
-          <div style="width: 100%; object-fit: cover " class="post-img">
-            <img
-              [lazyLoad]="baseUrl + data[0]?.ImagePath"
-              class="img-fluid"
-              alt=""
-            />
-            <img
-              src="../../../assets/img/video.mp4"
-              class="video-icon"
-              alt=""
-            />
-            <p style="color: #fff">
-              {{ isEn ? data[0]?.Title : data[0]?.Title }}
-            </p>
-          </div>
-          <a class="icon_video play-btn mb-4"></a>
-        </div>
-        <div class="col-lg-4">
-          <div class="row">
-            <div class="col-12 img" (click)="showVideoPreview(data[1])">
-              <figure style="width: 100%">
-                <img
-                  [lazyLoad]="
-                    baseUrl + data[1]?.ImagePath
-                  "
-                  class="img-fluid Video-img"
-                  class="img-fluid"
-                  alt=""
-                />
-                <figcaption>
-                  {{ isEn ? data[1]?.Title : data[1]?.Title }}
-                </figcaption>
-              </figure>
-              <a class="icon_video play-btn mb-4"></a>
-            </div>
-            <div class="col-12 img" (click)="showVideoPreview(data[2])">
-              <figure style="width: 100%">
-                  <img
-                  [lazyLoad]="
-                    baseUrl + data[2]?.ImagePath
-                  "
-                  class="img-fluid Video-img"
-                  class="img-fluid"
-                  alt=""
-                />
-                <figcaption>
-                  {{ isEn ? data[2]?.Title : data[2]?.Title }}
-                </figcaption>
-
-              </figure>
-              <a class="icon_video play-btn mb-4"></a>
-            </div>
-          </div>
-          <div></div>
-        </div>
-      </div>
-    </ng-container> -->
   </div>
 </section>
 
 <div class="section text-start" style="padding: 80px 0 10px 0">
   <div class="container mt-4">
     <div class="section-header text-center">
-      <h3 class="px-md-5 px-2 mb-0">قصص صحفية</h3>
+      <h3 class="px-md-5 px-2 mb-0"> {{ isEn ? 'Press stories' : 'قصص صحفية' }}  </h3>
     </div>
     <div class="section-title">
       <div class="d-flex justify-content-end mb-2">
         <a
           routerLink="/media-center/press-stories"
           style="cursor: pointer; color: #8a1538"
-          (click)="addAvtiveNaveBar()"
-          >اقرأ المزيد</a
+          (click)="addAvtiveNaveBar()">
+          {{ isEn ? 'Read more' : 'إقرأ المزيد' }}
+          </a
         >
       </div>
       <div class="line d-block mb-3" style="height: 3px"></div>
@@ -412,8 +295,8 @@
                 alt=""
               />
             </div>
-            <p>
-              {{ isEn ? data[0]?.Title : data[0]?.Title }}
+            <p class="text-dir">
+              {{data[1]?.Title }}
             </p>
           </div>
         </div>
@@ -436,8 +319,8 @@
               />
             </div>
 
-            <p>
-              {{ isEn ? data[1]?.Title : data[1]?.Title }}
+            <p class="text-dir">
+              {{data[1]?.Title }}
             </p>
           </div>
         </div>
@@ -459,8 +342,8 @@
                 alt=""
               />
             </div>
-            <p>
-              {{ isEn ? data[2]?.Title : data[2]?.Title }}
+            <p class="text-dir">
+              {{data[1]?.Title }}
             </p>
           </div>
         </div>
@@ -483,7 +366,9 @@
               style="cursor: pointer"
               (click)="addAvtiveNaveBar()"
             >
-              الأخبار
+            {{ isEn ? 'News' : 'الأخبار' }}
+
+
             </h4>
           </div>
           <div class="row box">
@@ -505,19 +390,21 @@
                   class="d-flex justify-content-between align-items-baseline mb-1"
                 >
                   <ng-container *ngIf="data[0]?.MainServiceID === 1">
-                    <span class="categories">التأهيل الطبي</span>
+                    <span class="categories">{{ isEn ? 'Medical rehabilitation' : 'التأهيل الطبي' }}</span>
                   </ng-container>
                   <ng-container *ngIf="data[0]?.MainServiceID === 2">
-                    <span class="categories">الاطراف الصناعية</span>
+                    <span class="categories"> {{ isEn ? 'Prosthetics' : 'الأطراف الصناعية' }}</span>
                   </ng-container>
                   <ng-container *ngIf="data[0]?.MainServiceID === 3">
-                    <span class="categories">السمع والتوازن</span>
+                    <span class="categories">{{ isEn ? 'Hearing and balance' : 'السمع والتوازن' }}</span>
                   </ng-container>
                   <ng-container *ngIf="data[0]?.MainServiceID === 4">
-                    <span class="categories">العيادة الخارجية</span>
+                    <span class="categories">{{ isEn ? 'Outpatient clinic' : 'العيادة الخارجية' }}</span>
                   </ng-container>
                   <ng-container *ngIf="data[0]?.MainServiceID === 5">
-                    <span class="categories">الأخبار</span>
+                    <span class="categories">
+                      {{ isEn ? 'News' : 'الأخبار' }}
+                      </span>
                   </ng-container>
 
                   <span class="post-date">{{ data[0]?.ItemDate | date }}</span>
@@ -525,12 +412,6 @@
                 <h3 class="post-title">
                   {{ isEn ? data[0]?.Title : data[0]?.Title }}
                 </h3>
-                <a
-                  routerLink="/mix-details/{{ data[0]?.ID }}"
-                  class="readmore mt-auto d-flex align-items-baseline"
-                  ><span>إقرأ المزيد</span
-                  ><i class="fa-solid fa-arrow-left-long ps-1"></i>
-                </a>
               </div>
             </div>
 
@@ -538,9 +419,9 @@
               <div class="titlis-box">
                 <p
                   style="cursor: pointer"
-                  routerLink="/media-center/news/news-main"
-                >
-                  <strong>إقرأ المزيد</strong>
+                  routerLink="/media-center/news/news-main">
+                  <strong>{{ isEn ? 'Read more' : 'إقرأ المزيد' }}</strong>
+
                 </p>
                 <ng-container *ngFor="let item of data.slice(1, 4)">
                   <a
@@ -592,19 +473,19 @@
                 class="d-flex justify-content-between align-items-baseline mb-1"
               >
                 <ng-container *ngIf="data[0]?.MainServiceID === 1">
-                  <span class="categories">التأهيل الطبي</span>
+                  <span class="categories">{{ isEn ? 'Medical rehabilitation' : 'التأهيل الطبي' }}</span>
                 </ng-container>
                 <ng-container *ngIf="data[0]?.MainServiceID === 2">
-                  <span class="categories">الاطراف الصناعية</span>
+                  <span class="categories"> {{ isEn ? 'Prosthetics' : 'الأطراف الصناعية' }}</span>
                 </ng-container>
                 <ng-container *ngIf="data[0]?.MainServiceID === 3">
-                  <span class="categories">السمع والتوازن</span>
+                  <span class="categories">{{ isEn ? 'Hearing and balance' : 'السمع والتوازن' }}</span>
                 </ng-container>
                 <ng-container *ngIf="data[0]?.MainServiceID === 4">
-                  <span class="categories">العيادة الخارجية</span>
+                  <span class="categories">{{ isEn ? 'Outpatient clinic' : 'العيادة الخارجية' }}</span>
                 </ng-container>
                 <ng-container *ngIf="data[0]?.MainServiceID === 5">
-                  <span class="categories">الأخبار</span>
+                  <span class="categories">{{ isEn ? 'News' : 'الأخبار' }}</span>
                 </ng-container>
                 <span class="post-date">{{ data[0]?.ItemDate | date }}</span>
               </div>
@@ -614,40 +495,11 @@
               <a
                 routerLink="/mix-details/{{ data[0]?.ID }}"
                 class="readmore mt-auto d-flex align-items-baseline"
-                ><span>إقرأ المزيد</span
+                ><span>{{ isEn ? 'Read more' : 'إقرأ المزيد' }}</span
                 ><i class="fa-solid fa-arrow-left-long ps-1"></i>
               </a>
             </div>
           </ng-container>
-
-          <!--  <owl-carousel-o [options]="mix">
-              <ng-container *ngIf="MediaSectionsItemsLastVarious$ | async as data">
-                 <ng-template carouselSlide *ngFor="let item of data">
-                  <img
-                    [lazyLoad]="baseUrl + item?.ImagePath"
-                    class="img-fluid"
-                    style="border-radius: 8px"
-                    alt=""
-                    routerLink="/mix-details/{{ item?.ID }}"
-                    (click)="addAvtiveNaveBar()"
-                  />
-
-                  <div class="news-box2-xontent" routerLink="/mix-details/{{ item?.ID }}" (click)="addAvtiveNaveBar()" >
-                    <span style="font-size: 12px;">نشر بتاريخ : {{item.ItemDate | date}}</span>
-                    <h3 class="post-title">
-                      {{ isEn ? item?.Title : item?.Title }}
-                    </h3>
-                    <a
-                    (click)="showmix(item)"
-                    (click)="addAvtiveNaveBar()"
-                      class="readmore mt-auto d-flex align-items-baseline"
-                      ><span>إقراء المزيد</span
-                      ><i class="fa-solid fa-arrow-left-long ps-1"></i>
-                    </a>
-                  </div>
-                </ng-template>
-              </ng-container>
-            </owl-carousel-o> -->
         </div>
       </div>
     </div>
@@ -658,25 +510,24 @@
 <div class="employment-ad" id="section5">
   <div class="container">
     <div
-      class="section-title mb-2 d-flex justify-content-between align-items-center"
-    >
-      <h4 routerLink="/ads">الإعلانات</h4>
-      <span routerLink="/ads" class="read_more">إقرأ المزيد</span>
+      class="section-title mb-2 d-flex justify-content-between align-items-center">
+      <h4 routerLink="/ads">{{ isEn ? 'Advertisements' : 'الإعلانات' }}</h4>
+      <span routerLink="/ads" class="read_more">{{ isEn ? 'Read more' : 'إقرأ المزيد' }}</span>
     </div>
   </div>
   <div class="container background">
-    <div class="row d-flex justify-content-center align-items-center">
+    <div class="row d-flex justify-content-center text-center align-items-center">
       <div
-        class="col-md-9 d-flex justify-content-end flex-column"
+        class="col-md-9 d-flex justify-content-end flex-column  "
         *ngIf="LandingPageData$ | async as data"
       >
         <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let item of data?.Advertisements">
-            <div>
+            <div class="text-center">
               <p>
                 {{ item?.Title }}
               </p>
-              <a routerLink="/ads-details/{{ item.ID }}">عرض التفاصيل </a>
+              <a routerLink="/ads-details/{{ item.ID }}">{{ isEn ? 'View details' : 'السمع والتوازن' }} </a>
             </div>
           </ng-template>
         </owl-carousel-o>
@@ -684,36 +535,3 @@
     </div>
   </div>
 </div>
-<!-- employment-Ad -->
-<!-- <div class="employment-ad" id="section5">
-  <div class="container background">
-    <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-md-9">
-        <owl-carousel-o [options]="customOptions">
-          <ng-container *ngIf="LandingPageData$ | async as data">
-            <ng-template
-              carouselSlide
-              *ngFor="let item of data?.Advertisements"
-            >
-              <div class="container">
-                <div class="row justify-content-center">
-                  <div class="col-12 py-4">
-                    <p>
-                      {{ item?.Title }}
-                    </p>
-                    <ng-container *ngIf="item?.ButtonAdded">
-                      <a [href]="item?.ButtonLink"
-                        >{{ item?.ButtonTitle }}
-                        <i class="fa-solid fa-arrow-left-long ps-1"></i
-                      ></a>
-                    </ng-container>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ng-container>
-        </owl-carousel-o>
-      </div>
-    </div>
-  </div>
-</div> -->

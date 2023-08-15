@@ -1,22 +1,22 @@
 
 <div class="row filter">
   <div class="col-md-1">
-    <p [ngClass]="{'active':active==+ ''}" (click)="filterVideo('')"  >الكل</p>
+    <p [ngClass]="{'active':active==+ ''}" (click)="filterVideo('')"  >{{ isEn ? 'All' : 'الكل' }}</p>
   </div>
   <div class="col-md-2">
-    <p [ngClass]="{'active':active==1}" (click)="filterVideo(1)"   >التأهيل الطبي</p>
+    <p [ngClass]="{'active':active==1}" (click)="filterVideo(1)">{{ isEn ? 'Medical rehabilitation' : 'التأهيل الطبي' }}</p>
   </div>
   <div class="col-md-2">
-    <p [ngClass]="{'active':active==2}" (click)="filterVideo(2)"   >الأطراف الصناعية</p>
+    <p [ngClass]="{'active':active==2}" (click)="filterVideo(2)">{{ isEn ? 'Prosthetics' : 'الأطراف الصناعية' }}</p>
   </div>
   <div class="col-md-2">
-    <p [ngClass]="{'active':active==3}" (click)="filterVideo(3)" >السمع والتوازن</p>
+    <p [ngClass]="{'active':active==3}" (click)="filterVideo(3)">{{ isEn ? 'Hearing and balance' : 'السمع والتوازن' }}</p>
   </div>
   <div class="col-md-2">
-    <p [ngClass]="{'active':active==4}" (click)="filterVideo(4)"   >العيادات الخارجية</p>
+    <p [ngClass]="{'active':active==4}" (click)="filterVideo(4)">{{ isEn ? 'Outpatient clinic' : 'العيادة الخارجية' }}</p>
   </div>
   <div class="col-md-3">
-    <p [ngClass]="{'active':active==5}" (click)="filterVideo(5)"  >خدمات طبية مساندة</p>
+    <p [ngClass]="{'active':active==5}" (click)="filterVideo(5)"> {{ isEn ? 'Supportive medical services' : 'خدمات طبية مساندة' }} </p>
   </div>
 </div>
 
@@ -33,7 +33,7 @@
         style=" object-fit: cover; height: 300px; border-radius: 6px;"
       />
       <div class="d-flex justify-content-between img-title">
-        <p>{{ item?.Title | slice:0:58 }}</p>
+        <p>{{ item?.Title | slice:0:56 }} {{ item?.Title.length > 56 ? '...' : '' }}</p>
       </div>
      <a class=" icon_video play-btn mb-4"></a>
     </div>

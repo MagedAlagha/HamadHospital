@@ -4,7 +4,7 @@
   >
     <ng-container *ngIf="data?.ID == item?.OutpatientClinicsDepartmentID">
       <div class="img-fluid-cover">
-        <div [innerHTML]="item?.DescAr"></div>
+        <div [innerHTML]=" isEn ? item?.DescEn : item?.DescAr "></div>
       </div>
     </ng-container>
   </ng-container>

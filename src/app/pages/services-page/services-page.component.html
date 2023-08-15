@@ -4,7 +4,7 @@
 
   <div class="container">
 <!--     <ng-container *ngIf="bgSection$ |async as data ;else bg ">  </ng-container>
- -->    <h2>الأقسام والخدمات الرئيسية</h2>
+ -->    <h2>  {{ isEn ? 'Main departments and services' : 'الأقسام والخدمات الرئيسية' }}</h2>
 
  <ng-container *ngIf="Services$ |async as data  ">  </ng-container>
   </div>
@@ -19,7 +19,7 @@
               [ngClass]="{ active: active == 1 }"
               (click)="active = 1  ; setBackGround(active)"
             >
-              التأهيل الطبي
+            {{ isEn ? 'Medical rehabilitation' : 'التأهيل الطبي' }}
             </li>
             <li
               class="mb-md-0 mb-1"
@@ -27,7 +27,7 @@
               [ngClass]="{ active: active == 2 }"
               (click)="active = 2; setBackGround(active)"
             >
-              الأطراف الصناعية
+            {{ isEn ? 'Prosthetics' : 'الأطراف الصناعية' }}
             </li>
             <li
               class="mb-md-0 mb-1"
@@ -35,7 +35,7 @@
               [ngClass]="{ active: active == 3 }"
               (click)="active = 3; setBackGround(active)"
             >
-              السمع والتوازن
+              {{ isEn ? 'Hearing and balance' : 'السمع والتوازن' }}
             </li>
             <li
               class="mb-md-0 mb-1"
@@ -43,7 +43,7 @@
               [ngClass]="{ active: active == 4 }"
               (click)="active = 4; setBackGround(active)"
             >
-              العيادات الخارجية
+              {{ isEn ? 'Outpatient clinic' : 'العيادة الخارجية' }}
             </li>
             <li
               class="mb-md-0 mb-1"
@@ -51,7 +51,8 @@
               [ngClass]="{ active: active == 5 }"
               (click)="active = 5; setBackGround(active)"
             >
-              خدمات طبية مساندة
+
+              {{ isEn ? 'Supportive medical services' : 'خدمات طبية مساندة' }}
             </li>
           </ul>
         </div>

@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./beneficiaries-service.component.scss'],
 })
 export class BeneficiariesServiceComponent implements OnInit {
+  isEn = document.dir == 'ltr' ? true : false;
   selecetd1:boolean = true;
   selecetd2!:boolean;
   beneficiariesId:any;
