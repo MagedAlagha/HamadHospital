@@ -190,7 +190,7 @@ export class HomeComponent implements OnInit {
 
   customOptions: OwlOptions = {
     loop: true,
-    rtl: true,
+    rtl: this.isEn?false:true,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
@@ -221,6 +221,8 @@ export class HomeComponent implements OnInit {
 
   mix: OwlOptions = {
     loop: true,
+    rtl: this.isEn?false:true,
+
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,

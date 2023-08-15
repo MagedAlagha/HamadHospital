@@ -22,7 +22,7 @@
         <div class=" col-md-6 footer-info">
           <img src="../../../assets/img/QFFD 2.svg" width="180px" alt="logo">
 <!--           <img [src]=" 'http://hamad_api.accessline.ps'+ data?.MainInfo?.LogoImagePath" height="50px" alt="logo" class="ms-4">
- -->          <img src="../../../assets/img/Logo2.svg" height="50px" alt="logo" class="ms-4">
+ -->          <img src="../../../assets/img/Logo2.svg" height="50px" alt="logo" [class]="isEn?'me-4':'ms-4'">
           <p class="my-3 pe-4">
             {{data?.MainInfo?.Footer}}
           </p>
