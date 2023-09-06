@@ -1,14 +1,23 @@
 <h3>{{ isEn ? 'Beneficiary service' : 'خدمة مستفيدين' }}</h3>
 <p-tabView styleClass="tabview-custom">
+  <ng-container  *ngIf="beneficiariesId != 1">
+
   <p-tabPanel [header]=" isEn ? 'Appointment Booking' : 'حجز موعد' " [selected]="selecetd1">
    <app-appointment-booking></app-appointment-booking>
   </p-tabPanel>
-  <ng-container  *ngIf="beneficiariesId == 1">
+  </ng-container>
+
+  <ng-container  *ngIf="beneficiariesId != 2">
   <p-tabPanel [header]="isEn ? 'Suggestion / Complaint' : 'اقتراح / شكوى'" [selected]="selecetd2">
    <app-suggestion></app-suggestion>
   </p-tabPanel>
+</ng-container>
+
+<ng-container  *ngIf="beneficiariesId == 3 ">
+
   <p-tabPanel [header]="isEn ? 'Evaluating the performance' : 'تقييم أداء'">
     <app-rating></app-rating>
   </p-tabPanel>
 </ng-container>
 </p-tabView>
+

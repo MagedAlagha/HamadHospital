@@ -140,7 +140,7 @@ export class NavbarComponent implements OnInit {
     }
    }
 
-   lang:any;
+   lang:any ='';
    Language: string = this._translationService.getSelectedLanguage();
    setLang() {
      if (this.Language == 'en') {

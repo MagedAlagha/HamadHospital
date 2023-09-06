@@ -96,7 +96,7 @@
           <i class="fa-solid fa-chevron-down  arrow2"></i>
           <ul>
             <li>
-              <a routerLink="/services-form/beneficiaries/1">
+              <a routerLink="/services-form/beneficiaries/3">
                 {{ isEn ? 'Beneficiary service' : 'خدمة مستفيدين' }}
               </a>
 
@@ -155,7 +155,9 @@
           </a>
         </div>
 
-        <a (click)="setLang()" class="lang-btn ms-2">{{Language}}</a>
+        <a (click)="setLang()" class="lang-btn ms-2">
+          {{Language.includes('en')?'AR':'EN'}}
+        </a>
 
       </div>
     </div>

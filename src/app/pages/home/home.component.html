@@ -296,7 +296,7 @@
               />
             </div>
             <p class="text-dir">
-              {{data[1]?.Title }}
+              {{data[0]?.Title }}
             </p>
           </div>
         </div>
@@ -343,7 +343,7 @@
               />
             </div>
             <p class="text-dir">
-              {{data[1]?.Title }}
+              {{data[2]?.Title }}
             </p>
           </div>
         </div>
@@ -518,20 +518,39 @@
   <div class="container background">
     <div class="row d-flex justify-content-center text-center align-items-center">
       <div
-        class="col-md-9 d-flex justify-content-end flex-column  "
+        class="col-md-9"
         *ngIf="LandingPageData$ | async as data"
       >
-        <owl-carousel-o [options]="customOptions">
+       <!--  <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let item of data?.Advertisements">
             <div class="text-center">
               <p>
                 {{ item?.Title }}
               </p>
-              <a routerLink="/ads-details/{{ item.ID }}">{{ isEn ? 'View details' : 'السمع والتوازن' }} </a>
+              <a routerLink="/ads-details/{{ item.ID }}">{{ item?.ButtonTitle}} </a>
             </div>
           </ng-template>
-        </owl-carousel-o>
+        </owl-carousel-o> -->
+        <!--  -->
+        <p-galleria [dir]="'rtl'" [numVisible]="data?.Advertisements?.length" [circular]="true" [value]="data?.Advertisements"[autoPlay]="true" [showIndicators]="true" [showItemNavigators]="false"  > <!-- [ngClass]="{'onePHoto': Imagedata?.length >= 1}" -->
+
+
+          <ng-template pTemplate="item" let-item >
+            <p>
+              {{ item?.Title }}
+            </p>
+            <a routerLink="/ads-details/{{ item.ID }}">{{ item?.ButtonTitle}} </a>
+
+          </ng-template>
+
+
+
+        </p-galleria>
+
+        <!--  -->
       </div>
     </div>
   </div>
 </div>
+
+
