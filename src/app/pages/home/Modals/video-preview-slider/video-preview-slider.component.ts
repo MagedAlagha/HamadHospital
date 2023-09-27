@@ -30,7 +30,7 @@ export class VideoPreviewSliderComponent implements OnInit {
     }
   }
   getIDFromVideo(link: any) {
-    const splited = link?.split('be/')[1];
+    const splited = link?.split('be/')[1] || link?.split("shorts/")[1];
     return splited;
   }
 }

@@ -71,9 +71,7 @@
               data.MediaSectionID?.includes(6) ||
               data.MediaSectionID?.includes(8) ||
               data.MediaSectionID?.includes(4) ||
-              (data?.VideoPath &&
-                data?.VideoPath &&
-                data.MediaSectionID?.includes(7))
+              (data?.VideoPath ||  data.MediaSectionID?.includes(7))
             "
           >
 

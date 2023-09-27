@@ -1,7 +1,7 @@
 <ng-container *ngIf="video$ | async as data">
   <div class="video-preview">
     <youtube-player
-      [videoId]="data?.VideoPath?.split('be/')[1]"
+      [videoId]="data?.VideoPath?.split('be/')[1] || data?.VideoPath.split('shorts/')[1]"
       [height]="width"
       [width]="width"
     >

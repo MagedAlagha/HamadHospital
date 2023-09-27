@@ -9,11 +9,11 @@
     <span><i class="fa-solid fa-calendar"></i> {{item[0]?.CreatedDate | date }}</span>
     <h2> {{item[0]?.TitleAr }} </h2>
     <div [innerHTML]="item[0]?.DescriptionAr"></div>
-    <ng-container *ngIf="item[0]?.ButtonAdded">
+    <!-- <ng-container *ngIf="item[0]?.ButtonAdded">
       <a target="_blank" [href]="item[0]?.ButtonLink"
         >{{ item[0]?.ButtonTitleAr }}
         <i class="fa-solid fa-arrow-left-long ps-1"></i
       ></a>
-    </ng-container>
+    </ng-container> -->
   </ng-container>
 </div>

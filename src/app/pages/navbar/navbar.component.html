@@ -18,6 +18,9 @@
       <div class="drop-down drop-down-beneficiaries d-md-none d-block  ">
         <a style="color: #fff" routerLink="/services-form/beneficiaries/2">حجز موعد</a>
       </div>
+      <a (click)="setLang()" class="lang-btn ms-2 d-md-none d-block">
+        {{Language.includes('en')?'AR':'EN'}}
+      </a>
 
       <button
         class="navbar-toggler"
@@ -29,6 +32,7 @@
         aria-label="Toggle navigation"
       >
         <i class="fa-solid fa-bars-staggered"></i>
+
       </button>
     </div>
 
@@ -155,7 +159,7 @@
           </a>
         </div>
 
-        <a (click)="setLang()" class="lang-btn ms-2">
+        <a (click)="setLang()" class="lang-btn ms-2 d-md-block d-none">
           {{Language.includes('en')?'AR':'EN'}}
         </a>
 

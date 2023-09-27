@@ -33,6 +33,6 @@ export class VideoPreviewModalComponent implements OnInit {
     }
   }
   getIDFromVideo(item?: any) {
-    return item?.split('be/')[1];
+    return item?.split('be/')[1] || item.split("shorts/")[1];
   }
 }

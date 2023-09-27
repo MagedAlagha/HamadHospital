@@ -57,6 +57,12 @@ export class NavbarComponent implements OnInit {
 
   }
   ngOnInit(): void {
+
+
+
+
+
+
     this._mediaCenterService.Selector$('activeNave').pipe(map(value=> this.active = value )).subscribe()
     this.active = 1
 
@@ -131,12 +137,22 @@ export class NavbarComponent implements OnInit {
     }
    }
 
+   // Listen for the scroll event on the window
+  @HostListener('window:scroll', ['$event'])
+  onScroll(): void {
+      console.log("window.scrollY" , window.scrollY)
+      this.closeNavbar(window.scrollY)
+  }
+
    isNavbarOpen: boolean = false;
 
-   closeNavbar() {
+   closeNavbar(scrollY?:any) {
     const navbar = document.getElementById('navbarSupportedContent');
     if (navbar!.classList.contains('show')) {
       navbar!.classList.remove('show');
+      if(scrollY < scrollY + 1000){
+        navbar!.classList.remove('show');
+      }
     }
    }
 

@@ -1,5 +1,6 @@
-<h3>{{ isEn ? 'Beneficiary service' : 'خدمة مستفيدين' }}</h3>
-<p-tabView styleClass="tabview-custom">
+<h3 *ngIf="beneficiariesId == 3 || beneficiariesId == 2">{{ isEn ? 'Beneficiary service' : 'خدمة مستفيدين' }}</h3>
+ <h3 *ngIf="beneficiariesId == 1 ">{{ isEn ? 'Suggestion / Complaint' : 'اقتراح / شكوى' }}</h3>
+ <p-tabView styleClass="tabview-custom">
   <ng-container  *ngIf="beneficiariesId != 1">
 
   <p-tabPanel [header]=" isEn ? 'Appointment Booking' : 'حجز موعد' " [selected]="selecetd1">

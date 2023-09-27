@@ -46,7 +46,7 @@
     [dismissableMask]="true"
     [draggable]="false"
     [resizable]="false"
-    [style]="{ width: '47vw', height: '28vw' }"
+    [style]="{ width: '46vw', height: '28vw' }"
   >
     <app-video-preview-slider></app-video-preview-slider>
   </p-dialog>
@@ -172,7 +172,7 @@
     [dismissableMask]="true"
     [draggable]="false"
     [resizable]="false"
-    [style]="{ width: '47vw', height: '28vw' }"
+    [style]="{ width: '46vw', height: '28vw' }"
   >
     <app-video-preview-modal></app-video-preview-modal>
   </p-dialog>
@@ -269,7 +269,7 @@
           routerLink="/media-center/press-stories"
           style="cursor: pointer; color: #8a1538"
           (click)="addAvtiveNaveBar()">
-          {{ isEn ? 'Read more' : 'إقرأ المزيد' }}
+          {{ isEn ? 'Read more' : 'اقرأ المزيد' }}
           </a
         >
       </div>
@@ -420,7 +420,7 @@
                 <p
                   style="cursor: pointer"
                   routerLink="/media-center/news/news-main">
-                  <strong>{{ isEn ? 'Read more' : 'إقرأ المزيد' }}</strong>
+                  <strong>{{ isEn ? 'Read more' : 'اقرأ المزيد' }}</strong>
 
                 </p>
                 <ng-container *ngFor="let item of data.slice(1, 4)">
@@ -495,7 +495,7 @@
               <a
                 routerLink="/mix-details/{{ data[0]?.ID }}"
                 class="readmore mt-auto d-flex align-items-baseline"
-                ><span>{{ isEn ? 'Read more' : 'إقرأ المزيد' }}</span
+                ><span>{{ isEn ? 'Read more' : 'اقرأ المزيد' }}</span
                 ><i class="fa-solid fa-arrow-left-long ps-1"></i>
               </a>
             </div>
@@ -512,7 +512,7 @@
     <div
       class="section-title mb-2 d-flex justify-content-between align-items-center">
       <h4 routerLink="/ads">{{ isEn ? 'Advertisements' : 'الإعلانات' }}</h4>
-      <span routerLink="/ads" class="read_more">{{ isEn ? 'Read more' : 'إقرأ المزيد' }}</span>
+      <span routerLink="/ads" class="read_more">{{ isEn ? 'Read more' : 'اقرأ المزيد' }}</span>
     </div>
   </div>
   <div class="container background">

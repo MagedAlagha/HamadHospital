@@ -80,7 +80,7 @@
           <p  [innerHTML]="isEn ? item?.Desc : item?.Desc  | slice:0:100"></p>
         </div>
 <!--         <p>{{ isEn ? item?.DescEn : item?.DescAr | slice:0:100 }} {{  isEn ? item?.DescEn.length : item?.DescAr.length > 100 ? '...' : '' }}</p>
- -->         <a routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>إقراء
+ -->         <a routerLink="/medical-article-details/{{item.ID}}" (click)="showMedicalArticles(item)" class="readmore   mt-auto d-flex align-items-baseline"><span>اقرأ
              المزيد</span><i class="fa-solid fa-arrow-left-long ps-1"></i>
          </a>
       </div>

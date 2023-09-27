@@ -42,7 +42,7 @@
           <p  [innerHTML]="item?.Desc | slice:0:100 "></p>
         </div>
          <a routerLink="/mix-details/{{item.ID}}" class="readmore   mt-auto d-flex align-items-baseline"><span>
-          {{ isEn ? 'Read more' : 'إقرأ المزيد' }}
+          {{ isEn ? 'Read more' : 'اقرأ المزيد' }}
             </span>
             <i *ngIf="!isEn" class="fa-solid fa-arrow-left-long ps-1"></i>
             <i *ngIf="isEn" class="fa-solid fa-arrow-right-long pe-1"></i>
