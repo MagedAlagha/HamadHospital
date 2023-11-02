@@ -1,4 +1,4 @@
-<div class="hero home-carosal" id="section0">
+<!--   <div class="hero home-carosal" id="section0">
     <owl-carousel-o [options]="customOptions">
     <ng-container *ngIf="LandingPageData$ | async as data">
       <ng-template carouselSlide *ngFor="let item of data?.HeaderSlider">
@@ -30,7 +30,46 @@
 
     </ng-container>
   </owl-carousel-o>
+</div>  -->
+
+<div class="hero home-carosal" id="section0">
+  <swiper
+  [config]="config"
+  *ngIf="LandingPageData$ | async as data"
+  >
+
+  <ng-template swiperSlide *ngFor="let item of data?.HeaderSlider">
+    <div
+    class="img"
+    style="  background-image: linear-gradient(rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0.097)), url({{baseUrl}}{{
+      item?.ImagePath
+    }});"
+   >
+    <ng-container *ngIf="item.ShowTitle">
+      <div class="container d-flex justify-content-center">
+
+        <div (click)="openLink(item)" class="content" [ngStyle]="{'background-color': item.TitleBackgroundColor ? item.TitleBackgroundColor : 'transparent'}" >
+          <ng-container
+            *ngIf="MediaCenterServiceNews$ | async as news">
+            <p class="mb-1">{{ item.Title }}</p>
+            <ng-container *ngFor="let item_2 of news">
+              <ng-container *ngIf="item_2.ID == 0">
+                <a (click)="showNews(item_2)"> </a>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+
+      </div>
+    </ng-container>
+  </div>
+  </ng-template>
+  </swiper>
 </div>
+
+
+
+
 
 <!-- <button
   ngxScrollTo

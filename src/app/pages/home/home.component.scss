@@ -14,7 +14,7 @@
   top: 50px;
 }
 .hero{
-  margin-top: 0.8%;
+  margin-top: 1.4%;
 }
 section {
   padding: 80px 0;
@@ -61,17 +61,16 @@ section {
     font-weight: 600;
     font-size: 12px;
   }
-  .hero .img {
-    height: 50vh;
-  }
+
   #scroll-down-animation{
     display: none;
   }
   .hero .img {
     height: 40vh;
+    top: 65px;
   }
   .content {
-    margin-bottom: 80px;
+    margin-bottom: 95px;
   }
 
 /*   .content {
@@ -644,3 +643,6 @@ section {
 
 
 
+/* .swiper-scrollbar-drag{
+  background: #fff !important;
+} */

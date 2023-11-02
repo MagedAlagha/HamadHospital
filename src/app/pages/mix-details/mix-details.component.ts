@@ -64,7 +64,7 @@ export class MixDetailsComponent implements OnInit,OnDestroy {
             } */
         }),
         map((value) =>
-          value.filter((item: any) => !item?.ImagePath?.includes('pdf')).reverse(),
+          value.filter((item: any) => !item?.ImagePath?.includes('pdf')),
         )
       );
     this.MixDetails$ = this._mediaCenterService.Selector$('MixInfo').pipe(

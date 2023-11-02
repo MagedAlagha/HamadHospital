@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 import { MediaCenterService } from '../media-center/media-center.service';
 import { HomeService } from './home.service';
 import { Router } from '@angular/router';
-import { SwiperComponent } from 'swiper/types';
+import { SwiperComponent, SwiperOptions } from 'swiper/types';
 import Swiper from "swiper/types/swiper-class";
 
 // import Swiper core and required components
@@ -283,4 +283,15 @@ export class HomeComponent implements OnInit {
     }, 500);
     this.display = true;
   }
+
+
+  config: SwiperOptions = {
+    slidesPerView: 1,
+    navigation: true,
+    autoplay:true,
+    pagination: { clickable: true },
+  };
+
+
+
 }

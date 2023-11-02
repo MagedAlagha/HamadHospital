@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
   isEn = document.dir == 'ltr' ? true : false;
   activeNave$!:Observable<any>;
   LandingPageData$!: Observable<any>;
+  showClose:boolean = false;
   constructor(
      public router: Router,
      private _mediaCenterService:MediaCenterService ,
@@ -49,6 +50,7 @@ export class NavbarComponent implements OnInit {
 
   toggleSearch() {
     this.showSearch = !this.showSearch;
+    this.closeNavbar()
   }
   saveSearch(){
     this.router.navigate(['/search/'+this.search.value]);
@@ -57,11 +59,6 @@ export class NavbarComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
-
-
-
-
 
     this._mediaCenterService.Selector$('activeNave').pipe(map(value=> this.active = value )).subscribe()
     this.active = 1
@@ -142,6 +139,9 @@ export class NavbarComponent implements OnInit {
   onScroll(): void {
       console.log("window.scrollY" , window.scrollY)
       this.closeNavbar(window.scrollY)
+      if(scrollY < scrollY + 500){
+        this.showSearch = false
+      }
   }
 
    isNavbarOpen: boolean = false;
@@ -150,11 +150,12 @@ export class NavbarComponent implements OnInit {
     const navbar = document.getElementById('navbarSupportedContent');
     if (navbar!.classList.contains('show')) {
       navbar!.classList.remove('show');
-      if(scrollY < scrollY + 1000){
+      if(scrollY < scrollY + 500){
         navbar!.classList.remove('show');
       }
     }
    }
+
 
    lang:any ='';
    Language: string = this._translationService.getSelectedLanguage();

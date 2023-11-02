@@ -32,7 +32,8 @@
         aria-label="Toggle navigation"
       >
         <i class="fa-solid fa-bars-staggered"></i>
-
+<!--         <i *ngIf="showClose" class="fas fa-times"></i>
+ -->
       </button>
     </div>
 
@@ -85,7 +86,7 @@
           </a>
         </li>
 
-        <div class="drop-down drop-down-2 d-inline-block ps-1">
+        <div class="drop-down drop-down-2 d-inline-block ">
           <a
             style="color: black; font-weight: 500"
             [ngClass]="{ active: active == 5 }"
@@ -100,20 +101,20 @@
           <i class="fa-solid fa-chevron-down  arrow2"></i>
           <ul>
             <li>
-              <a routerLink="/services-form/beneficiaries/3">
+              <a routerLink="/services-form/beneficiaries/3" (click)="closeNavbar()">
                 {{ isEn ? 'Beneficiary service' : 'خدمة مستفيدين' }}
               </a>
 
             </li>
             <li>
-              <a routerLink="/services-form/visitor">
+              <a routerLink="/services-form/visitor" (click)="closeNavbar()">
                 {{ isEn ? 'Visitor service' : 'خدمة زائرين' }}
 
               </a>
 
             </li>
             <li>
-              <a routerLink="/services-form/institutions">
+              <a routerLink="/services-form/institutions" (click)="closeNavbar()">
                 {{ isEn ? 'Institutions service' : 'خدمة مؤسسات' }}
 
               </a>
@@ -122,7 +123,7 @@
             <li>
               <a
                 routerLink="/services-form/beneficiaries/1"
-                (click)="complaint(2)">
+                (click)="complaint(2); closeNavbar()">
                 {{ isEn ? 'Complaints' : 'شكاوى' }}
                 </a>
             </li>

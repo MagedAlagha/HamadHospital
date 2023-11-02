@@ -645,14 +645,19 @@ label span {
 
 
 .hero-img {
-  height: 95vh;
+  height: 96vh;
   object-fit: cover;
   width: 100%;
   position: relative;
-  top: 8vh;
+  top: 9vh;
 }
 .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
-  bottom: 6vh !important;
+  bottom: 2vh !important;
+}
+@media(max-width:600px) {
+  .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
+    bottom: .5vh !important;
+  }
 }
 .hero{
   .swiper-pagination-bullet{
@@ -737,4 +742,40 @@ label span {
 .employment-ad .p-galleria .p-galleria-indicators .p-galleria-indicator button{
   width: .8rem !important;
   height: .8rem !important;
+}
+
+ .swiper-button-prev, .swiper-button-next{
+  color: #FFF;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #ffffff33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-button-prev:after, .swiper-button-next:after{
+  font-size: 20px;
+}
+
+@media(max-width:600px) {
+  .swiper-button-prev, .swiper-button-next{
+      width: 30px;
+      height: 30px;
+      top: 58%;
+
+  }
+  .swiper-button-prev:after, .swiper-button-next:after{
+    font-size: 13px;
+  }
+  .hero .swiper-pagination-bullet {
+    width: 0.5rem;
+    height:0.5rem
+  }
+  .swiper-pagination-bullet-active{
+    background: #8a1538 !important;
+    width: 1.1rem !important;
+    border-radius: 30px;
+  }
+
 }
